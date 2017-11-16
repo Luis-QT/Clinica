@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package gui.administrador.Mantenimientro.Medico.MedicoLaboratorio;
+package gui.administrador.mantenimiento.medico.medicoLaboratorio;
 /**
  *
  * @author LLLL

@@ -9,7 +9,7 @@ import controlador.ControllerResource;
 import dao.dao.PlanTratamientoDao;
 import dao.daoImpl.PlanTratamientoDaoImpl;
 import estructura.ListaDoble;
-import gui.administrador.AreaMedico.PlanTratamientoV;
+import gui.administrador.areaMedico.PlanTratamientoV;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;

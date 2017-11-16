@@ -5,16 +5,16 @@
  */
 package gui.administrador;
 
-import gui.administrador.AreaMedico.Pacientes;
-import gui.administrador.AreaMedico.PlanTratamientoV;
-import gui.administrador.Mantenimientro.Medico.MedicoEspecialista.ListaME;
-import gui.administrador.Mantenimientro.Medico.MedicoTriaje.ListaMT;
-import gui.administrador.Mantenimientro.Sala.Salas;
-import gui.administrador.Registro.Empleados.RegistroMedicoGeneral;
-import gui.administrador.Registro.Empleados.RegistroMedicoEspecialista;
-import gui.administrador.Registro.Empleados.RegistroMedicoLaboratorio;
-import gui.administrador.Registro.Empleados.RegistroMedicoTriaje;
-import gui.administrador.Registro.RegistroPacientes;
+import gui.administrador.areaMedico.Pacientes;
+import gui.administrador.areaMedico.PlanTratamientoV;
+import gui.administrador.mantenimiento.medico.medicoEspecialista.ListaME;
+import gui.administrador.mantenimiento.medico.medicoTriaje.ListaMT;
+import gui.administrador.mantenimiento.sala.Salas;
+import gui.administrador.registro.empleados.RegistroMedicoGeneral;
+import gui.administrador.registro.empleados.RegistroMedicoEspecialista;
+import gui.administrador.registro.empleados.RegistroMedicoLaboratorio;
+import gui.administrador.registro.empleados.RegistroMedicoTriaje;
+import gui.administrador.registro.RegistroPacientes;
 
 
 /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.administrador.Mantenimientro.Medico.MedicoGeneral;
+package gui.administrador.mantenimiento.medico.medicoGeneral;
 
 /**
  *

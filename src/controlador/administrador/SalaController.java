@@ -8,7 +8,7 @@ package controlador.administrador;
 import controlador.Controller;
 import controlador.ControllerResource;
 import estructura.ListaDoble;
-import gui.administrador.Mantenimientro.Sala.Salas;
+import gui.administrador.mantenimiento.sala.Salas;
 import dao.dao.SalaDao;
 import dao.daoImpl.SalaDaoImpl;
 import java.awt.event.ActionEvent;

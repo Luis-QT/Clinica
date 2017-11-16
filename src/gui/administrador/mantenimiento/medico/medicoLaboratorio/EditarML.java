@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.administrador.Mantenimientro.Medico.MedicoLaboratorio;
+package gui.administrador.mantenimiento.medico.medicoLaboratorio;
 
-import gui.administrador.Mantenimientro.Medico.MedicoEspecialista.EditarME;
+import gui.administrador.mantenimiento.medico.medicoEspecialista.EditarME;
 
 /**
  *

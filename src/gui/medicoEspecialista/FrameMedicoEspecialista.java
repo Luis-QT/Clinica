@@ -10,6 +10,7 @@ import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import model.empleado.MedicoEspecialista;
 import model.paciente.Paciente;
+
 /**
  *
  * @author Pechito
@@ -362,10 +363,6 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrameMedicoEspecialista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

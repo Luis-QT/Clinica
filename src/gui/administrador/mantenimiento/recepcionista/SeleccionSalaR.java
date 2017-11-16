@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package gui.administrador.Mantenimientro.Recepcionista;
+package gui.administrador.mantenimiento.recepcionista;
 
 /**
  *

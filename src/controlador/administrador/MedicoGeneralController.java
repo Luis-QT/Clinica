@@ -8,10 +8,10 @@ package controlador.administrador;
 import controlador.Controller;
 import controlador.ControllerResource;
 import estructura.ListaDoble;
-import gui.administrador.Mantenimientro.Medico.MedicoGeneral.EditarMG;
-import gui.administrador.Mantenimientro.Medico.MedicoGeneral.InsertarMG;
-import gui.administrador.Mantenimientro.Medico.MedicoGeneral.ListaMG;
-import gui.administrador.Mantenimientro.Medico.MedicoGeneral.SeleccionSalaMG;
+import gui.administrador.mantenimiento.medico.medicoGeneral.EditarMG;
+import gui.administrador.mantenimiento.medico.medicoGeneral.InsertarMG;
+import gui.administrador.mantenimiento.medico.medicoGeneral.ListaMG;
+import gui.administrador.mantenimiento.medico.medicoGeneral.SeleccionSalaMG;
 
 import dao.dao.HorarioDao;
 import dao.daoImpl.HorarioDaoImpl;

@@ -7,13 +7,13 @@ package controlador.administrador;
 
 import controlador.Controller;
 import factory.MySQLConnectionFactory;
-import gui.administrador.AreaMedico.PlanTratamientoV;
+import gui.administrador.areaMedico.PlanTratamientoV;
 import gui.administrador.FramePrincipalAdministrador;
-import gui.administrador.Mantenimientro.Medico.MedicoEspecialista.ListaME;
-import gui.administrador.Mantenimientro.Medico.MedicoGeneral.ListaMG;
-import gui.administrador.Mantenimientro.Medico.MedicoLaboratorio.ListaML;
-import gui.administrador.Mantenimientro.Recepcionista.ListaR;
-import gui.administrador.Mantenimientro.Sala.Salas;
+import gui.administrador.mantenimiento.medico.medicoEspecialista.ListaME;
+import gui.administrador.mantenimiento.medico.medicoGeneral.ListaMG;
+import gui.administrador.mantenimiento.medico.medicoLaboratorio.ListaML;
+import gui.administrador.mantenimiento.recepcionista.ListaR;
+import gui.administrador.mantenimiento.sala.Salas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
