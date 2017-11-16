@@ -18,7 +18,7 @@ import gui.administrador.FramePrincipalAdministrador;
 public class Administrador {
     public static void main(String[] args) {
         ConnectionDb conn = FactoryConnectionDb.open();
-        //MySQLConnectionFactory.shutdown();
+//        MySQLConnectionFactory.shutdown();
         
         FramePrincipalAdministrador frame = new FramePrincipalAdministrador();
         new AdministradorController(frame).index();

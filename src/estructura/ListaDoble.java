@@ -22,6 +22,7 @@ public class ListaDoble<T> implements Iterable<T> {
         this.fin = null;
         size = 0;
     }
+    
     public NodoDoble<T> getFin(){
         return fin;
     }

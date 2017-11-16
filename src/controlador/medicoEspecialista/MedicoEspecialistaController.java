@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.MedicoEspecialista;
+package controlador.medicoEspecialista;
 
 import controlador.Controller;
 import estructura.ListaDoble;
