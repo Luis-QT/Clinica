@@ -31,6 +31,8 @@ public class MedicoEspecialista extends Medico{
  * @param email
  * @param softDelete 
  */
+    
+    //HOLAAAAA 
     public MedicoEspecialista(String especialidad,String colegiatura, String codigo, String contraseña, ListaDoble<Horario> horarios, int id, String nombre, String apellido, int dni, boolean sexo, int edad, int telefonoCasa, int telefonoCelular, String email, int softDelete) {
         super(colegiatura, codigo,contraseña,horarios,id, nombre, apellido, dni, sexo, edad, telefonoCasa, telefonoCelular, email, softDelete);
         this.especialidad = especialidad;
