@@ -11,6 +11,7 @@ import estructura.ListaDoble;
 import gui.administrador.mantenimiento.sala.Salas;
 import dao.dao.SalaDao;
 import dao.daoImpl.SalaDaoImpl;
+import gui.administrador.TablaFilaRoja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -60,6 +61,8 @@ public class SalaController implements ActionListener,ControllerResource{
         
         this.vista.btnCancelar.setActionCommand("cancelar");
         this.vista.btnCancelar.addActionListener(this);
+        
+        this.vista.tablaSala.setBackground(new java.awt.Color(221, 255, 220));
         
         this.vista.tablaSala.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -121,6 +124,7 @@ public class SalaController implements ActionListener,ControllerResource{
             lista.eliminarPos(pos);
         }else{
             sala.setDelete(true);
+            vista.tablaSala.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
         }
         llenarTabla();
         aumentarCambios();
@@ -146,6 +150,8 @@ public class SalaController implements ActionListener,ControllerResource{
             }
         }
         vista.txtCambios.setText("0");
+        lista = salaDao.listaSalas();
+        vista.tablaSala.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -155,10 +161,9 @@ public class SalaController implements ActionListener,ControllerResource{
             vista.txtCambios.setText("0");
             SalaDao salaDao = new SalaDaoImpl();
             lista = salaDao.listaSalas();
+            vista.tablaSala.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
-            System.out.println("si");
         }else{
-            System.err.println("no");
         }
     }
     
@@ -168,9 +173,8 @@ public class SalaController implements ActionListener,ControllerResource{
         Iterator<Sala> iterador = lista.getDescendingIterator();
         while(iterador.hasNext()){
             Sala sala = iterador.next();
-            if(!sala.isDelete()){
-                modelo.addRow(new Object[]{sala.getNombre(), sala.getDescripcion(), "" });
-            }
+            modelo.addRow(new Object[]{sala.getNombre(), sala.getDescripcion(), "" });
+            
         }
     }
     

@@ -5,7 +5,6 @@
  */
 package gui.administrador.mantenimiento.medico.medicoGeneral;
 
-import gui.administrador.mantenimiento.medico.medicoEspecialista.ListaME;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,7 +33,7 @@ public class ListaMG extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaMT = new javax.swing.JTable();
+        tablaMG = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnModificar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
@@ -49,23 +48,32 @@ public class ListaMG extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tablaMT.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMG.setBackground(new java.awt.Color(221, 255, 220));
+        tablaMG.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, "", null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
                 "Codigo", "Nombre", "Apellido", "DNI", "Edad", "Colegiatura", "Email", "Telefono", "Celular"
             }
-        ));
-        tablaMT.addMouseListener(new java.awt.event.MouseAdapter() {
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaMG.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaMGMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablaMT);
+        jScrollPane1.setViewportView(tablaMG);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -114,7 +122,7 @@ public class ListaMG extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(187, 228, 228));
 
         jLabel1.setBackground(new java.awt.Color(153, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -320,7 +328,7 @@ public class ListaMG extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tablaMT;
+    public javax.swing.JTable tablaMG;
     public javax.swing.JTextField txtCambios;
     // End of variables declaration//GEN-END:variables
 }

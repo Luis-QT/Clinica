@@ -18,6 +18,7 @@ import dao.dao.MedicoEspecialistaDao;
 import dao.daoImpl.MedicoEspecialistaDaoImpl;
 import dao.dao.SalaDao;
 import dao.daoImpl.SalaDaoImpl;
+import gui.administrador.TablaFilaRoja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -59,6 +60,7 @@ public class MedicoEspecialistaController implements ActionListener,ControllerRe
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
+        this.vista.tablaME.setBackground(new java.awt.Color(221, 255, 220));
         
         MedicoEspecialistaDao medicoEspecialistaDao = new MedicoEspecialistaDaoImpl();
         listaMedico = medicoEspecialistaDao.listaMedicos();
@@ -126,6 +128,7 @@ public class MedicoEspecialistaController implements ActionListener,ControllerRe
                 listaMedico.eliminarPos(pos);
             }else{
                 medico.setSoftDelete(1);
+                vista.tablaME.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
@@ -162,7 +165,9 @@ public class MedicoEspecialistaController implements ActionListener,ControllerRe
                 }
             }
         }
+        vista.tablaME.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         vista.txtCambios.setText("0");
+        listaMedico = medicoEspecialistaDao.listaMedicos();
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -173,6 +178,7 @@ public class MedicoEspecialistaController implements ActionListener,ControllerRe
             vista.txtCambios.setText("0");
             MedicoEspecialistaDao medicoEspecialistaDao = new MedicoEspecialistaDaoImpl();
             listaMedico = medicoEspecialistaDao.listaMedicos();
+            vista.tablaME.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -193,13 +199,11 @@ public class MedicoEspecialistaController implements ActionListener,ControllerRe
         Iterator<MedicoEspecialista> iterador = listaMedico.getDescendingIterator();
         while(iterador.hasNext()){
             MedicoEspecialista medico = iterador.next();
-            if(medico.getSoftDelete()!=1){
-                modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
-                        medico.getEspecialidad(),
-                        medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
-                        medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
-                        ,medico.getSoftDelete()});
-            }
+            modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
+                    medico.getEspecialidad(),
+                    medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
+                    medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
+                    ,medico.getSoftDelete()});
         }
     }
     

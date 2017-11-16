@@ -18,6 +18,7 @@ import dao.dao.MedicoLaboratorioDao;
 import dao.dao.SalaDao;
 import dao.daoImpl.MedicoLaboratorioDaoImpl;
 import dao.daoImpl.SalaDaoImpl;
+import gui.administrador.TablaFilaRoja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -56,6 +57,7 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
+        this.vista.tablaML.setBackground(new java.awt.Color(221, 255, 220));
         
         MedicoLaboratorioDao medicoGeneralDao = new MedicoLaboratorioDaoImpl();
         listaMedico = medicoGeneralDao.listaMedicos();
@@ -125,6 +127,7 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
                 listaMedico.eliminarPos(pos);
             }else{
                 medico.setSoftDelete(1);
+                vista.tablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
@@ -162,6 +165,8 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
             }
         }
         vista.txtCambios.setText("0");
+        listaMedico = medicoGeneralDao.listaMedicos();
+        vista.tablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -172,6 +177,7 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
             vista.txtCambios.setText("0");
             MedicoLaboratorioDao medicoLaboratorioDao = new MedicoLaboratorioDaoImpl();
             listaMedico = medicoLaboratorioDao.listaMedicos();
+            vista.tablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -192,12 +198,10 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         Iterator<MedicoLaboratorio> iterador = listaMedico.getDescendingIterator();
         while(iterador.hasNext()){
             MedicoLaboratorio medico = iterador.next();
-            if(medico.getSoftDelete()!=1){
-                modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
-                        medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
-                        medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
-                        ,medico.getSoftDelete()});
-            }
+            modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
+                    medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
+                    medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
+                    ,medico.getSoftDelete()});
         }
     }
     

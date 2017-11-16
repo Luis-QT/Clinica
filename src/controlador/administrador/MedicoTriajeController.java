@@ -18,6 +18,7 @@ import dao.dao.SalaDao;
 import dao.daoImpl.HorarioDaoImpl;
 import dao.daoImpl.MedicoTriajeDaoImpl;
 import dao.daoImpl.SalaDaoImpl;
+import gui.administrador.TablaFilaRoja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -56,7 +57,7 @@ public class MedicoTriajeController implements ActionListener,ControllerResource
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
-        
+        this.vista.tablaMT.setBackground(new java.awt.Color(221, 255, 220));
         MedicoTriajeDao medicoGeneralDao = new MedicoTriajeDaoImpl();
         listaMedico = medicoGeneralDao.listaMedicos();
         
@@ -125,6 +126,7 @@ public class MedicoTriajeController implements ActionListener,ControllerResource
                 listaMedico.eliminarPos(pos);
             }else{
                 medico.setSoftDelete(1);
+                vista.tablaMT.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
@@ -162,6 +164,8 @@ public class MedicoTriajeController implements ActionListener,ControllerResource
             }
         }
         vista.txtCambios.setText("0");
+        listaMedico = medicoTriajeDao.listaMedicos();
+        vista.tablaMT.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -172,6 +176,7 @@ public class MedicoTriajeController implements ActionListener,ControllerResource
             vista.txtCambios.setText("0");
             MedicoTriajeDao medicoTriajeDao = new MedicoTriajeDaoImpl();
             listaMedico = medicoTriajeDao.listaMedicos();
+            vista.tablaMT.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -192,12 +197,12 @@ public class MedicoTriajeController implements ActionListener,ControllerResource
         Iterator<MedicoTriaje> iterador = listaMedico.getDescendingIterator();
         while(iterador.hasNext()){
             MedicoTriaje medico = iterador.next();
-            if(medico.getSoftDelete()!=1){
-                modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
-                        medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
-                        medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
-                        });
-            }
+            
+            modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
+                    medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
+                    medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
+                    });
+            
         }
     }
     

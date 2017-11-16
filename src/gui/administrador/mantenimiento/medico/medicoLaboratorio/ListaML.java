@@ -58,7 +58,15 @@ public class ListaML extends javax.swing.JDialog {
             new String [] {
                 "Codigo", "Nombre", "Apellido", "DNI", "Edad", "Colegiatura", "Email", "Telefono", "Celular"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tablaML.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaMLMouseClicked(evt);

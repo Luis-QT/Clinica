@@ -18,6 +18,7 @@ import dao.dao.SalaDao;
 import dao.daoImpl.HorarioDaoImpl;
 import dao.daoImpl.RecepcionistaDaoImpl;
 import dao.daoImpl.SalaDaoImpl;
+import gui.administrador.TablaFilaRoja;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -56,10 +57,10 @@ public class RecepcionistaController implements ControllerResource, ActionListen
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
-        
+        this.vista.tablaR.setBackground(new java.awt.Color(221, 255, 220));
+
         RecepcionistaDao recepcionistaDao = new RecepcionistaDaoImpl();
         listaRecepcionista = recepcionistaDao.listaRecepcionistas();
-        
         llenarTabla();
     }
     
@@ -125,6 +126,7 @@ public class RecepcionistaController implements ControllerResource, ActionListen
                 listaRecepcionista.eliminarPos(pos);
             }else{
                 recepcionista.setSoftDelete(1);
+                vista.tablaR.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
@@ -162,6 +164,8 @@ public class RecepcionistaController implements ControllerResource, ActionListen
             }
         }
         vista.txtCambios.setText("0");
+        listaRecepcionista = recepcionistaDao.listaRecepcionistas();
+        vista.tablaR.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -172,6 +176,7 @@ public class RecepcionistaController implements ControllerResource, ActionListen
             vista.txtCambios.setText("0");
             RecepcionistaDao recepcionistaDao = new RecepcionistaDaoImpl();
             listaRecepcionista = recepcionistaDao.listaRecepcionistas();
+            vista.tablaR.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -192,14 +197,14 @@ public class RecepcionistaController implements ControllerResource, ActionListen
         Iterator<Recepcionista> iterador = listaRecepcionista.getDescendingIterator();
         while(iterador.hasNext()){
             Recepcionista recepcionista = iterador.next();
-            if(recepcionista.getSoftDelete()!=1){
-                modelo.addRow(new Object[]{recepcionista.getCodigo(), recepcionista.getNombre(),
-                        recepcionista.getApellido(),
-                        recepcionista.getDni() ,recepcionista.getEdad(),
-                        recepcionista.getEmail(),recepcionista.getTelefonoCasa()
-                        ,recepcionista.getTelefonoCelular()
-                        });
-            }
+            
+            modelo.addRow(new Object[]{recepcionista.getCodigo(), recepcionista.getNombre(),
+                    recepcionista.getApellido(),
+                    recepcionista.getDni() ,recepcionista.getEdad(),
+                    recepcionista.getEmail(),recepcionista.getTelefonoCasa()
+                    ,recepcionista.getTelefonoCelular()
+                    });
+            
         }
     }
     

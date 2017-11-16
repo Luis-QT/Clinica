@@ -19,6 +19,9 @@ import dao.dao.MedicoGeneralDao;
 import dao.daoImpl.MedicoGeneralDaoImpl;
 import dao.dao.SalaDao;
 import dao.daoImpl.SalaDaoImpl;
+import gui.administrador.TablaFilaRoja;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -26,6 +29,7 @@ import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.empleado.Empleado;
 import model.empleado.MedicoGeneral;
@@ -62,7 +66,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
         
         MedicoGeneralDao medicoGeneralDao = new MedicoGeneralDaoImpl();
         listaMedico = medicoGeneralDao.listaMedicos();
-        
+        this.vista.tablaMG.setBackground(new java.awt.Color(221, 255, 220));
         llenarTabla();
     }
     
@@ -103,7 +107,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
     
     @Override
     public void formEditar() {
-        int pos = this.vista.tablaMT.getSelectedRow();
+        int pos = this.vista.tablaMG.getSelectedRow();
         //-1 No se selecciona nada
         if(pos!=-1){
             MedicoGeneral medico = listaMedico.getDato(pos);
@@ -121,19 +125,20 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
 
     @Override
     public void formEliminar() {
-        int pos = vista.tablaMT.getSelectedRow();
+        int pos = vista.tablaMG.getSelectedRow();
         if(pos!=-1){
             MedicoGeneral medico = listaMedico.getDato(pos);
             if(medico.getId()==0){
                 listaMedico.eliminarPos(pos);
             }else{
                 medico.setSoftDelete(1);
+                vista.tablaMG.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
         }
     }
-
+    
     @Override
     public void formDetalles() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -165,6 +170,8 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
             }
         }
         vista.txtCambios.setText("0");
+        listaMedico = medicoGeneralDao.listaMedicos();
+        vista.tablaMG.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -175,6 +182,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
             vista.txtCambios.setText("0");
             MedicoGeneralDao medicoGeneralDao = new MedicoGeneralDaoImpl();
             listaMedico = medicoGeneralDao.listaMedicos();
+            vista.tablaMG.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -190,17 +198,17 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
     }
 
     private void llenarTabla(){
-        DefaultTableModel modelo = (DefaultTableModel) vista.tablaMT.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) vista.tablaMG.getModel();
         modelo.setRowCount(0);
         Iterator<MedicoGeneral> iterador = listaMedico.getDescendingIterator();
         while(iterador.hasNext()){
             MedicoGeneral medico = iterador.next();
-            if(medico.getSoftDelete()!=1){
-                modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
-                        medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
-                        medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
-                        ,medico.getSoftDelete()});
-            }
+            
+            modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
+                    medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
+                    medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
+                    ,medico.getSoftDelete()});
+            
         }
     }
     

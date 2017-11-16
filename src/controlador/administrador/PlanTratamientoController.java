@@ -9,6 +9,7 @@ import controlador.ControllerResource;
 import dao.dao.PlanTratamientoDao;
 import dao.daoImpl.PlanTratamientoDaoImpl;
 import estructura.ListaDoble;
+import gui.administrador.TablaFilaRoja;
 import gui.administrador.areaMedico.PlanTratamientoV;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,6 +57,8 @@ public class PlanTratamientoController implements ActionListener,ControllerResou
         
         this.vista.btnCancelar.setActionCommand("cancelar");
         this.vista.btnCancelar.addActionListener(this);
+        
+        this.vista.tabla.setBackground(new java.awt.Color(221, 255, 220));
         
         this.vista.tabla.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -123,6 +126,7 @@ public class PlanTratamientoController implements ActionListener,ControllerResou
                 lista.eliminarPos(pos);
             }else{
                 planTratamiento.setDelete(true);
+                vista.tabla.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios(); 
@@ -149,6 +153,8 @@ public class PlanTratamientoController implements ActionListener,ControllerResou
             }
         }
         vista.txtCambios.setText("0");
+        lista = planTratamientoDao.listaTratamientos();
+        vista.tabla.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -158,10 +164,9 @@ public class PlanTratamientoController implements ActionListener,ControllerResou
             vista.txtCambios.setText("0");
             PlanTratamientoDao planTratamientoDao = new PlanTratamientoDaoImpl();
             lista = planTratamientoDao.listaTratamientos();
+            vista.tabla.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
-            System.out.println("si");
         }else{
-            System.err.println("no");
         }
     }
     
@@ -171,9 +176,8 @@ public class PlanTratamientoController implements ActionListener,ControllerResou
         Iterator<PlanTratamiento> iterador = lista.getDescendingIterator();
         while(iterador.hasNext()){
             PlanTratamiento planTratamiento = iterador.next();
-            if(!planTratamiento.isDelete()){
-                modelo.addRow(new Object[]{planTratamiento.getNombre(), planTratamiento.getDescripcion(),planTratamiento.getPrecio() });
-            }
+            modelo.addRow(new Object[]{planTratamiento.getNombre(), planTratamiento.getDescripcion(),planTratamiento.getPrecio() });
+            
         }
     }
     
