@@ -37,6 +37,9 @@ public class AdministradorController implements Controller,ActionListener{
     }
     
     public void iniciar(){
+        
+        
+        
         this.vista.btnMantenimientoMedicoGeneral.setActionCommand("MantenimientoMG");
         vista.btnMantenimientoMedicoGeneral.addActionListener(this);
         
@@ -46,9 +49,6 @@ public class AdministradorController implements Controller,ActionListener{
         this.vista.btnMantenimientoMedicoEspecialista.setActionCommand("MantenimientoME");
         vista.btnMantenimientoMedicoEspecialista.addActionListener(this);
         
-        this.vista.btnMantenimientoMedicoLaboratorio.setActionCommand("MantenimientoML");
-        vista.btnMantenimientoMedicoLaboratorio.addActionListener(this);
-        
         this.vista.btnMantenimientoRecepcionista.setActionCommand("MantenimientoR");
         vista.btnMantenimientoRecepcionista.addActionListener(this);
         
@@ -57,6 +57,13 @@ public class AdministradorController implements Controller,ActionListener{
         
         this.vista.btnCerrarSesion.setActionCommand("Salir");
         vista.btnCerrarSesion.addActionListener(this);
+        
+        vista.btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MySQLConnectionFactory.shutdown();
+            }
+        });
     }
     
     @Override
@@ -76,8 +83,6 @@ public class AdministradorController implements Controller,ActionListener{
             MySQLConnectionFactory.shutdown();
         }else if (comando.equals("MantenimientoME")){
             formMantenimientoME();
-        }else if(comando.equals("MantenimientoML")){
-            formMantenimientoML();
         }else if(comando.equals("MantenimientoR")){
             formMantenimientoR();
         }else if(comando.equals("PlanTratamiento")){
@@ -93,10 +98,7 @@ public class AdministradorController implements Controller,ActionListener{
         this.FrameListaME = new ListaME(vista, true);
         new MedicoEspecialistaController(this.FrameListaME).index();
     }
-    private void formMantenimientoML(){
-        this.FrameListaML = new ListaML(vista, true);
-        new MedicoLaboratorioController(this.FrameListaML).index();
-    }
+    
     private void formMantenimientoSala(){
         this.FrameSala = new Salas(vista, true);
         new SalaController(this.FrameSala).index();
