@@ -6,30 +6,47 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Optional;
+import model.paciente.Paciente;
 
-
-public class Cajero {
+public class Cajero extends EmpleadoUser{
     
     private ListaDoble<Servicios> listaServicios;
-    private ListaDoble<Recaudado> listaRecaudoDia;
     private ListaDoble<Monto> listaMonto;
+    private ListaDoble<Paciente> listaPaciente;
 
-    public Cajero(ListaDoble<Servicios> listaServicios,
-            ListaDoble<Recaudado> listaRecaudoDia, 
-            ListaDoble<Monto> listaMonto) {
-        this.listaServicios = listaServicios;
-        this.listaRecaudoDia = listaRecaudoDia;
-        this.listaMonto = listaMonto;
+    public Cajero(String codigo, String contraseña,
+            ListaDoble horarios, int id, String nombre, String apellido, int dni,
+            boolean sexo, int edad, int telefonoCasa, int telefonoCelular,
+            String email, int softDelete) {
+        
+        super(codigo, contraseña, horarios, id, nombre, apellido, dni, sexo,
+                edad, telefonoCasa, telefonoCelular, email, softDelete);
+        
+        
+        listaServicios = new ListaDoble<Servicios>();
+        listaMonto = new ListaDoble<Monto>();
+        listaPaciente = new ListaDoble<Paciente>();
+        
     }
+    public ListaDoble<Paciente> getListaPaciente (){
+        return listaPaciente;
+    }    
+   
+    
+    public void agregarPaciente(Paciente paciente){
+        listaPaciente.insertarAlFinal(paciente);
+    }
+    
+  
 
     public ListaDoble<Servicios> getListaServicios() {
         return listaServicios;
     }
 
-
-    public ListaDoble<Recaudado> getListaRecaudoDia() {
-        return listaRecaudoDia;
+    public void agregarServicios(Servicios servicio){
+        listaServicios.insertarAlFinal(servicio);
     }
+    
 
     public ListaDoble<Monto> getListaMonto() {
         return listaMonto;
@@ -40,9 +57,7 @@ public class Cajero {
     }
 
 
-    public void setListaRecaudoDia(ListaDoble<Recaudado> listaRecaudoDia) {
-        this.listaRecaudoDia = listaRecaudoDia;
-    }
+   
 
     public void setListaMonto(ListaDoble<Monto> listaMonto) {
         this.listaMonto = listaMonto;
@@ -69,16 +84,7 @@ public class Cajero {
     public void montoActualDia(Monto montoNuevo) {
        
         
-    Recaudado r = new Recaudado(montoNuevo.getFecha(), montoNuevo.getMonto());
-        if(listaRecaudoDia.size == 0){
-            listaRecaudoDia.insertarAlFinal(r);
-        }else {
-            if (montoNuevo.getFecha().equals(listaRecaudoDia.getFin().getDato().getFechaRecauDia())) {
-                listaRecaudoDia.getFin().getDato().setMontodelDia(montoNuevo.getMonto() +listaRecaudoDia.getFin().getDato().getMontodelDia() );
-            } else {
-                listaRecaudoDia.insertarAlFinal(r);
-            }
-        }   
+     
     }
 
 
@@ -118,11 +124,4 @@ public class Cajero {
 }
 
 
- 
-
-
-
-    
-    
-    
 
