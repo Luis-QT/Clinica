@@ -9,13 +9,17 @@ import controlador.Controller;
 import factory.MySQLConnectionFactory;
 import gui.administrador.areaMedico.PlanTratamientoV;
 import gui.administrador.FramePrincipalAdministrador;
+import gui.administrador.mantenimiento.FrameMantenimiento;
 import gui.administrador.mantenimiento.medico.medicoEspecialista.ListaME;
 import gui.administrador.mantenimiento.medico.medicoGeneral.ListaMG;
 import gui.administrador.mantenimiento.medico.medicoLaboratorio.ListaML;
+import gui.administrador.mantenimiento.medico.medicoTriaje.ListaMT;
 import gui.administrador.mantenimiento.recepcionista.ListaR;
 import gui.administrador.mantenimiento.sala.Salas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -30,6 +34,8 @@ public class AdministradorController implements Controller,ActionListener{
     private ListaML FrameListaML;
     private ListaR FrameRecepcionista;
     private PlanTratamientoV FrameTratamiento;
+    private FrameMantenimiento FrameMantenimiento;
+    private ListaMT FrameListaMT;
     
     public AdministradorController(FramePrincipalAdministrador frame ){
         this.vista = frame;
@@ -37,8 +43,6 @@ public class AdministradorController implements Controller,ActionListener{
     }
     
     public void iniciar(){
-        
-        
         
         this.vista.btnMantenimientoMedicoGeneral.setActionCommand("MantenimientoMG");
         vista.btnMantenimientoMedicoGeneral.addActionListener(this);
@@ -58,10 +62,16 @@ public class AdministradorController implements Controller,ActionListener{
         this.vista.btnCerrarSesion.setActionCommand("Salir");
         vista.btnCerrarSesion.addActionListener(this);
         
-        vista.btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+        this.vista.btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MySQLConnectionFactory.shutdown();
+            }
+        });
+        
+        this.vista.PaneMantenimiento.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMantenimiento();
             }
         });
     }
@@ -90,9 +100,18 @@ public class AdministradorController implements Controller,ActionListener{
         }
     }
     
+    private void formMantenimiento(){
+        vista.setVisible(false);
+        this.FrameMantenimiento = new FrameMantenimiento(vista, true);
+        new MantenimientoController().index();
+    }
     private void formManteminientoMG(){
         this.FrameListaMG = new ListaMG(vista, true);
         new MedicoGeneralController(this.FrameListaMG).index();
+    }
+    private void formManteminientoMT(){
+        this.FrameListaMT = new ListaMT(vista, true);
+        new MedicoTriajeController(this.FrameListaMT).index();
     }
     private void formMantenimientoME(){
         this.FrameListaME = new ListaME(vista, true);
@@ -103,6 +122,9 @@ public class AdministradorController implements Controller,ActionListener{
         this.FrameSala = new Salas(vista, true);
         new SalaController(this.FrameSala).index();
     }
+    private void formMantenimientoCajero(){
+        
+    }
     private void formMantenimientoR(){
         this.FrameRecepcionista = new ListaR(vista, true);
         new RecepcionistaController(this.FrameRecepcionista).index();
@@ -110,5 +132,67 @@ public class AdministradorController implements Controller,ActionListener{
     private void formPlanTratamiento(){
         this.FrameTratamiento = new PlanTratamientoV(vista, true);
         new PlanTratamientoController(this.FrameTratamiento).index();
+    }
+    
+    
+    private class MantenimientoController implements Controller{
+        public MantenimientoController(){
+            iniciar();
+        }
+        @Override
+        public void iniciar() {
+            
+            FrameMantenimiento.btnMedicoGeneral.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    FrameMantenimiento.setVisible(false);
+                    formManteminientoMG();
+                    vista.setVisible(true);
+                }
+            });
+            
+            FrameMantenimiento.btnMedicoEspecialista.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    FrameMantenimiento.setVisible(false);
+                    formMantenimientoME();
+                    vista.setVisible(true);
+                }
+            });
+            
+            FrameMantenimiento.btnMedicoTriaje.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    FrameMantenimiento.setVisible(false);
+                    formManteminientoMT();
+                    vista.setVisible(true);
+                }
+            });
+
+            FrameMantenimiento.btnCajero.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    FrameMantenimiento.setVisible(false);
+                    formMantenimientoCajero();
+                    vista.setVisible(true);
+                }
+            });
+            FrameMantenimiento.btnRecepcionista.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    FrameMantenimiento.setVisible(false);
+                    formMantenimientoR();
+                    vista.setVisible(true);
+                }
+            });
+            FrameMantenimiento.btnSala.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    FrameMantenimiento.setVisible(false);
+                    formMantenimientoSala();
+                    vista.setVisible(true);
+                }
+            });
+        }
+
+        @Override
+        public void index() {
+             FrameMantenimiento.setVisible(true);
+        }
+        
     }
 }
