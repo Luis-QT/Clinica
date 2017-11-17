@@ -10,6 +10,7 @@ import factory.MySQLConnectionFactory;
 import gui.administrador.areaMedico.PlanTratamientoV;
 import gui.administrador.FramePrincipalAdministrador;
 import gui.administrador.mantenimiento.FrameMantenimiento;
+import gui.administrador.mantenimiento.cajero.ListaC;
 import gui.administrador.mantenimiento.medico.medicoEspecialista.ListaME;
 import gui.administrador.mantenimiento.medico.medicoGeneral.ListaMG;
 import gui.administrador.mantenimiento.medico.medicoLaboratorio.ListaML;
@@ -36,6 +37,7 @@ public class AdministradorController implements Controller,ActionListener{
     private PlanTratamientoV FrameTratamiento;
     private FrameMantenimiento FrameMantenimiento;
     private ListaMT FrameListaMT;
+    private ListaC FrameListaC;
     
     public AdministradorController(FramePrincipalAdministrador frame ){
         this.vista = frame;
@@ -55,6 +57,9 @@ public class AdministradorController implements Controller,ActionListener{
         
         this.vista.btnMantenimientoRecepcionista.setActionCommand("MantenimientoR");
         vista.btnMantenimientoRecepcionista.addActionListener(this);
+        
+        this.vista.btnMantenimientoCajero.setActionCommand("MantenimientoC");
+        vista.btnMantenimientoCajero.addActionListener(this);
         
         this.vista.btnPlanTratamiento.setActionCommand("PlanTratamiento");
         vista.btnPlanTratamiento.addActionListener(this);
@@ -97,6 +102,8 @@ public class AdministradorController implements Controller,ActionListener{
             formMantenimientoR();
         }else if(comando.equals("PlanTratamiento")){
             formPlanTratamiento();
+        }else if(comando.equals("MantenimientoC")){
+            formMantenimientoCajero();
         }
     }
     
@@ -123,7 +130,8 @@ public class AdministradorController implements Controller,ActionListener{
         new SalaController(this.FrameSala).index();
     }
     private void formMantenimientoCajero(){
-        
+        this.FrameListaC = new ListaC(vista, true);
+        new CajeroController(this.FrameListaC).index();
     }
     private void formMantenimientoR(){
         this.FrameRecepcionista = new ListaR(vista, true);

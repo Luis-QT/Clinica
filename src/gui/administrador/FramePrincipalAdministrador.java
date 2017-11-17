@@ -69,7 +69,7 @@ public class FramePrincipalAdministrador extends javax.swing.JFrame {
         btnMantenimientoMedicoEspecialista = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         btnMantenimientoRecepcionista = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        btnMantenimientoCajero = new javax.swing.JMenuItem();
         btnSalas = new javax.swing.JMenuItem();
         areaMedico = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -412,8 +412,8 @@ public class FramePrincipalAdministrador extends javax.swing.JFrame {
         btnMantenimientoRecepcionista.setText("Recepcionista");
         jMenu2.add(btnMantenimientoRecepcionista);
 
-        jMenuItem6.setText("Cajero");
-        jMenu2.add(jMenuItem6);
+        btnMantenimientoCajero.setText("Cajero");
+        jMenu2.add(btnMantenimientoCajero);
 
         btnSalas.setText("Salas");
         btnSalas.addActionListener(new java.awt.event.ActionListener() {
@@ -567,6 +567,7 @@ public class FramePrincipalAdministrador extends javax.swing.JFrame {
     public javax.swing.JMenuItem btnConfiguraciones;
     private javax.swing.JMenuItem btnHorarios;
     private javax.swing.JMenuItem btnHorarios1;
+    public javax.swing.JMenuItem btnMantenimientoCajero;
     public javax.swing.JMenuItem btnMantenimientoMedicoEspecialista;
     public javax.swing.JMenuItem btnMantenimientoMedicoGeneral;
     public javax.swing.JMenuItem btnMantenimientoRecepcionista;
@@ -593,7 +594,6 @@ public class FramePrincipalAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;

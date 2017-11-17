@@ -7,18 +7,15 @@ package controlador.administrador;
 
 import controlador.Controller;
 import controlador.ControllerResource;
-import estructura.ListaDoble;
-import gui.administrador.mantenimiento.medico.medicoLaboratorio.EditarML;
-import gui.administrador.mantenimiento.medico.medicoLaboratorio.InsertarML;
-import gui.administrador.mantenimiento.medico.medicoLaboratorio.ListaML;
-import gui.administrador.mantenimiento.medico.medicoLaboratorio.SeleccionSalaML;
+import dao.dao.CajeroDao;
 import dao.dao.HorarioDao;
-import dao.daoImpl.HorarioDaoImpl;
-import dao.dao.MedicoLaboratorioDao;
 import dao.dao.SalaDao;
-import dao.daoImpl.MedicoLaboratorioDaoImpl;
+import dao.daoImpl.CajeroDaoImpl;
+import dao.daoImpl.HorarioDaoImpl;
 import dao.daoImpl.SalaDaoImpl;
+import estructura.ListaDoble;
 import gui.administrador.TablaFilaRoja;
+import gui.administrador.mantenimiento.cajero.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -26,21 +23,21 @@ import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.empleado.MedicoLaboratorio;
 import model.Horario;
 import model.Sala;
+import model.empleado.Cajero;
 
 /**
  *
  * @author LLLL
  */
-public class MedicoLaboratorioController implements ControllerResource,ActionListener{
-    private ListaML vista;
-    private InsertarML FrameInsertarML;
-    private EditarML FrameEditarML;
-    private ListaDoble<MedicoLaboratorio> listaMedico;
+public class CajeroController implements ControllerResource, ActionListener{
+    private ListaC vista;
+    private InsertarC FrameInsertarC;
+    private EditarC FrameEditarC;
+    private ListaDoble<Cajero> listaCajero;
     
-    public MedicoLaboratorioController(ListaML view){
+    public CajeroController(ListaC view){
         this.vista = view;
         iniciar();
     }
@@ -57,11 +54,10 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
-        this.vista.tablaML.setBackground(new java.awt.Color(221, 255, 220));
-        
-        MedicoLaboratorioDao medicoGeneralDao = new MedicoLaboratorioDaoImpl();
-        listaMedico = medicoGeneralDao.listaMedicos();
-        
+        this.vista.tablaC.setBackground(new java.awt.Color(221, 255, 220));
+
+        CajeroDao cajeroDao = new CajeroDaoImpl();
+        listaCajero = cajeroDao.listaCajeros();
         llenarTabla();
     }
     
@@ -90,8 +86,8 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
     
     @Override
     public void formAgregar(){
-        int aux = this.listaMedico.size;
-        FrameInsertarML = new InsertarML(vista, true);
+        int aux = this.listaCajero.size;
+        FrameInsertarC = new InsertarC(vista, true);
         AgregarController controladorAgregar =new AgregarController();
         controladorAgregar.index();
         if(controladorAgregar.isAgrega()){
@@ -102,14 +98,14 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
     
     @Override
     public void formEditar() {
-        int pos = this.vista.tablaML.getSelectedRow();
+        int pos = this.vista.tablaC.getSelectedRow();
         //-1 No se selecciona nada
         if(pos!=-1){
-            MedicoLaboratorio medico = listaMedico.getDato(pos);
-            System.out.println("medico : "+medico.getNombre());
-            System.out.println("horarios : "+medico.getHorarios());
-            FrameEditarML = new EditarML(vista, true);
-            EditarController controladorEditar = new EditarController(medico);
+            Cajero cajero = listaCajero.getDato(pos);
+            System.out.println("recepcionista : "+cajero.getNombre());
+            System.out.println("horarios : "+cajero.getHorarios());
+            FrameEditarC = new EditarC(vista, true);
+            EditarController controladorEditar = new EditarController(cajero);
             controladorEditar.index();
             if(controladorEditar.isEdita()){
                 aumentarCambios();
@@ -120,14 +116,14 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
 
     @Override
     public void formEliminar() {
-        int pos = vista.tablaML.getSelectedRow();
+        int pos = vista.tablaC.getSelectedRow();
         if(pos!=-1){
-            MedicoLaboratorio medico = listaMedico.getDato(pos);
-            if(medico.getId()==0){
-                listaMedico.eliminarPos(pos);
+            Cajero cajero = listaCajero.getDato(pos);
+            if(cajero.getId()==0){
+                listaCajero.eliminarPos(pos);
             }else{
-                medico.setSoftDelete(1);
-                vista.tablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
+                cajero.setSoftDelete(1);
+                vista.tablaC.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
@@ -140,19 +136,19 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
     }
     
     public void formCargar(){
-        Iterator<MedicoLaboratorio> iterador = listaMedico.getDescendingIterator();
-        MedicoLaboratorioDao medicoGeneralDao = new MedicoLaboratorioDaoImpl();
+        Iterator<Cajero> iterador = listaCajero.getDescendingIterator();
+        CajeroDao cajeroDao = new CajeroDaoImpl();
         while(iterador.hasNext()){
-            MedicoLaboratorio medico = iterador.next();
-            if(medico.getSoftDelete()==1){
+            Cajero cajero = iterador.next();
+            if(cajero.getSoftDelete()==1){
                 //se desea eliminar
-                medicoGeneralDao.eliminarMedico(medico.getId());
+                cajeroDao.eliminarCajero(cajero.getId());
             }else{
                 //agregar o editar
-                medicoGeneralDao.guardarMedico(medico);
+                cajeroDao.guardarCajero(cajero);
             }
-            if(medico.getHorarios()!=null){
-                Iterator<Horario> iteradorHo = medico.getHorarios().getDescendingIterator();
+            if(cajero.getHorarios()!=null){
+                Iterator<Horario> iteradorHo = cajero.getHorarios().getDescendingIterator();
                 HorarioDao horarioDao = new HorarioDaoImpl();
                 while(iteradorHo.hasNext()){
                     Horario horaAux = iteradorHo.next();
@@ -165,8 +161,8 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
             }
         }
         vista.txtCambios.setText("0");
-        listaMedico = medicoGeneralDao.listaMedicos();
-        vista.tablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+        listaCajero = cajeroDao.listaCajeros();
+        vista.tablaC.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -175,9 +171,9 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         int m = JOptionPane.showConfirmDialog(null, "Se cancelaran todos los cambios\nEsta seguro ?");
         if(m==0){
             vista.txtCambios.setText("0");
-            MedicoLaboratorioDao medicoLaboratorioDao = new MedicoLaboratorioDaoImpl();
-            listaMedico = medicoLaboratorioDao.listaMedicos();
-            vista.tablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+            CajeroDao cajeroDao = new CajeroDaoImpl();
+            listaCajero = cajeroDao.listaCajeros();
+            vista.tablaC.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -193,15 +189,19 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
     }
 
     private void llenarTabla(){
-        DefaultTableModel modelo = (DefaultTableModel) vista.tablaML.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) vista.tablaC.getModel();
         modelo.setRowCount(0);
-        Iterator<MedicoLaboratorio> iterador = listaMedico.getDescendingIterator();
+        Iterator<Cajero> iterador = listaCajero.getDescendingIterator();
         while(iterador.hasNext()){
-            MedicoLaboratorio medico = iterador.next();
-            modelo.addRow(new Object[]{medico.getCodigo(), medico.getNombre(), medico.getApellido(),
-                    medico.getDni() ,medico.getEdad(),medico.getColegiatura() ,
-                    medico.getEmail(),medico.getTelefonoCasa(),medico.getTelefonoCelular()
-                    ,medico.getSoftDelete()});
+            Cajero cajero = iterador.next();
+            
+            modelo.addRow(new Object[]{cajero.getCodigo(), cajero.getNombre(),
+                    cajero.getApellido(),
+                    cajero.getDni() ,cajero.getEdad(),
+                    cajero.getEmail(),cajero.getTelefonoCasa()
+                    ,cajero.getTelefonoCelular()
+                    });
+            
         }
     }
     
@@ -221,13 +221,13 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         
         @Override
         public void iniciar() {
-            FrameInsertarML.btnAgregar.setActionCommand("Agregar");
-            FrameInsertarML.btnAgregar.addActionListener(this);
+            FrameInsertarC.btnAgregar.setActionCommand("Agregar");
+            FrameInsertarC.btnAgregar.addActionListener(this);
         }
         
         @Override
         public void index() {
-            FrameInsertarML.setVisible(true);
+            FrameInsertarC.setVisible(true);
         }
         
         @Override
@@ -241,24 +241,23 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         private void formAgregar(){
            try{
                 //Al agregar un nuevo medico , el id debe pasar como 0
-                String colegiatura = FrameInsertarML.txtColegiatura.getText();
-                String codigo = FrameInsertarML.txtCodigo.getText();
-                String contraseña = FrameInsertarML.txtDni.getText();
-                String nombre = FrameInsertarML.txtNombre.getText();
-                String apellido = FrameInsertarML.txtApellido.getText();
-                int dni = Integer.parseInt(FrameInsertarML.txtDni.getText());
-                String email = FrameInsertarML.txtEmail.getText();
-                int telefono = Integer.parseInt(FrameInsertarML.txtTelefono.getText());
-                int celular = Integer.parseInt(FrameInsertarML.txtCelular.getText());
-                int edad = Integer.parseInt(FrameInsertarML.txtEdad.getText());
+                String codigo = FrameInsertarC.txtCodigo.getText();
+                String contraseña = FrameInsertarC.txtDni.getText();
+                String nombre = FrameInsertarC.txtNombre.getText();
+                String apellido = FrameInsertarC.txtApellido.getText();
+                int dni = Integer.parseInt(FrameInsertarC.txtDni.getText());
+                String email = FrameInsertarC.txtEmail.getText();
+                int telefono = Integer.parseInt(FrameInsertarC.txtTelefono.getText());
+                int celular = Integer.parseInt(FrameInsertarC.txtCelular.getText());
+                int edad = Integer.parseInt(FrameInsertarC.txtEdad.getText());
                 Boolean sexo = true;
-                if(FrameInsertarML.txtFemale.isSelected()){
+                if(FrameInsertarC.txtFemale.isSelected()){
                     sexo = false;
                 }
-                MedicoLaboratorio medico = new MedicoLaboratorio( colegiatura, codigo, contraseña, new ListaDoble<Horario>(), 0, nombre, apellido, dni, true, edad, telefono, celular, email, 0);
-                listaMedico.insertarAlFinal(medico);
+                Cajero cajero = new Cajero(codigo, contraseña, new ListaDoble<Horario>(), 0, nombre, apellido, dni, true, edad, telefono, celular, email, 0);
+                listaCajero.insertarAlFinal(cajero);
                 this.agrega = true;
-                FrameInsertarML.setVisible(false);
+                FrameInsertarC.setVisible(false);
            
            }catch(Exception e){
                 System.out.println(e.getMessage());
@@ -277,16 +276,16 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
     /***************************************************************/
 
     private class EditarController implements ActionListener,ControllerResource{
-        SeleccionSalaML FrameSala;
-        MedicoLaboratorio medico;//medico a editar
-        ListaDoble<Horario> listaHorario;
+        SeleccionSalaC FrameSala;
+        Cajero cajero;
+        ListaDoble<Horario> listaHorario;       
         Sala sala;//sala a asignar
         Horario horario;//horario a editar
         boolean edita;
         
-        public EditarController(MedicoLaboratorio medico){
-            this.medico = medico;
-            listaHorario = medico.getHorarios();
+        public EditarController(Cajero cajero){
+            this.cajero = cajero;
+            listaHorario = cajero.getHorarios();
             if(listaHorario==null){
                 listaHorario = new ListaDoble<Horario>();
             }
@@ -297,48 +296,47 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         }
         @Override
         public void iniciar() {
-            FrameEditarML.btnAsignarSala.setActionCommand("AsignarSala");
-            FrameEditarML.btnAsignarSala.addActionListener(this);
-            FrameEditarML.btnAñadir.setActionCommand("AgregarHorario");
-            FrameEditarML.btnAñadir.addActionListener(this);
-            FrameEditarML.btnEditar.setActionCommand("EditarHorario");
-            FrameEditarML.btnEditar.addActionListener(this);
-            FrameEditarML.btnModificar.setActionCommand("EditarMedico");
-            FrameEditarML.btnModificar.addActionListener(this);
-            FrameEditarML.btnQuitar.setActionCommand("EliminarHorario");
-            FrameEditarML.btnQuitar.addActionListener(this);
+            FrameEditarC.btnAsignarSala.setActionCommand("AsignarSala");
+            FrameEditarC.btnAsignarSala.addActionListener(this);
+            FrameEditarC.btnAñadir.setActionCommand("AgregarHorario");
+            FrameEditarC.btnAñadir.addActionListener(this);
+            FrameEditarC.btnEditar.setActionCommand("EditarHorario");
+            FrameEditarC.btnEditar.addActionListener(this);
+            FrameEditarC.btnModificar.setActionCommand("EditarRecepcionista");
+            FrameEditarC.btnModificar.addActionListener(this);
+            FrameEditarC.btnQuitar.setActionCommand("EliminarHorario");
+            FrameEditarC.btnQuitar.addActionListener(this);
             
-            FrameEditarML.tabla.addMouseListener(new MouseAdapter() {
+            FrameEditarC.tabla.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent evt) {
                     formTabla(evt);
                 }
              });
             
             
-            FrameEditarML.txtNombre.setText(medico.getNombre());
-            FrameEditarML.txtApellido.setText(medico.getApellido());
-            FrameEditarML.txtCelular.setText(""+medico.getTelefonoCelular());
-            FrameEditarML.txtCodigo.setText(medico.getCodigo());
-            FrameEditarML.txtColegiatura.setText(medico.getColegiatura());
-            FrameEditarML.txtDni.setText(""+medico.getDni());
-            FrameEditarML.txtEdad.setText(""+medico.getEdad());
-            FrameEditarML.txtEmail.setText(medico.getEmail());
-            FrameEditarML.txtTelefono.setText(""+medico.getTelefonoCasa());
-            FrameEditarML.txtHoraFin.setText("");
-            FrameEditarML.txtHoraIni.setText("");
-            FrameEditarML.txtMale.setSelected(false);
-            FrameEditarML.txtFemale.setSelected(false);
-            if(medico.isSexo()){
-               FrameEditarML.txtMale.setSelected(true);
+            FrameEditarC.txtNombre.setText(cajero.getNombre());
+            FrameEditarC.txtApellido.setText(cajero.getApellido());
+            FrameEditarC.txtCelular.setText(""+cajero.getTelefonoCelular());
+            FrameEditarC.txtCodigo.setText(cajero.getCodigo());
+            FrameEditarC.txtDni.setText(""+cajero.getDni());
+            FrameEditarC.txtEdad.setText(""+cajero.getEdad());
+            FrameEditarC.txtEmail.setText(cajero.getEmail());
+            FrameEditarC.txtTelefono.setText(""+cajero.getTelefonoCasa());
+            FrameEditarC.txtHoraFin.setText("");
+            FrameEditarC.txtHoraIni.setText("");
+            FrameEditarC.txtMale.setSelected(false);
+            FrameEditarC.txtFemale.setSelected(false);
+            if(cajero.isSexo()){
+               FrameEditarC.txtMale.setSelected(true);
             }else{
-               FrameEditarML.txtFemale.setSelected(true); 
+               FrameEditarC.txtFemale.setSelected(true); 
             }
             llenarTabla();
         }
         
         @Override
         public void index() {
-            FrameEditarML.setVisible(true);
+            FrameEditarC.setVisible(true);
         }
         
         
@@ -349,7 +347,7 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
                 formAgregar();
             }else if(comando.equals("EditarHorario")){
                 formEditar();
-            }else if(comando.equals("EditarMedico")){
+            }else if(comando.equals("EditarRecepcionista")){
                 formEditarMedico();
             }else if(comando.equals("EliminarHorario")){
                 formEliminar();
@@ -359,16 +357,16 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         }
         
         private void formTabla(MouseEvent evt){
-            int pos = FrameEditarML.tabla.getSelectedRow();
+            int pos = FrameEditarC.tabla.getSelectedRow();
             if(pos!=-1){
                 horario = listaHorario.getDato(pos);
-                FrameEditarML.txtHoraIni.setText(horario.getHoraEntrada());
-                FrameEditarML.txtHoraFin.setText(horario.getHoraSalida());
-                FrameEditarML.txtDia.setSelectedItem(horario.getDia());
-                sala = horario.getSala();
+                FrameEditarC.txtHoraIni.setText(horario.getHoraEntrada());
+                FrameEditarC.txtHoraFin.setText(horario.getHoraSalida());
+                FrameEditarC.txtDia.setSelectedItem(horario.getDia());
+                sala = horario.getSala();                
                 SalaDao sdi = new SalaDaoImpl();
                 Sala aux = sdi.obtenerSala(horario.getSalaId());
-                FrameEditarML.txtSala.setText(aux.getNombre());
+                FrameEditarC.txtSala.setText(aux.getNombre());
             }
         }
         
@@ -378,11 +376,11 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
                 if(sala==null){
                     JOptionPane.showMessageDialog(null, "ERROR DE ASIGNACION\nNo se agrego el horario.\nFalta asginar una sala");
                 }else{
-                    String horaIni = FrameEditarML.txtHoraIni.getText();
-                    String horaFin = FrameEditarML.txtHoraFin.getText();
-                    String dia = (String)FrameEditarML.txtDia.getSelectedItem();
-                    Horario horarioAux = new Horario(0, dia, horaIni, horaFin, medico, sala,4,
-                            medico.getId(),sala.getId());
+                    String horaIni = FrameEditarC.txtHoraIni.getText();
+                    String horaFin = FrameEditarC.txtHoraFin.getText();
+                    String dia = (String)FrameEditarC.txtDia.getSelectedItem();
+                    Horario horarioAux = new Horario(0, dia, horaIni, horaFin, cajero, sala,6,
+                            cajero.getId(),sala.getId());
                     listaHorario.insertarAlFinal(horarioAux);
                     llenarTabla();  
                 }
@@ -396,9 +394,9 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         
         @Override
         public void formEditar(){
-            String horaIni = FrameEditarML.txtHoraIni.getText();
-            String horaFin = FrameEditarML.txtHoraFin.getText();
-            String dia = (String)FrameEditarML.txtDia.getSelectedItem();
+            String horaIni = FrameEditarC.txtHoraIni.getText();
+            String horaFin = FrameEditarC.txtHoraFin.getText();
+            String dia = (String)FrameEditarC.txtDia.getSelectedItem();
             
             horario.setDia(dia);
             horario.setHoraEntrada(horaIni);
@@ -409,7 +407,7 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         
         @Override
         public void formEliminar(){
-            int pos = FrameEditarML.tabla.getSelectedRow();
+            int pos = FrameEditarC.tabla.getSelectedRow();
             if(pos!=-1){
                 listaHorario.getDato(pos).setEliminar(true);
                 llenarTabla();
@@ -423,35 +421,33 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         
         public void formEditarMedico(){
             try{
-                String colegiatura = FrameEditarML.txtColegiatura.getText();
-                String codigo = FrameEditarML.txtCodigo.getText();
-                String contraseña = FrameEditarML.txtDni.getText();
-                String nombre = FrameEditarML.txtNombre.getText();
-                String apellido = FrameEditarML.txtApellido.getText();
-                int dni = Integer.parseInt(FrameEditarML.txtDni.getText());
-                String email = FrameEditarML.txtEmail.getText();
-                int telefono = Integer.parseInt(FrameEditarML.txtTelefono.getText());
-                int celular = Integer.parseInt(FrameEditarML.txtCelular.getText());
-                int edad = Integer.parseInt(FrameEditarML.txtEdad.getText());
+                String codigo = FrameEditarC.txtCodigo.getText();
+                String contraseña = FrameEditarC.txtDni.getText();
+                String nombre = FrameEditarC.txtNombre.getText();
+                String apellido = FrameEditarC.txtApellido.getText();
+                int dni = Integer.parseInt(FrameEditarC.txtDni.getText());
+                String email = FrameEditarC.txtEmail.getText();
+                int telefono = Integer.parseInt(FrameEditarC.txtTelefono.getText());
+                int celular = Integer.parseInt(FrameEditarC.txtCelular.getText());
+                int edad = Integer.parseInt(FrameEditarC.txtEdad.getText());
                 Boolean sexo = true;
-                if(FrameEditarML.txtFemale.isSelected()){
+                if(FrameEditarC.txtFemale.isSelected()){
                     sexo = false;
                 }
 
-                medico.setApellido(apellido);
-                medico.setCodigo(codigo);
-                medico.setColegiatura(colegiatura);
-                medico.setDni(dni);
-                medico.setEdad(edad);
-                medico.setEmail(email);
-                medico.setHorarios(listaHorario);
-                medico.setNombre(nombre);
-                medico.setSexo(sexo);
-                medico.setTelefonoCasa(telefono);
-                medico.setTelefonoCelular(celular);
+                cajero.setApellido(apellido);
+                cajero.setCodigo(codigo);
+                cajero.setDni(dni);
+                cajero.setEdad(edad);
+                cajero.setEmail(email);
+                cajero.setHorarios(listaHorario);
+                cajero.setNombre(nombre);
+                cajero.setSexo(sexo);
+                cajero.setTelefonoCasa(telefono);
+                cajero.setTelefonoCelular(celular);
                 edita = true;
                 //medico.setHorarios(listaHorario);
-                FrameEditarML.setVisible(false);
+                FrameEditarC.setVisible(false);
 
             }catch(Exception e){
                 System.out.println(e.getMessage());
@@ -461,14 +457,14 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
         }
         
         private void formAsignarSala(){
-            FrameSala = new SeleccionSalaML(FrameEditarML, true);
+            FrameSala = new SeleccionSalaC(FrameEditarC, true);
             SalasController ControladorSala = new SalasController();
             ControladorSala.index();
             System.out.println(sala.getNombre());
         }
         
         private void llenarTabla(){
-            DefaultTableModel modelo = (DefaultTableModel) FrameEditarML.tabla.getModel();
+            DefaultTableModel modelo = (DefaultTableModel) FrameEditarC.tabla.getModel();
             modelo.setRowCount(0);
             Iterator<Horario> iterador = this.listaHorario.getDescendingIterator();
             SalaDao sdi = new SalaDaoImpl();
@@ -530,7 +526,7 @@ public class MedicoLaboratorioController implements ControllerResource,ActionLis
                         horario.setSalaId(sala.getId());
                     }
                     
-                    FrameEditarML.txtSala.setText(sala.getNombre());
+                    FrameEditarC.txtSala.setText(sala.getNombre());
                     FrameSala.setVisible(false);
                 }
             }

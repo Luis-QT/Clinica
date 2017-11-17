@@ -31,11 +31,15 @@ public class FactoryConnectionDb {
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),especialidad VARCHAR(20),codigo VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
             + "contraseña VARCHAR(35),colegiatura VARCHAR(20),edad SMALLINT,telefonoCasa INT,telefonoCelular INT, sexo SMALLINT,email VARCHAR(40),softDelete SMALLINT)",
           
-            "CREATE TABLE MedicoLaboratorio"
+            "CREATE TABLE MedicoTriaje"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
             + "contraseña VARCHAR(35),colegiatura VARCHAR(20),edad SMALLINT,telefonoCasa INT,telefonoCelular INT, sexo SMALLINT,email VARCHAR(40),softDelete SMALLINT)",
             
             "CREATE TABLE Recepcionista"
+            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(30), apellido VARCHAR(30) ,dni INT , "
+            + "contraseña VARCHAR(35) ,edad SMALLINT,telefonoCasa INT,telefonoCelular INT, sexo SMALLINT,email VARCHAR(40),softDelete SMALLINT)",
+            
+            "CREATE TABLE Cajero"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(30), apellido VARCHAR(30) ,dni INT , "
             + "contraseña VARCHAR(35) ,edad SMALLINT,telefonoCasa INT,telefonoCelular INT, sexo SMALLINT,email VARCHAR(40),softDelete SMALLINT)",
             
