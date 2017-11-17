@@ -627,12 +627,16 @@ public class FrameContabilidad extends javax.swing.JFrame {
     private void btnGenerarMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarMontoActionPerformed
    
         int cant = TablaSeleccion.getRowCount();
-        int i = 1;
+        int i = 0;
         Float suma = 0F;
-        while (cant >= i) {
-            suma = suma + (Float) TablaSeleccion.getValueAt(i, 2) + (Float) TablaSeleccion.getValueAt(i, 3);
+        while (cant > i) {
+
+            suma = suma + ((Float) TablaSeleccion.getValueAt(i, 1) * (Float) TablaSeleccion.getValueAt(i, 2));
+
+            i++;
         }
 
+          
         txtMonto.setText(String.valueOf(suma));
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarMontoActionPerformed
