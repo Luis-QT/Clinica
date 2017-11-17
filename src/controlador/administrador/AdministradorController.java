@@ -195,6 +195,12 @@ public class AdministradorController implements Controller,ActionListener{
                     vista.setVisible(true);
                 }
             });
+            FrameMantenimiento.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    FrameMantenimiento.setVisible(false);
+                    vista.setVisible(true);
+                }
+            });
         }
 
         @Override

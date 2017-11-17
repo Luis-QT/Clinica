@@ -64,6 +64,12 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
         
+        vista.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    vista.setVisible(false);
+                }
+            });
+        
         MedicoGeneralDao medicoGeneralDao = new MedicoGeneralDaoImpl();
         listaMedico = medicoGeneralDao.listaMedicos();
         this.vista.tablaMG.setBackground(new java.awt.Color(221, 255, 220));
