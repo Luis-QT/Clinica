@@ -37,7 +37,7 @@ public class LoginAdministracion extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblcerrar = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jCTextField1 = new app.bolivia.swing.JCTextField();
         jRPasswordField1 = new jpass.JRPasswordField();
@@ -72,13 +72,13 @@ public class LoginAdministracion extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/inicioname.png"))); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
+        lblcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                lblcerrarMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        jPanel4.add(lblcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 70));
 
@@ -136,10 +136,11 @@ public class LoginAdministracion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
         // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
+        this.dispose();Principal principal = new Principal();
+        principal.setVisible(true);
+    }//GEN-LAST:event_lblcerrarMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
@@ -198,7 +199,6 @@ public class LoginAdministracion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private app.bolivia.swing.JCTextField jCTextField1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -209,5 +209,6 @@ public class LoginAdministracion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private jpass.JRPasswordField jRPasswordField1;
+    private javax.swing.JLabel lblcerrar;
     // End of variables declaration//GEN-END:variables
 }

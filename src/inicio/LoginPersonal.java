@@ -5,7 +5,9 @@
  */
 package inicio;
 
+import gui.recepcion.FrameAdmisionPrincipal;
 import javax.swing.JOptionPane;
+import model.empleado.Recepcionista;
 
 /**
  *
@@ -16,10 +18,15 @@ public class LoginPersonal extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+    Recepcionista recepcionista;
+    
     public LoginPersonal() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+        recepcionista = new Recepcionista("123", "345", null, 12, "Luis", "Yauri", 98877, true, 35, 234324, 123, "@gamil.com", 1);
+                
+        
     }
 
     /**
@@ -37,13 +44,13 @@ public class LoginPersonal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblcerrar = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jCTextField1 = new app.bolivia.swing.JCTextField();
         jRPasswordField1 = new jpass.JRPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         chxRecepcion = new javax.swing.JCheckBox();
         chxContab = new javax.swing.JCheckBox();
@@ -78,13 +85,13 @@ public class LoginPersonal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/inicioname.png"))); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
+        lblcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                lblcerrarMouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        jPanel4.add(lblcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 70));
 
@@ -112,9 +119,14 @@ public class LoginPersonal extends javax.swing.JFrame {
         jLabel4.setText("jLabel3");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 395, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l1.png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l2.png"))); // NOI18N
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 96, 37));
+        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l1.png"))); // NOI18N
+        btnIniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l2.png"))); // NOI18N
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 96, 37));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
@@ -185,10 +197,12 @@ public class LoginPersonal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
+        this.dispose();Principal principal = new Principal();
+        principal.setVisible(true);
+    }//GEN-LAST:event_lblcerrarMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
@@ -198,6 +212,25 @@ public class LoginPersonal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        // TODO add your handling code here:
+        if(chxRecepcion.isSelected()){
+            FrameAdmisionPrincipal recepcion = new FrameAdmisionPrincipal(recepcionista);
+            recepcion.setVisible(true);
+            this.setVisible(false);
+        }else if(chxContab.isSelected()){
+            
+        }else if(chxgeneral.isSelected()){
+            
+        }else if(chxtriaje.isSelected()){  
+            
+        }else if(chxEspec.isSelected()){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione una área");
+        }
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,16 +271,15 @@ public class LoginPersonal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIniciar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chxContab;
     private javax.swing.JCheckBox chxEspec;
     private javax.swing.JCheckBox chxRecepcion;
     private javax.swing.JCheckBox chxgeneral;
     private javax.swing.JCheckBox chxtriaje;
-    private javax.swing.JButton jButton1;
     private app.bolivia.swing.JCTextField jCTextField1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -259,5 +291,6 @@ public class LoginPersonal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private jpass.JRPasswordField jRPasswordField1;
+    private javax.swing.JLabel lblcerrar;
     // End of variables declaration//GEN-END:variables
 }
