@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model.paciente;
 
-/**
- *
- * @author Dwight
- */
 public class ExamenFisico {
     private String cabezaobs;
     private String cabezaaus;
@@ -165,8 +157,6 @@ public class ExamenFisico {
     public void setExtreper(String extreper) {
         this.extreper = extreper;
     }
-    
-    
     
     
 }
