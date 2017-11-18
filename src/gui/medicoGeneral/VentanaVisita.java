@@ -37,6 +37,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         initComponents();
         this.historia = historia;
         this.thisFrame = thisFrame;
+        
     }
 
     /**
@@ -606,7 +607,7 @@ public class VentanaVisita extends javax.swing.JDialog {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -679,14 +680,13 @@ public class VentanaVisita extends javax.swing.JDialog {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57)
+                .addComponent(jPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         jTabbedPane2.addTab("Tratamiento", jPanel11);
@@ -879,11 +879,12 @@ public class VentanaVisita extends javax.swing.JDialog {
 
     private void btnGuardarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVisitaActionPerformed
         ///////////////
-        Visita visita = new Visita(1, anamnesis, datomed, examenF, diagnostico, tratamiento, trarea);
-        historia.getListaVisitas().insertarAlFinal(visita);
-        thisFrame.mostrarTabla(historia.getListaVisitas());
-        
-        
+        Visita visita = new Visita(5021, anamnesis, datomed, examenF, diagnostico, tratamiento, trarea);
+        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, tratamiento, trarea);
+//      thisFrame.listaVisita.insertarAlFinal(visita);
+        System.out.println("lista : " + historia.getListaVisitas().toString());
+        thisFrame.mostrarTabla();
+        this.dispose();
     }//GEN-LAST:event_btnGuardarVisitaActionPerformed
 
     private void btnIngresarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarExamenActionPerformed

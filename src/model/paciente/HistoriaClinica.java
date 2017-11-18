@@ -52,11 +52,8 @@ public class HistoriaClinica {
     }
     
    public void nuevaVisita (int codigo,Anamnesis anamnesis, DatosMedico datosmedico,ExamenFisicos examenF, Diagnostico diagnostico,Tratamiento tratamiento,TratamientoRea tratamientorea  ){
-    
-//       Diagnostico diagnostico = new Diagnostico();
-//       Tratamiento tratamiento = new Tratamiento();
-//       TratamientoRea tratamientorea = new TratamientoRea();
        Visita v = new Visita(codigo, anamnesis,datosmedico,examenF, diagnostico,tratamiento,tratamientorea);
+       listaVisitas.insertarAlFinal(v);
    }
   
 

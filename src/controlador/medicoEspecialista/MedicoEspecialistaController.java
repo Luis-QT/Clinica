@@ -23,7 +23,7 @@ import model.paciente.Paciente;
  * @author Pechito
  */
 public class MedicoEspecialistaController implements Controller,ActionListener{
- private FrameMedicoEspecialista vista;
+    private FrameMedicoEspecialista vista;
     private FrameHistoriaClinica frameHistorial;
 
     public MedicoEspecialistaController(FrameMedicoEspecialista vista) {
@@ -105,6 +105,7 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             MedicoEspecialista medicoE = vista.getMedicoE();
             int pos = vista.tblPaciente.getSelectedRow();
             Paciente paciente = listaPacientes.getDato(pos);
+             System.out.println("pos : " + pos); 
             frameHistorial = new FrameHistoriaClinica(paciente);
             frameHistorial.setVisible(true);
             

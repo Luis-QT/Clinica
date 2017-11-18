@@ -3,6 +3,7 @@ package model.paciente;
 import java.time.LocalDate;
 
 public class Visita {
+
     int codigo;
     LocalDate fecha;
     Anamnesis anamnecis;
@@ -12,10 +13,6 @@ public class Visita {
     Tratamiento tratamiento;
     TratamientoRea tratamientoRea;
 
-    public int getCodigo() {
-        return codigo;
-    }
-
     public Visita(int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = LocalDate.now();
         this.anamnecis = anamnecis;
@@ -24,6 +21,23 @@ public class Visita {
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
         this.tratamientoRea = tratamientoRea;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+    public Visita(LocalDate fecha, int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
+        this.fecha = fecha;
+        this.anamnecis = anamnecis;
+        this.datosMedico = datosMedico;
+        this.examenFisico = examenFisico;
+        this.diagnostico = diagnostico;
+        this.tratamiento = tratamiento;
+        this.tratamientoRea = tratamientoRea;
+    }
+
+    public int getCodigo() {
+        return codigo;
     }
 
     public String mostrarFecha() {
@@ -82,4 +96,7 @@ public class Visita {
         this.tratamientoRea = tratamientoRea;
     }
 
+    public String toString (){
+        return "codigo: "+codigo + " fecha: "+ fecha.toString()+"\n";
+    }
 }

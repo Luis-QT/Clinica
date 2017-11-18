@@ -38,21 +38,21 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     ListaDoble<Visita> listaVisita ;
     public FrameHistoriaClinica(Paciente paciente ,ListaDoble<Visita> listaVisita) {
         initComponents();
-        this.listaVisita = new ListaDoble<Visita>();
+        this.listaVisita = listaVisita;
         this.paciente = paciente;
         llenarDatos();
     }
     
     /**TEMPORAL**/
-     public FrameHistoriaClinica(Paciente paciente ) {
-        
+     public FrameHistoriaClinica(Paciente paciente) {
         initComponents();
          this.paciente = paciente;
+         this.listaVisita = paciente.getHistorial().getListaVisitas();
+         llenarDatos();
     }
     
     AntecedentesFamiliares antefa = new AntecedentesFamiliares();
     AntecedentesPersonales antepe = new AntecedentesPersonales();
-    
     DatosPaciente datopa = new DatosPaciente();
     
    
@@ -67,6 +67,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         buttonGroup4 = new javax.swing.ButtonGroup();
         buttonGroup5 = new javax.swing.ButtonGroup();
         buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -75,7 +76,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jTextEdad = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
         jTexApellido = new javax.swing.JTextField();
         jTextNombre = new javax.swing.JTextField();
         jRadioButtonMasculino = new javax.swing.JRadioButton();
@@ -84,25 +85,25 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jTextDNI = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        jTextDireccion = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
         jRadioButtonNoble = new javax.swing.JRadioButton();
         jRadioButton14 = new javax.swing.JRadioButton();
         jLabel36 = new javax.swing.JLabel();
-        jTextTelefono = new javax.swing.JTextField();
+        txtFijo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCelular = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
-        jTextReligion = new javax.swing.JTextField();
+        txtReligion = new javax.swing.JTextField();
         jButtonIngresarPaciente = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtTipoSangre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtAlergias = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
@@ -203,6 +204,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         jLabel45.setText("Vivienda");
 
+        buttonGroup7.add(jRadioButtonNoble);
         jRadioButtonNoble.setText("Material Noble");
         jRadioButtonNoble.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -215,6 +217,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup7.add(jRadioButton14);
         jRadioButton14.setText("Servicios basicos");
         jRadioButton14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -229,9 +232,9 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         jLabel36.setText("Teléfono Fijo");
 
-        jTextTelefono.addActionListener(new java.awt.event.ActionListener() {
+        txtFijo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextTelefonoActionPerformed(evt);
+                txtFijoActionPerformed(evt);
             }
         });
 
@@ -239,9 +242,9 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         jLabel44.setText("Religion");
 
-        jTextReligion.addActionListener(new java.awt.event.ActionListener() {
+        txtReligion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextReligionActionPerformed(evt);
+                txtReligionActionPerformed(evt);
             }
         });
 
@@ -285,12 +288,12 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                                     .addComponent(jRadioButtonMasculino)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jRadioButtonFeminino))
-                                .addComponent(jTextEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                                 .addComponent(jTexApellido))
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel45)
                             .addComponent(jLabel36)
@@ -300,21 +303,21 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(jRadioButtonNoble)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jRadioButton14))))
+                                    .addComponent(jRadioButton14)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtReligion, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCelular, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtFijo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
                         .addGap(66, 66, 66))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +341,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32)
-                            .addComponent(jTextEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel33)
@@ -346,10 +349,10 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                             .addComponent(jRadioButtonFeminino))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel45)
@@ -358,24 +361,24 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel36)
-                            .addComponent(jTextTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFijo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel38))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel44))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jTextReligion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtReligion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -388,11 +391,11 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -402,7 +405,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
             jPanelDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelDatosPacienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 738, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanelDatosPacienteLayout.setVerticalGroup(
@@ -793,11 +796,11 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     private void jButtonIngresarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarPacienteActionPerformed
         datopa.setNombre(jTextNombre.getText());
         datopa.setApellido(jTexApellido.getText());
-        datopa.setEdad(Integer.parseInt(jTextEdad.getText()));
+        datopa.setEdad(Integer.parseInt(txtEdad.getText()));
         datopa.setDNI(Integer.parseInt(jTextDNI.getText()));
-        datopa.setDireccion(jTextDireccion.getText());
-        datopa.setTelefono(Integer.parseInt(jTextTelefono.getText()));
-        datopa.setReligion(jTextReligion.getText());
+        datopa.setDireccion(txtDireccion.getText());
+        datopa.setTelefono(Integer.parseInt(txtFijo.getText()));
+        datopa.setReligion(txtReligion.getText());
 
     }//GEN-LAST:event_jButtonIngresarPacienteActionPerformed
 
@@ -818,13 +821,13 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jRadioButtonNobleMouseClicked
 
-    private void jTextReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextReligionActionPerformed
+    private void txtReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReligionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextReligionActionPerformed
+    }//GEN-LAST:event_txtReligionActionPerformed
 
-    private void jTextTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextTelefonoActionPerformed
+    private void txtFijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFijoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextTelefonoActionPerformed
+    }//GEN-LAST:event_txtFijoActionPerformed
 
     private void jTextDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDNIActionPerformed
         // TODO add your handling code here:
@@ -879,22 +882,22 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonVivoP1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        antepe.setEnferTra(jTextFieldEnfermedadesTratadas.getText());
-        antepe.setHospitalizaciones(Integer.parseInt(jTextFieldHospitalizaciones.getText()));
-        antepe.setInmunizacion(Integer.parseInt(jTextFieldInmunizaciones.getText()));
-        antepe.setTipoSangre(jTextFielTipoSangre.getText());
-        antepe.setAlergias(jTextFieldAlergias.getText());
+//        antepe.setEnferTra(jTextFieldEnfermedadesTratadas.getText());
+//        antepe.setHospitalizaciones(Integer.parseInt(jTextFieldHospitalizaciones.getText()));
+//        antepe.setInmunizacion(Integer.parseInt(jTextFieldInmunizaciones.getText()));
+//        antepe.setTipoSangre(jTextFielTipoSangre.getText());
+//        antepe.setAlergias(jTextFieldAlergias.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnVerVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerVisitaActionPerformed
         try{
-            int posicion = tblVisitas.getSelectedRow();
-            
-//            Visita visita = new Visita(posicion, anamnesis, datomed, new ExamenFisicos(), diagnostico, tratamiento, trarea);
-//            Visita visita = listaVisita.getDato(posicion);
-//            System.out.println("fagfgafd");
+            int posicion;
+            posicion = tblVisitas.getSelectedRow();
+            System.out.println("lista visita es ta vacía?: " + listaVisita);
+            Visita visita = listaVisita.getDato(posicion);
             VentanaVisita ventanaVisita = new VentanaVisita(this, true,paciente.getHistorial(), this);
             ventanaVisita.setVisible(true);
+            
         }catch(Exception e){
             System.out.println(e);
                     
@@ -903,16 +906,15 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
     private void btnAgregarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVisitaActionPerformed
         // TODO add your handling code here:
-//        VentanaVisita ventanaVisita = new VentanaVisita(this, true,, this);
-//        ventanaVisita.setVisible(true);
-        
+        VentanaVisita ventanaVisita = new VentanaVisita(this, true,paciente.getHistorial(), this);
+        ventanaVisita.setVisible(true);
         
     }//GEN-LAST:event_btnAgregarVisitaActionPerformed
 
-     public void mostrarTabla(ListaDoble<Visita> lista) {
+    public void mostrarTabla() {
         DefaultTableModel dtm = (DefaultTableModel) tblVisitas.getModel();
         dtm.setRowCount(0);
-        Iterator<Visita> iterador = lista.getDescendingIterator();
+        Iterator<Visita> iterador = listaVisita.getDescendingIterator();
         while (iterador.hasNext()) {            
             Visita pro = iterador.next();
             dtm.addRow(new Object[]{pro.mostrarFecha(),pro.getCodigo()});    
@@ -966,6 +968,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonIngresarPaciente;
@@ -1018,14 +1021,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTextField jTexApellido;
     public javax.swing.JTextField jTextDNI;
-    public javax.swing.JTextField jTextDireccion;
-    public javax.swing.JTextField jTextEdad;
     private javax.swing.JTextField jTextFielTipoSangre;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextFieldAlergias;
     private javax.swing.JTextField jTextFieldEnfermedadesTratadas;
     private javax.swing.JTextField jTextFieldHospitalizaciones;
@@ -1035,13 +1031,32 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPadreEnfermedades1;
     private javax.swing.JTextField jTextFieldPadreHos1;
     public javax.swing.JTextField jTextNombre;
-    public javax.swing.JTextField jTextReligion;
-    public javax.swing.JTextField jTextTelefono;
     private javax.swing.JTable tblVisitas;
+    private javax.swing.JTextField txtAlergias;
+    private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCodigo;
+    public javax.swing.JTextField txtDireccion;
+    public javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEmail;
+    public javax.swing.JTextField txtFijo;
+    public javax.swing.JTextField txtReligion;
+    private javax.swing.JTextField txtTipoSangre;
     // End of variables declaration//GEN-END:variables
 
     private void llenarDatos() {
         jTextNombre.setText(paciente.getNombre());
+        jTexApellido.setText(paciente.getApellido());
+        txtEdad.setText(String.valueOf(paciente.getEdad()));
+        txtTipoSangre.setText(paciente.getTipoSangre());
+        txtAlergias.setText(paciente.getAlergia());
+        jTextDNI.setText(String.valueOf(paciente.getDni()));
+        txtCodigo.setText(paciente.getCodigo());
+        txtEmail.setText(paciente.getEmail());
+        txtDireccion.setText(paciente.getDireccion());
+        txtFijo.setText(String.valueOf(paciente.getTelefonoCasa()));
+        txtCelular.setText(String.valueOf(paciente.getTelefonoCelular()));
+        txtReligion.setText(paciente.getReligion());
+        
         
     }
 }
