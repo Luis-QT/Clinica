@@ -9,7 +9,7 @@ package model.paciente;
  *
  * @author F20LAB303-XXE
  */
-public class antedentesPersonales {
+public class AntedentesPersonales {
     private String enferTra;
     private int hospitalizaciones;
     private int inmunizacion;
@@ -56,7 +56,7 @@ public class antedentesPersonales {
             this.alergias = alergias;
         }
 
-        public antedentesPersonales() {
+        public AntedentesPersonales() {
             this.enferTra = null;
             this.hospitalizaciones = 0;
             this.inmunizacion = 0;

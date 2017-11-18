@@ -1,6 +1,7 @@
 
 package model.paciente;
 
+import estructura.ListaDoble;
 import model.empleado.Persona;
 
 public class Paciente extends Persona {
@@ -17,10 +18,7 @@ public class Paciente extends Persona {
         this.tipoSangre = tipoSangre;
         this.alergia = alergias;
         this.codigo = codigo;
-        historial = new HistoriaClinica(new Anamnesis(), 
-                new AntecedentesFamiliares(), new AntecedentesPersonales(),
-                new DatosMedico(), new DatosPaciente(), new Diagnostico(), 
-                new Tratamiento(), new TratamientoRea());
+        historial = new HistoriaClinica(new AntecedentesFamiliares(), new AntecedentesPersonales(), new DatosMedico(), new DatosPaciente(), null);
     }
 
     public String getTipoSangre() {

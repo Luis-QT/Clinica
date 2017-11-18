@@ -7,6 +7,7 @@ package controlador.medicoEspecialista;
 
 import controlador.Controller;
 import estructura.ListaDoble;
+import factory.MySQLConnectionFactory;
 import gui.medicoEspecialista.FrameMedicoEspecialista;
 import gui.medicoGeneral.FrameHistoriaClinica;
 import java.awt.event.ActionEvent;
@@ -40,14 +41,14 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
         this.vista.btnVerHistorial.setActionCommand("VerHistorial");
         this.vista.btnVerHistorial.addActionListener(this);
         
-//        this.vista.btnBuscar.setActionCommand("Buscar");
-//        this.vista.btnBuscar.addActionListener(this);
-        
         this.vista.txtBuscar.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent evt){
                 formBuscar();
             }
         });
+        
+        this.vista.jmiCerraSesion.setActionCommand("Salir");
+        this.vista.jmiCerraSesion.addActionListener(this);
     }
     
     @Override
@@ -64,8 +65,8 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             formEliminar();
         }else if(comando.equals("VerHistorial")){
             formVerHistorial();
-        }else if(comando.equals("Buscar")){
-            formBuscar();
+        }else if(comando.equals("Salir")){
+             MySQLConnectionFactory.shutdown();
         }
     }
     
@@ -120,12 +121,13 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
             MedicoEspecialista medicoE = vista.getMedicoE();
             if(vista.cbxApellido.isSelected()){
-                ListaDoble<Paciente> p = medicoE.buscarporApellido(palabraBuscar);
-                if (p == null) {
+//                ListaDoble<Paciente> p = medicoE.buscarporApellido(palabraBuscar);
+                listaPacientes = medicoE.buscarporApellido(palabraBuscar);
+                if (listaPacientes == null) {
                     JOptionPane.showMessageDialog(null, "No se encontró");
                 } else {
-                    vista.setListaPacientes(p);
-                    vista.mostrarTabla(p);
+//                    vista.setListaPacientes(p);
+                    vista.mostrarTabla(listaPacientes);
                 }
             }else if(vista.cbxCodigo.isSelected()){
                 ListaDoble<Paciente> p = medicoE.buscarporCodigo(palabraBuscar);

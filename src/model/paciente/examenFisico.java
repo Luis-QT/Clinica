@@ -9,7 +9,7 @@ package model.paciente;
  *
  * @author Dwight
  */
-public class examenFisico {
+public class ExamenFisico {
     private String cabezaobs;
     private String cabezaaus;
     private String cabezaper;
@@ -26,7 +26,7 @@ public class examenFisico {
     private String extreaus;
     private String extreper;
 
-    public examenFisico() {
+    public ExamenFisico() {
         this.cabezaobs = null;
         this.cabezaaus = null;
         this.cabezaper = null;

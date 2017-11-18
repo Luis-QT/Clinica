@@ -22,6 +22,7 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
      */
     private ListaDoble<Paciente> listaPacientes;
     private MedicoEspecialista medicoE;
+    
     public FrameMedicoEspecialista(MedicoEspecialista medicoE) {
         initComponents();
         this.medicoE = medicoE;
@@ -75,7 +76,7 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
         btnVerHistorial = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiCerraSesion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -276,8 +277,13 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
 
         jMenu1.setText("Archivo");
 
-        jMenuItem1.setText("Cerrar Sesión");
-        jMenu1.add(jMenuItem1);
+        jmiCerraSesion.setText("Cerrar Sesión");
+        jmiCerraSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiCerraSesionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmiCerraSesion);
 
         jMenuBar1.add(jMenu1);
 
@@ -327,6 +333,12 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
     private void btnVerHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistorialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVerHistorialActionPerformed
+
+    private void jmiCerraSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCerraSesionActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jmiCerraSesionActionPerformed
 
     public void mostrarTabla(ListaDoble<Paciente> lista) {
         DefaultTableModel dtm = (DefaultTableModel) tblPaciente.getModel();
@@ -395,14 +407,14 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    public javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JMenuItem jmiCerraSesion;
     private javax.swing.JLabel lblMedicoEspecialista;
     private javax.swing.JLabel lblNombreDoctor;
     public javax.swing.JLabel lblTitulo;
