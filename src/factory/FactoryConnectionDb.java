@@ -23,6 +23,13 @@ public class FactoryConnectionDb {
     //  8 => limpieza
     
     public static String[] configMSQLCreate = {
+            //Tabla paciente
+            "Create TABLE Paciente"
+            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
+            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40),codigo VARCHAR(40),direccion VARCHAR(40),religion VARCHAR(40))",
+            
+        
+            //Luis Taquire
             "CREATE TABLE MedicoGeneral"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
             + "contraseña VARCHAR(35),colegiatura VARCHAR(20),edad SMALLINT,telefonoCasa INT,telefonoCelular INT, sexo SMALLINT,email VARCHAR(40),softDelete SMALLINT)",
@@ -101,6 +108,9 @@ public class FactoryConnectionDb {
             "INSERT INTO PlanTratamiento"
             +"(nombre,descripcion,precio) VALUES "
             + "('Cirugia Plastica','Consiste en un procedimiento de operaciones ....',700.80)"
+            
+            
+            
     };
     
     public static ConnectionDb open(){

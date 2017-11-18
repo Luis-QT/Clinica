@@ -5,6 +5,7 @@
  */
 package inicio;
 
+import gui.administrador.FramePrincipalAdministrador;
 import javax.swing.JOptionPane;
 
 /**
@@ -107,6 +108,11 @@ public class LoginAdministracion extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l1.png"))); // NOI18N
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l2.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 96, 37));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
@@ -143,6 +149,14 @@ public class LoginAdministracion extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        FramePrincipalAdministrador ventanaAdministrador = new FramePrincipalAdministrador();
+        ventanaAdministrador.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

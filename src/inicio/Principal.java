@@ -113,12 +113,14 @@ public class Principal extends javax.swing.JFrame {
     private void btnAdmiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmiActionPerformed
         // TODO add your handling code here:
         LoginAdministracion logAdmi = new LoginAdministracion();
+        this.setVisible(false);
         logAdmi.setVisible(true);
     }//GEN-LAST:event_btnAdmiActionPerformed
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
         // TODO add your handling code here:
         LoginPersonal logPer = new LoginPersonal();
+        this.setVisible(false);
         logPer.setVisible(true);
     }//GEN-LAST:event_btnPersonalActionPerformed
 
