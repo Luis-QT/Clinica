@@ -1,11 +1,17 @@
 package gui.contabilidad;
 
 import estructura.ListaDoble;
+import gui.triaje.FrameTriaje;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Optional;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.empleado.Cajero;
+import model.empleado.MedicoTriaje;
 import model.empleado.Monto;
 import model.empleado.Servicios;
 import model.paciente.Paciente;
@@ -15,8 +21,8 @@ public class FrameContabilidad extends javax.swing.JFrame {
     private ListaDoble<Servicios> listaServicios;
     private ListaDoble<Monto> listaMonto;
     private ListaDoble<Paciente> listaPacientes;
-    
 
+    
     // tabla Seleccion General
     private ListaDoble<Servicios> listaSeleccionGeneral;
     Cajero auxCaja = new Cajero("", "", null, 0, "", "", 0, false, 0, 0, 0, "", 0);
@@ -27,15 +33,21 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
     private Cajero Caja;
 
-    public FrameContabilidad(Cajero Caja) {
+    FrameTriaje thisFrameTriaje;
+    
+    public FrameContabilidad(Cajero Caja, FrameTriaje thisFrameTriaje) {
         initComponents();
         this.Caja = Caja;
         this.listaPacientes = Caja.getListaPaciente();
         this.listaServicios = Caja.getListaServicios();
         this.listaSeleccionGeneral = auxCaja.getListaServicios();
-
+        this.listaMonto = Caja.getListaMonto();
+        this.thisFrameTriaje = thisFrameTriaje;
         mostrarTablaServicios(listaServicios);
+        
     }
+    
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,17 +89,18 @@ public class FrameContabilidad extends javax.swing.JFrame {
         TablaSeleccion = new javax.swing.JTable();
         btnDeshacer = new javax.swing.JButton();
         btnGenerarMonto = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaRegistro = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtEntrada = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtSalida = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtMontoActual = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,6 +137,12 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
         jLabel2.setText("Pago:");
 
+        txtPago.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPagoKeyReleased(evt);
+            }
+        });
+
         txtVuelto.setEditable(false);
         txtVuelto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +153,11 @@ public class FrameContabilidad extends javax.swing.JFrame {
         jLabel3.setText("Vuelto: ");
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Monto:");
 
@@ -239,6 +263,11 @@ public class FrameContabilidad extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Búsqueda"));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarKeyReleased(evt);
@@ -353,29 +382,44 @@ public class FrameContabilidad extends javax.swing.JFrame {
             }
         });
 
+        btnNuevo.setText("Nuevo Cliente");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnDeshacer, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnGenerarMonto)
+                        .addGap(30, 30, 30))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(btnDeshacer)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGenerarMonto)
-                .addGap(28, 28, 28))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerarMonto)
                     .addComponent(btnDeshacer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(btnNuevo)
                 .addContainerGap())
         );
 
@@ -385,7 +429,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabla Registro"));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -404,7 +448,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablaRegistro);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -427,15 +471,15 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
         jLabel5.setText("Entrada : ");
 
-        jTextField4.setEditable(false);
+        txtEntrada.setEditable(false);
 
         jLabel6.setText("Salida : ");
 
-        jTextField5.setEditable(false);
+        txtSalida.setEditable(false);
 
         jLabel7.setText("Monto Actual : ");
 
-        jTextField6.setEditable(false);
+        txtMontoActual.setEditable(false);
 
         jButton4.setText("Registrar");
 
@@ -451,15 +495,15 @@ public class FrameContabilidad extends javax.swing.JFrame {
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField6))
+                                .addComponent(txtMontoActual))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel5))
                                 .addGap(35, 35, 35)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jButton4)))
@@ -471,15 +515,15 @@ public class FrameContabilidad extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMontoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -604,6 +648,14 @@ public class FrameContabilidad extends javax.swing.JFrame {
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
 
         String palabra = txtBuscar.getText();
+        
+        ListaDoble<Servicios> p = Caja.bucarServicio(palabra);
+        
+           listaServicios = p;  
+               mostrarTablaServicios(listaServicios);
+        
+        //
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarKeyReleased
@@ -641,6 +693,110 @@ public class FrameContabilidad extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarMontoActionPerformed
 
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void txtPagoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagoKeyReleased
+
+
+          Float pago = Float.parseFloat(txtPago.getText());
+          Float monto = Float.parseFloat(txtMonto.getText());
+          Float vuelto = pago - monto;
+          
+          txtVuelto.setText(String.valueOf(vuelto));
+
+
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPagoKeyReleased
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
+        GregorianCalendar d = new GregorianCalendar();
+
+        int anio = d.get(Calendar.YEAR);
+        int mes = d.get(Calendar.MONTH) + 1;
+        int dia = d.get(Calendar.DAY_OF_MONTH);
+        LocalDate fecha = LocalDate.of(anio, mes, dia);
+        // txt de entrada
+        String codigo = txtCodigo.getText();
+        Float pago = Float.parseFloat(txtPago.getText());
+        Float monto = Float.parseFloat(txtMonto.getText());
+        Float vuelto = Float.parseFloat(txtVuelto.getText());
+        boolean comprobar = false;
+
+        Iterator<Paciente> iterador = listaPacientes.getDescendingIterator();
+
+        while (iterador.hasNext()) {
+            Paciente pro = iterador.next();
+
+            if (pro.getCodigo().equalsIgnoreCase(codigo)) {
+                comprobar = true;
+                thisFrameTriaje.getListaPacientes().insertarAlFinal(pro);
+                //Te envia el codigo ;
+                
+            }
+        }
+
+        if (comprobar) {
+            Monto reg = new Monto(monto, pago, vuelto, fecha);
+
+            Caja.agregarMonto(reg);
+            mostrarTablaRegistro(listaMonto, listaPacientes);
+
+            // para mostar monto de salida
+            Iterator<Monto> it = listaMonto.getDescendingIterator();
+            Float sumaMontoEntrada = 0F;
+            Float sumaMontoSalida = 0F;
+            Float sumaMontoActual = 0F;
+
+            while (it.hasNext()) {
+                Monto pro = it.next();
+                sumaMontoEntrada = sumaMontoEntrada + pro.getPago();
+                sumaMontoSalida = sumaMontoSalida + pro.getVuelto();
+                sumaMontoActual = sumaMontoActual + pro.getMonto();
+            }
+            txtEntrada.setText(String.valueOf(sumaMontoEntrada));
+            txtSalida.setText(String.valueOf(sumaMontoSalida));
+            txtMontoActual.setText(String.valueOf(sumaMontoActual));
+            /**COMPROBAR*/
+            
+//            this.thisFrameTriaje.setVisible(true);
+//            this.thisFrameTriaje.mostrarTabla();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Codigo: " + codigo + " no registrado");
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+
+        txtMonto.setText("");
+        txtPago.setText("");
+        txtVuelto.setText("");
+        txtCodigo.setText("");
+        listaSeleccionGeneral.limpiarLista();
+        
+        mostrarTablaSeleccion(listaSeleccionGeneral);
+
+
+        
+        
+        
+        
+        
+        
+        
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
     private void mostrarTablaServicios(ListaDoble<Servicios> listaServicio) {
         DefaultTableModel dtm = (DefaultTableModel) TablaServicios.getModel();
         dtm.setRowCount(0);
@@ -666,6 +822,22 @@ public class FrameContabilidad extends javax.swing.JFrame {
         }
      
     }
+    
+    
+    
+    private void mostrarTablaRegistro(ListaDoble<Monto> listaMonto, ListaDoble<Paciente> listaPaciente) {
+        DefaultTableModel dtm = (DefaultTableModel) tablaRegistro.getModel();
+        dtm.setRowCount(0);
+        Iterator<Monto> iterador = listaMonto.getDescendingIterator();
+        String palabra = txtCodigo.getText();
+        
+        while (iterador.hasNext()) {
+           Monto pro = iterador.next();
+          
+            dtm.addRow(new Object[]{palabra , pro.getMonto()});
+        }
+    
+   }
 
     /**
      * @param args the command line arguments
@@ -699,15 +871,28 @@ public class FrameContabilidad extends javax.swing.JFrame {
         Cajero Caja = new Cajero("5694", "contraseña", null, 13, "Mónica",
                 "Blanco", 77777777, false, 42, 555555, 999999, "mb@ail.com", 0);
         /* Create and display the form */
+;
+
+    MedicoTriaje triaje = new MedicoTriaje("triaje", "5694", "contraseña", null, 13, "Mónica",
+                "Blanco", 77777777, false, 42, 555555, 999999, "mb@ail.com", 0);
+
+        FrameTriaje ft = new FrameTriaje(triaje);
 
         Caja.agregarServicios(new Servicios("sangre", 230F, false));
         Caja.agregarServicios(new Servicios("glusoca", 250F, false));
         Caja.agregarServicios(new Servicios("cardiologo", 10F, true));
         Caja.agregarServicios(new Servicios("neurologo", 30F, true));
         Caja.agregarServicios(new Servicios("medico general", 5F, true));
+        Caja.agregarPaciente(new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A04"));
+        Caja.agregarPaciente(new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay","A05"));
+        Caja.agregarPaciente(new Paciente(0, "Miriam", "Miriam", 3333, true, 21, 98766, 64564, "", 2, "A", "No hay","A06"));
+        Caja.agregarPaciente(new Paciente(0, "Mizu", "Mizu", 4444, true, 21, 98766, 64564, "", 2, "A", "No hay","A07"));
+        Caja.agregarPaciente(new Paciente(0, "LuisJose", "LuisJose", 5555, true, 21, 98766, 64564, "", 2, "A", "No hay","A08"));
+       Caja.agregarPaciente(new Paciente(0, "LuisRoberto", "LuisRoberto", 6666, true, 21, 98766, 64564, "", 2, "A", "No hay","A09"));
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
-                new FrameContabilidad(Caja).setVisible(true);
+                new FrameContabilidad(Caja, ft).setVisible(true);
 
             }
         });
@@ -720,6 +905,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
     private javax.swing.JButton btnDeshacer;
     private javax.swing.JButton btnElegir;
     private javax.swing.JButton btnGenerarMonto;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnPrecio;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -752,16 +938,16 @@ public class FrameContabilidad extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JRadioButton rbtnConsulta;
     private javax.swing.JRadioButton rbtnLaboratorio;
+    private javax.swing.JTable tablaRegistro;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtEntrada;
     private javax.swing.JTextField txtMonto;
+    private javax.swing.JTextField txtMontoActual;
     private javax.swing.JTextField txtPago;
+    private javax.swing.JTextField txtSalida;
     private javax.swing.JTextField txtVuelto;
     // End of variables declaration//GEN-END:variables
 }

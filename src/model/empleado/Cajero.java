@@ -37,6 +37,10 @@ public class Cajero extends EmpleadoUser{
         listaPaciente.insertarAlFinal(paciente);
     }
     
+     public void agregarMonto(Monto monto){
+        listaMonto.insertarAlFinal(monto);
+    }
+    
   
 
     public ListaDoble<Servicios> getListaServicios() {
@@ -81,18 +85,14 @@ public class Cajero extends EmpleadoUser{
           **********      MÉTODOS      **************
     */
     
-    public void montoActualDia(Monto montoNuevo) {
-       
-        
-     
-    }
+  
 
 
     public ListaDoble<Servicios> bucarServicio(String busca) {
         ListaDoble<Servicios> aux = new ListaDoble<Servicios>();
 
-        listaServicios.stream().filter(n -> n.getNombreServicio().equalsIgnoreCase(busca)).
-                forEach(n -> aux.insertarAlFinal(n));
+        listaServicios.stream().filter(n -> n.getNombreServicio().toUpperCase().
+                contains(busca.toUpperCase())).forEach(n -> aux.insertarAlFinal(n));
         return aux;
 
     }

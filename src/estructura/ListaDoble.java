@@ -192,13 +192,15 @@ public class ListaDoble<T> implements Iterable<T> {
     public Stream<T> stream() {
         return StreamSupport.stream(spliterator(), false);
     }
+    
+    
+    
 
     public void buscar(String valor) {
        
         NodoDoble<T> actual;
         actual = cabecera;
         while(actual != null){
-    
         
 //        if (cabecera != null) {
 //            NodoDoble<T> aux = cabecera;
@@ -216,4 +218,10 @@ public class ListaDoble<T> implements Iterable<T> {
 
 }
     
+    
+    
+    //Ximena
+    public void limpiarLista(){
+        cabecera = fin = null;
+    }
 }

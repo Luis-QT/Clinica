@@ -5,6 +5,13 @@
  */
 package gui.triaje;
 
+import estructura.ListaDoble;
+import gui.contabilidad.FrameContabilidad;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
+import model.empleado.MedicoTriaje;
+import model.paciente.Paciente;
+
 /**
  *
  * @author user
@@ -14,8 +21,21 @@ public class FrameTriaje extends javax.swing.JFrame {
     /**
      * Creates new form VentanaTriaje
      */
-    public FrameTriaje() {
+    
+    private ListaDoble<Paciente> listaPacientes;
+    private MedicoTriaje triaje;
+  
+    
+    public FrameTriaje(MedicoTriaje triaje) {
         initComponents();
+        this.listaPacientes = triaje.getListaPaciente();
+       mostrarTabla();
+        
+    }
+    
+    
+    public ListaDoble<Paciente> getListaPacientes() {
+        return listaPacientes;
     }
 
     /**
@@ -33,7 +53,7 @@ public class FrameTriaje extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaPacientes = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -72,29 +92,30 @@ public class FrameTriaje extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabla"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "N°", "ID Paciente", "Apellido Paterno", "Apellido Materno", "Nombres"
+                "Código", "Nombre", "Apellidos", "DNI"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jScrollPane1.setViewportView(tablaPacientes);
+        if (tablaPacientes.getColumnModel().getColumnCount() > 0) {
+            tablaPacientes.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tablaPacientes.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tablaPacientes.getColumnModel().getColumn(3).setPreferredWidth(30);
         }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -212,6 +233,16 @@ public class FrameTriaje extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+     public void mostrarTabla( ) {
+        DefaultTableModel dtm = (DefaultTableModel) tablaPacientes.getModel();
+        dtm.setRowCount(0);
+        Iterator<Paciente> iterador = listaPacientes.getDescendingIterator();
+        while (iterador.hasNext()) {
+            Paciente pro = iterador.next();
+            dtm.addRow(new Object[]{pro.getNombre(), pro.getApellido(),
+                pro.getAlergia(), pro.getDni()});
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -224,7 +255,7 @@ public class FrameTriaje extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
-          
+
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -239,12 +270,14 @@ public class FrameTriaje extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameTriaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-
+    //</editor-fold>
+        MedicoTriaje triaje = new MedicoTriaje("triaje", "5694", "contraseña",
+                null, 13, "Mónica","Blanco", 77777777, false, 42, 555555,
+                999999, "mb@ail.com", 0);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameTriaje().setVisible(true);
+                new FrameTriaje(triaje).setVisible(true);
             }
         });
     }
@@ -262,7 +295,9 @@ public class FrameTriaje extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tablaPacientes;
     // End of variables declaration//GEN-END:variables
+
+    
 }
