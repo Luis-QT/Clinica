@@ -56,6 +56,7 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -191,8 +192,10 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(cbxApellido);
         cbxApellido.setText("Apellido Paterno");
 
+        buttonGroup1.add(cbxCodigo);
         cbxCodigo.setText("Código");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -401,6 +404,7 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
     public javax.swing.JButton btnBuscar;
     public javax.swing.JButton btnEliminarPaciente;
     public javax.swing.JButton btnVerHistorial;
+    private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JRadioButton cbxApellido;
     public javax.swing.JRadioButton cbxCodigo;
     private javax.swing.JLabel jLabel1;

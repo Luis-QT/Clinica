@@ -121,22 +121,13 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
             MedicoEspecialista medicoE = vista.getMedicoE();
             if(vista.cbxApellido.isSelected()){
-//                ListaDoble<Paciente> p = medicoE.buscarporApellido(palabraBuscar);
-                listaPacientes = medicoE.buscarporApellido(palabraBuscar);
-                if (listaPacientes == null) {
-                    JOptionPane.showMessageDialog(null, "No se encontró");
-                } else {
-//                    vista.setListaPacientes(p);
-                    vista.mostrarTabla(listaPacientes);
-                }
+                ListaDoble<Paciente> p = medicoE.buscarporApellido(palabraBuscar);
+                vista.setListaPacientes(p);
+                vista.mostrarTabla(p);
             }else if(vista.cbxCodigo.isSelected()){
                 ListaDoble<Paciente> p = medicoE.buscarporCodigo(palabraBuscar);
-                if (p == null) {
-                    JOptionPane.showMessageDialog(null, "No se encontró");
-                } else {
-                    vista.setListaPacientes(p);
-                    vista.mostrarTabla(p);
-                }
+                vista.setListaPacientes(p);
+                vista.mostrarTabla(p);
             }else{
                 JOptionPane.showMessageDialog(null, "Ingrese un filtro");
             }
