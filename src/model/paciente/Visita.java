@@ -1,7 +1,10 @@
-
 package model.paciente;
 
+import java.time.LocalDate;
+
 public class Visita {
+    int codigo;
+    LocalDate fecha;
     Anamnesis anamnecis;
     DatosMedico datosMedico;
     ExamenFisicos examenFisico;
@@ -9,13 +12,26 @@ public class Visita {
     Tratamiento tratamiento;
     TratamientoRea tratamientoRea;
 
-    public Visita(Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public Visita(int codigo, LocalDate fecha, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
+        this.fecha = fecha;
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
         this.examenFisico = examenFisico;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
         this.tratamientoRea = tratamientoRea;
+    }
+
+    public String mostrarFecha() {
+        return fecha.getYear() + " / " + fecha.getMonth() + " / " + fecha.getDayOfMonth();
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
     }
 
     public Anamnesis getAnamnecis() {
@@ -66,6 +82,4 @@ public class Visita {
         this.tratamientoRea = tratamientoRea;
     }
 
-    
-    
 }

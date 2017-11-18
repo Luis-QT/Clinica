@@ -6,15 +6,19 @@
 package gui.medicoGeneral;
 
 import estructura.ListaDoble;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 import model.paciente.Anamnesis;
 import model.paciente.AntecedentesFamiliares;
 import model.paciente.AntecedentesPersonales;
 import model.paciente.DatosMedico;
 import model.paciente.DatosPaciente;
 import model.paciente.Diagnostico;
+import model.paciente.HistoriaClinica;
 import model.paciente.Paciente;
 import model.paciente.Tratamiento;
 import model.paciente.TratamientoRea;
+import model.paciente.Visita;
 
 /**
  *
@@ -30,13 +34,20 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     }
     
     Paciente paciente;
-    
-    public FrameHistoriaClinica(Paciente paciente) {
+    ListaDoble<Visita> listaVisita ;
+    public FrameHistoriaClinica(Paciente paciente ,ListaDoble<Visita> listaVisita) {
         initComponents();
+        this.listaVisita = listaVisita;
         this.paciente = paciente;
         llenarDatos();
     }
     
+    /**TEMPORAL**/
+     public FrameHistoriaClinica(Paciente paciente ) {
+        
+        initComponents();
+         this.paciente = paciente;
+    }
     Anamnesis anamnesis = new Anamnesis();
     AntecedentesFamiliares antefa = new AntecedentesFamiliares();
     AntecedentesPersonales antepe = new AntecedentesPersonales();
@@ -875,9 +886,21 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
     private void btnVerVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerVisitaActionPerformed
         int posicion = tblVisitas.getSelectedRow();
-        Historial historia = paciente.getHistorial();
+        Visita visita = listaVisita.getDato(posicion);
+        VentanaVisita ventanaVisita = new VentanaVisita(this, rootPaneCheckingEnabled);
+        ventanaVisita.setVisible(true);
     }//GEN-LAST:event_btnVerVisitaActionPerformed
 
+     public void mostrarTabla(ListaDoble<Visita> lista) {
+        DefaultTableModel dtm = (DefaultTableModel) tblVisitas.getModel();
+        dtm.setRowCount(0);
+        Iterator<Visita> iterador = lista.getDescendingIterator();
+        while (iterador.hasNext()) {            
+            Visita pro = iterador.next();
+            dtm.addRow(new Object[]{pro.mostrarFecha(),pro.getCodigo()});    
+        }    
+    }
+    
     /**
      * @param args the command line arguments
      */
