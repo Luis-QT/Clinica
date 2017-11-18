@@ -18,9 +18,9 @@ public class Paciente extends Persona {
         this.tipoSangre = tipoSangre;
         this.alergia = alergias;
         this.codigo = codigo;
-        historial = new HistoriaClinica(new AntecedentesFamiliares(), new AntecedentesPersonales(), new DatosMedico(), new DatosPaciente(), null);
+        historial = new HistoriaClinica(new AntecedentesFamiliares(), new AntecedentesPersonales(), new DatosMedico(), new DatosPaciente());
     }
-
+    
     public String getTipoSangre() {
         return tipoSangre;
     }
@@ -43,5 +43,11 @@ public class Paciente extends Persona {
 
     public HistoriaClinica getHistorial() {
         return historial;
+    }
+    
+    public void setHistorial (){
+        historial.getAntecedentesFamiliares();
+        historial.getAntecedentesPersonales();
+        historial.getListaVisitas();
     }
 }

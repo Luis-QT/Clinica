@@ -12,8 +12,15 @@ package model.paciente;
 public class Diagnostico {
     private String preDia;
     private String defDia;
-    private String pronostico;
-    private String solicitud;
+    private Boolean pronostico; //true favorable, false reservado
+    private Boolean solicitud;
+
+    public Diagnostico(String preDia, String defDia, Boolean pronostico, Boolean solicitud) {
+        this.preDia = preDia;
+        this.defDia = defDia;
+        this.pronostico = pronostico;
+        this.solicitud = solicitud;
+    }
 
     public String getPreDia() {
         return preDia;
@@ -31,27 +38,27 @@ public class Diagnostico {
         this.defDia = defDia;
     }
 
-    public String isPronostico() {
+    public Boolean isPronostico() {
         return pronostico;
     }
 
-    public void setPronostico(String pronostico) {
+    public void setPronostico(Boolean pronostico) {
         this.pronostico = pronostico;
     }
 
-    public String getSolicitud() {
+    public Boolean getSolicitud() {
         return solicitud;
     }
 
-    public void setSolicitud(String solicitud) {
+    public void setSolicitud(Boolean solicitud) {
         this.solicitud = solicitud;
     }
 
     public Diagnostico() {
-        this.preDia = null;
-        this.defDia = null;
-        this.pronostico = null;
-        this.solicitud = null;
+        this.preDia = "";
+        this.defDia = "";
+        this.pronostico = false;
+        this.solicitud = false;
     }
 
     @Override

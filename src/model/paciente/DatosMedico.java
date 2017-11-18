@@ -19,12 +19,23 @@ public class DatosMedico {
     private int especializacion;
     private int telefono;
 
+        public DatosMedico(String nombre, String apellido, int edad, String sexo, String direccion, int colegiatura, int especializacion, int telefono) {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.edad = edad;
+            this.sexo = sexo;
+            this.direccion = direccion;
+            this.colegiatura = colegiatura;
+            this.especializacion = especializacion;
+            this.telefono = telefono;
+        }
+
         public DatosMedico() {
-            this.nombre = null;
-            this.apellido = null;
+            this.nombre = "";
+            this.apellido = "";
             this.edad = 0;
-            this.sexo = null;
-            this.direccion = null;
+            this.sexo = "";
+            this.direccion = "";
             this.colegiatura = 0;
             this.especializacion = 0;
             this.telefono = 0;

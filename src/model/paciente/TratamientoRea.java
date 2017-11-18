@@ -17,6 +17,13 @@ public class TratamientoRea {
     private String personal;
     private int codigo;
 
+    public TratamientoRea(Date fecha, String tratamiento, String personal, int codigo) {
+        this.fecha = fecha;
+        this.tratamiento = tratamiento;
+        this.personal = personal;
+        this.codigo = codigo;
+    }
+
     public Date getFecha() {
         return fecha;
     }
@@ -51,8 +58,8 @@ public class TratamientoRea {
 
     public TratamientoRea() {
         this.fecha = null;
-        this.tratamiento = null;
-        this.personal = null;
+        this.tratamiento = "";
+        this.personal = "";
         this.codigo = 0;
     }
 

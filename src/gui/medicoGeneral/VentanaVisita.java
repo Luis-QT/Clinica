@@ -5,6 +5,16 @@
  */
 package gui.medicoGeneral;
 
+import java.util.Date;
+import model.paciente.Anamnesis;
+import model.paciente.DatosMedico;
+import model.paciente.Diagnostico;
+import model.paciente.ExamenFisicos;
+import model.paciente.HistoriaClinica;
+import model.paciente.Tratamiento;
+import model.paciente.TratamientoRea;
+import model.paciente.Visita;
+
 /**
  *
  * @author Pechito
@@ -14,9 +24,19 @@ public class VentanaVisita extends javax.swing.JDialog {
     /**
      * Creates new form VentanaVisita
      */
-    public VentanaVisita(java.awt.Frame parent, boolean modal) {
+    FrameHistoriaClinica thisFrame;
+    HistoriaClinica historia;
+    Anamnesis anamnesis;
+    Diagnostico diagnostico;
+    ExamenFisicos examenF;
+    Tratamiento tratamiento;
+    TratamientoRea trarea;
+    DatosMedico datomed;
+    public VentanaVisita(java.awt.Frame parent, boolean modal,HistoriaClinica historia,FrameHistoriaClinica thisFrame ) {
         super(parent, modal);
         initComponents();
+        this.historia = historia;
+        this.thisFrame = thisFrame;
     }
 
     /**
@@ -38,44 +58,44 @@ public class VentanaVisita extends javax.swing.JDialog {
         jTextFieldCursoEnfermedad = new javax.swing.JTextField();
         jTextFieldEnfermedadActual = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnIngresarAnamnesis = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
+        btnIngresarExamen = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jTextFieldObservacion1 = new javax.swing.JTextField();
-        jTextFieldAuscultacion1 = new javax.swing.JTextField();
-        jTextFieldPercucion1 = new javax.swing.JTextField();
+        txtCabezaObs = new javax.swing.JTextField();
+        txtCabezaAus = new javax.swing.JTextField();
+        txtCabezaPre = new javax.swing.JTextField();
         jLabel85 = new javax.swing.JLabel();
         jLabel89 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jTextField64 = new javax.swing.JTextField();
-        jTextField65 = new javax.swing.JTextField();
-        jTextField66 = new javax.swing.JTextField();
+        txtTorsoObs = new javax.swing.JTextField();
+        txtTorsoAus = new javax.swing.JTextField();
+        txtTorsoPre = new javax.swing.JTextField();
         jLabel91 = new javax.swing.JLabel();
         jLabel97 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField67 = new javax.swing.JTextField();
-        jTextField68 = new javax.swing.JTextField();
-        jTextField69 = new javax.swing.JTextField();
+        txtAbdomenObs = new javax.swing.JTextField();
+        txtAbdomemAus = new javax.swing.JTextField();
+        txtAbdomenPre = new javax.swing.JTextField();
         jLabel99 = new javax.swing.JLabel();
         jLabel100 = new javax.swing.JLabel();
         jLabel101 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jTextField70 = new javax.swing.JTextField();
-        jTextField71 = new javax.swing.JTextField();
-        jTextField72 = new javax.swing.JTextField();
+        txtEspaldaObs = new javax.swing.JTextField();
+        txtEspaldaAus = new javax.swing.JTextField();
+        txtEspaldaPre = new javax.swing.JTextField();
         jLabel102 = new javax.swing.JLabel();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel105 = new javax.swing.JLabel();
-        jTextField73 = new javax.swing.JTextField();
-        jTextField74 = new javax.swing.JTextField();
+        txtExtreObs = new javax.swing.JTextField();
+        txtExtreAus = new javax.swing.JTextField();
         jLabel106 = new javax.swing.JLabel();
         jLabel107 = new javax.swing.JLabel();
-        jTextField75 = new javax.swing.JTextField();
+        txtExtrePre = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jTextFieldDiagnosticoPre1 = new javax.swing.JTextField();
@@ -87,7 +107,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         jRadioButtonFavorable1 = new javax.swing.JRadioButton();
         jRadioButtonReservado1 = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
+        btnAgregarDiagnostico = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -103,6 +123,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         jPanel15 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        btnGuardarVisita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -122,10 +143,10 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jLabel40.setText("Enfermedad Actual");
 
-        jButton3.setText("Ingresar Datos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresarAnamnesis.setText("Ingresar Datos");
+        btnIngresarAnamnesis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnIngresarAnamnesisActionPerformed(evt);
             }
         });
 
@@ -137,7 +158,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(btnIngresarAnamnesis)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +172,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                                     .addComponent(jTextFieldEnfermedadActual)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel39))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 157, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,8 +191,8 @@ public class VentanaVisita extends javax.swing.JDialog {
                         .addComponent(jLabel40))
                     .addComponent(jTextFieldEnfermedadActual, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(jButton3)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addComponent(btnIngresarAnamnesis)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Anamnesis", jPanel2);
@@ -179,8 +200,13 @@ public class VentanaVisita extends javax.swing.JDialog {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examen Físico", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton8.setText("Ingresar Datos");
-        jPanel3.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, 32));
+        btnIngresarExamen.setText("Ingresar Datos");
+        btnIngresarExamen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarExamenActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnIngresarExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, 32));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Cabeza"));
 
@@ -200,15 +226,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel76)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextFieldObservacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCabezaObs, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel89)
                             .addComponent(jLabel85))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldPercucion1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldAuscultacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtCabezaPre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCabezaAus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -217,15 +243,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel76)
-                    .addComponent(jTextFieldObservacion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCabezaObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel89)
-                    .addComponent(jTextFieldAuscultacion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCabezaAus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel85)
-                    .addComponent(jTextFieldPercucion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCabezaPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -249,15 +275,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel98)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtTorsoObs, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel97)
                             .addComponent(jLabel91))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField66, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField65, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtTorsoPre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTorsoAus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -266,15 +292,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel98)
-                    .addComponent(jTextField64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTorsoObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel97)
-                    .addComponent(jTextField65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTorsoAus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel91)
-                    .addComponent(jTextField66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTorsoPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -298,15 +324,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel101)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtAbdomenObs, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel100)
                             .addComponent(jLabel99))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField69, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField68, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtAbdomenPre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAbdomemAus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -315,15 +341,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel101)
-                    .addComponent(jTextField67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAbdomenObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel100)
-                    .addComponent(jTextField68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAbdomemAus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel99)
-                    .addComponent(jTextField69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAbdomenPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -347,15 +373,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel104)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField70, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtEspaldaObs, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel103)
                             .addComponent(jLabel102))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField72, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField71, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtEspaldaPre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEspaldaAus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -364,15 +390,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel104)
-                    .addComponent(jTextField70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEspaldaObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel103)
-                    .addComponent(jTextField71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEspaldaAus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel102)
-                    .addComponent(jTextField72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEspaldaPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -396,15 +422,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel105)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtExtreObs, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel106)
                             .addComponent(jLabel107))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField75, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtExtrePre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtExtreAus, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -413,15 +439,15 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel105)
-                    .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtExtreObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel106)
-                    .addComponent(jTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtExtreAus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel107)
-                    .addComponent(jTextField75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtExtrePre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -462,10 +488,10 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jLabel10.setText("Pronostico");
 
-        jButton9.setText("Ingresar Diagnostico");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarDiagnostico.setText("Ingresar Diagnostico");
+        btnAgregarDiagnostico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnAgregarDiagnosticoActionPerformed(evt);
             }
         });
 
@@ -480,7 +506,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
-                            .addComponent(jButton9)
+                            .addComponent(btnAgregarDiagnostico)
                             .addComponent(jLabel8))
                         .addGap(57, 57, 57)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -517,7 +543,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButtonReservado1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jButton9)
+                .addComponent(btnAgregarDiagnostico)
                 .addGap(45, 45, 45))
         );
 
@@ -528,14 +554,14 @@ public class VentanaVisita extends javax.swing.JDialog {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Diagnóstico", jPanel9);
@@ -573,7 +599,7 @@ public class VentanaVisita extends javax.swing.JDialog {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -737,21 +763,34 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jTabbedPane2.addTab("Tratamiento Realizado", jPanel14);
 
+        btnGuardarVisita.setText("Registrar");
+        btnGuardarVisita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarVisitaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGuardarVisita)
+                .addGap(85, 85, 85))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardarVisita)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -774,11 +813,14 @@ public class VentanaVisita extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCursoEnfermedadActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-//        anamnesis.setMotivo(jTextAreaAnamnesis.getText());
-//        anamnesis.setCurso(jTextFieldCursoEnfermedad.getText());
-//        anamnesis.setEnferActual(jTextFieldEnfermedadActual.getText());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnIngresarAnamnesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAnamnesisActionPerformed
+
+        String motivo = jTextAreaAnamnesis.getText();
+        String curso = jTextFieldCursoEnfermedad.getText();
+        String enferActual = jTextFieldEnfermedadActual.getText();
+        
+       anamnesis = new Anamnesis(motivo, curso, enferActual);
+    }//GEN-LAST:event_btnIngresarAnamnesisActionPerformed
 
     private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
         // TODO add your handling code here:
@@ -792,9 +834,24 @@ public class VentanaVisita extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonReservado1MouseClicked
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btnAgregarDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDiagnosticoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+        
+        String preDia = jTextFieldDiagnosticoPre1.getText();
+        String defDia = jTextFieldDiagnosticoDef1.getText();
+        boolean pronostico = false;
+        if(jRadioButtonFavorable1.isSelected()){
+            pronostico = true;
+        }else if(jRadioButtonReservado1.isSelected()){
+            pronostico = false;
+        }
+        boolean solicitud = false;
+        if(jRadioButton2.isSelected()){
+            solicitud = true;
+        }
+        diagnostico = new Diagnostico(preDia, defDia, pronostico,solicitud);
+        
+    }//GEN-LAST:event_btnAgregarDiagnosticoActionPerformed
 
     private void jTableTratamiento1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTratamiento1MouseMoved
         // TODO add your handling code here:
@@ -819,6 +876,37 @@ public class VentanaVisita extends javax.swing.JDialog {
     private void jTable2MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable2MouseMoved
+
+    private void btnGuardarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVisitaActionPerformed
+        ///////////////
+        Visita visita = new Visita(1, anamnesis, datomed, examenF, diagnostico, tratamiento, trarea);
+        historia.getListaVisitas().insertarAlFinal(visita);
+        thisFrame.mostrarTabla(historia.getListaVisitas());
+        
+        
+    }//GEN-LAST:event_btnGuardarVisitaActionPerformed
+
+    private void btnIngresarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarExamenActionPerformed
+        // TODO add your handling code here:
+        String cabezaobs = txtCabezaObs.getText();
+        String cabezaaus = txtCabezaAus.getText();
+        String cabezaper=  txtCabezaPre.getText();
+        String torzoobs= txtTorsoObs.getText();
+        String torzoaus= txtTorsoAus.getText();
+        String torzoper= txtTorsoPre.getText();
+        String abdomenobs= txtAbdomenObs.getText();
+        String abdomenaus= txtAbdomemAus.getText();
+        String abdomenper= txtAbdomenPre.getText();
+        String espaldaobs= txtEspaldaObs.getText();
+        String espaldaaus= txtEspaldaAus.getText();
+        String espaldaper= txtEspaldaPre.getText();
+        String extreobs= txtExtreObs.getText();
+        String extreaus= txtExtreAus.getText();
+        String extreper= txtExtrePre.getText();
+        examenF = new ExamenFisicos(cabezaobs, cabezaaus, cabezaper, torzoobs, torzoaus, torzoper, abdomenobs, abdomenaus, abdomenper, espaldaobs, espaldaaus, espaldaper, extreobs, extreaus, extreper);
+        
+        
+    }//GEN-LAST:event_btnIngresarExamenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -850,7 +938,8 @@ public class VentanaVisita extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaVisita dialog = new VentanaVisita(new javax.swing.JFrame(), true);
+                HistoriaClinica historia = new HistoriaClinica(null, null, null, null);
+                VentanaVisita dialog = new VentanaVisita(new javax.swing.JFrame(), true, historia, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -863,11 +952,12 @@ public class VentanaVisita extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarDiagnostico;
+    private javax.swing.JButton btnGuardarVisita;
+    private javax.swing.JButton btnIngresarAnamnesis;
+    private javax.swing.JButton btnIngresarExamen;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
@@ -917,26 +1007,26 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTableTratamiento1;
     private javax.swing.JTextArea jTextAreaAnamnesis;
-    private javax.swing.JTextField jTextField64;
-    private javax.swing.JTextField jTextField65;
-    private javax.swing.JTextField jTextField66;
-    private javax.swing.JTextField jTextField67;
-    private javax.swing.JTextField jTextField68;
-    private javax.swing.JTextField jTextField69;
-    private javax.swing.JTextField jTextField70;
-    private javax.swing.JTextField jTextField71;
-    private javax.swing.JTextField jTextField72;
-    private javax.swing.JTextField jTextField73;
-    private javax.swing.JTextField jTextField74;
-    private javax.swing.JTextField jTextField75;
-    private javax.swing.JTextField jTextFieldAuscultacion1;
     private javax.swing.JTextField jTextFieldCursoEnfermedad;
     private javax.swing.JTextField jTextFieldDiagnosticoDef1;
     private javax.swing.JTextField jTextFieldDiagnosticoPre1;
     private javax.swing.JTextField jTextFieldDuracion1;
     private javax.swing.JTextField jTextFieldEnfermedadActual;
-    private javax.swing.JTextField jTextFieldObservacion1;
-    private javax.swing.JTextField jTextFieldPercucion1;
     private javax.swing.JTextField jTextFieldTratamiento1;
+    private javax.swing.JTextField txtAbdomemAus;
+    private javax.swing.JTextField txtAbdomenObs;
+    private javax.swing.JTextField txtAbdomenPre;
+    private javax.swing.JTextField txtCabezaAus;
+    private javax.swing.JTextField txtCabezaObs;
+    private javax.swing.JTextField txtCabezaPre;
+    private javax.swing.JTextField txtEspaldaAus;
+    private javax.swing.JTextField txtEspaldaObs;
+    private javax.swing.JTextField txtEspaldaPre;
+    private javax.swing.JTextField txtExtreAus;
+    private javax.swing.JTextField txtExtreObs;
+    private javax.swing.JTextField txtExtrePre;
+    private javax.swing.JTextField txtTorsoAus;
+    private javax.swing.JTextField txtTorsoObs;
+    private javax.swing.JTextField txtTorsoPre;
     // End of variables declaration//GEN-END:variables
 }

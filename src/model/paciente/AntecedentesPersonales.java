@@ -16,6 +16,14 @@ public class AntecedentesPersonales {
     private String tipoSangre;
     private String alergias;
 
+        public AntecedentesPersonales(String enferTra, int hospitalizaciones, int inmunizacion, String tipoSangre, String alergias) {
+            this.enferTra = enferTra;
+            this.hospitalizaciones = hospitalizaciones;
+            this.inmunizacion = inmunizacion;
+            this.tipoSangre = tipoSangre;
+            this.alergias = alergias;
+        }
+
         public String getEnferTra() {
             return enferTra;
         }
@@ -57,11 +65,11 @@ public class AntecedentesPersonales {
         }
 
         public AntecedentesPersonales() {
-            this.enferTra = null;
+            this.enferTra = "";
             this.hospitalizaciones = 0;
             this.inmunizacion = 0;
-            this.tipoSangre = null;
-            this.alergias = null;
+            this.tipoSangre = "";
+            this.alergias = "";
         }
 
         @Override

@@ -2,6 +2,7 @@
 package model.paciente;
 
 import estructura.ListaDoble;
+import java.time.LocalDate;
 
 
 public class HistoriaClinica {
@@ -11,11 +12,11 @@ public class HistoriaClinica {
     DatosPaciente datosPaciente;
     ListaDoble<Visita> listaVisitas;
 
-    public HistoriaClinica(AntecedentesFamiliares antecedentesFamiliares, AntecedentesPersonales antecedentesPersonales, DatosMedico datosMedico, DatosPaciente datosPaciente, ListaDoble<Visita> listaVisitas) {
+    public HistoriaClinica(AntecedentesFamiliares antecedentesFamiliares, AntecedentesPersonales antecedentesPersonales, DatosMedico datosMedico, DatosPaciente datosPaciente) {
         this.antecedentesFamiliares = antecedentesFamiliares;
         this.antecedentesPersonales = antecedentesPersonales;
         this.datosPaciente = datosPaciente;
-        this.listaVisitas = listaVisitas;
+        this.listaVisitas = new ListaDoble<Visita>();
     }
 
     public AntecedentesFamiliares getAntecedentesFamiliares() {
@@ -50,6 +51,13 @@ public class HistoriaClinica {
         this.listaVisitas = listaVisitas;
     }
     
+   public void nuevaVisita (int codigo,Anamnesis anamnesis, DatosMedico datosmedico,ExamenFisicos examenF, Diagnostico diagnostico,Tratamiento tratamiento,TratamientoRea tratamientorea  ){
+    
+//       Diagnostico diagnostico = new Diagnostico();
+//       Tratamiento tratamiento = new Tratamiento();
+//       TratamientoRea tratamientorea = new TratamientoRea();
+       Visita v = new Visita(codigo, anamnesis,datosmedico,examenF, diagnostico,tratamiento,tratamientorea);
+   }
   
 
     

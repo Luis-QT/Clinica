@@ -11,6 +11,20 @@ package model.paciente;
  */
 public class DatosPaciente {
     private String nombre;
+
+    public DatosPaciente(String nombre, String apellido, int edad, String sexo, int DNI, String direccion, String tipovivienda, String serviciosba, int telefono, String estadoTel, String religion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.DNI = DNI;
+        this.direccion = direccion;
+        this.tipovivienda = tipovivienda;
+        this.serviciosba = serviciosba;
+        this.telefono = telefono;
+        this.estadoTel = estadoTel;
+        this.religion = religion;
+    }
     private String apellido;
     private int edad;
     private String sexo;
@@ -111,17 +125,17 @@ public class DatosPaciente {
     }
 
     public DatosPaciente() {
-        this.nombre = null;
-        this.apellido = null;
+        this.nombre = "";
+        this.apellido = "";
         this.edad = 0;
-        this.sexo = null;
+        this.sexo = "";
         this.DNI = 0;
-        this.direccion = null;
-        this.tipovivienda = null;
-        this.serviciosba = null;
+        this.direccion = "";
+        this.tipovivienda = "";
+        this.serviciosba = "";
         this.telefono = 0;
-        this.estadoTel = null;
-        this.religion = null;
+        this.estadoTel = "";
+        this.religion = "";
     }
 
     @Override

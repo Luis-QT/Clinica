@@ -14,6 +14,12 @@ public class Anamnesis {
     private String curso;
     private String enferActual;
 
+    public Anamnesis(String motivo, String curso, String enferActual) {
+        this.motivo = motivo;
+        this.curso = curso;
+        this.enferActual = enferActual;
+    }
+    
     public String getMotivo() {
         return motivo;
     }

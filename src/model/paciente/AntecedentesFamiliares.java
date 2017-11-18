@@ -12,10 +12,10 @@ package model.paciente;
 public class AntecedentesFamiliares {
     private String estadop;
     private String hospp;
-    private String muertep;
+    private Boolean muertep;
     private String estadom;
     private String hospm;
-    private String muertem;
+    private Boolean muertem;
 
         public String isEstadop() {
             return estadop;
@@ -33,11 +33,11 @@ public class AntecedentesFamiliares {
             this.hospp = hospp;
         }
 
-        public String getMuertep() {
+        public Boolean getMuertep() {
             return muertep;
         }
 
-        public void setMuertep(String muertep) {
+        public void setMuertep(Boolean muertep) {
             this.muertep = muertep;
         }
 
@@ -57,21 +57,21 @@ public class AntecedentesFamiliares {
             this.hospm = hospm;
         }
 
-        public String getMuertem() {
+        public Boolean getMuertem() {
             return muertem;
         }
 
-        public void setMuertem(String muertem) {
+        public void setMuertem(Boolean muertem) {
             this.muertem = muertem;
         }
 
-        public AntecedentesFamiliares(String hospp, String muertep) {
+        public AntecedentesFamiliares(String hospp, Boolean muertep) {
           
             this.hospp = hospp;
             this.muertep = muertep;
         }
 
-        public AntecedentesFamiliares(String estadop, String hospp, String muertep, String estadom, String hospm, String muertem) {
+        public AntecedentesFamiliares(String estadop, String hospp, Boolean muertep, String estadom, String hospm, Boolean muertem) {
             this.estadop = estadop;
             this.hospp = hospp;
             this.muertep = muertep;
@@ -81,7 +81,7 @@ public class AntecedentesFamiliares {
         }
         
         
-        public AntecedentesFamiliares(String estadom, String hospm, String muertem) {
+        public AntecedentesFamiliares(String estadom, String hospm, Boolean muertem) {
             this.estadom = estadom;
             this.hospm = hospm;
             this.muertem = muertem;
@@ -90,10 +90,10 @@ public class AntecedentesFamiliares {
         public AntecedentesFamiliares() {
             this.estadop = "";
             this.hospp = "";
-            this.muertep = "";
+            this.muertep = false;
             this.estadom = "";
             this.hospm = "";
-            this.muertem = "";
+            this.muertem = false;
         }
         
         @Override

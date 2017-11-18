@@ -30,21 +30,39 @@ public class ExamenFisicos {
     private String extreper;
 
     public ExamenFisicos() {
-        this.cabezaobs = null;
-        this.cabezaaus = null;
-        this.cabezaper = null;
-        this.torzoobs = null;
-        this.torzoaus = null;
-        this.torzoper = null;
-        this.abdomenobs = null;
-        this.abdomenaus = null;
-        this.abdomenper = null;
-        this.espaldaobs = null;
-        this.espaldaaus = null;
-        this.espaldaper = null;
-        this.extreobs = null;
-        this.extreaus = null;
-        this.extreper = null;
+        this.cabezaobs = "";
+        this.cabezaaus = "";
+        this.cabezaper = "";
+        this.torzoobs = "";
+        this.torzoaus = "";
+        this.torzoper = "";
+        this.abdomenobs = "";
+        this.abdomenaus = "";
+        this.abdomenper = "";
+        this.espaldaobs = "";
+        this.espaldaaus = "";
+        this.espaldaper = "";
+        this.extreobs = "";
+        this.extreaus = "";
+        this.extreper = "";
+    }
+
+    public ExamenFisicos(String cabezaobs, String cabezaaus, String cabezaper, String torzoobs, String torzoaus, String torzoper, String abdomenobs, String abdomenaus, String abdomenper, String espaldaobs, String espaldaaus, String espaldaper, String extreobs, String extreaus, String extreper) {
+        this.cabezaobs = cabezaobs;
+        this.cabezaaus = cabezaaus;
+        this.cabezaper = cabezaper;
+        this.torzoobs = torzoobs;
+        this.torzoaus = torzoaus;
+        this.torzoper = torzoper;
+        this.abdomenobs = abdomenobs;
+        this.abdomenaus = abdomenaus;
+        this.abdomenper = abdomenper;
+        this.espaldaobs = espaldaobs;
+        this.espaldaaus = espaldaaus;
+        this.espaldaper = espaldaper;
+        this.extreobs = extreobs;
+        this.extreaus = extreaus;
+        this.extreper = extreper;
     }
     
     

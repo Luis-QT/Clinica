@@ -48,10 +48,17 @@ public class Tratamiento {
     }
 
     public Tratamiento() {
-        this.traTipo = null;
-        this.duracion = null;
-        this.cantidad = null;
-        this.tratamiento = null;
+        this.traTipo = "";
+        this.duracion = "";
+        this.cantidad = "";
+        this.tratamiento = "";
+    }
+
+    public Tratamiento(String traTipo, String duracion, String cantidad, String tratamiento) {
+        this.traTipo = traTipo;
+        this.duracion = duracion;
+        this.cantidad = cantidad;
+        this.tratamiento = tratamiento;
     }
 
     

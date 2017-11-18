@@ -14,6 +14,7 @@ import model.paciente.AntecedentesPersonales;
 import model.paciente.DatosMedico;
 import model.paciente.DatosPaciente;
 import model.paciente.Diagnostico;
+import model.paciente.ExamenFisicos;
 import model.paciente.HistoriaClinica;
 import model.paciente.Paciente;
 import model.paciente.Tratamiento;
@@ -37,7 +38,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     ListaDoble<Visita> listaVisita ;
     public FrameHistoriaClinica(Paciente paciente ,ListaDoble<Visita> listaVisita) {
         initComponents();
-        this.listaVisita = listaVisita;
+        this.listaVisita = new ListaDoble<Visita>();
         this.paciente = paciente;
         llenarDatos();
     }
@@ -48,14 +49,12 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         initComponents();
          this.paciente = paciente;
     }
-    Anamnesis anamnesis = new Anamnesis();
+    
     AntecedentesFamiliares antefa = new AntecedentesFamiliares();
     AntecedentesPersonales antepe = new AntecedentesPersonales();
-    DatosMedico datomed = new DatosMedico();
+    
     DatosPaciente datopa = new DatosPaciente();
-    Diagnostico diagnostico = new Diagnostico();
-    Tratamiento tratamiento = new Tratamiento();
-    TratamientoRea trarea = new TratamientoRea();
+    
    
     
     @SuppressWarnings("unchecked")
@@ -290,10 +289,8 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                                 .addComponent(jTexApellido))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(40, 40, 40)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel45)
                             .addComponent(jLabel36)
@@ -676,6 +673,11 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Botones"));
 
         btnAgregarVisita.setText("Agregar Visita");
+        btnAgregarVisita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarVisitaActionPerformed(evt);
+            }
+        });
 
         btnVerVisita.setText("Ver Visita");
         btnVerVisita.addActionListener(new java.awt.event.ActionListener() {
@@ -885,11 +887,27 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnVerVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerVisitaActionPerformed
-        int posicion = tblVisitas.getSelectedRow();
-        Visita visita = listaVisita.getDato(posicion);
-        VentanaVisita ventanaVisita = new VentanaVisita(this, rootPaneCheckingEnabled);
-        ventanaVisita.setVisible(true);
+        try{
+            int posicion = tblVisitas.getSelectedRow();
+            
+//            Visita visita = new Visita(posicion, anamnesis, datomed, new ExamenFisicos(), diagnostico, tratamiento, trarea);
+//            Visita visita = listaVisita.getDato(posicion);
+//            System.out.println("fagfgafd");
+            VentanaVisita ventanaVisita = new VentanaVisita(this, true,paciente.getHistorial(), this);
+            ventanaVisita.setVisible(true);
+        }catch(Exception e){
+            System.out.println(e);
+                    
+        }
     }//GEN-LAST:event_btnVerVisitaActionPerformed
+
+    private void btnAgregarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVisitaActionPerformed
+        // TODO add your handling code here:
+//        VentanaVisita ventanaVisita = new VentanaVisita(this, true,, this);
+//        ventanaVisita.setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnAgregarVisitaActionPerformed
 
      public void mostrarTabla(ListaDoble<Visita> lista) {
         DefaultTableModel dtm = (DefaultTableModel) tblVisitas.getModel();
