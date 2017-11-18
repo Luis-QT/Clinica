@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testguitest;
+package inicio;
 //
 /**
  *
@@ -15,7 +15,10 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
+        this.setUndecorated(true);
         initComponents();
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -30,12 +33,13 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAdmi = new javax.swing.JButton();
+        btnPersonal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(255, 255, 255));
@@ -50,6 +54,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 325, 388, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 465, 750));
 
@@ -68,13 +80,23 @@ public class Principal extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 650, 600, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/admi.png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/admi2.png"))); // NOI18N
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 196, 55));
+        btnAdmi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/admi.png"))); // NOI18N
+        btnAdmi.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/admi2.png"))); // NOI18N
+        btnAdmi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdmiActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, 196, 55));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/pers.png"))); // NOI18N
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/pers2.png"))); // NOI18N
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 196, 55));
+        btnPersonal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/pers.png"))); // NOI18N
+        btnPersonal.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/pers2.png"))); // NOI18N
+        btnPersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonalActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 196, 55));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 600, 750));
 
@@ -82,6 +104,23 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void btnAdmiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmiActionPerformed
+        // TODO add your handling code here:
+        LoginAdministracion logAdmi = new LoginAdministracion();
+        logAdmi.setVisible(true);
+    }//GEN-LAST:event_btnAdmiActionPerformed
+
+    private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
+        // TODO add your handling code here:
+        LoginPersonal logPer = new LoginPersonal();
+        logPer.setVisible(true);
+    }//GEN-LAST:event_btnPersonalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,12 +158,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAdmi;
+    private javax.swing.JButton btnPersonal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
