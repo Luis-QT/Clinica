@@ -4,12 +4,12 @@ package model.paciente;
 public class Visita {
     Anamnesis anamnecis;
     DatosMedico datosMedico;
-    ExamenFisico examenFisico;
+    ExamenFisicos examenFisico;
     Diagnostico diagnostico;
     Tratamiento tratamiento;
     TratamientoRea tratamientoRea;
 
-    public Visita(Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisico examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
+    public Visita(Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
         this.examenFisico = examenFisico;
@@ -34,11 +34,11 @@ public class Visita {
         this.datosMedico = datosMedico;
     }
 
-    public ExamenFisico getExamenFisico() {
+    public ExamenFisicos getExamenFisico() {
         return examenFisico;
     }
 
-    public void setExamenFisico(ExamenFisico examenFisico) {
+    public void setExamenFisico(ExamenFisicos examenFisico) {
         this.examenFisico = examenFisico;
     }
 
