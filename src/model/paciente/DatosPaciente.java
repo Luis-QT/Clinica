@@ -11,8 +11,21 @@ package model.paciente;
  */
 public class DatosPaciente {
     private String nombre;
-
-    public DatosPaciente(String nombre, String apellido, int edad, String sexo, int DNI, String direccion, String tipovivienda, String serviciosba, int telefono, String estadoTel, String religion) {
+    private String apellido;
+    private int edad;
+    private boolean sexo;
+    private int DNI;
+    private String direccion;
+    private boolean tipovivienda;
+    private int telefonoFijo;
+    private int telefonoCelular;
+    private String religion;
+    private String tipoSangre;
+    private String alergia;
+    private String email;
+ 
+    public DatosPaciente( String nombre, String apellido, int edad, boolean sexo, int DNI, String direccion, boolean tipovivienda, int telefonoFijo, int telefonoCelular, String religion, String tipoSangre, String alergia, String email) {
+      
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -20,37 +33,38 @@ public class DatosPaciente {
         this.DNI = DNI;
         this.direccion = direccion;
         this.tipovivienda = tipovivienda;
-        this.serviciosba = serviciosba;
-        this.telefono = telefono;
-        this.estadoTel = estadoTel;
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoCelular = telefonoCelular;
         this.religion = religion;
+        this.tipoSangre = tipoSangre;
+        this.alergia = alergia;
+        this.email = email;
     }
-    private String apellido;
-    private int edad;
-    private String sexo;
-    private int DNI;   
-    private String direccion;
-    private String tipovivienda;
-    private String serviciosba;
-    private int telefono;
-    private String estadoTel;
-    private String religion;
+    
+    public DatosPaciente(String nombre, String apellido, int edad, boolean sexo, int DNI,int telefonoFijo, int telefonoCelular, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.DNI = DNI;
+        this.direccion = "";
+        this.tipovivienda = false;
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoCelular = telefonoCelular;
+        this.religion = "";
+        this.tipoSangre = "";
+        this.alergia = "";
+        this.email = email;
+    }
+    
+   
 
-    public String getServiciosba() {
-        return serviciosba;
+    @Override
+    public String toString() {
+        return "datosPaciente{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", sexo=" + sexo + ", DNI=" + DNI + ", direccion=" + direccion + ", telefono Fijo=" + telefonoFijo + ", religion=" + religion + '}';
     }
-
-    public void setServiciosba(String serviciosba) {
-        this.serviciosba = serviciosba;
-    }
-
-    public String getTipovivienda() {
-        return tipovivienda;
-    }
-
-    public void setTipovivienda(String tipovivienda) {
-        this.tipovivienda = tipovivienda;
-    }
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -76,11 +90,11 @@ public class DatosPaciente {
         this.edad = edad;
     }
 
-    public String isSexo() {
+    public boolean isSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(boolean sexo) {
         this.sexo = sexo;
     }
 
@@ -100,20 +114,28 @@ public class DatosPaciente {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
-        return telefono;
+    public boolean isTipovivienda() {
+        return tipovivienda;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setTipovivienda(boolean tipovivienda) {
+        this.tipovivienda = tipovivienda;
     }
 
-    public String isEstadoTel() {
-        return estadoTel;
+    public int getTelefonoFijo() {
+        return telefonoFijo;
     }
 
-    public void setEstadoTel(String estadoTel) {
-        this.estadoTel = estadoTel;
+    public void setTelefonoFijo(int telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
+    }
+
+    public int getTelefonoCelular() {
+        return telefonoCelular;
+    }
+
+    public void setTelefonoCelular(int telefonoCelular) {
+        this.telefonoCelular = telefonoCelular;
     }
 
     public String getReligion() {
@@ -124,25 +146,32 @@ public class DatosPaciente {
         this.religion = religion;
     }
 
-    public DatosPaciente() {
-        this.nombre = "";
-        this.apellido = "";
-        this.edad = 0;
-        this.sexo = "";
-        this.DNI = 0;
-        this.direccion = "";
-        this.tipovivienda = "";
-        this.serviciosba = "";
-        this.telefono = 0;
-        this.estadoTel = "";
-        this.religion = "";
+    public String getTipoSangre() {
+        return tipoSangre;
     }
 
-    @Override
-    public String toString() {
-        return "datosPaciente{" + "nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", sexo=" + sexo + ", DNI=" + DNI + ", direccion=" + direccion + ", telefono=" + telefono + ", religion=" + religion + '}';
+    public void setTipoSangre(String tipoSangre) {
+        this.tipoSangre = tipoSangre;
     }
+
+    public String getAlergia() {
+        return alergia;
+    }
+
+    public void setAlergia(String alergia) {
+        this.alergia = alergia;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     
-    
+
+  
     
 }

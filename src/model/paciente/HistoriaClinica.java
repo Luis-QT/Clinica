@@ -51,13 +51,19 @@ public class HistoriaClinica {
         this.listaVisitas = listaVisitas;
     }
     
-   public void nuevaVisita (int codigo,Anamnesis anamnesis, DatosMedico datosmedico,ExamenFisicos examenF, Diagnostico diagnostico,Tratamiento tratamiento,TratamientoRea tratamientorea  ){
+    public void nuevaVisita (int codigo,Anamnesis anamnesis, DatosMedico datosmedico,ExamenFisicos examenF, Diagnostico diagnostico,Tratamiento tratamiento,TratamientoRea tratamientorea  ){
        Visita v = new Visita(codigo, anamnesis,datosmedico,examenF, diagnostico,tratamiento,tratamientorea);
        listaVisitas.insertarAlFinal(v);
-   }
-  
-
+    }
     
+    public void agregarDatosPaciente(){
+        
+    }
+    
+    public void agregarAntecedentes(){
+        
+    }
+      
     
     
 }

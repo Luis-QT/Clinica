@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Visita {
 
     int codigo;
+    String servicio;
     LocalDate fecha;
     Anamnesis anamnecis;
     DatosMedico datosMedico;

@@ -20,13 +20,13 @@ public class MainMedicoEspecialista {
         // TODO code application logic here
          MedicoEspecialista medicoEspecialista = new MedicoEspecialista("Cardiólogo","Colegiatura","1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
 //
-         Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A04","Los Olivos","Cristiano");
-         Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay","A05","Los Olivos","Cristiano");
-         Paciente p3 = new Paciente(0, "Miriam", "Miriam", 3333, true, 21, 98766, 64564, "", 2, "A", "No hay","A06","Los Olivos","Cristiano");
-         Paciente p4 = new Paciente(0, "Mizu", "Mizu", 4444, true, 21, 98766, 64564, "", 2, "A", "No hay","A07","Los Olivos","Cristiano");
-         Paciente p5 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A09","Los Olivos","Cristiano");
-         Paciente p6 = new Paciente(0, "LuisRoberto", "LuisRoberto", 6666, true, 21, 98766, 64564, "", 2, "A", "No hay","A09","Los Olivos","Cristiano");
-         Paciente p7 = new Paciente(0, "LuisJose", "LuisJose", 5555, true, 21, 98766, 64564, "", 2, "A", "No hay","A08","Los Olivos","Cristiano");
+         Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A04","Los Olivos","Cristiano",true);
+         Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay","A05","Los Olivos","Cristiano",false);
+         Paciente p3 = new Paciente(0, "Miriam", "Miriam", 3333, true, 21, 98766, 64564, "", 2, "A", "No hay","A06","Los Olivos","Cristiano",false);
+         Paciente p4 = new Paciente(0, "Mizu", "Mizu", 4444, true, 21, 98766, 64564, "", 2, "A", "No hay","A07","Los Olivos","Cristiano",true);
+         Paciente p5 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A09","Los Olivos","Cristiano",false);
+         Paciente p6 = new Paciente(0, "LuisRoberto", "LuisRoberto", 6666, true, 21, 98766, 64564, "", 2, "A", "No hay","A09","Los Olivos","Cristiano",true);
+         Paciente p7 = new Paciente(0, "LuisJose", "LuisJose", 5555, true, 21, 98766, 64564, "", 2, "A", "No hay","A08","Los Olivos","Cristiano",false);
          
         
          
@@ -35,13 +35,16 @@ public class MainMedicoEspecialista {
          listav1.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),235, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
          listav1.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),365, new Anamnesis("salud13", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
          listav1.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),788, new Anamnesis("salud14", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
-        ListaDoble<Visita> listav2 = new ListaDoble<Visita>();
+         
+         ListaDoble<Visita> listav2 = new ListaDoble<Visita>();
          listav2.insertarAlFinal(new Visita(LocalDate.of(2010, 10,2),854, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
          listav2.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),235, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
+         
          ListaDoble<Visita> listav3 = new ListaDoble<Visita>();
          listav3.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),365, new Anamnesis("salud13", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
          listav3.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),788, new Anamnesis("salud14", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
          listav3.insertarAlFinal(new Visita(LocalDate.of(2013, 10,2),854, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
+         
          ListaDoble<Visita> listav4 = new ListaDoble<Visita>();
          listav4.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),235, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));
          listav4.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),365, new Anamnesis("salud13", "curso1", "enferact1"), new DatosMedico(), new ExamenFisicos(), new Diagnostico(), new Tratamiento(), new TratamientoRea()));

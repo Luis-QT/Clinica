@@ -6,10 +6,12 @@
 package controlador.medicoEspecialista;
 
 import controlador.Controller;
+import controlador.historial.HistorialController;
 import estructura.ListaDoble;
 import factory.MySQLConnectionFactory;
 import gui.medicoEspecialista.FrameMedicoEspecialista;
 import gui.medicoGeneral.FrameHistoriaClinica;
+import gui.medicoGeneral.VentanaVisita;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -18,10 +20,6 @@ import javax.swing.JOptionPane;
 import model.empleado.MedicoEspecialista;
 import model.paciente.Paciente;
 
-/**
- *
- * @author Pechito
- */
 public class MedicoEspecialistaController implements Controller,ActionListener{
     private FrameMedicoEspecialista vista;
     private FrameHistoriaClinica frameHistorial;
@@ -79,7 +77,7 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             vista.txtBuscar.setText("");
         }catch(Exception e){
             System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
+            JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
         }
         
     }
@@ -98,22 +96,27 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
                 JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
         }
     }
+   
 
     private void formVerHistorial() {
          try{
-             ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
+            ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
             MedicoEspecialista medicoE = vista.getMedicoE();
+            
             int pos = vista.tblPaciente.getSelectedRow();
             Paciente paciente = listaPacientes.getDato(pos);
-             System.out.println("pos : " + pos); 
-            frameHistorial = new FrameHistoriaClinica(paciente);
-            frameHistorial.setVisible(true);
+            
+            System.out.println("pos : " + pos); 
+             System.out.println("paciente: " + paciente);
+            this.frameHistorial = new FrameHistoriaClinica(paciente);
+            this.frameHistorial.setVisible(true);
+            new HistorialController( frameHistorial , new VentanaVisita(frameHistorial, true, paciente.getHistorial())).index();
+            
             
         }catch(Exception e){
             System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
         }
-        
     }
 
     private void formBuscar() {

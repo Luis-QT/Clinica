@@ -9,6 +9,7 @@ package model.paciente;
  *
  * @author F20LAB303-XXE
  */
+
 public class DatosMedico {
     private String nombre;
     private String apellido;

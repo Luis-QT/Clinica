@@ -10,37 +10,42 @@ public class Paciente extends Persona {
     String codigo;
     String direccion;
     String religion;
-
-    
-    
+    boolean tipoVivienda;
     HistoriaClinica historial;
-   
+    
+   ///CREO QUE NADIE LO USA
     public Paciente(int id, String nombre, String apellido, int dni, 
-            boolean sexo, int edad, int telefonoCasa, int telefonoCelular, 
+            boolean sexo, int edad, int telefonoFijo, int telefonoCelular, 
             String email, int softDelete,String tipoSangre, String alergias,
-            String codigo, String direccion, String religion) {
+            String codigo, String direccion, String religion, boolean tipovivienda) {
         
-        super(id, nombre, apellido, dni, sexo, edad, telefonoCasa, telefonoCelular, email, softDelete);
+        super(id, nombre, apellido, dni, sexo, edad, telefonoFijo, 
+                telefonoCelular, email, softDelete);
         this.tipoSangre = tipoSangre;
         this.alergia = alergias;
         this.codigo = codigo;
         this.direccion =  direccion;
         this.religion = religion;
-        historial = new HistoriaClinica(new AntecedentesFamiliares(), new AntecedentesPersonales(), new DatosMedico(), new DatosPaciente());
+        historial = new HistoriaClinica(new AntecedentesFamiliares(), 
+                    new AntecedentesPersonales(), new DatosMedico(), 
+                   null);
     }
     
+    //CONSTRUCTOR QUE USA RECEPCIÓN
     public Paciente(int id, String nombre, String apellido, int dni, 
-            boolean sexo, int edad, int telefonoCasa, int telefonoCelular, 
+            boolean sexo, int edad, int telefonoFijo, int telefonoCelular, 
             String email, int softDelete,String tipoSangre, String alergias,
             String codigo) {
         
-        super(id, nombre, apellido, dni, sexo, edad, telefonoCasa, telefonoCelular, email, softDelete);
+        super(id, nombre, apellido, dni, sexo, edad, telefonoFijo, telefonoCelular, email, softDelete);
         this.tipoSangre = tipoSangre;
         this.alergia = alergias;
         this.codigo = codigo;
         this.direccion =  direccion;
         this.religion = religion;
-        historial = new HistoriaClinica(new AntecedentesFamiliares(), new AntecedentesPersonales(), new DatosMedico(), new DatosPaciente());
+        historial =  new HistoriaClinica(new AntecedentesFamiliares(), 
+                    new AntecedentesPersonales(), new DatosMedico(), 
+                    null);
     }
     
     public String getReligion() {
@@ -75,9 +80,9 @@ public class Paciente extends Persona {
         return historial;
     }
     
-    public void setHistorial (){
-        historial.getAntecedentesFamiliares();
-        historial.getAntecedentesPersonales();
-        historial.getListaVisitas();
+    public Visita obtenerVisita(int pos){
+        return this.historial.listaVisitas.getDato(pos);
     }
+
+  
 }
