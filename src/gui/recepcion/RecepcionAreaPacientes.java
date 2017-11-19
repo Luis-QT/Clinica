@@ -24,7 +24,11 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     /**
      * Creates new form RecepcionArea
      */
-    Recepcionista recepcionista;
+    private Recepcionista recepcionista;
+
+    public Recepcionista getRecepcionista() {
+        return recepcionista;
+    }
     ListaDoble<Paciente> listaPaciente;
     int indice = -1;
     int intemporal = -2;
@@ -57,7 +61,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPacientes = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
@@ -115,13 +119,13 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Paneles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 80, 50));
+        jPanel4.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 80, 50));
 
         btnGuardar.setText("Guardar");
         jPanel4.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 80, 50));
@@ -271,13 +275,13 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         RecepcionAgregar AgregarVentana = new RecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, this);
         AgregarVentana.setVisible(true);
 
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
         // TODO add your handling code here:
@@ -346,9 +350,11 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         String palabraBuscar = txtBuscar.getText();
         if (chxApellido.isSelected()) {
             ListaDoble<Paciente> sp = recepcionista.buscarporApellido(palabraBuscar);
+            listaPaciente = sp;
             refrescartabla(sp);
         } else if (chxDni.isSelected()) {
             ListaDoble<Paciente> sp = recepcionista.buscarporDNI(Integer.parseInt(palabraBuscar));
+            listaPaciente = sp;
             refrescartabla(sp);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion");
@@ -360,6 +366,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
         // TODO add your handling code here:
         tblPacientes.setEnabled(true);
+        listaPaciente = recepcionista.getListaPaciente();
         refrescartabla(listaPaciente);
     }//GEN-LAST:event_btnRefrescarActionPerformed
 
@@ -421,6 +428,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
@@ -431,7 +439,6 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cboOrdenar;
     private javax.swing.JCheckBox chxApellido;
     private javax.swing.JCheckBox chxDni;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

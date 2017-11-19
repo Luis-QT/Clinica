@@ -50,6 +50,10 @@ public class Recepcionista extends EmpleadoUser {
         return listaPaciente;
     }
 
+    public void insertarPAciente(Paciente paciente){
+        listaPaciente.insertarAlFinal(paciente);
+        paciente.setSoftDelete(2);
+    }
     public void agregarPaciente(int id, String nombre, String apellido,
             int dni, boolean sexo, int edad, int telefonoCasa, int tefefonoCelular, String email, String tipoSangre, String alergias, String codigoP) {
         Paciente paciente = new Paciente(id, nombre, apellido, dni, sexo, edad, telefonoCasa, tefefonoCelular, email, 3, tipoSangre, alergias, codigoP);

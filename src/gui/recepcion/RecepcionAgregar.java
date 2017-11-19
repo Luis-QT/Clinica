@@ -24,7 +24,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
     Recepcionista recepcionista;
     RecepcionAreaPacientes aThis;
 
-    RecepcionAgregar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, RecepcionAreaPacientes aThis) {
+    public RecepcionAgregar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, RecepcionAreaPacientes aThis) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
