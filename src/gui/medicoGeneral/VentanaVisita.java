@@ -147,6 +147,8 @@ public class VentanaVisita extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbxServicio = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -749,7 +751,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addGap(6, 6, 6)
-                .addComponent(txtNombreMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNombreMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
@@ -771,20 +773,26 @@ public class VentanaVisita extends javax.swing.JDialog {
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("Visita");
+        jLabel4.setText("Inspección");
 
         jLabel2.setText("Servicio");
 
-        cbxServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Médico Especialista", "Médico General" }));
+        cbxServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tratamiento", "Consulta" }));
+
+        jLabel5.setText("ID");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(111, 111, 111)
+                .addGap(91, 91, 91)
                 .addComponent(jLabel2)
                 .addGap(37, 37, 37)
                 .addComponent(cbxServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -800,7 +808,10 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addGap(28, 28, 28))
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1040,6 +1051,7 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel8;
@@ -1077,6 +1089,7 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTableTratamiento1;
     private javax.swing.JTextArea jTextAreaAnamnesis;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldCursoEnfermedad;
     private javax.swing.JTextField jTextFieldDiagnosticoDef1;
     private javax.swing.JTextField jTextFieldDiagnosticoPre1;
