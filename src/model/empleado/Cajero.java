@@ -37,9 +37,9 @@ public class Cajero extends EmpleadoUser{
         listaPaciente.insertarAlFinal(paciente);
     }
     
-     public void agregarMonto(Monto monto){
-        listaMonto.insertarAlFinal(monto);
-    }
+//     public void agregarMonto(Monto monto){
+//        listaMonto.insertarAlFinal(monto);
+//    }
     
   
 
