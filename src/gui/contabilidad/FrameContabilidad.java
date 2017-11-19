@@ -5,9 +5,7 @@ import gui.triaje.FrameTriaje;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.empleado.Cajero;
@@ -34,8 +32,8 @@ public class FrameContabilidad extends javax.swing.JFrame {
     private Cajero Caja;
 
     FrameTriaje thisFrameTriaje;
-    
-    public FrameContabilidad(Cajero Caja, FrameTriaje thisFrameTriaje) {
+    //FrameTriaje thisFrameTriaje
+    public FrameContabilidad(Cajero Caja) {
         initComponents();
         this.Caja = Caja;
         this.listaPacientes = Caja.getListaPaciente();
@@ -46,6 +44,57 @@ public class FrameContabilidad extends javax.swing.JFrame {
         mostrarTablaServicios(listaServicios);
         
     }
+    public void setListaPacientes(ListaDoble<Paciente> listaPacientes) {
+        this.listaPacientes = listaPacientes;
+    }
+    
+    public ListaDoble<Paciente> getListaPacientes() {
+        return listaPacientes;
+    }
+    
+    public void setListaServicios(ListaDoble<Servicios> listaServicioses) {
+        this.listaServicios = listaServicios;
+    }
+    
+    public ListaDoble<Servicios> getListaServicios() {
+        return listaServicios;
+    }
+    
+    public void setListaMonto(ListaDoble<Monto> listaServicioses) {
+        this.listaMonto = listaMonto;
+    }
+    
+    public ListaDoble<Monto> getListaMonto() {
+        return listaMonto;
+    }
+    
+     public void setListaSeleccionGeneral(ListaDoble<Servicios> listaSeleccionGeneral) {
+        this.listaSeleccionGeneral = listaSeleccionGeneral;
+    }
+    
+    public ListaDoble<Servicios> getListaSeleccionGeneral() {
+        return listaSeleccionGeneral;
+    }
+    
+    public void setListaConsultaServicios(ListaDoble<Servicios> listaConsultaServicios) {
+        this.listaConsultaServicios = listaConsultaServicios;
+    }
+    
+    public ListaDoble<Servicios> getListaConsultaServicios() {
+        return listaConsultaServicios;
+    }
+    public void setListaLaboratorioServicios(ListaDoble<Servicios> listaLaboratorioServicios) {
+        this.listaLaboratorioServicios = listaLaboratorioServicios;
+    }
+    
+    public ListaDoble<Servicios> getListaLaboratorioServicios() {
+        return listaLaboratorioServicios;
+    }
+    
+    public Cajero getCaja() {
+        return this.Caja;
+    }
+    
     
    
 
@@ -101,7 +150,6 @@ public class FrameContabilidad extends javax.swing.JFrame {
         txtSalida = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtMontoActual = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +185,11 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
         jLabel2.setText("Pago:");
 
+        txtPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPagoActionPerformed(evt);
+            }
+        });
         txtPago.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPagoKeyReleased(evt);
@@ -463,7 +516,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -480,33 +533,31 @@ public class FrameContabilidad extends javax.swing.JFrame {
         jLabel7.setText("Monto Actual : ");
 
         txtMontoActual.setEditable(false);
-
-        jButton4.setText("Registrar");
+        txtMontoActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMontoActualActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMontoActual))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5))
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMontoActual))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton4)))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -524,8 +575,6 @@ public class FrameContabilidad extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtMontoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -545,10 +594,10 @@ public class FrameContabilidad extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 159, Short.MAX_VALUE))
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -580,42 +629,35 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
     private void btnElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirActionPerformed
 
-//        int i = TablaServicios.getSelectedRow();
-//        Servicios set = listaServicios.getDato(i);
-//        
-//        auxiliar.insertarAlFinal(set);
-//        
-//        System.out.println("1");
-//        mostrarTablaSeleccion(listaSeleccionGeneral);
-        if (rbtnConsulta.isSelected()) {
-            int t = TablaServicios.getSelectedRow();
-            Servicios set = listaConsultaServicios.getDato(t);
-
-            listaSeleccionGeneral.insertarAlFinal(set);
-
-            
-            mostrarTablaSeleccion(listaSeleccionGeneral);
-        } else if (rbtnLaboratorio.isSelected()) {
-
-            int t = TablaServicios.getSelectedRow();
-            Servicios set = listaLaboratorioServicios.getDato(t);
-
-            listaSeleccionGeneral.insertarAlFinal(set);
-
-         
-            mostrarTablaSeleccion(listaSeleccionGeneral);
-
-        } else {
-            int i = TablaServicios.getSelectedRow();
-            Servicios set = listaServicios.getDato(i);
-
-            listaSeleccionGeneral.insertarAlFinal(set);
-
-            
-            mostrarTablaSeleccion(listaSeleccionGeneral);
-
-        }
-        //llama :V 
+//        if (rbtnConsulta.isSelected()) {
+//            int t = TablaServicios.getSelectedRow();
+//            Servicios set = listaConsultaServicios.getDato(t);
+//
+//            listaSeleccionGeneral.insertarAlFinal(set);
+//
+//            
+//            mostrarTablaSeleccion(listaSeleccionGeneral);
+//        } else if (rbtnLaboratorio.isSelected()) {
+//
+//            int t = TablaServicios.getSelectedRow();
+//            Servicios set = listaLaboratorioServicios.getDato(t);
+//
+//            listaSeleccionGeneral.insertarAlFinal(set);
+//
+//         
+//            mostrarTablaSeleccion(listaSeleccionGeneral);
+//
+//        } else {
+//            int i = TablaServicios.getSelectedRow();
+//            Servicios set = listaServicios.getDato(i);
+//
+//            listaSeleccionGeneral.insertarAlFinal(set);
+//
+//            
+//            mostrarTablaSeleccion(listaSeleccionGeneral);
+//
+//        }
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnElegirActionPerformed
@@ -627,69 +669,69 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
     private void rbtnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnConsultaActionPerformed
         //ListaDoble<Servicios>  aux = new ListaDoble<>();
-        if (rbtnConsulta.isSelected()) {
-            listaConsultaServicios = Caja.ordenarporConsultas();
-            mostrarTablaServicios(listaConsultaServicios);
-        }
+//        if (rbtnConsulta.isSelected()) {
+//            listaConsultaServicios = Caja.ordenarporConsultas();
+//            mostrarTablaServicios(listaConsultaServicios);
+//        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnConsultaActionPerformed
 
     private void rbtnLaboratorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnLaboratorioActionPerformed
         
-        if (rbtnLaboratorio.isSelected()) {
-            listaLaboratorioServicios = Caja.ordenarporLaboratorio();
-            mostrarTablaServicios(listaLaboratorioServicios);
-        }
+//        if (rbtnLaboratorio.isSelected()) {
+//            listaLaboratorioServicios = Caja.ordenarporLaboratorio();
+//            mostrarTablaServicios(listaLaboratorioServicios);
+//        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnLaboratorioActionPerformed
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
 
-        String palabra = txtBuscar.getText();
-        
-        ListaDoble<Servicios> p = Caja.bucarServicio(palabra);
-        
-           listaServicios = p;  
-               mostrarTablaServicios(listaServicios);
-        
-        //
-        
+//        String palabra = txtBuscar.getText();
+//        
+//        ListaDoble<Servicios> p = Caja.bucarServicio(palabra);
+//        
+//           listaServicios = p;  
+//               mostrarTablaServicios(listaServicios);
+//        
+//        //
+//        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void btnPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrecioActionPerformed
-
-        listaServicios = Caja.ordenarPrecios();
-        mostrarTablaServicios(listaServicios);
+//
+//        listaServicios = Caja.ordenarPrecios();
+//        mostrarTablaServicios(listaServicios);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPrecioActionPerformed
 
     private void btnDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeshacerActionPerformed
 
-         int i = TablaSeleccion.getSelectedRow();
-        listaSeleccionGeneral.eliminarPos(i);
-        mostrarTablaSeleccion(listaSeleccionGeneral);
+//         int i = TablaSeleccion.getSelectedRow();
+//        listaSeleccionGeneral.eliminarPos(i);
+//        mostrarTablaSeleccion(listaSeleccionGeneral);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeshacerActionPerformed
 
     private void btnGenerarMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarMontoActionPerformed
    
-        int cant = TablaSeleccion.getRowCount();
-        int i = 0;
-        Float suma = 0F;
-        while (cant > i) {
-
-            suma = suma + ((Float) TablaSeleccion.getValueAt(i, 1) * (Float) TablaSeleccion.getValueAt(i, 2));
-
-            i++;
-        }
+//        int cant = TablaSeleccion.getRowCount();
+//        int i = 0;
+//        Float suma = 0F;
+//        while (cant > i) {
+//
+//            suma = suma + ((Float) TablaSeleccion.getValueAt(i, 1) * (Float) TablaSeleccion.getValueAt(i, 2));
+//
+//            i++;
+//        }
 
           
-        txtMonto.setText(String.valueOf(suma));
+//        txtMonto.setText(String.valueOf(suma));
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGenerarMontoActionPerformed
 
@@ -698,106 +740,98 @@ public class FrameContabilidad extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void txtPagoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagoKeyReleased
-
-
-          Float pago = Float.parseFloat(txtPago.getText());
-          Float monto = Float.parseFloat(txtMonto.getText());
-          Float vuelto = pago - monto;
-          
-          txtVuelto.setText(String.valueOf(vuelto));
-
-
-
-
+//          Float pago = Float.parseFloat(txtPago.getText());
+//          Float monto = Float.parseFloat(txtMonto.getText());
+//          Float vuelto = pago - monto;
+//          
+//          txtVuelto.setText(String.valueOf(vuelto));
 
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPagoKeyReleased
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
 
-        GregorianCalendar d = new GregorianCalendar();
-
-        int anio = d.get(Calendar.YEAR);
-        int mes = d.get(Calendar.MONTH) + 1;
-        int dia = d.get(Calendar.DAY_OF_MONTH);
-        LocalDate fecha = LocalDate.of(anio, mes, dia);
-        // txt de entrada
-        String codigo = txtCodigo.getText();
-        Float pago = Float.parseFloat(txtPago.getText());
-        Float monto = Float.parseFloat(txtMonto.getText());
-        Float vuelto = Float.parseFloat(txtVuelto.getText());
-        boolean comprobar = false;
-
-        Iterator<Paciente> iterador = listaPacientes.getDescendingIterator();
-
-        while (iterador.hasNext()) {
-            Paciente pro = iterador.next();
-
-            if (pro.getCodigo().equalsIgnoreCase(codigo)) {
-                comprobar = true;
-                thisFrameTriaje.getListaPacientes().insertarAlFinal(pro);
-                //Te envia el codigo ;
-                
-            }
-        }
-
-        if (comprobar) {
-            Monto reg = new Monto(monto, pago, vuelto, fecha);
-
-            Caja.agregarMonto(reg);
-            mostrarTablaRegistro(listaMonto, listaPacientes);
-
-            // para mostar monto de salida
-            Iterator<Monto> it = listaMonto.getDescendingIterator();
-            Float sumaMontoEntrada = 0F;
-            Float sumaMontoSalida = 0F;
-            Float sumaMontoActual = 0F;
-
-            while (it.hasNext()) {
-                Monto pro = it.next();
-                sumaMontoEntrada = sumaMontoEntrada + pro.getPago();
-                sumaMontoSalida = sumaMontoSalida + pro.getVuelto();
-                sumaMontoActual = sumaMontoActual + pro.getMonto();
-            }
-            txtEntrada.setText(String.valueOf(sumaMontoEntrada));
-            txtSalida.setText(String.valueOf(sumaMontoSalida));
-            txtMontoActual.setText(String.valueOf(sumaMontoActual));
+//        GregorianCalendar d = new GregorianCalendar();
+//
+//        int anio = d.get(Calendar.YEAR);
+//        int mes = d.get(Calendar.MONTH) + 1;
+//        int dia = d.get(Calendar.DAY_OF_MONTH);
+//        LocalDate fecha = LocalDate.of(anio, mes, dia);
+//        // txt de entrada
+//        String codigo = txtCodigo.getText();
+//        Float pago = Float.parseFloat(txtPago.getText());
+//        Float monto = Float.parseFloat(txtMonto.getText());
+//        Float vuelto = Float.parseFloat(txtVuelto.getText());
+//        boolean comprobar = false;
+//
+//        Iterator<Paciente> iterador = listaPacientes.getDescendingIterator();
+//
+//        while (iterador.hasNext()) {
+//            Paciente pro = iterador.next();
+//
+//            if (pro.getCodigo().equalsIgnoreCase(codigo)) {
+//                comprobar = true;
+//                thisFrameTriaje.getListaPacientes().insertarAlFinal(pro);
+//                //Te envia el codigo ;
+//                
+//            }
+//        }
+//
+//        if (comprobar) {
+//            Monto reg = new Monto(monto, pago, vuelto, fecha);
+//
+//            Caja.agregarMonto(reg);
+//            mostrarTablaRegistro(listaMonto, listaPacientes);
+//
+//            // para mostar monto de salida
+//            Iterator<Monto> it = listaMonto.getDescendingIterator();
+//            Float sumaMontoEntrada = 0F;
+//            Float sumaMontoSalida = 0F;
+//            Float sumaMontoActual = 0F;
+//
+//            while (it.hasNext()) {
+//                Monto pro = it.next();
+//                sumaMontoEntrada = sumaMontoEntrada + pro.getPago();
+//                sumaMontoSalida = sumaMontoSalida + pro.getVuelto();
+//                sumaMontoActual = sumaMontoActual + pro.getMonto();
+//            }
+//            txtEntrada.setText(String.valueOf(sumaMontoEntrada));
+//            txtSalida.setText(String.valueOf(sumaMontoSalida));
+//            txtMontoActual.setText(String.valueOf(sumaMontoActual));
             /**COMPROBAR*/
             
 //            this.thisFrameTriaje.setVisible(true);
 //            this.thisFrameTriaje.mostrarTabla();
             
-        } else {
-            JOptionPane.showMessageDialog(null, "Codigo: " + codigo + " no registrado");
-        }
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Codigo: " + codigo + " no registrado");
+//        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
 
-        txtMonto.setText("");
-        txtPago.setText("");
-        txtVuelto.setText("");
-        txtCodigo.setText("");
-        listaSeleccionGeneral.limpiarLista();
-        
-        mostrarTablaSeleccion(listaSeleccionGeneral);
-
-
-        
-        
-        
-        
-        
-        
-        
-
+//        txtMonto.setText("");
+//        txtPago.setText("");
+//        txtVuelto.setText("");
+//        txtCodigo.setText("");
+//        listaSeleccionGeneral.limpiarLista();
+//        
+//        mostrarTablaSeleccion(listaSeleccionGeneral);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNuevoActionPerformed
 
-    private void mostrarTablaServicios(ListaDoble<Servicios> listaServicio) {
+    private void txtMontoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMontoActualActionPerformed
+
+    private void txtPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPagoActionPerformed
+
+    public void mostrarTablaServicios(ListaDoble<Servicios> listaServicio) {
         DefaultTableModel dtm = (DefaultTableModel) TablaServicios.getModel();
         dtm.setRowCount(0);
         Iterator<Servicios> iterador = listaServicio.getDescendingIterator();
@@ -810,7 +844,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
         
     }
 
-    private void mostrarTablaSeleccion(ListaDoble<Servicios> listaServicio) {
+    public void mostrarTablaSeleccion(ListaDoble<Servicios> listaServicio) {
         DefaultTableModel dtm = (DefaultTableModel) TablaSeleccion.getModel();
         dtm.setRowCount(0);
         Iterator<Servicios> iterador = listaServicio.getDescendingIterator();
@@ -825,7 +859,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
     
     
     
-    private void mostrarTablaRegistro(ListaDoble<Monto> listaMonto, ListaDoble<Paciente> listaPaciente) {
+    public void mostrarTablaRegistro(ListaDoble<Monto> listaMonto, ListaDoble<Paciente> listaPaciente) {
         DefaultTableModel dtm = (DefaultTableModel) tablaRegistro.getModel();
         dtm.setRowCount(0);
         Iterator<Monto> iterador = listaMonto.getDescendingIterator();
@@ -892,7 +926,8 @@ public class FrameContabilidad extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             
             public void run() {
-                new FrameContabilidad(Caja, ft).setVisible(true);
+                // ft
+                new FrameContabilidad(Caja).setVisible(true);
 
             }
         });
@@ -900,19 +935,18 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaSeleccion;
-    private javax.swing.JTable TablaServicios;
-    private javax.swing.JButton btnDeshacer;
-    private javax.swing.JButton btnElegir;
-    private javax.swing.JButton btnGenerarMonto;
-    private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnPrecio;
-    private javax.swing.JButton btnRegistrar;
+    public javax.swing.JTable TablaSeleccion;
+    public javax.swing.JTable TablaServicios;
+    public javax.swing.JButton btnDeshacer;
+    public javax.swing.JButton btnElegir;
+    public javax.swing.JButton btnGenerarMonto;
+    public javax.swing.JButton btnNuevo;
+    public javax.swing.JButton btnPrecio;
+    public javax.swing.JButton btnRegistrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -938,16 +972,16 @@ public class FrameContabilidad extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JRadioButton rbtnConsulta;
-    private javax.swing.JRadioButton rbtnLaboratorio;
-    private javax.swing.JTable tablaRegistro;
-    private javax.swing.JTextField txtBuscar;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtEntrada;
-    private javax.swing.JTextField txtMonto;
-    private javax.swing.JTextField txtMontoActual;
-    private javax.swing.JTextField txtPago;
-    private javax.swing.JTextField txtSalida;
-    private javax.swing.JTextField txtVuelto;
+    public javax.swing.JRadioButton rbtnConsulta;
+    public javax.swing.JRadioButton rbtnLaboratorio;
+    public javax.swing.JTable tablaRegistro;
+    public javax.swing.JTextField txtBuscar;
+    public javax.swing.JTextField txtCodigo;
+    public javax.swing.JTextField txtEntrada;
+    public javax.swing.JTextField txtMonto;
+    public javax.swing.JTextField txtMontoActual;
+    public javax.swing.JTextField txtPago;
+    public javax.swing.JTextField txtSalida;
+    public javax.swing.JTextField txtVuelto;
     // End of variables declaration//GEN-END:variables
 }
