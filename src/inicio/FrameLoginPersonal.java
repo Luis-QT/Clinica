@@ -7,8 +7,10 @@ package inicio;
 
 import gui.recepcion.FrameRecepcionPrincipal;
 import javax.swing.JOptionPane;
+import model.empleado.Cajero;
 import model.empleado.MedicoEspecialista;
 import model.empleado.Recepcionista;
+import model.empleado.Servicios;
 import model.paciente.Paciente;
 
 /**
@@ -22,18 +24,35 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
      */
     Recepcionista recepcionista;
     MedicoEspecialista medicoEspecialista;
+    Cajero cajero;
 
     public FrameLoginPersonal() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
+        //Personales
         recepcionista = new Recepcionista("123", "345", null, 12, "Luis", "Yauri", 98877, true, 35, 234324, 123, "@gamil.com", 1);
         medicoEspecialista = new MedicoEspecialista("Cardiólogo", "Colegiatura", "1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
+        cajero = new Cajero("1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
+        //Fin personales
         Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay", "A04", "Los Olivos", "Cristiano", true);
         Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay", "A05", "Los Olivos", "Cristiano", false);
         medicoEspecialista.agregarPaciente(p1);
-         medicoEspecialista.agregarPaciente(p2);
+        medicoEspecialista.agregarPaciente(p2);
+        
+        
+        Servicios s1 = new Servicios("sangre", 230F, false);
+        Servicios s2 = new Servicios("glusoca", 250F, false);
+        cajero.agregarPaciente(p1);
+        cajero.agregarPaciente(p2);
+        cajero.agregarServicios(s1);
+        cajero.agregarServicios(s2);
+        
+    }
+
+    public Cajero getCajero() {
+        return cajero;
     }
 
     public Recepcionista getRecepcionista() {

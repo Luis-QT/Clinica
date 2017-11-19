@@ -60,7 +60,8 @@ public class PrincipalController implements Controller, ActionListener {
         vista.setVisible(false);
         FrameLoginPersonal logPer = new FrameLoginPersonal();
         new LoginPersonalController(logPer).index();
-        //logPer.setVisible(true);
+        logPer.setVisible(true);
+        System.out.println("mrd");
     }
 
 }

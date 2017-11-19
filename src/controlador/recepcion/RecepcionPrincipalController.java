@@ -6,8 +6,10 @@
 package controlador.recepcion;
 
 import controlador.Controller;
+import controlador.principal.LoginPersonalController;
 import gui.recepcion.FrameRecepcionAreaPacientes;
 import gui.recepcion.FrameRecepcionPrincipal;
+import inicio.FrameLoginPersonal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.empleado.Recepcionista;
@@ -29,6 +31,8 @@ public class RecepcionPrincipalController implements Controller, ActionListener 
     public void iniciar() {
         this.vista.btnPacientes.setActionCommand("Pacientes");
         this.vista.btnPacientes.addActionListener(this);
+        this.vista.btnSalir.setActionCommand("Salir");
+        this.vista.btnSalir.addActionListener(this);
     }
 
     @Override
@@ -41,14 +45,22 @@ public class RecepcionPrincipalController implements Controller, ActionListener 
            String comando = e.getActionCommand();
         if(comando.equals("Pacientes")){
             formPacientes();
+        }else if(comando.equals("Salir")){
+            formSalir();
         }
     }
 
     private void formPacientes() {
-        System.out.println("Luis :v");
         Recepcionista recepcionista = vista.getRecepcionista();    
         new FrameRecepcionAreaPacientes(vista,true, recepcionista).setVisible(true);
         
+    }
+
+    private void formSalir() {
+        vista.setVisible(false);
+        FrameLoginPersonal logPer = new FrameLoginPersonal();
+        logPer.setVisible(true);
+        new LoginPersonalController(logPer).index();
     }
 
 }

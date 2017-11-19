@@ -433,16 +433,16 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnOrdenar;
-    private javax.swing.JButton btnRefrescar;
+    public javax.swing.JButton btnBuscar;
+    public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnModificar;
+    public javax.swing.JButton btnOrdenar;
+    public javax.swing.JButton btnRefrescar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cboOrdenar;
-    private javax.swing.JCheckBox chxApellido;
-    private javax.swing.JCheckBox chxDni;
+    public javax.swing.JComboBox<String> cboOrdenar;
+    public javax.swing.JCheckBox chxApellido;
+    public javax.swing.JCheckBox chxDni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -454,8 +454,8 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblcerrar;
-    private javax.swing.JTable tblPacientes;
-    private javax.swing.JTextField txtBuscar;
+    public javax.swing.JTable tblPacientes;
+    public javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 
     void refrescartabla(ListaDoble<Paciente> listaPaciente) {
