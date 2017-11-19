@@ -73,6 +73,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lblcerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,7 +93,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombres", "Apellidos", "DNI", "Sexo", "Edad", "Telefono", "Celular", "Emaill"
+                "Historia", "Nombres", "Apellidos", "DNI", "Edad", "Telefono", "Celular", "Emaill"
             }
         ));
         tblPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,6 +236,14 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/titlepacientes.png"))); // NOI18N
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
 
+        lblcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
+        lblcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblcerrarMouseClicked(evt);
+            }
+        });
+        jPanel5.add(lblcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, -1, -1));
+
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -364,6 +373,11 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         
     }//GEN-LAST:event_tblPacientesMouseClicked
 
+    private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_lblcerrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -432,6 +446,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblcerrar;
     private javax.swing.JTable tblPacientes;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
@@ -442,8 +457,8 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
         while (iterador.hasNext()) {
             Paciente pro = iterador.next();
-            dtm.addRow(new Object[]{pro.getNombre(), pro.getApellido(), pro.getDni(),
-                pro.isSexo(), pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
+            dtm.addRow(new Object[]{pro.getCodigo(),pro.getNombre(), pro.getApellido(), pro.getDni(),
+                pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
                 pro.getEmail()});
         }
     }

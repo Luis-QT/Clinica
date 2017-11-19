@@ -65,6 +65,8 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         chkF = new javax.swing.JCheckBox();
         txtcorreo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtHistoriaClinica = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -72,6 +74,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -85,53 +88,80 @@ public class RecepcionAgregar extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("PANEL PACIENTE");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 210, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 210, 50));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Apellidos :");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
         jPanel2.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 140, -1));
         jPanel2.add(txtnombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 140, -1));
 
+        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Nombres :");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDNIKeyPressed(evt);
+            }
+        });
         jPanel2.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
 
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("DNI :");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Sexo :");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
         jPanel2.add(txtedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 140, -1));
 
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Edad :");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
         jPanel2.add(txttelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 140, -1));
 
+        jLabel8.setForeground(new java.awt.Color(102, 102, 102));
         jLabel8.setText("Telefono :");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setText("Celular :");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
         jPanel2.add(txtcelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
 
+        chkM.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(chkM);
+        chkM.setForeground(new java.awt.Color(102, 102, 102));
         chkM.setText("M");
         jPanel2.add(chkM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
+        chkF.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(chkF);
+        chkF.setForeground(new java.awt.Color(102, 102, 102));
         chkF.setText("F");
         jPanel2.add(chkF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
         jPanel2.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 140, -1));
 
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
         jLabel10.setText("Correo :");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 320, 270));
+        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel11.setText("Historia clínica :");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Controles"));
+        txtHistoriaClinica.setEditable(false);
+        jPanel2.add(txtHistoriaClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 140, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 320, 310));
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("Cancelar");
@@ -148,7 +178,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         });
         jPanel4.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 320, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 320, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,7 +189,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -183,11 +213,10 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         int telCasa = Integer.parseInt(txttelefono.getText());
         int telCelular = Integer.parseInt(txtcelular.getText());
         String correo = txtcorreo.getText();
+        String codigoHistoria = txtHistoriaClinica.getText();
 
-        recepcionista.agregarPaciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, "", "","");
+        recepcionista.agregarPaciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, "", "",codigoHistoria);
 
-        
-        
         aThis.refrescartabla(recepcionista.getListaPaciente());
         //System.out.println(recepcionista.toString());
         this.setVisible(false);
@@ -197,6 +226,13 @@ public class RecepcionAgregar extends javax.swing.JDialog {
     private void jPanel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel1AncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1AncestorAdded
+
+    private void txtDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyPressed
+        // TODO add your handling code here:
+        
+        txtHistoriaClinica.setText("H0"+txtDNI.getText());
+        
+    }//GEN-LAST:event_txtDNIKeyPressed
 
     private void mostrarTabla(ListaDoble<Paciente> lista ,javax.swing.JTable tblPacientes ) {
         DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
@@ -219,7 +255,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -263,6 +299,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -275,6 +312,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtHistoriaClinica;
     private javax.swing.JTextField txtcelular;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtedad;

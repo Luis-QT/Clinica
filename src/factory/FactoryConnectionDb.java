@@ -25,7 +25,7 @@ public class FactoryConnectionDb {
     public static String[] configMSQLCreate = {
             //Tabla paciente
             "Create TABLE Paciente"
-            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
+            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigoHistorial VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
             + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40),direccion VARCHAR(40),religion VARCHAR(40))",
             
         
