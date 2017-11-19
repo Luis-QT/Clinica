@@ -7,7 +7,9 @@ package inicio;
 
 import gui.recepcion.FrameRecepcionPrincipal;
 import javax.swing.JOptionPane;
+import model.empleado.MedicoEspecialista;
 import model.empleado.Recepcionista;
+import model.paciente.Paciente;
 
 /**
  *
@@ -19,21 +21,29 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
      * Creates new form login
      */
     Recepcionista recepcionista;
-    
+    MedicoEspecialista medicoEspecialista;
+
     public FrameLoginPersonal() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
         recepcionista = new Recepcionista("123", "345", null, 12, "Luis", "Yauri", 98877, true, 35, 234324, 123, "@gamil.com", 1);
-        
+        medicoEspecialista = new MedicoEspecialista("Cardiólogo", "Colegiatura", "1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
+        Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay", "A04", "Los Olivos", "Cristiano", true);
+        Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay", "A05", "Los Olivos", "Cristiano", false);
+        medicoEspecialista.agregarPaciente(p1);
+         medicoEspecialista.agregarPaciente(p2);
     }
 
     public Recepcionista getRecepcionista() {
         return recepcionista;
     }
 
-    
+    public MedicoEspecialista getMedicoEspecialista() {
+        return medicoEspecialista;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -205,17 +215,18 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
     private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        this.dispose();FramePrincipal principal = new FramePrincipal();
+        this.dispose();
+        FramePrincipal principal = new FramePrincipal();
         principal.setVisible(true);
     }//GEN-LAST:event_lblcerrarMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        
-        String correo = JOptionPane.showInputDialog(null, "Ingrese su correo : ","Correo",JOptionPane.WARNING_MESSAGE);
-        JOptionPane.showMessageDialog(null, "Contraseña enviado a su correo.","",JOptionPane.WARNING_MESSAGE,null);
-        
-        
+
+        String correo = JOptionPane.showInputDialog(null, "Ingrese su correo : ", "Correo", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Contraseña enviado a su correo.", "", JOptionPane.WARNING_MESSAGE, null);
+
+
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed

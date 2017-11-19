@@ -6,28 +6,34 @@
 package controlador.principal;
 
 import controlador.Controller;
+import controlador.medicoEspecialista.MedicoEspecialistaController;
 import controlador.recepcion.RecepcionPrincipalController;
+import gui.medicoEspecialista.FrameMedicoEspecialista;
 import gui.recepcion.FrameRecepcionPrincipal;
 import inicio.FrameLoginPersonal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import model.empleado.MedicoEspecialista;
 import model.empleado.Recepcionista;
+import model.paciente.Paciente;
 
 /**
  *
  * @author Luis
  */
-public class LoginPersonalController implements Controller, ActionListener{
-   private FrameLoginPersonal vista;
+public class LoginPersonalController implements Controller, ActionListener {
+
+    private FrameLoginPersonal vista;
 
     public LoginPersonalController(FrameLoginPersonal vista) {
         this.vista = vista;
         iniciar();
     }
+
     @Override
     public void iniciar() {
-        this.vista. btnIniciar.setActionCommand("Iniciar");
+        this.vista.btnIniciar.setActionCommand("Iniciar");
         this.vista.btnIniciar.addActionListener(this);
     }
 
@@ -45,26 +51,35 @@ public class LoginPersonalController implements Controller, ActionListener{
     }
 
     private void formIniciar() {
-        
-        Recepcionista recepcionista = vista.getRecepcionista(); 
-        if(vista.chxRecepcion.isSelected()){
+        //Personales
+        Recepcionista recepcionista = vista.getRecepcionista();
+        MedicoEspecialista medicoEspecialista = vista.getMedicoEspecialista();
+        //Fin
+        if (vista.chxRecepcion.isSelected()) {
             FrameRecepcionPrincipal recepcion = new FrameRecepcionPrincipal(recepcionista);
             recepcion.setVisible(true);
             vista.setVisible(false);
-            new  RecepcionPrincipalController(recepcion).index();
-        }else if(vista.chxContab.isSelected()){
+            new RecepcionPrincipalController(recepcion).index();
+        } else if (vista.chxContab.isSelected()) {
+
+        } else if (vista.chxgeneral.isSelected()) {
+
+        } else if (vista.chxtriaje.isSelected()) {
+
+        } else if (vista.chxEspec.isSelected()) {
+            System.out.println("Hola");
+            FrameMedicoEspecialista medEspecia = new FrameMedicoEspecialista(medicoEspecialista);
+            //Inicio Test
             
-        }else if(vista.chxgeneral.isSelected()){
             
-        }else if(vista.chxtriaje.isSelected()){  
-            
-        }else if(vista.chxEspec.isSelected()){
-            
-        }else{
+            //Fin
+            medEspecia.setVisible(true);
+            vista.setVisible(false);
+            new MedicoEspecialistaController(medEspecia).index();
+
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione una área");
         }
     }
-   
-   
-   
+
 }
