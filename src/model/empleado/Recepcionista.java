@@ -50,7 +50,7 @@ public class Recepcionista extends EmpleadoUser {
         return listaPaciente;
     }
 
-    public void insertarPAciente(Paciente paciente){
+    public void insertarPaciente(Paciente paciente){
         listaPaciente.insertarAlFinal(paciente);
         paciente.setSoftDelete(2);
     }

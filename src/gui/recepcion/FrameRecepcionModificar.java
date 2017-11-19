@@ -15,20 +15,20 @@ import model.empleado.Recepcionista;
  *
  * @author Luis
  */
-public class RecepcionModificar extends javax.swing.JDialog {
+public class FrameRecepcionModificar extends javax.swing.JDialog {
 
     
     Recepcionista recepcionista;
-    RecepcionAreaPacientes aThis;
+    FrameRecepcionAreaPacientes aThis;
     int indice;
     
-//    public RecepcionModificar(javax.swing.JDialog parent, boolean modal) {
+//    public FrameRecepcionModificar(javax.swing.JDialog parent, boolean modal) {
 //        super(parent, modal);
 //        initComponents();
 //        setLocationRelativeTo(parent);
 //    }
 
-    public RecepcionModificar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, RecepcionAreaPacientes aThis,Paciente paciente,int indice) {
+    public FrameRecepcionModificar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, FrameRecepcionAreaPacientes aThis,Paciente paciente,int indice) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
@@ -213,14 +213,18 @@ public class RecepcionModificar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionModificar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -230,7 +234,7 @@ public class RecepcionModificar extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Recepcionista recepcionista = new Recepcionista();
-                RecepcionModificar dialog = new RecepcionModificar(new javax.swing.JDialog(), true, recepcionista,null,null,0);
+                FrameRecepcionModificar dialog = new FrameRecepcionModificar(new javax.swing.JDialog(), true, recepcionista,null,null,0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

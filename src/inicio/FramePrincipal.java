@@ -9,12 +9,12 @@ package inicio;
  *
  * @author Luis
  */
-public class Principal extends javax.swing.JFrame {
+public class FramePrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
      */
-    public Principal() {
+    public FramePrincipal() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -112,16 +112,16 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnAdmiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmiActionPerformed
         // TODO add your handling code here:
-        LoginAdministracion logAdmi = new LoginAdministracion();
-        this.setVisible(false);
-        logAdmi.setVisible(true);
+//        LoginAdministracion logAdmi = new LoginAdministracion();
+//        this.setVisible(false);
+//        logAdmi.setVisible(true);
     }//GEN-LAST:event_btnAdmiActionPerformed
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
         // TODO add your handling code here:
-        LoginPersonal logPer = new LoginPersonal();
-        this.setVisible(false);
-        logPer.setVisible(true);
+//        LoginPersonal logPer = new LoginPersonal();
+//        this.setVisible(false);
+//        logPer.setVisible(true);
     }//GEN-LAST:event_btnPersonalActionPerformed
 
     /**
@@ -141,27 +141,28 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new FramePrincipal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdmi;
-    private javax.swing.JButton btnPersonal;
+    public javax.swing.JButton btnAdmi;
+    public javax.swing.JButton btnPersonal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

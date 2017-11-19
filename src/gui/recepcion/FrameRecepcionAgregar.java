@@ -16,15 +16,15 @@ import model.empleado.Recepcionista;
  *
  * @author Luis
  */
-public class RecepcionAgregar extends javax.swing.JDialog {
+public class FrameRecepcionAgregar extends javax.swing.JDialog {
 
     /**
      * Creates new form RecepcionAgregar1
      */
     Recepcionista recepcionista;
-    RecepcionAreaPacientes aThis;
+    FrameRecepcionAreaPacientes aThis;
 
-    public RecepcionAgregar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, RecepcionAreaPacientes aThis) {
+    public FrameRecepcionAgregar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, FrameRecepcionAreaPacientes aThis) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
@@ -288,14 +288,18 @@ public class RecepcionAgregar extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAgregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -305,7 +309,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Recepcionista recepcionista = new Recepcionista();
-                RecepcionAgregar dialog = new RecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, null);
+                FrameRecepcionAgregar dialog = new FrameRecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

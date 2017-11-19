@@ -5,29 +5,23 @@
  */
 package inicio;
 
-import gui.recepcion.FrameAdmisionPrincipal;
+import controlador.administrador.AdministradorController;
+import gui.administrador.FramePrincipalAdministrador;
 import javax.swing.JOptionPane;
-import model.empleado.Recepcionista;
 
 /**
  *
  * @author Luis
  */
-public class LoginPersonal extends javax.swing.JFrame {
+public class FrameLoginAdministracion extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    Recepcionista recepcionista;
-    
-    public LoginPersonal() {
+    public FrameLoginAdministracion() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setLocationRelativeTo(null);
-        recepcionista = new Recepcionista("123", "345", null, 12, "Luis", "Yauri", 98877, true, 35, 234324, 123, "@gamil.com", 1);
-                
-        
     }
 
     /**
@@ -40,7 +34,6 @@ public class LoginPersonal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -51,15 +44,9 @@ public class LoginPersonal extends javax.swing.JFrame {
         jRPasswordField1 = new jpass.JRPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnIniciar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        chxRecepcion = new javax.swing.JCheckBox();
-        chxContab = new javax.swing.JCheckBox();
-        chxgeneral = new javax.swing.JCheckBox();
-        chxtriaje = new javax.swing.JCheckBox();
-        chxEspec = new javax.swing.JCheckBox();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -104,7 +91,7 @@ public class LoginPersonal extends javax.swing.JFrame {
         jCTextField1.setForeground(new java.awt.Color(153, 153, 153));
         jCTextField1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jCTextField1.setPlaceholder("Ingrese usuario");
-        jPanel5.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 310, 30));
+        jPanel5.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 62, 310, 30));
 
         jRPasswordField1.setBackground(new java.awt.Color(240, 238, 240));
         jRPasswordField1.setBorder(null);
@@ -114,20 +101,20 @@ public class LoginPersonal extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/User Name.png"))); // NOI18N
         jLabel3.setText("jLabel3");
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 395, -1));
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 395, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/Locked 2.png"))); // NOI18N
         jLabel4.setText("jLabel3");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 395, -1));
 
-        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l1.png"))); // NOI18N
-        btnIniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l2.png"))); // NOI18N
-        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l1.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l2.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 96, 37));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 96, 37));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
@@ -137,71 +124,22 @@ public class LoginPersonal extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        chxRecepcion.setBackground(new java.awt.Color(240, 238, 240));
-        buttonGroup1.add(chxRecepcion);
-        chxRecepcion.setFont(new java.awt.Font("Segoe UI Emoji", 0, 11)); // NOI18N
-        chxRecepcion.setForeground(new java.awt.Color(153, 153, 153));
-        chxRecepcion.setText("Recepcion");
-        chxRecepcion.setToolTipText("");
-        chxRecepcion.setBorder(null);
-        jPanel5.add(chxRecepcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/relll.png"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 182, 42));
 
-        chxContab.setBackground(new java.awt.Color(240, 238, 240));
-        buttonGroup1.add(chxContab);
-        chxContab.setFont(new java.awt.Font("Segoe UI Emoji", 0, 11)); // NOI18N
-        chxContab.setForeground(new java.awt.Color(153, 153, 153));
-        chxContab.setText("Contabilidad");
-        chxContab.setToolTipText("");
-        chxContab.setBorder(null);
-        jPanel5.add(chxContab, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 440, 280));
 
-        chxgeneral.setBackground(new java.awt.Color(240, 238, 240));
-        buttonGroup1.add(chxgeneral);
-        chxgeneral.setFont(new java.awt.Font("Segoe UI Emoji", 0, 11)); // NOI18N
-        chxgeneral.setForeground(new java.awt.Color(153, 153, 153));
-        chxgeneral.setText("M. General");
-        chxgeneral.setToolTipText("");
-        chxgeneral.setBorder(null);
-        jPanel5.add(chxgeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
-
-        chxtriaje.setBackground(new java.awt.Color(240, 238, 240));
-        buttonGroup1.add(chxtriaje);
-        chxtriaje.setFont(new java.awt.Font("Segoe UI Emoji", 0, 11)); // NOI18N
-        chxtriaje.setForeground(new java.awt.Color(153, 153, 153));
-        chxtriaje.setText("Triaje");
-        chxtriaje.setToolTipText("");
-        chxtriaje.setBorder(null);
-        jPanel5.add(chxtriaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, -1, -1));
-
-        chxEspec.setBackground(new java.awt.Color(240, 238, 240));
-        buttonGroup1.add(chxEspec);
-        chxEspec.setFont(new java.awt.Font("Segoe UI Emoji", 0, 11)); // NOI18N
-        chxEspec.setForeground(new java.awt.Color(153, 153, 153));
-        chxEspec.setText("M. Especial.");
-        chxEspec.setToolTipText("");
-        chxEspec.setBorder(null);
-        jPanel5.add(chxEspec, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, -1, -1));
-
-        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel8.setText("Áreas :");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/Areas.png"))); // NOI18N
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 200, 110));
-
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 440, 330));
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 439, 400));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 439, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
         // TODO add your handling code here:
-        this.dispose();
-        this.dispose();Principal principal = new Principal();
+        this.dispose();FramePrincipal principal = new FramePrincipal();
         principal.setVisible(true);
     }//GEN-LAST:event_lblcerrarMouseClicked
 
@@ -214,24 +152,13 @@ public class LoginPersonal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        // TODO add your handling code here:
-        if(chxRecepcion.isSelected()){
-            FrameAdmisionPrincipal recepcion = new FrameAdmisionPrincipal(recepcionista);
-            recepcion.setVisible(true);
-            this.setVisible(false);
-        }else if(chxContab.isSelected()){
-            
-        }else if(chxgeneral.isSelected()){
-            
-        }else if(chxtriaje.isSelected()){  
-            
-        }else if(chxEspec.isSelected()){
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "Seleccione una área");
-        }
-    }//GEN-LAST:event_btnIniciarActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        FramePrincipalAdministrador frame = new FramePrincipalAdministrador();
+        this.setVisible(false);
+        new AdministradorController(frame).index();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,13 +177,13 @@ public class LoginPersonal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameLoginAdministracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameLoginAdministracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameLoginAdministracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginPersonal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameLoginAdministracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -266,26 +193,19 @@ public class LoginPersonal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginPersonal().setVisible(true);
+                new FrameLoginAdministracion().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIniciar;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox chxContab;
-    private javax.swing.JCheckBox chxEspec;
-    private javax.swing.JCheckBox chxRecepcion;
-    private javax.swing.JCheckBox chxgeneral;
-    private javax.swing.JCheckBox chxtriaje;
+    private javax.swing.JButton jButton1;
     private app.bolivia.swing.JCTextField jCTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

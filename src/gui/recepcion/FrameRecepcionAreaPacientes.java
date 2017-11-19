@@ -19,7 +19,7 @@ import model.empleado.Recepcionista;
  *
  * @author Luis
  */
-public class RecepcionAreaPacientes extends javax.swing.JDialog {
+public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
 
     /**
      * Creates new form RecepcionArea
@@ -33,7 +33,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     int indice = -1;
     int intemporal = -2;
 
-    public RecepcionAreaPacientes(java.awt.Frame parent, boolean modal, Recepcionista recepcionista) {
+    public FrameRecepcionAreaPacientes(java.awt.Frame parent, boolean modal, Recepcionista recepcionista) {
         super(parent, modal);
         this.setUndecorated(true);
         initComponents();
@@ -277,7 +277,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        RecepcionAgregar AgregarVentana = new RecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, this);
+        FrameRecepcionAgregar AgregarVentana = new FrameRecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, this);
         AgregarVentana.setVisible(true);
 
 
@@ -305,7 +305,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
         System.out.println(indice);
-        RecepcionModificar AgregarModificar = new RecepcionModificar(new javax.swing.JDialog(), true, recepcionista, this, listaPaciente.getDato(indice), indice);
+        FrameRecepcionModificar AgregarModificar = new FrameRecepcionModificar(new javax.swing.JDialog(), true, recepcionista, this, listaPaciente.getDato(indice), indice);
         AgregarModificar.setVisible(true);
 
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -398,14 +398,18 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionAreaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -415,7 +419,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Recepcionista recepcionista = new Recepcionista();
-                RecepcionAreaPacientes dialog = new RecepcionAreaPacientes(new javax.swing.JFrame(), true, recepcionista);
+                FrameRecepcionAreaPacientes dialog = new FrameRecepcionAreaPacientes(new javax.swing.JFrame(), true, recepcionista);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

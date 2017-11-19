@@ -5,26 +5,30 @@
  */
 package gui.recepcion;
 
-import gui.recepcion.RecepcionAreaPacientes;
+import gui.recepcion.FrameRecepcionAreaPacientes;
 import model.empleado.Recepcionista;
 
 /**
  *
  * @author Luis
  */
-public class FrameAdmisionPrincipal extends javax.swing.JFrame {
+public class FrameRecepcionPrincipal extends javax.swing.JFrame {
 
     /**
      * Creates new form FrameAdmision
      */
     Recepcionista recepcionista;
-    public FrameAdmisionPrincipal(Recepcionista recepcionista) {
+    public FrameRecepcionPrincipal(Recepcionista recepcionista) {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         this.recepcionista = recepcionista;
     }
 
+    public Recepcionista getRecepcionista() {
+        return recepcionista;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,9 +57,9 @@ public class FrameAdmisionPrincipal extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         btnMedicos = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnSoporte = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -128,14 +132,19 @@ public class FrameAdmisionPrincipal extends javax.swing.JFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setText("Salir");
-        jPanel7.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 80, 50));
+        btnSoporte.setText("Soporte");
+        jPanel7.add(btnSoporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 80, 50));
 
-        jButton4.setText("Salir");
-        jPanel7.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 50));
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel7.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, 50));
 
-        jButton5.setText("Salir");
-        jPanel7.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 80, 50));
+        btnModificar.setText("Editar");
+        jPanel7.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 80, 50));
 
         jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 290, 100));
 
@@ -160,8 +169,13 @@ public class FrameAdmisionPrincipal extends javax.swing.JFrame {
 
     private void btnPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesActionPerformed
         // TODO add your handling code here:
-        new RecepcionAreaPacientes(this,true, recepcionista).setVisible(true);
+//        new FrameRecepcionAreaPacientes(this,true, recepcionista).setVisible(true);
     }//GEN-LAST:event_btnPacientesActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,14 +194,26 @@ public class FrameAdmisionPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameAdmisionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameAdmisionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameAdmisionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameAdmisionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameRecepcionPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -198,17 +224,17 @@ public class FrameAdmisionPrincipal extends javax.swing.JFrame {
             public void run() {
                 Recepcionista recepcionista = new Recepcionista("123", "345", null, 12, "Jose", "Martines", 98877, true, 35, 234324, 123, "@gamil.com", 1);
                 
-                new FrameAdmisionPrincipal(recepcionista).setVisible(true);
+                new FrameRecepcionPrincipal(recepcionista).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMedicos;
-    private javax.swing.JButton btnPacientes;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    public javax.swing.JButton btnMedicos;
+    public javax.swing.JButton btnModificar;
+    public javax.swing.JButton btnPacientes;
+    public javax.swing.JButton btnSalir;
+    public javax.swing.JButton btnSoporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
