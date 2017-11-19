@@ -6,6 +6,7 @@ import java.time.LocalDate;
 public class Visita {
 
     private static int id;
+    private String codigoHistoria;
     private String servicio;
     private DatosMedico datosMedico;
     private LocalDate fecha;
@@ -40,7 +41,8 @@ public class Visita {
     }
     
     //Constructor recepcionista
-    public Visita(String servicio,DatosMedico medico) {
+    public Visita(String codigoHistoria, String servicio,DatosMedico medico) {
+        this.codigoHistoria = codigoHistoria;
         this.servicio = servicio;
         this.datosMedico = medico;
         this.fecha = LocalDate.now();
@@ -155,7 +157,7 @@ public class Visita {
 
     @Override
     public String toString() {
-        return "Visita{" + "id=" + id + ", servicio=" + servicio + ", datosMedico=" + datosMedico + ", fecha=" + fecha + ", anamnecis=" + anamnecis + ", examenFisico=" + examenFisico + ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + ", tratamientoRea=" + tratamientoRea + '}';
+        return "Visita{" + "id=" + id +",codigo historia="+codigoHistoria+ ", servicio=" + servicio + ", datosMedico=" + datosMedico + ", fecha=" + fecha + ", anamnecis=" + anamnecis + ", examenFisico=" + examenFisico + ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + ", tratamientoRea=" + tratamientoRea + '}'+"\n";
     }
     
     

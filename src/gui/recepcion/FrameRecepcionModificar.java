@@ -9,6 +9,7 @@ import estructura.ListaDoble;
 import java.util.Iterator;
 import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
+import model.empleado.Persona;
 import model.paciente.Paciente;
 import model.empleado.Recepcionista;
 
@@ -25,13 +26,16 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
     FrameRecepcionAreaPacientes aThis;
     public int indice;
     
-    public FrameRecepcionModificar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, FrameRecepcionAreaPacientes aThis,int indice) {
+    public FrameRecepcionModificar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, FrameRecepcionAreaPacientes aThis,Persona pers) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
         this.recepcionista = recepcionista;
         this.aThis = aThis;
         this.indice = indice;
+        
+        txtnombres.setText(pers.getNombre());
+        txtApellidos.setText(pers.getApellido());
         
     }
 
@@ -351,7 +355,8 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Recepcionista recepcionista = new Recepcionista();
-                FrameRecepcionModificar dialog = new FrameRecepcionModificar(new javax.swing.JDialog(), true, recepcionista, null, 0);
+                
+                FrameRecepcionModificar dialog = new FrameRecepcionModificar(new javax.swing.JDialog(), true, recepcionista, null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
