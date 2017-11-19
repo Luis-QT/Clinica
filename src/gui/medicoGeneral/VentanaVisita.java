@@ -26,13 +26,14 @@ public class VentanaVisita extends javax.swing.JDialog {
      */
     FrameHistoriaClinica thisFrame;
     HistoriaClinica historia;
-    Anamnesis anamnesis;
-    Diagnostico diagnostico;
-    ExamenFisicos examenF;
-    Tratamiento tratamiento;
-    TratamientoRea trarea;
-    DatosMedico datomed;
+//    Anamnesis anamnesis;
+//    Diagnostico diagnostico;
+//    ExamenFisicos examenF;
+//    Tratamiento tratamiento;
+//    TratamientoRea trarea;
+//    DatosMedico datomed;
      Visita visita;
+     
     public VentanaVisita(FrameHistoriaClinica thisFrame, boolean modal) {
         super(thisFrame, modal);
         initComponents();
@@ -51,6 +52,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         super(thisFrame, modal);
         initComponents();
         this.historia = historia;
+        this.visita = new Visita("Consultas");
         this.thisFrame = thisFrame;
     }
     /**
@@ -62,6 +64,7 @@ public class VentanaVisita extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -72,9 +75,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         jTextFieldCursoEnfermedad = new javax.swing.JTextField();
         jTextFieldEnfermedadActual = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        btnIngresarAnamnesis = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        btnIngresarExamen = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         txtCabezaObs = new javax.swing.JTextField();
         txtCabezaAus = new javax.swing.JTextField();
@@ -121,7 +122,6 @@ public class VentanaVisita extends javax.swing.JDialog {
         jRadioButtonFavorable1 = new javax.swing.JRadioButton();
         jRadioButtonReservado1 = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
-        btnAgregarDiagnostico = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -140,9 +140,9 @@ public class VentanaVisita extends javax.swing.JDialog {
         btnRegistrarVisita = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtNombreMedico = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEspecialidad = new javax.swing.JTextField();
         jPanel17 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -158,20 +158,7 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jLabel49.setText("Curso de enfermedad");
 
-        jTextFieldCursoEnfermedad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCursoEnfermedadActionPerformed(evt);
-            }
-        });
-
         jLabel40.setText("Enfermedad Actual");
-
-        btnIngresarAnamnesis.setText("Ingresar Datos");
-        btnIngresarAnamnesis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarAnamnesisActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,21 +168,16 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnIngresarAnamnesis)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel49)
-                                    .addComponent(jLabel40))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldCursoEnfermedad, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldEnfermedadActual)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel39))
-                        .addGap(0, 184, Short.MAX_VALUE))))
+                            .addComponent(jLabel49)
+                            .addComponent(jLabel40))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldCursoEnfermedad, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                            .addComponent(jTextFieldEnfermedadActual)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39))
+                .addGap(0, 184, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,23 +195,13 @@ public class VentanaVisita extends javax.swing.JDialog {
                         .addGap(42, 42, 42)
                         .addComponent(jLabel40))
                     .addComponent(jTextFieldEnfermedadActual, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(btnIngresarAnamnesis)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Anamnesis", jPanel2);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examen Físico", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnIngresarExamen.setText("Ingresar Datos");
-        btnIngresarExamen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarExamenActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnIngresarExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, 32));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Cabeza"));
 
@@ -487,36 +459,16 @@ public class VentanaVisita extends javax.swing.JDialog {
         jLabel8.setText("Examenenes Complementarios");
 
         jRadioButton2.setText("Solicitar");
-        jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButton2MouseClicked(evt);
-            }
-        });
 
         jLabel9.setText("Diagnostico Definitivo ");
 
+        buttonGroup1.add(jRadioButtonFavorable1);
         jRadioButtonFavorable1.setText("Favorable");
-        jRadioButtonFavorable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonFavorable1MouseClicked(evt);
-            }
-        });
 
+        buttonGroup1.add(jRadioButtonReservado1);
         jRadioButtonReservado1.setText("Reservado");
-        jRadioButtonReservado1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonReservado1MouseClicked(evt);
-            }
-        });
 
         jLabel10.setText("Pronostico");
-
-        btnAgregarDiagnostico.setText("Ingresar Diagnostico");
-        btnAgregarDiagnostico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarDiagnosticoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -529,7 +481,6 @@ public class VentanaVisita extends javax.swing.JDialog {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
-                            .addComponent(btnAgregarDiagnostico)
                             .addComponent(jLabel8))
                         .addGap(57, 57, 57)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -565,9 +516,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                         .addComponent(jRadioButtonFavorable1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButtonReservado1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(btnAgregarDiagnostico)
-                .addGap(45, 45, 45))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -646,11 +595,6 @@ public class VentanaVisita extends javax.swing.JDialog {
         jLabel18.setText("Duracion");
 
         jButton15.setText("Ingresar Tratamiento");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPane13Layout = new javax.swing.GroupLayout(jPane13);
         jPane13.setLayout(jPane13Layout);
@@ -701,14 +645,14 @@ public class VentanaVisita extends javax.swing.JDialog {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Tratamiento", jPanel11);
@@ -805,11 +749,11 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addGap(6, 6, 6)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNombreMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
         jPanel16Layout.setVerticalGroup(
@@ -817,10 +761,10 @@ public class VentanaVisita extends javax.swing.JDialog {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -901,50 +845,6 @@ public class VentanaVisita extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldCursoEnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCursoEnfermedadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCursoEnfermedadActionPerformed
-
-    private void btnIngresarAnamnesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAnamnesisActionPerformed
-
-        String motivo = jTextAreaAnamnesis.getText();
-        String curso = jTextFieldCursoEnfermedad.getText();
-        String enferActual = jTextFieldEnfermedadActual.getText();
-        
-       anamnesis = new Anamnesis(motivo, curso, enferActual);
-    }//GEN-LAST:event_btnIngresarAnamnesisActionPerformed
-
-    private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2MouseClicked
-
-    private void jRadioButtonFavorable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonFavorable1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonFavorable1MouseClicked
-
-    private void jRadioButtonReservado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonReservado1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonReservado1MouseClicked
-
-    private void btnAgregarDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDiagnosticoActionPerformed
-        // TODO add your handling code here:
-        
-        String preDia = jTextFieldDiagnosticoPre1.getText();
-        String defDia = jTextFieldDiagnosticoDef1.getText();
-        boolean pronostico = false;
-        if(jRadioButtonFavorable1.isSelected()){
-            pronostico = true;
-        }else if(jRadioButtonReservado1.isSelected()){
-            pronostico = false;
-        }
-        boolean solicitud = false;
-        if(jRadioButton2.isSelected()){
-            solicitud = true;
-        }
-        diagnostico = new Diagnostico(preDia, defDia, pronostico,solicitud);
-        
-    }//GEN-LAST:event_btnAgregarDiagnosticoActionPerformed
-
     private void jTableTratamiento1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTratamiento1MouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableTratamiento1MouseMoved
@@ -957,10 +857,6 @@ public class VentanaVisita extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDuracion1ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
-
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
@@ -970,19 +866,30 @@ public class VentanaVisita extends javax.swing.JDialog {
     }//GEN-LAST:event_jTable2MouseMoved
 
     private void btnRegistrarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarVisitaActionPerformed
-        ///////////////
-        Visita visita = new Visita(5021, anamnesis, new DatosMedico("Carlos",1), examenF, new Diagnostico(), new Tratamiento(), new TratamientoRea());
-//        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new Tratamiento(), new TratamientoRea());
-        thisFrame.listaVisita.insertarAlFinal(visita);
-        System.out.println("lista : " + historia.getListaVisitas().toString());
-        thisFrame.mostrarTabla();
+        /**ANAMNESIS**/
+        String motivo = jTextAreaAnamnesis.getText();
+        String curso = jTextFieldCursoEnfermedad.getText();
+        String enferActual = jTextFieldEnfermedadActual.getText();
+        Anamnesis anamnesis = new Anamnesis(motivo, curso, enferActual);
+        visita.setAnamnecis(anamnesis);
         
-        thisFrame.jTexApellido.setText(jTextAreaAnamnesis.getText());
-        this.dispose();
-    }//GEN-LAST:event_btnRegistrarVisitaActionPerformed
-
-    private void btnIngresarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarExamenActionPerformed
-        // TODO add your handling code here:
+        /*DIAGNOSTICO*/
+        String preDia = jTextFieldDiagnosticoPre1.getText();
+        String defDia = jTextFieldDiagnosticoDef1.getText();
+        boolean pronostico = false;
+        if(jRadioButtonFavorable1.isSelected()){
+            pronostico = true;
+        }else if(jRadioButtonReservado1.isSelected()){
+            pronostico = false;
+        }
+        boolean solicitud = false;
+        if(jRadioButton2.isSelected()){
+            solicitud = true;
+        }
+        Diagnostico diagnostico = new Diagnostico(preDia, defDia, pronostico,solicitud);
+        visita.setDiagnostico(diagnostico);
+        
+        /*EXAMEN MÉDICO*/
         String cabezaobs = txtCabezaObs.getText();
         String cabezaaus = txtCabezaAus.getText();
         String cabezaper=  txtCabezaPre.getText();
@@ -998,12 +905,33 @@ public class VentanaVisita extends javax.swing.JDialog {
         String extreobs= txtExtreObs.getText();
         String extreaus= txtExtreAus.getText();
         String extreper= txtExtrePre.getText();
-        examenF = new ExamenFisicos(cabezaobs, cabezaaus, cabezaper, torzoobs, torzoaus, torzoper, abdomenobs, abdomenaus, abdomenper, espaldaobs, espaldaaus, espaldaper, extreobs, extreaus, extreper);
+        ExamenFisicos examenF = new ExamenFisicos(cabezaobs, cabezaaus, cabezaper, torzoobs, torzoaus, torzoper, abdomenobs, abdomenaus, abdomenper, espaldaobs, espaldaaus, espaldaper, extreobs, extreaus, extreper);
+        visita.setExamenFisico(examenF);
+        
+        /*DATOS MEDICO*/
+        String nombreMedico = txtNombreMedico.getText();
+        String especialidad = txtEspecialidad.getText();
+        DatosMedico datoMedico= new DatosMedico(motivo, especialidad);
+        /*TRATAMIENTO*/
+        
+        /*TRATAMIENTO REA*/
         
         
-    }//GEN-LAST:event_btnIngresarExamenActionPerformed
+        Visita visita = new Visita(5021, anamnesis, datoMedico, examenF, diagnostico, new Tratamiento(), new TratamientoRea());
+//        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new Tratamiento(), new TratamientoRea());
+        thisFrame.getListaVisita().insertarAlFinal(visita);
+        System.out.println("lista : " + historia.getListaVisitas().toString());
+        thisFrame.mostrarTabla();
+        
+        thisFrame.jTexApellido.setText(jTextAreaAnamnesis.getText());
+        this.dispose();
+    }//GEN-LAST:event_btnRegistrarVisitaActionPerformed
 
     private void llenarDatos() {
+        //NOMBRE MEDICO
+        txtNombreMedico.setText(visita.getDatosMedico().getNombre());
+        txtEspecialidad.setText(visita.getDatosMedico().getEspecializacion());
+        //ANAMNSESIS
         jTextAreaAnamnesis.setText(visita.getAnamnecis().getMotivo());
         jTextFieldCursoEnfermedad.setText(visita.getAnamnecis().getCurso());
         jTextFieldEnfermedadActual.setText(visita.getAnamnecis().getEnferActual());
@@ -1027,6 +955,21 @@ public class VentanaVisita extends javax.swing.JDialog {
         txtTorsoObs.setText(visita.getExamenFisico().getTorzoobs());
         txtTorsoAus.setText(visita.getExamenFisico().getTorzoaus());
         txtTorsoPre.setText(visita.getExamenFisico().getTorzoper());
+        
+        
+        jTextFieldDiagnosticoPre1.setText(visita.getDiagnostico().getPreDia());
+        jTextFieldDiagnosticoDef1.setText(visita.getDiagnostico().getDefDia());
+        if(visita.getDiagnostico().getSolicitud()){
+            jRadioButton2.setSelected(true);
+        }
+        
+        if(visita.getDiagnostico().isPronostico()){
+            jRadioButtonFavorable1.setSelected(true);
+        }else if(!visita.getDiagnostico().isPronostico()){
+            jRadioButtonReservado1.setSelected(true);
+        }
+
+      
 //    
     }
     /**
@@ -1074,10 +1017,8 @@ public class VentanaVisita extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarDiagnostico;
-    private javax.swing.JButton btnIngresarAnamnesis;
-    private javax.swing.JButton btnIngresarExamen;
-    private javax.swing.JButton btnRegistrarVisita;
+    public javax.swing.JButton btnRegistrarVisita;
+    private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox cbxServicio;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
@@ -1136,8 +1077,6 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTableTratamiento1;
     private javax.swing.JTextArea jTextAreaAnamnesis;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldCursoEnfermedad;
     private javax.swing.JTextField jTextFieldDiagnosticoDef1;
     private javax.swing.JTextField jTextFieldDiagnosticoPre1;
@@ -1153,9 +1092,11 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JTextField txtEspaldaAus;
     private javax.swing.JTextField txtEspaldaObs;
     private javax.swing.JTextField txtEspaldaPre;
+    private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtExtreAus;
     private javax.swing.JTextField txtExtreObs;
     private javax.swing.JTextField txtExtrePre;
+    private javax.swing.JTextField txtNombreMedico;
     private javax.swing.JTextField txtTorsoAus;
     private javax.swing.JTextField txtTorsoObs;
     private javax.swing.JTextField txtTorsoPre;

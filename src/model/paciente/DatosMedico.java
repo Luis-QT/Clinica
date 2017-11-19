@@ -12,16 +12,16 @@ package model.paciente;
 public class DatosMedico {
 
     private String nombreApellido;
-    private int especializacion;
+    private String especializacion;
 
-    public DatosMedico(String nombre, int especializacion) {
+    public DatosMedico(String nombre, String especializacion) {
         this.nombreApellido = nombre;
         this.especializacion = especializacion;
     }
 
     public DatosMedico() {
        this.nombreApellido = "";
-        this.especializacion = 0;
+        this.especializacion = "";
     }
 
     public String getNombre() {
@@ -30,7 +30,7 @@ public class DatosMedico {
 
   
 
-    public int getEspecializacion() {
+    public String getEspecializacion() {
         return especializacion;
     }
 

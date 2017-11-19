@@ -4,15 +4,26 @@ import java.time.LocalDate;
 
 public class Visita {
 
-    int id;
-    String servicio;
-    DatosMedico datosMedico;
-    LocalDate fecha;
-    Anamnesis anamnecis;
-    ExamenFisicos examenFisico;
-    Diagnostico diagnostico;
-    Tratamiento tratamiento;
-    TratamientoRea tratamientoRea;
+    private static int id;
+    private String servicio;
+    private DatosMedico datosMedico;
+    private LocalDate fecha;
+    private Anamnesis anamnecis;
+    private ExamenFisicos examenFisico;
+    private Diagnostico diagnostico;
+    private Tratamiento tratamiento;
+    private TratamientoRea tratamientoRea;
+
+    public Visita(String servicio) {
+        this.servicio = servicio;
+        this.datosMedico = new DatosMedico();
+        this.fecha = LocalDate.now();
+        this.anamnecis = new Anamnesis();
+        this.examenFisico = new ExamenFisicos();
+        this.diagnostico = new Diagnostico();
+        this.tratamiento = new Tratamiento();
+        this.tratamientoRea = new TratamientoRea();
+    }
 
     public Visita(int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = LocalDate.now();

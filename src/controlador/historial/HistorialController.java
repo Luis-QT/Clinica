@@ -7,6 +7,7 @@ import gui.medicoGeneral.FrameHistoriaClinica;
 import gui.medicoGeneral.VentanaVisita;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.paciente.HistoriaClinica;
 import model.paciente.Paciente;
 import model.paciente.Visita;
 
@@ -28,11 +29,9 @@ public class HistorialController implements Controller,ActionListener {
         this.vista.btnVerVisita.setActionCommand("Ver Visita");
         vista.btnVerVisita.addActionListener(this);
         
-        this.vista.btnIngresarPaciente.setActionCommand("Ingresar Datos");
+        this.vista.btnIngresarPaciente.setActionCommand("Ingresar Pciente");
         vista.btnIngresarPaciente.addActionListener(this);
         
-        this.vista.btnIngresarAntecedente.setActionCommand("Ingresar Antecedentes");
-        vista.btnIngresarAntecedente.addActionListener(this);
     }
 
     @Override
@@ -47,10 +46,8 @@ public class HistorialController implements Controller,ActionListener {
             formAgregarVisita();
         }else if(comando.equals("Ver Visita")){
             formVerVisita();
-        }else if(comando.equals("Ingresar Datos")){
-            formIngrerDatoPaciente();
-        }else if(comando.equals("Ingresar Antecedentes")){
-            forIngresarAntedentes();
+        }else if(comando.equals("Ingresar Pciente")){
+            formRegistrarVisita();
         }
     }
     
@@ -66,28 +63,24 @@ public class HistorialController implements Controller,ActionListener {
     private void formVerVisita() {
           try{
             int posicion = vista.tblVisitas.getSelectedRow();
-            Paciente paciente = vista.getPaciente() ;
-//            
-            Visita visita = paciente.obtenerVisita(posicion);
-            
-//            VentanaVisita ventanaVisita = new VentanaVisita(vista, true,visita);
-            this.ventanaVisita = new VentanaVisita(vista, true, visita);
-//            new VisitaController(ventanaVisita).index();
+            Visita visita =vista.getListaVisita().getDato(posicion);
+            ventanaVisita = new VentanaVisita(vista, true,visita);
+            ventanaVisita.btnRegistrarVisita.setEnabled(false);
+            ventanaVisita.setVisible(true);
             
         }catch(Exception e){
             System.out.println(e);
+                    
         }
     }
 
-    private void formIngrerDatoPaciente() {
-        
+    private void formRegistrarVisita() {
+        HistoriaClinica historia = vista.getHistoriaClinicaa() ;
+        ventanaVisita = new VentanaVisita(vista, true, historia);
+        ventanaVisita.setVisible(true);
     }
 
-    private void forIngresarAntedentes() {
-        
-        
     
-    }
     
     
     

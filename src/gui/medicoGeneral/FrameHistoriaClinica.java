@@ -33,10 +33,12 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     public FrameHistoriaClinica() {
         initComponents();
     }
+
     
-    Paciente paciente;
-    ListaDoble<Visita> listaVisita ;
-    HistoriaClinica historial;
+    
+    private Paciente paciente;
+    private ListaDoble<Visita> listaVisita ;
+    private HistoriaClinica historial;
     public FrameHistoriaClinica(Paciente paciente ,ListaDoble<Visita> listaVisita) {
         initComponents();
         this.paciente = paciente;
@@ -55,9 +57,16 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
          llenarDatos();
          mostrarTabla();
     }
+     
+     public ListaDoble<Visita> getListaVisita() {
+        return listaVisita;
+    }
+    public HistoriaClinica getHistoriaClinicaa(){
+        return historial;
+    }
     
-    AntecedentesFamiliares antefa = new AntecedentesFamiliares();
-    AntecedentesPersonales antepe = new AntecedentesPersonales();
+//    AntecedentesFamiliares antefa = new AntecedentesFamiliares();
+//    AntecedentesPersonales antepe = new AntecedentesPersonales();
 //    DatosPaciente datopa = new DatosPaciente();
     
    
@@ -759,6 +768,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
             System.out.println("lista visita es ta vacía?: " + listaVisita);
             Visita visita = listaVisita.getDato(posicion);
             VentanaVisita ventanaVisita = new VentanaVisita(this, true,visita);
+            ventanaVisita.btnRegistrarVisita.setEnabled(false);
             ventanaVisita.setVisible(true);
             
         }catch(Exception e){
@@ -785,7 +795,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         while (iterador.hasNext()) {            
             Visita pro = iterador.next();
             System.out.println("visita: " + pro.getFecha()+ "  "+ pro.getDatosMedico().getNombre()+"  "+pro.getServicio());
-            dtm.addRow(new Object[]{pro.getFecha(), pro.getDatosMedico().getNombre(),pro.getServicio()});    
+            dtm.addRow(new Object[]{pro.getFecha(), pro.getDatosMedico().getNombre(),pro.getDatosMedico().getEspecializacion()});    
         }    
     }
     
