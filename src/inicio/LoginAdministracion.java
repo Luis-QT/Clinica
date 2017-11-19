@@ -5,6 +5,7 @@
  */
 package inicio;
 
+import controlador.administrador.AdministradorController;
 import gui.administrador.FramePrincipalAdministrador;
 import javax.swing.JOptionPane;
 
@@ -152,10 +153,10 @@ public class LoginAdministracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        FramePrincipalAdministrador ventanaAdministrador = new FramePrincipalAdministrador();
-        ventanaAdministrador.setVisible(true);
+        
+        FramePrincipalAdministrador frame = new FramePrincipalAdministrador();
         this.setVisible(false);
+        new AdministradorController(frame).index();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
