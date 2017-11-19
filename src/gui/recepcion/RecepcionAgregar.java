@@ -23,16 +23,14 @@ public class RecepcionAgregar extends javax.swing.JDialog {
      */
     Recepcionista recepcionista;
     RecepcionAreaPacientes aThis;
-    
 
-   
     RecepcionAgregar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, RecepcionAreaPacientes aThis) {
-       super(parent, modal);
+        super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
         this.recepcionista = recepcionista;
         this.aThis = aThis;
-        
+
     }
 
     /**
@@ -68,9 +66,16 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         jLabel11 = new javax.swing.JLabel();
         txtHistoriaClinica = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cbxServicio = new javax.swing.JComboBox();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jPanel5 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        btnAgregar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -88,7 +93,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("PANEL PACIENTE");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 210, 50));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 210, 50));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
@@ -161,44 +166,76 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 320, 310));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elegir", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("Cancelar");
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+        jLabel3.setText("Servicio :");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        jButton4.setText("Limpiar");
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        cbxServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Médico Especialista", "Médico General" }));
+        jPanel4.add(cbxServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 130, 20));
 
-        btnAgregar.setText("Agregar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel12.setText("Doctor :");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+
+        jLabel13.setText("Especialidad : ");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor 1", "Doctor 2", "Doctor 3" }));
+        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 130, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Especialidad 1", "Especialidad 2", "Especialidad 3" }));
+        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 130, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 260, 200));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton3.setText("Cancelar");
+        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 50));
+
+        jButton5.setText("Limpiar");
+        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 50));
+
+        btnAgregar1.setText("Agregar");
+        btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnAgregar1ActionPerformed(evt);
             }
         });
-        jPanel4.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPanel5.add(btnAgregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 50));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 320, 60));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 260, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void jPanel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel1AncestorAdded
         // TODO add your handling code here:
-        
+    }//GEN-LAST:event_jPanel1AncestorAdded
+
+    private void txtDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyPressed
+        // TODO add your handling code here:
+
+        txtHistoriaClinica.setText("H0" + txtDNI.getText());
+
+    }//GEN-LAST:event_txtDNIKeyPressed
+
+    private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
+        // TODO add your handling code here:
         String nombre = txtnombres.getText();
         String apellido = txtApellidos.getText();
         int dni = Integer.parseInt(txtDNI.getText());
@@ -215,26 +252,16 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         String correo = txtcorreo.getText();
         String codigoHistoria = txtHistoriaClinica.getText();
 
-        recepcionista.agregarPaciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, "", "",codigoHistoria);
+        recepcionista.agregarPaciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, "", "", codigoHistoria);
 
         aThis.refrescartabla(recepcionista.getListaPaciente());
         //System.out.println(recepcionista.toString());
         this.setVisible(false);
 
-    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void jPanel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel1AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel1AncestorAdded
+    }//GEN-LAST:event_btnAgregar1ActionPerformed
 
-    private void txtDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyPressed
-        // TODO add your handling code here:
-        
-        txtHistoriaClinica.setText("H0"+txtDNI.getText());
-        
-    }//GEN-LAST:event_txtDNIKeyPressed
-
-    private void mostrarTabla(ListaDoble<Paciente> lista ,javax.swing.JTable tblPacientes ) {
+    private void mostrarTabla(ListaDoble<Paciente> lista, javax.swing.JTable tblPacientes) {
         DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
         dtm.setRowCount(0);
         Iterator<Paciente> iterador = lista.getDescendingIterator();
@@ -278,7 +305,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Recepcionista recepcionista = new Recepcionista();
-                RecepcionAgregar dialog = new RecepcionAgregar(new javax.swing.JDialog(), true, recepcionista,null);
+                RecepcionAgregar dialog = new RecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -291,16 +318,22 @@ public class RecepcionAgregar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregar1;
     private javax.swing.ButtonGroup buttonGroup1;
+    public javax.swing.JComboBox cbxServicio;
     private javax.swing.JCheckBox chkF;
     private javax.swing.JCheckBox chkM;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -310,6 +343,7 @@ public class RecepcionAgregar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtHistoriaClinica;

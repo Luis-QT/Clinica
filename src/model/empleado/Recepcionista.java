@@ -8,6 +8,7 @@ package model.empleado;
 import model.paciente.Paciente;
 import estructura.ListaDoble;
 import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  *
@@ -99,16 +100,30 @@ public class Recepcionista extends EmpleadoUser {
         listaPaciente.ordenarPorBurbuja();
     }
     
-    public void buscarPorApellidos(String apellido){
+     public ListaDoble<Paciente> buscarporApellido (String apellido){
+        ListaDoble<Paciente> lista = new ListaDoble<Paciente>();
         
+        Iterator<Paciente> it = listaPaciente.getDescendingIterator();
+        while(it.hasNext()){
+            Paciente paciente = it.next();
+            if(paciente.getApellido().toUpperCase().contains(apellido.toUpperCase())){
+                lista.insertarAlFinal(paciente);
+            }  
+        }      
+        return lista;
+    }
+     
+     public ListaDoble<Paciente> buscarporDNI (int DNI){
+        ListaDoble<Paciente> lista = new ListaDoble<Paciente>();
         
-//        listaPaciente.getDato(0)
-//                
-//                ListaDoble<Paciente> lista = new ListaDoble<Paciente>();
-//        
-//        listaPaciente.stream().filter(n -> n.getCodigo().toUpperCase().
-//                contains(codigo.toUpperCase())).forEach(n-> lista.insertarAlFinal(n));
-//        return lista;
+        Iterator<Paciente> it = listaPaciente.getDescendingIterator();
+        while(it.hasNext()){
+            Paciente paciente = it.next();
+            if(paciente.getDni() == DNI ){
+                lista.insertarAlFinal(paciente);
+            }  
+        }
+        return lista;        
     }
 
 }

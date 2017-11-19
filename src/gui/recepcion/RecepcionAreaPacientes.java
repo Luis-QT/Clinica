@@ -11,6 +11,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.empleado.MedicoEspecialista;
 import model.paciente.Paciente;
 import model.empleado.Recepcionista;
 
@@ -36,7 +37,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         tblPacientes.setEnabled(true);
         this.recepcionista = recepcionista;
         this.listaPaciente = this.recepcionista.getListaPaciente();
-       
+
         refrescartabla(listaPaciente);
 
     }
@@ -285,7 +286,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 
     private void tblPacientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMousePressed
         // TODO add your handling code here:
-        
+
 //        if(indice == -1){
 //            indice = intemporal;
 //            System.out.println("temoral : " + indice);
@@ -341,24 +342,19 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        Paciente p = null ;
-//        if(chxApellido.isSelected() ){
-//            String apell = txtBuscar.getText();
-//            p = recepcionista.buscarPorApellidos(apell);
-//        }else if (chxDni.isSelected() ){
-//            int DNI = Integer.parseInt(txtBuscar.getText());
-//            p = recepcionista.buscarPorDNI(DNI);
-//            System.out.println(p.getNombre());
-//        }else{
-//            JOptionPane.showMessageDialog(null, "Eliga una opcion.");
-//        }
-//        
-        intemporal = indice;
-        refrecartablaBuscar(p);
-        tblPacientes.setEnabled(false);
-        //refrescartabla(listaPaciente);
-        
+       
+        String palabraBuscar = txtBuscar.getText();
+        if (chxApellido.isSelected()) {
+            ListaDoble<Paciente> sp = recepcionista.buscarporApellido(palabraBuscar);
+            refrescartabla(sp);
+        } else if (chxDni.isSelected()) {
+            ListaDoble<Paciente> sp = recepcionista.buscarporDNI(Integer.parseInt(palabraBuscar));
+            refrescartabla(sp);
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una opcion");
+        }
+
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
@@ -369,8 +365,8 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 
     private void tblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMouseClicked
         // TODO add your handling code here:
-            indice = tblPacientes.getSelectedRow(); 
-        
+        indice = tblPacientes.getSelectedRow();
+
     }//GEN-LAST:event_tblPacientesMouseClicked
 
     private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
@@ -457,7 +453,7 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
         while (iterador.hasNext()) {
             Paciente pro = iterador.next();
-            dtm.addRow(new Object[]{pro.getCodigo(),pro.getNombre(), pro.getApellido(), pro.getDni(),
+            dtm.addRow(new Object[]{pro.getCodigo(), pro.getNombre(), pro.getApellido(), pro.getDni(),
                 pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
                 pro.getEmail()});
         }
@@ -472,12 +468,11 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 //            dtm.addRow(new Object[]{pro.getNombre(),pro.getId()});    
 //        }    
 //    }
-
     private void refrecartablaBuscar(Paciente pro) {
         DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
         dtm.setRowCount(0);
         dtm.addRow(new Object[]{pro.getNombre(), pro.getApellido(), pro.getDni(),
-                pro.isSexo(), pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
-                pro.getEmail()});
-       }
+            pro.isSexo(), pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
+            pro.getEmail()});
+    }
 }
