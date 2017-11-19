@@ -11,7 +11,7 @@ import model.paciente.DatosMedico;
 import model.paciente.Diagnostico;
 import model.paciente.ExamenFisicos;
 import model.paciente.HistoriaClinica;
-import model.paciente.Tratamiento;
+import model.paciente.TemporadaTratamiento;
 import model.paciente.TratamientoRea;
 import model.paciente.Visita;
 
@@ -29,7 +29,7 @@ public class VentanaVisita extends javax.swing.JDialog {
 //    Anamnesis anamnesis;
 //    Diagnostico diagnostico;
 //    ExamenFisicos examenF;
-//    Tratamiento tratamiento;
+//    TemporadaTratamiento tratamiento;
 //    TratamientoRea trarea;
 //    DatosMedico datomed;
      Visita visita;
@@ -124,14 +124,12 @@ public class VentanaVisita extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTableTratamiento1 = new javax.swing.JTable();
-        jPane13 = new javax.swing.JPanel();
-        jTextFieldDuracion1 = new javax.swing.JTextField();
-        jTextFieldTratamiento1 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jButton15 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         jPanel14 = new javax.swing.JPanel();
         jButton16 = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
@@ -179,7 +177,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                             .addComponent(jTextFieldEnfermedadActual)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39))
-                .addGap(0, 184, Short.MAX_VALUE))
+                .addGap(0, 228, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,7 +526,7 @@ public class VentanaVisita extends javax.swing.JDialog {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,96 +540,47 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Tratamiento"));
 
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder("Tabla"));
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jTableTratamiento1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Cantidad", "Tratamiento"
-            }
-        ));
-        jTableTratamiento1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jTableTratamiento1MouseMoved(evt);
-            }
-        });
-        jTableTratamiento1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableTratamiento1MouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(jTableTratamiento1);
+        jLabel6.setText("Pastillas a tomar/ medicina");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jLabel11.setText("Recomendaciones");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-
-        jPane13.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        jTextFieldDuracion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDuracion1ActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setText("Tipo de Tratamiento");
-
-        jLabel18.setText("Duracion");
-
-        jButton15.setText("Ingresar Tratamiento");
-
-        javax.swing.GroupLayout jPane13Layout = new javax.swing.GroupLayout(jPane13);
-        jPane13.setLayout(jPane13Layout);
-        jPane13Layout.setHorizontalGroup(
-            jPane13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPane13Layout.createSequentialGroup()
-                .addGroup(jPane13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPane13Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPane13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPane13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldDuracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTratamiento1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPane13Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton15)))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        jPane13Layout.setVerticalGroup(
-            jPane13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPane13Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(jPane13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jTextFieldTratamiento1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPane13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jTextFieldDuracion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(jButton15)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -640,10 +589,8 @@ public class VentanaVisita extends javax.swing.JDialog {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(335, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -651,13 +598,9 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Tratamiento", jPanel11);
+        jTabbedPane2.addTab("Medicina", jPanel11);
 
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Tratamiento Realizado"));
 
@@ -712,7 +655,7 @@ public class VentanaVisita extends javax.swing.JDialog {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton16)
@@ -856,18 +799,6 @@ public class VentanaVisita extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableTratamiento1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTratamiento1MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableTratamiento1MouseMoved
-
-    private void jTableTratamiento1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTratamiento1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableTratamiento1MouseClicked
-
-    private void jTextFieldDuracion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDuracion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDuracion1ActionPerformed
-
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
@@ -928,8 +859,8 @@ public class VentanaVisita extends javax.swing.JDialog {
         /*TRATAMIENTO REA*/
         
         
-        Visita visita = new Visita(5021, anamnesis, datoMedico, examenF, diagnostico, new Tratamiento(), new TratamientoRea());
-//        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new Tratamiento(), new TratamientoRea());
+        Visita visita = new Visita(5021, anamnesis, datoMedico, examenF, diagnostico, new TemporadaTratamiento(), new TratamientoRea());
+//        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new TemporadaTratamiento(), new TratamientoRea());
         thisFrame.getListaVisita().insertarAlFinal(visita);
         System.out.println("lista : " + historia.getListaVisitas().toString());
         thisFrame.mostrarTabla();
@@ -1031,7 +962,6 @@ public class VentanaVisita extends javax.swing.JDialog {
     public javax.swing.JButton btnRegistrarVisita;
     private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox cbxServicio;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1043,8 +973,7 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel39;
@@ -1052,6 +981,7 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel8;
@@ -1062,7 +992,6 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JPanel jPane13;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1083,19 +1012,19 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioButtonFavorable1;
     private javax.swing.JRadioButton jRadioButtonReservado1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTableTratamiento1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextAreaAnamnesis;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldCursoEnfermedad;
     private javax.swing.JTextField jTextFieldDiagnosticoDef1;
     private javax.swing.JTextField jTextFieldDiagnosticoPre1;
-    private javax.swing.JTextField jTextFieldDuracion1;
     private javax.swing.JTextField jTextFieldEnfermedadActual;
-    private javax.swing.JTextField jTextFieldTratamiento1;
     private javax.swing.JTextField txtAbdomemAus;
     private javax.swing.JTextField txtAbdomenObs;
     private javax.swing.JTextField txtAbdomenPre;

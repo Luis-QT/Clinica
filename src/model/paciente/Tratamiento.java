@@ -1,74 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model.paciente;
 
-/**
- *
- * @author F20LAB303-XXE
- */
+import java.time.LocalDate;
+
 public class Tratamiento {
-    private String traTipo;
-    private String duracion;
-    private String cantidad;
-    private String tratamiento;
+    private int id;
+    private int planTramientoId;
+    private int temporadaId;
+    private LocalDate fecha;
+    private boolean estadoPagado; // 0 -> no pagado , 1 -> pagado
 
-    public String getCantidad() {
-        return cantidad;
+    public Tratamiento(int id, int planTramientoId, int temporadaId, LocalDate fecha, boolean estadoPagado) {
+        this.id = id;
+        this.planTramientoId = planTramientoId;
+        this.temporadaId = temporadaId;
+        this.fecha = fecha;
+        this.estadoPagado = estadoPagado;
     }
-
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public String getTratamiento() {
-        return tratamiento;
-    }
-
-    public void setTratamiento(String tratamiento) {
-        this.tratamiento = tratamiento;
-    }
-
-    public String getTraTipo() {
-        return traTipo;
-    }
-
-    public void setTraTipo(String traTipo) {
-        this.traTipo = traTipo;
-    }
-
-    public String getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
-    }
-
-    public Tratamiento() {
-        this.traTipo = "";
-        this.duracion = "";
-        this.cantidad = "";
-        this.tratamiento = "";
-    }
-
-    public Tratamiento(String traTipo, String duracion, String cantidad, String tratamiento) {
-        this.traTipo = traTipo;
-        this.duracion = duracion;
-        this.cantidad = cantidad;
-        this.tratamiento = tratamiento;
-    }
-
-    
-
-    
-
-    @Override
-    public String toString() {
-        return "Tratamiento{" + "traTipo=" + traTipo + ", duracion=" + duracion + '}';
-    }
-    
     
 }

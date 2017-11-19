@@ -11,7 +11,7 @@ public class Visita {
     private Anamnesis anamnecis;
     private ExamenFisicos examenFisico;
     private Diagnostico diagnostico;
-    private Tratamiento tratamiento;
+    private TemporadaTratamiento tratamiento;
     private TratamientoRea tratamientoRea;
 
     public Visita(String servicio) {
@@ -21,11 +21,11 @@ public class Visita {
         this.anamnecis = new Anamnesis();
         this.examenFisico = new ExamenFisicos();
         this.diagnostico = new Diagnostico();
-        this.tratamiento = new Tratamiento();
+        this.tratamiento = new TemporadaTratamiento();
         this.tratamientoRea = new TratamientoRea();
     }
 
-    public Visita(int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
+    public Visita(int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, TemporadaTratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = LocalDate.now();
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
@@ -37,7 +37,7 @@ public class Visita {
     }
 
     
-    public Visita(LocalDate fecha, int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
+    public Visita(LocalDate fecha, int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, TemporadaTratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = fecha;
         this.id = codigo;
         this.anamnecis = anamnecis;
@@ -98,11 +98,11 @@ public class Visita {
         this.diagnostico = diagnostico;
     }
 
-    public Tratamiento getTratamiento() {
+    public TemporadaTratamiento getTratamiento() {
         return tratamiento;
     }
 
-    public void setTratamiento(Tratamiento tratamiento) {
+    public void setTratamiento(TemporadaTratamiento tratamiento) {
         this.tratamiento = tratamiento;
     }
 
