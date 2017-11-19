@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import model.empleado.MedicoEspecialista;
 import model.paciente.Paciente;
 import model.empleado.Recepcionista;
+import model.paciente.Visita;
 
 /**
  *
@@ -25,14 +26,20 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
      * Creates new form RecepcionArea
      */
     private Recepcionista recepcionista;
+   
 
     public Recepcionista getRecepcionista() {
         return recepcionista;
     }
-    ListaDoble<Paciente> listaPaciente;
+    public ListaDoble<Paciente> listaPaciente;
+    
+    public ListaDoble<Visita> listaVisita = new ListaDoble<>();
+
     int indice = -1;
     int intemporal = -2;
+    public int idcbo = -1;
 
+    
     public FrameRecepcionAreaPacientes(java.awt.Frame parent, boolean modal, Recepcionista recepcionista) {
         super(parent, modal);
         this.setUndecorated(true);
@@ -41,10 +48,10 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
         tblPacientes.setEnabled(true);
         this.recepcionista = recepcionista;
         this.listaPaciente = this.recepcionista.getListaPaciente();
-
         refrescartabla(listaPaciente);
 
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +65,7 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tblPacientes = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
@@ -98,7 +105,7 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Historia", "Nombres", "Apellidos", "DNI", "Edad", "Telefono", "Celular", "Emaill"
+                "Historial", "Nombre", "Apellidos", "DNI", "Edad", "Casa", "Celular", "Correo"
             }
         ));
         tblPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,9 +116,9 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
                 tblPacientesMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(tblPacientes);
+        jScrollPane2.setViewportView(tblPacientes);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 520, 210));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 520, 210));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 560, 260));
 
@@ -174,6 +181,11 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
         cboOrdenar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cboOrdenarMouseClicked(evt);
+            }
+        });
+        cboOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboOrdenarActionPerformed(evt);
             }
         });
         jPanel8.add(cboOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, -1));
@@ -277,8 +289,8 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        FrameRecepcionAgregar AgregarVentana = new FrameRecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, this);
-        AgregarVentana.setVisible(true);
+//        FrameRecepcionAgregar AgregarVentana = new FrameRecepcionAgregar(new javax.swing.JDialog(), true, recepcionista, this);
+//        AgregarVentana.setVisible(true);
 
 
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -288,98 +300,89 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnModificarMouseClicked
 
 
-    private void tblPacientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMousePressed
-        // TODO add your handling code here:
-
-//        if(indice == -1){
-//            indice = intemporal;
-//            System.out.println("temoral : " + indice);
-//        }else{
-//           indice = tblPacientes.getSelectedRow(); 
-//           System.out.println("select : " + indice);
-//        }
-//        
-//        System.out.println("Mois pressede : " + indice);
-    }//GEN-LAST:event_tblPacientesMousePressed
-
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-        System.out.println(indice);
-        FrameRecepcionModificar AgregarModificar = new FrameRecepcionModificar(new javax.swing.JDialog(), true, recepcionista, this, listaPaciente.getDato(indice), indice);
-        AgregarModificar.setVisible(true);
+//        // TODO add your handling code here:
+//        System.out.println(indice);
+//        FrameRecepcionModificar AgregarModificar = new FrameRecepcionModificar(new javax.swing.JDialog(), true, recepcionista, this, listaPaciente.getDato(indice), indice);
+//        AgregarModificar.setVisible(true);
 
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-
-        recepcionista.eliminarPaciente(indice);
-        refrescartabla(listaPaciente);
+//        // TODO add your handling code here:
+//
+//        recepcionista.eliminarPaciente(indice);
+//        //refrescartabla(listaPaciente);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void cboOrdenarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboOrdenarMouseClicked
 
     }//GEN-LAST:event_cboOrdenarMouseClicked
 
-    int idcbo = -1;
+    
     private void cboOrdenarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboOrdenarItemStateChanged
         // TODO add your handling code here:
-        idcbo = cboOrdenar.getSelectedIndex();
+//        idcbo = cboOrdenar.getSelectedIndex();
     }//GEN-LAST:event_cboOrdenarItemStateChanged
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        // TODO add your handling code here:
-        switch (idcbo) {
-            case 0:
-                recepcionista.ordenarPorNombre();
-                break;
-            case 1:
-                recepcionista.ordenarPorApellido();
-                break;
-            case 2:
-                recepcionista.ordenarPorEdad();
-                break;
-        }
-        refrescartabla(listaPaciente);
+//        // TODO add your handling code here:
+//        switch (idcbo) {
+//            case 0:
+//                recepcionista.ordenarPorNombre();
+//                break;
+//            case 1:
+//                recepcionista.ordenarPorApellido();
+//                break;
+//            case 2:
+//                recepcionista.ordenarPorEdad();
+//                break;
+//        }
+//       // refrescartabla(listaPaciente);
 
 
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       
-        String palabraBuscar = txtBuscar.getText();
-        if (chxApellido.isSelected()) {
-            ListaDoble<Paciente> sp = recepcionista.buscarporApellido(palabraBuscar);
-            listaPaciente = sp;
-            refrescartabla(sp);
-        } else if (chxDni.isSelected()) {
-            ListaDoble<Paciente> sp = recepcionista.buscarporDNI(Integer.parseInt(palabraBuscar));
-            listaPaciente = sp;
-            refrescartabla(sp);
-        } else {
-            JOptionPane.showMessageDialog(null, "Seleccione una opcion");
-        }
 
+//        String palabraBuscar = txtBuscar.getText();
+//        if (chxApellido.isSelected()) {
+//            ListaDoble<Paciente> sp = recepcionista.buscarporApellido(palabraBuscar);
+//            listaPaciente = sp;
+//            refrescartabla(sp);
+//        } else if (chxDni.isSelected()) {
+//            ListaDoble<Paciente> sp = recepcionista.buscarporDNI(Integer.parseInt(palabraBuscar));
+//            listaPaciente = sp;
+//            refrescartabla(sp);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Seleccione una opcion");
+//        }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
-        // TODO add your handling code here:
-        tblPacientes.setEnabled(true);
-        listaPaciente = recepcionista.getListaPaciente();
-        refrescartabla(listaPaciente);
+//        // TODO add your handling code here:
+//        tblPacientes.setEnabled(true);
+//        listaPaciente = recepcionista.getListaPaciente();
+//        //refrescartabla(listaPaciente);
     }//GEN-LAST:event_btnRefrescarActionPerformed
-
-    private void tblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMouseClicked
-        // TODO add your handling code here:
-        indice = tblPacientes.getSelectedRow();
-
-    }//GEN-LAST:event_tblPacientesMouseClicked
 
     private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_lblcerrarMouseClicked
+
+    private void cboOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboOrdenarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboOrdenarActionPerformed
+
+    private void tblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPacientesMouseClicked
+
+    private void tblPacientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPacientesMousePressed
 
     /**
      * @param args the command line arguments
@@ -452,38 +455,21 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblcerrar;
     public javax.swing.JTable tblPacientes;
     public javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 
-    void refrescartabla(ListaDoble<Paciente> listaPaciente) {
-        DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
-        dtm.setRowCount(0);
-        Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
-        while (iterador.hasNext()) {
-            Paciente pro = iterador.next();
-            dtm.addRow(new Object[]{pro.getCodigo(), pro.getNombre(), pro.getApellido(), pro.getDni(),
-                pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
-                pro.getEmail()});
-        }
-    }
-
-//     private void mostrarTabla(ListaDoble<Paciente> lista) {
-//        DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
-//        dtm.setRowCount(0);
-//        Iterator<Paciente> iterador = lista.getDescendingIterator();
-//        while (iterador.hasNext()) {            
-//            Paciente pro = iterador.next();
-//            dtm.addRow(new Object[]{pro.getNombre(),pro.getId()});    
-//        }    
-//    }
-    private void refrecartablaBuscar(Paciente pro) {
-        DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
-        dtm.setRowCount(0);
-        dtm.addRow(new Object[]{pro.getNombre(), pro.getApellido(), pro.getDni(),
-            pro.isSexo(), pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
-            pro.getEmail()});
+    public void refrescartabla(ListaDoble<Paciente> listaPaciente) {
+                DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
+                dtm.setRowCount(0);
+                Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
+                while (iterador.hasNext()) {
+                    Paciente pro = iterador.next();
+                    dtm.addRow(new Object[]{pro.getCodigo(), pro.getNombre(), pro.getApellido(), pro.getDni(),
+                        pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
+                        pro.getEmail()});
+                }
     }
 }

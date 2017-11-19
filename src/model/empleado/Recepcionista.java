@@ -50,7 +50,7 @@ public class Recepcionista extends EmpleadoUser {
         return listaPaciente;
     }
 
-    public void insertarPaciente(Paciente paciente){
+    public void agregarPaciente(Paciente paciente){
         listaPaciente.insertarAlFinal(paciente);
         paciente.setSoftDelete(2);
     }
@@ -62,6 +62,19 @@ public class Recepcionista extends EmpleadoUser {
         paciente.setSoftDelete(2);
     }
 
+    public void modificaPaciente(Paciente paciente, int posicion){
+        
+        Paciente p = listaPaciente.getDato(posicion);
+        p.setNombre(paciente.getNombre());
+        p.setApellido(paciente.getApellido());
+        p.setDni(paciente.getDni());
+        p.setEdad(paciente.getEdad());
+        p.setSexo(paciente.isSexo());
+        p.setTelefonoCasa(paciente.getTelefonoCasa());
+        p.setTelefonoCelular(paciente.getTelefonoCelular());
+        p.setEmail(paciente.getEmail());
+    }
+    
     public void modificaPaciente(int pos, String nombre, String apellido,
             int dni, boolean sexo, int edad, int telefono, int celular, String correo) {
         Paciente p = listaPaciente.getDato(pos);

@@ -28,6 +28,14 @@ public class DatosMedico {
         return nombreApellido;
     }
 
+    public void setNombreApellido(String nombreApellido) {
+        this.nombreApellido = nombreApellido;
+    }
+
+    public void setEspecializacion(String especializacion) {
+        this.especializacion = especializacion;
+    }
+
   
 
     public String getEspecializacion() {

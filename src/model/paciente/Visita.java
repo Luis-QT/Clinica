@@ -1,5 +1,6 @@
 package model.paciente;
 
+import estructura.ListaDoble;
 import java.time.LocalDate;
 
 public class Visita {
@@ -13,7 +14,20 @@ public class Visita {
     private Diagnostico diagnostico;
     private TemporadaTratamiento tratamiento;
     private TratamientoRea tratamientoRea;
+    
+//    private ListaDoble<Visita> listaVisita;
+//
+//    public ListaDoble<Visita> getListaVisita() {
+//        return listaVisita;
+//    }
 
+    
+    
+//    public Visita(){
+//        this.listaVisita = new ListaDoble<>();
+//    }
+//    
+//    
     public Visita(String servicio) {
         this.servicio = servicio;
         this.datosMedico = new DatosMedico();
@@ -24,6 +38,20 @@ public class Visita {
         this.tratamiento = new TemporadaTratamiento();
         this.tratamientoRea = new TratamientoRea();
     }
+    
+    //Constructor recepcionista
+    public Visita(String servicio,DatosMedico medico) {
+        this.servicio = servicio;
+        this.datosMedico = medico;
+        this.fecha = LocalDate.now();
+        this.anamnecis = new Anamnesis();
+        this.examenFisico = new ExamenFisicos();
+        this.diagnostico = new Diagnostico();
+        this.tratamiento = new TemporadaTratamiento();
+        this.tratamientoRea = new TratamientoRea();
+        
+    }
+    
 
     public Visita(int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, TemporadaTratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = LocalDate.now();
@@ -49,6 +77,13 @@ public class Visita {
         this.servicio = "Holo";
     }
 
+//    public void insertarVisita(Visita visita){
+//        
+//        listaVisita.insertarAlFinal(visita);
+//        
+//    }
+//    
+    
     public int getCodigo() {
         return id;
     }

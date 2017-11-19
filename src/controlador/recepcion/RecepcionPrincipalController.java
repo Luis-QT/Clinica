@@ -21,6 +21,7 @@ import model.empleado.Recepcionista;
 public class RecepcionPrincipalController implements Controller, ActionListener {
 
     private FrameRecepcionPrincipal vista;
+    private FrameRecepcionAreaPacientes areaPacientes;
 
     public RecepcionPrincipalController(FrameRecepcionPrincipal vista) {
         this.vista = vista;
@@ -42,18 +43,18 @@ public class RecepcionPrincipalController implements Controller, ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-           String comando = e.getActionCommand();
-        if(comando.equals("Pacientes")){
+        String comando = e.getActionCommand();
+        if (comando.equals("Pacientes")) {
             formPacientes();
-        }else if(comando.equals("Salir")){
+        } else if (comando.equals("Salir")) {
             formSalir();
         }
     }
 
     private void formPacientes() {
-        Recepcionista recepcionista = vista.getRecepcionista();    
-        new FrameRecepcionAreaPacientes(vista,true, recepcionista).setVisible(true);
-        
+        Recepcionista recepcionista = vista.getRecepcionista();
+        this.areaPacientes = new FrameRecepcionAreaPacientes(vista, true, recepcionista);
+        new RecepcionAreaPacientesController(areaPacientes).index();
     }
 
     private void formSalir() {

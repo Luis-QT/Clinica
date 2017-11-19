@@ -33,6 +33,16 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
 
     }
 
+    public FrameRecepcionAgregar(JDialog jDialog, boolean b, Recepcionista recepcionista, FrameRecepcionAreaPacientes vista, int indice) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Recepcionista getRecepcionista() {
+        return recepcionista;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,12 +80,12 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
         cbxServicio = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbxDoctor = new javax.swing.JComboBox<>();
+        cbxEspecialidad = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        btnAgregar1 = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -181,11 +191,11 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
         jLabel13.setText("Especialidad : ");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor 1", "Doctor 2", "Doctor 3" }));
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 130, -1));
+        cbxDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor 1", "Doctor 2" }));
+        jPanel4.add(cbxDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 130, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Especialidad 1", "Especialidad 2", "Especialidad 3" }));
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 130, -1));
+        cbxEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Especialidad 1", "Especialidad 2" }));
+        jPanel4.add(cbxEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 130, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 260, 200));
 
@@ -193,19 +203,19 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setText("Cancelar");
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 50));
+        btnCancelar.setText("Cancelar");
+        jPanel5.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 50));
 
-        jButton5.setText("Limpiar");
-        jPanel5.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 50));
+        btnLimpiar.setText("Limpiar");
+        jPanel5.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 50));
 
-        btnAgregar1.setText("Agregar");
-        btnAgregar1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregar1ActionPerformed(evt);
+                btnAgregarActionPerformed(evt);
             }
         });
-        jPanel5.add(btnAgregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 50));
+        jPanel5.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 50));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 260, 100));
 
@@ -234,43 +244,53 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txtDNIKeyPressed
 
-    private void btnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregar1ActionPerformed
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        String nombre = txtnombres.getText();
-        String apellido = txtApellidos.getText();
-        int dni = Integer.parseInt(txtDNI.getText());
-        boolean sexo = false;
-        if (chkF.isSelected()) {
-            sexo = false;
-        }
-        if (chkM.isSelected()) {
-            sexo = true;
-        }
-        int edad = Integer.parseInt(txtedad.getText());
-        int telCasa = Integer.parseInt(txttelefono.getText());
-        int telCelular = Integer.parseInt(txtcelular.getText());
-        String correo = txtcorreo.getText();
-        String codigoHistoria = txtHistoriaClinica.getText();
 
-        recepcionista.agregarPaciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, "", "", codigoHistoria);
+        //Datos Paciente
+//        String nombre = txtnombres.getText();
+//        String apellido = txtApellidos.getText();
+//        int dni = Integer.parseInt(txtDNI.getText());
+//        boolean sexo = false;
+//        if (chkF.isSelected()) {
+//            sexo = false;
+//        }
+//        if (chkM.isSelected()) {
+//            sexo = true;
+//        }
+//        int edad = Integer.parseInt(txtedad.getText());
+//        int telCasa = Integer.parseInt(txttelefono.getText());
+//        int telCelular = Integer.parseInt(txtcelular.getText());
+//        String correo = txtcorreo.getText();
+//        String codigoHistoria = txtHistoriaClinica.getText();
+//        //Fin datos paciente
+//
+//        switch (cbxServicio.getSelectedIndex()) {
+//            case 0:
+//                break;
+//            case 1:
+//                break;
+//            case 2:
+//                break;
+//            case 3:
+//                break;
+//        }
+//
+//        Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "", codigoHistoria);
+//
+//        recepcionista.agregarPaciente(p);
+        
+        
 
-        aThis.refrescartabla(recepcionista.getListaPaciente());
+        //recepcionista.agregarPaciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, "", "", codigoHistoria);
+        //aThis.refrescartabla(recepcionista.getListaPaciente());
         //System.out.println(recepcionista.toString());
-        this.setVisible(false);
+        //this.setVisible(false);
 
 
-    }//GEN-LAST:event_btnAgregar1ActionPerformed
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void mostrarTabla(ListaDoble<Paciente> lista, javax.swing.JTable tblPacientes) {
-        DefaultTableModel dtm = (DefaultTableModel) tblPacientes.getModel();
-        dtm.setRowCount(0);
-        Iterator<Paciente> iterador = lista.getDescendingIterator();
-        while (iterador.hasNext()) {
-            Paciente pro = iterador.next();
-            dtm.addRow(new Object[]{pro.getNombre(), pro.getId()});
-        }
-    }
-
+  
     /**
      * @param args the command line arguments
      */
@@ -322,15 +342,15 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar1;
+    public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnLimpiar;
     private javax.swing.ButtonGroup buttonGroup1;
+    public javax.swing.JComboBox<String> cbxDoctor;
+    public javax.swing.JComboBox<String> cbxEspecialidad;
     public javax.swing.JComboBox cbxServicio;
-    private javax.swing.JCheckBox chkF;
-    private javax.swing.JCheckBox chkM;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JCheckBox chkF;
+    public javax.swing.JCheckBox chkM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -348,13 +368,13 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtDNI;
-    private javax.swing.JTextField txtHistoriaClinica;
-    private javax.swing.JTextField txtcelular;
-    private javax.swing.JTextField txtcorreo;
-    private javax.swing.JTextField txtedad;
-    private javax.swing.JTextField txtnombres;
-    private javax.swing.JTextField txttelefono;
+    public javax.swing.JTextField txtApellidos;
+    public javax.swing.JTextField txtDNI;
+    public javax.swing.JTextField txtHistoriaClinica;
+    public javax.swing.JTextField txtcelular;
+    public javax.swing.JTextField txtcorreo;
+    public javax.swing.JTextField txtedad;
+    public javax.swing.JTextField txtnombres;
+    public javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }
