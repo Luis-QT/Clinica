@@ -5,7 +5,7 @@ package model.empleado;
 public class Servicios {
     String nombreServicio;
     Float precio;
-    boolean id;// T consulta , F laboratorio
+    Boolean id;// T consulta , F laboratorio
 
   
 
@@ -34,6 +34,12 @@ public class Servicios {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "Servicios{" + "nombreServicio=" + nombreServicio + ", precio=" + precio + ", id=" + id + '}';
+    }
+    
     
     
 }

@@ -108,7 +108,7 @@ public class ContabilidadController implements Controller,ActionListener{
            ListaDoble<Servicios> listaServicios = vista.getListaServicios();
            if (vista.rbtnConsulta.isSelected()) {
                int t = vista.TablaServicios.getSelectedRow();
-               Servicios set = listaConsultaServicios.getDato(t);
+               Servicios set = listaServicios.getDato(t);
 
                listaSeleccionGeneral.insertarAlFinal(set);
 
@@ -116,7 +116,7 @@ public class ContabilidadController implements Controller,ActionListener{
            } else if (vista.rbtnLaboratorio.isSelected()) {
 
                int t = vista.TablaServicios.getSelectedRow();
-               Servicios set = listaLaboratorioServicios.getDato(t);
+               Servicios set = listaServicios.getDato(t);
 
                listaSeleccionGeneral.insertarAlFinal(set);
 
@@ -178,8 +178,8 @@ public class ContabilidadController implements Controller,ActionListener{
             ListaDoble<Servicios> listaServicios = vista.getListaServicios();
             String palabra = vista.txtBuscar.getText();
             ListaDoble<Servicios> p = caja.bucarServicio(palabra);
-            listaServicios = p;
-            vista.mostrarTablaServicios(listaServicios);
+            vista.setListaServicios(p);
+            vista.mostrarTablaServicios(p);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Servicio no encontrado\n");
@@ -292,6 +292,7 @@ public class ContabilidadController implements Controller,ActionListener{
             ListaDoble<Servicios> listaServicios = vista.getListaServicios();
             Cajero caja = vista.getCaja();
             listaServicios = caja.ordenarPrecios();
+            vista.setListaServicios(listaServicios);
             vista.mostrarTablaServicios(listaServicios);
 
         } catch (Exception e) {
@@ -305,8 +306,10 @@ public class ContabilidadController implements Controller,ActionListener{
         try {
             ListaDoble<Servicios> listaConsultaServicios = vista.getListaConsultaServicios();
             Cajero caja = vista.getCaja();
+            
             if (vista.rbtnConsulta.isSelected()) {
-            listaConsultaServicios = caja.ordenarporConsultas();
+            listaConsultaServicios = caja.ordenarporConsultas(); 
+            vista.setListaServicios(listaConsultaServicios);
             vista.mostrarTablaServicios(listaConsultaServicios);
         }
 
@@ -322,6 +325,7 @@ public class ContabilidadController implements Controller,ActionListener{
             ListaDoble<Servicios> listaLaboratorioServicios = vista.getListaLaboratorioServicios();
             if (vista.rbtnLaboratorio.isSelected()) {
                 listaLaboratorioServicios = caja.ordenarporLaboratorio();
+                vista.setListaServicios(listaLaboratorioServicios);
                 vista.mostrarTablaServicios(listaLaboratorioServicios);
             }
         } catch (Exception e) {

@@ -3,6 +3,7 @@ package model.empleado;
 import estructura.ListaDoble;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Optional;
@@ -36,11 +37,11 @@ public class Cajero extends EmpleadoUser{
     public void agregarPaciente(Paciente paciente){
         listaPaciente.insertarAlFinal(paciente);
     }
-    
-//     public void agregarMonto(Monto monto){
-//        listaMonto.insertarAlFinal(monto);
-//    }
-    
+ 
+     public void agregarMonto(Monto monto) {
+        listaMonto.insertarAlFinal(monto);
+    }
+
   
 
     public ListaDoble<Servicios> getListaServicios() {
@@ -89,15 +90,23 @@ public class Cajero extends EmpleadoUser{
 
 
     public ListaDoble<Servicios> bucarServicio(String busca) {
-        ListaDoble<Servicios> aux = new ListaDoble<Servicios>();
-
-        listaServicios.stream().filter(n -> n.getNombreServicio().toUpperCase().
-                contains(busca.toUpperCase())).forEach(n -> aux.insertarAlFinal(n));
-        return aux;
+       ListaDoble<Servicios> lista = new ListaDoble<Servicios>();
+        
+        Iterator<Servicios> it = listaServicios.getDescendingIterator();
+        while(it.hasNext()){
+            Servicios paciente = it.next();
+            if(paciente.getNombreServicio().toUpperCase().contains(busca.toUpperCase())){
+                lista.insertarAlFinal(paciente);
+            }  
+        }
+        return lista; 
 
     }
 
     public ListaDoble<Servicios> ordenarporConsultas() {
+//        Comparator <Servicios> compConsulta = (p1, p2)->{
+//          return p1.isId()
+//        };
         ListaDoble<Servicios> aux = new ListaDoble<Servicios>();
 
         listaServicios.stream().filter(n -> n.isId() == true).

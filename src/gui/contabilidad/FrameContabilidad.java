@@ -52,7 +52,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
         return listaPacientes;
     }
     
-    public void setListaServicios(ListaDoble<Servicios> listaServicioses) {
+    public void setListaServicios(ListaDoble<Servicios> listaServicios) {
         this.listaServicios = listaServicios;
     }
     
