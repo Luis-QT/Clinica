@@ -21,6 +21,12 @@ public class Diagnostico {
         this.pronostico = pronostico;
         this.solicitud = solicitud;
     }
+    public Diagnostico() {
+        this.preDia = "";
+        this.defDia = "";
+        this.pronostico = false;
+        this.solicitud = false;
+    }
 
     public String getPreDia() {
         return preDia;
@@ -54,12 +60,6 @@ public class Diagnostico {
         this.solicitud = solicitud;
     }
 
-    public Diagnostico() {
-        this.preDia = "";
-        this.defDia = "";
-        this.pronostico = false;
-        this.solicitud = false;
-    }
 
     @Override
     public String toString() {

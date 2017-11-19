@@ -77,7 +77,7 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             vista.txtBuscar.setText("");
         }catch(Exception e){
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
+            JOptionPane.showMessageDialog(null, "1 ERROR DE ESCRITURA\n");
         }
         
     }
@@ -99,24 +99,22 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
    
 
     private void formVerHistorial() {
-         try{
+//         try{
             ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
             MedicoEspecialista medicoE = vista.getMedicoE();
             
             int pos = vista.tblPaciente.getSelectedRow();
             Paciente paciente = listaPacientes.getDato(pos);
             
-            System.out.println("pos : " + pos); 
-             System.out.println("paciente: " + paciente);
             this.frameHistorial = new FrameHistoriaClinica(paciente);
             this.frameHistorial.setVisible(true);
-            new HistorialController( frameHistorial , new VentanaVisita(frameHistorial, true, paciente.getHistorial())).index();
+            new HistorialController( frameHistorial , new VentanaVisita(frameHistorial, true)).index();
             
             
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
-        }
+//        }catch(Exception e){
+//                System.out.println("ERROR  " + e);
+//                JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
+//        }
     }
 
     private void formBuscar() {

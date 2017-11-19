@@ -33,12 +33,19 @@ public class VentanaVisita extends javax.swing.JDialog {
     TratamientoRea trarea;
     DatosMedico datomed;
      Visita visita;
+    public VentanaVisita(FrameHistoriaClinica thisFrame, boolean modal) {
+        super(thisFrame, modal);
+        initComponents();
+        this.thisFrame = thisFrame;
+//        llenarDatos();
+    }
     
     public VentanaVisita(FrameHistoriaClinica thisFrame, boolean modal,Visita visita) {
         super(thisFrame, modal);
         initComponents();
         this.thisFrame = thisFrame;
         this.visita = visita;
+//        llenarDatos();
     }
     
     public VentanaVisita(FrameHistoriaClinica thisFrame, boolean modal, HistoriaClinica historia) {
@@ -46,7 +53,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         initComponents();
         this.historia = historia;
         this.thisFrame = thisFrame;
-        llenarDatos();
+//        llenarDatos();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -799,8 +806,8 @@ public class VentanaVisita extends javax.swing.JDialog {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
@@ -992,32 +999,32 @@ public class VentanaVisita extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnIngresarExamenActionPerformed
 
-    private void llenarDatos() {
-        jTextAreaAnamnesis.setText(visita.getAnamnecis().getMotivo());
-        jTextFieldCursoEnfermedad.setText(visita.getAnamnecis().getCurso());
-        jTextFieldEnfermedadActual.setText(visita.getAnamnecis().getEnferActual());
-        
-        txtCabezaObs.setText(visita.getExamenFisico().getCabezaobs());
-        txtCabezaAus.setText(visita.getExamenFisico().getCabezaaus());
-        txtCabezaPre.setText(visita.getExamenFisico().getCabezaper());
-        
-        txtAbdomenObs.setText(visita.getExamenFisico().getAbdomenobs());
-        txtAbdomemAus.setText(visita.getExamenFisico().getAbdomenaus());
-        txtAbdomenPre.setText(visita.getExamenFisico().getAbdomenper());
-        
-        txtEspaldaObs.setText(visita.getExamenFisico().getAbdomenobs());
-        txtEspaldaAus.setText(visita.getExamenFisico().getAbdomenaus());
-        txtEspaldaPre.setText(visita.getExamenFisico().getAbdomenper());
-        
-        txtExtreObs.setText(visita.getExamenFisico().getExtreobs());
-        txtExtreAus.setText(visita.getExamenFisico().getExtreaus());
-        txtExtrePre.setText(visita.getExamenFisico().getExtreper());
-
-        txtTorsoObs.setText(visita.getExamenFisico().getTorzoobs());
-        txtTorsoAus.setText(visita.getExamenFisico().getTorzoaus());
-        txtTorsoPre.setText(visita.getExamenFisico().getTorzoper());
-    
-    }
+//    private void llenarDatos() {
+//        jTextAreaAnamnesis.setText(visita.getAnamnecis().getMotivo());
+//        jTextFieldCursoEnfermedad.setText(visita.getAnamnecis().getCurso());
+//        jTextFieldEnfermedadActual.setText(visita.getAnamnecis().getEnferActual());
+//        
+//        txtCabezaObs.setText(visita.getExamenFisico().getCabezaobs());
+//        txtCabezaAus.setText(visita.getExamenFisico().getCabezaaus());
+//        txtCabezaPre.setText(visita.getExamenFisico().getCabezaper());
+//        
+//        txtAbdomenObs.setText(visita.getExamenFisico().getAbdomenobs());
+//        txtAbdomemAus.setText(visita.getExamenFisico().getAbdomenaus());
+//        txtAbdomenPre.setText(visita.getExamenFisico().getAbdomenper());
+//        
+//        txtEspaldaObs.setText(visita.getExamenFisico().getAbdomenobs());
+//        txtEspaldaAus.setText(visita.getExamenFisico().getAbdomenaus());
+//        txtEspaldaPre.setText(visita.getExamenFisico().getAbdomenper());
+//        
+//        txtExtreObs.setText(visita.getExamenFisico().getExtreobs());
+//        txtExtreAus.setText(visita.getExamenFisico().getExtreaus());
+//        txtExtrePre.setText(visita.getExamenFisico().getExtreper());
+//
+//        txtTorsoObs.setText(visita.getExamenFisico().getTorzoobs());
+//        txtTorsoAus.setText(visita.getExamenFisico().getTorzoaus());
+//        txtTorsoPre.setText(visita.getExamenFisico().getTorzoper());
+//    
+//    }
     /**
      * @param args the command line arguments
      */

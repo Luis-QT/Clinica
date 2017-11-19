@@ -24,11 +24,10 @@ public class Visita {
         this.tratamientoRea = tratamientoRea;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
+    
     public Visita(LocalDate fecha, int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = fecha;
+        this.codigo = codigo;
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
         this.examenFisico = examenFisico;
@@ -39,6 +38,14 @@ public class Visita {
 
     public int getCodigo() {
         return codigo;
+    }
+    
+    public String getServicio() {
+        return servicio;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public String mostrarFecha() {
