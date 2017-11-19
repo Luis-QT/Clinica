@@ -37,7 +37,6 @@ public class VentanaVisita extends javax.swing.JDialog {
         super(thisFrame, modal);
         initComponents();
         this.thisFrame = thisFrame;
-//        llenarDatos();
     }
     
     public VentanaVisita(FrameHistoriaClinica thisFrame, boolean modal,Visita visita) {
@@ -45,7 +44,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         initComponents();
         this.thisFrame = thisFrame;
         this.visita = visita;
-//        llenarDatos();
+        llenarDatos();
     }
     
     public VentanaVisita(FrameHistoriaClinica thisFrame, boolean modal, HistoriaClinica historia) {
@@ -53,7 +52,6 @@ public class VentanaVisita extends javax.swing.JDialog {
         initComponents();
         this.historia = historia;
         this.thisFrame = thisFrame;
-//        llenarDatos();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,7 +137,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         jPanel15 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        btnGuardarVisita = new javax.swing.JButton();
+        btnRegistrarVisita = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -786,10 +784,10 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jTabbedPane2.addTab("Tratamiento Realizado", jPanel14);
 
-        btnGuardarVisita.setText("Registrar");
-        btnGuardarVisita.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarVisita.setText("Registrar");
+        btnRegistrarVisita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarVisitaActionPerformed(evt);
+                btnRegistrarVisitaActionPerformed(evt);
             }
         });
 
@@ -869,7 +867,7 @@ public class VentanaVisita extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnGuardarVisita)
+                    .addComponent(btnRegistrarVisita)
                     .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -885,7 +883,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnGuardarVisita)
+                .addComponent(btnRegistrarVisita)
                 .addContainerGap())
         );
 
@@ -971,15 +969,17 @@ public class VentanaVisita extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable2MouseMoved
 
-    private void btnGuardarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarVisitaActionPerformed
+    private void btnRegistrarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarVisitaActionPerformed
         ///////////////
-        Visita visita = new Visita(5021, anamnesis, datomed, examenF, diagnostico, tratamiento, trarea);
-        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, tratamiento, trarea);
-//      thisFrame.listaVisita.insertarAlFinal(visita);
+        Visita visita = new Visita(5021, anamnesis, new DatosMedico("Carlos",1), examenF, new Diagnostico(), new Tratamiento(), new TratamientoRea());
+//        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new Tratamiento(), new TratamientoRea());
+        thisFrame.listaVisita.insertarAlFinal(visita);
         System.out.println("lista : " + historia.getListaVisitas().toString());
         thisFrame.mostrarTabla();
+        
+        thisFrame.jTexApellido.setText(jTextAreaAnamnesis.getText());
         this.dispose();
-    }//GEN-LAST:event_btnGuardarVisitaActionPerformed
+    }//GEN-LAST:event_btnRegistrarVisitaActionPerformed
 
     private void btnIngresarExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarExamenActionPerformed
         // TODO add your handling code here:
@@ -1003,32 +1003,32 @@ public class VentanaVisita extends javax.swing.JDialog {
         
     }//GEN-LAST:event_btnIngresarExamenActionPerformed
 
-//    private void llenarDatos() {
-//        jTextAreaAnamnesis.setText(visita.getAnamnecis().getMotivo());
-//        jTextFieldCursoEnfermedad.setText(visita.getAnamnecis().getCurso());
-//        jTextFieldEnfermedadActual.setText(visita.getAnamnecis().getEnferActual());
-//        
-//        txtCabezaObs.setText(visita.getExamenFisico().getCabezaobs());
-//        txtCabezaAus.setText(visita.getExamenFisico().getCabezaaus());
-//        txtCabezaPre.setText(visita.getExamenFisico().getCabezaper());
-//        
-//        txtAbdomenObs.setText(visita.getExamenFisico().getAbdomenobs());
-//        txtAbdomemAus.setText(visita.getExamenFisico().getAbdomenaus());
-//        txtAbdomenPre.setText(visita.getExamenFisico().getAbdomenper());
-//        
-//        txtEspaldaObs.setText(visita.getExamenFisico().getAbdomenobs());
-//        txtEspaldaAus.setText(visita.getExamenFisico().getAbdomenaus());
-//        txtEspaldaPre.setText(visita.getExamenFisico().getAbdomenper());
-//        
-//        txtExtreObs.setText(visita.getExamenFisico().getExtreobs());
-//        txtExtreAus.setText(visita.getExamenFisico().getExtreaus());
-//        txtExtrePre.setText(visita.getExamenFisico().getExtreper());
-//
-//        txtTorsoObs.setText(visita.getExamenFisico().getTorzoobs());
-//        txtTorsoAus.setText(visita.getExamenFisico().getTorzoaus());
-//        txtTorsoPre.setText(visita.getExamenFisico().getTorzoper());
+    private void llenarDatos() {
+        jTextAreaAnamnesis.setText(visita.getAnamnecis().getMotivo());
+        jTextFieldCursoEnfermedad.setText(visita.getAnamnecis().getCurso());
+        jTextFieldEnfermedadActual.setText(visita.getAnamnecis().getEnferActual());
+        
+        txtCabezaObs.setText(visita.getExamenFisico().getCabezaobs());
+        txtCabezaAus.setText(visita.getExamenFisico().getCabezaaus());
+        txtCabezaPre.setText(visita.getExamenFisico().getCabezaper());
+        
+        txtAbdomenObs.setText(visita.getExamenFisico().getAbdomenobs());
+        txtAbdomemAus.setText(visita.getExamenFisico().getAbdomenaus());
+        txtAbdomenPre.setText(visita.getExamenFisico().getAbdomenper());
+        
+        txtEspaldaObs.setText(visita.getExamenFisico().getAbdomenobs());
+        txtEspaldaAus.setText(visita.getExamenFisico().getAbdomenaus());
+        txtEspaldaPre.setText(visita.getExamenFisico().getAbdomenper());
+        
+        txtExtreObs.setText(visita.getExamenFisico().getExtreobs());
+        txtExtreAus.setText(visita.getExamenFisico().getExtreaus());
+        txtExtrePre.setText(visita.getExamenFisico().getExtreper());
+
+        txtTorsoObs.setText(visita.getExamenFisico().getTorzoobs());
+        txtTorsoAus.setText(visita.getExamenFisico().getTorzoaus());
+        txtTorsoPre.setText(visita.getExamenFisico().getTorzoper());
 //    
-//    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -1075,9 +1075,9 @@ public class VentanaVisita extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarDiagnostico;
-    private javax.swing.JButton btnGuardarVisita;
     private javax.swing.JButton btnIngresarAnamnesis;
     private javax.swing.JButton btnIngresarExamen;
+    private javax.swing.JButton btnRegistrarVisita;
     public javax.swing.JComboBox cbxServicio;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;

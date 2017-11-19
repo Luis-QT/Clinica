@@ -99,7 +99,7 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
    
 
     private void formVerHistorial() {
-//         try{
+         try{
             ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
             MedicoEspecialista medicoE = vista.getMedicoE();
             
@@ -110,11 +110,10 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             this.frameHistorial.setVisible(true);
             new HistorialController( frameHistorial , new VentanaVisita(frameHistorial, true)).index();
             
-            
-//        }catch(Exception e){
-//                System.out.println("ERROR  " + e);
-//                JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
-//        }
+        }catch(Exception e){
+                System.out.println("ERROR  " + e);
+                JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
+        }
     }
 
     private void formBuscar() {

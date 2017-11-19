@@ -22,6 +22,7 @@ public class Visita {
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
         this.tratamientoRea = tratamientoRea;
+        this.servicio = "Holaa";
     }
 
     
@@ -34,6 +35,7 @@ public class Visita {
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
         this.tratamientoRea = tratamientoRea;
+        this.servicio = "Holo";
     }
 
     public int getCodigo() {
@@ -48,12 +50,9 @@ public class Visita {
         this.fecha = fecha;
     }
 
-    public String mostrarFecha() {
-        return fecha.getYear() + " / " + fecha.getMonth() + " / " + fecha.getDayOfMonth();
-    }
-
-    public LocalDate getFecha() {
-        return fecha;
+  
+    public String getFecha() {
+        return fecha.toString();
     }
 
     public Anamnesis getAnamnecis() {
@@ -104,7 +103,14 @@ public class Visita {
         this.tratamientoRea = tratamientoRea;
     }
 
-    public String toString (){
-        return "codigo: "+id + " fecha: "+ fecha.toString()+"\n";
+//    public String toString (){
+//        return "codigo: "+id + " fecha: "+ fecha.toString()+"\n";
+//    }
+
+    @Override
+    public String toString() {
+        return "Visita{" + "id=" + id + ", servicio=" + servicio + ", datosMedico=" + datosMedico + ", fecha=" + fecha + ", anamnecis=" + anamnecis + ", examenFisico=" + examenFisico + ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + ", tratamientoRea=" + tratamientoRea + '}';
     }
+    
+    
 }

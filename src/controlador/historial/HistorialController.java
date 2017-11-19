@@ -58,19 +58,21 @@ public class HistorialController implements Controller,ActionListener {
     private void formAgregarVisita() {
         Paciente paciente = vista.getPaciente();
         this.ventanaVisita = new VentanaVisita(vista, true, paciente.getHistorial());
-        
+//        ventanaVisita.setVisible(true);
+//        new VisitaController(ventanaVisita).index();
         System.out.println("error1");
     }
 
     private void formVerVisita() {
           try{
-            int posicion;
-            posicion = vista.tblVisitas.getSelectedRow();
+            int posicion = vista.tblVisitas.getSelectedRow();
             Paciente paciente = vista.getPaciente() ;
 //            
-//            System.out.println("lista visita es ta vacía?: " + vista.listaVisita);
-//            Visita visita = paciente.obtenerVisita(posicion);
+            Visita visita = paciente.obtenerVisita(posicion);
+            
 //            VentanaVisita ventanaVisita = new VentanaVisita(vista, true,visita);
+            this.ventanaVisita = new VentanaVisita(vista, true, visita);
+//            new VisitaController(ventanaVisita).index();
             
         }catch(Exception e){
             System.out.println(e);

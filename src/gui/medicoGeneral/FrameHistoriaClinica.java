@@ -23,7 +23,7 @@ import model.paciente.Visita;
 
 /**
  *
- * @author luis
+ * @author mostrarFecha
  */
 public class FrameHistoriaClinica extends javax.swing.JFrame {
 
@@ -784,7 +784,8 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         Iterator<Visita> iterador = listaVisita.getDescendingIterator();
         while (iterador.hasNext()) {            
             Visita pro = iterador.next();
-            dtm.addRow(new Object[]{pro.mostrarFecha(), pro.getDatosMedico().getNombre(),pro.getServicio()});    
+            System.out.println("visita: " + pro.getFecha()+ "  "+ pro.getDatosMedico().getNombre()+"  "+pro.getServicio());
+            dtm.addRow(new Object[]{pro.getFecha(), pro.getDatosMedico().getNombre(),pro.getServicio()});    
         }    
     }
     

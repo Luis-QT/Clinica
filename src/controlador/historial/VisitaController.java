@@ -23,7 +23,7 @@ public class VisitaController implements Controller,ActionListener {
 
     @Override
     public void index() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       vista.setVisible(true);
     }
 
     @Override
