@@ -8,14 +8,12 @@ import java.time.LocalDate;
 public class HistoriaClinica {
     AntecedentesFamiliares antecedentesFamiliares;
     AntecedentesPersonales antecedentesPersonales;
-    
-    DatosPaciente datosPaciente;
     ListaDoble<Visita> listaVisitas;
+    String codigo;
 
-    public HistoriaClinica(AntecedentesFamiliares antecedentesFamiliares, AntecedentesPersonales antecedentesPersonales, DatosMedico datosMedico, DatosPaciente datosPaciente) {
+    public HistoriaClinica(AntecedentesFamiliares antecedentesFamiliares, AntecedentesPersonales antecedentesPersonales, DatosMedico datosMedico) {
         this.antecedentesFamiliares = antecedentesFamiliares;
         this.antecedentesPersonales = antecedentesPersonales;
-        this.datosPaciente = datosPaciente;
         this.listaVisitas = new ListaDoble<Visita>();
     }
 
@@ -35,13 +33,13 @@ public class HistoriaClinica {
         this.antecedentesPersonales = antecedentesPersonales;
     }
 
-    public DatosPaciente getDatosPaciente() {
-        return datosPaciente;
-    }
-
-    public void setDatosPaciente(DatosPaciente datosPaciente) {
-        this.datosPaciente = datosPaciente;
-    }
+//    public DatosPaciente getDatosPaciente() {
+//        return datosPaciente;
+//    }
+//
+//    public void setDatosPaciente(DatosPaciente datosPaciente) {
+//        this.datosPaciente = datosPaciente;
+//    }
 
     public ListaDoble<Visita> getListaVisitas() {
         return listaVisitas;

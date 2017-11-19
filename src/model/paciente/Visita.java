@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 public class Visita {
 
-    int codigo;
+    int id;
     String servicio;
+    DatosMedico datosMedico;
     LocalDate fecha;
     Anamnesis anamnecis;
-    DatosMedico datosMedico;
     ExamenFisicos examenFisico;
     Diagnostico diagnostico;
     Tratamiento tratamiento;
@@ -27,7 +27,7 @@ public class Visita {
     
     public Visita(LocalDate fecha, int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, Tratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = fecha;
-        this.codigo = codigo;
+        this.id = codigo;
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
         this.examenFisico = examenFisico;
@@ -37,7 +37,7 @@ public class Visita {
     }
 
     public int getCodigo() {
-        return codigo;
+        return id;
     }
     
     public String getServicio() {
@@ -105,6 +105,6 @@ public class Visita {
     }
 
     public String toString (){
-        return "codigo: "+codigo + " fecha: "+ fecha.toString()+"\n";
+        return "codigo: "+id + " fecha: "+ fecha.toString()+"\n";
     }
 }

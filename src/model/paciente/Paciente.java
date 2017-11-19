@@ -27,8 +27,7 @@ public class Paciente extends Persona {
         this.direccion =  direccion;
         this.religion = religion;
         historial = new HistoriaClinica(new AntecedentesFamiliares(), 
-                    new AntecedentesPersonales(), new DatosMedico(), 
-                   null);
+                    new AntecedentesPersonales(), new DatosMedico());
     }
     
     //CONSTRUCTOR QUE USA RECEPCIÓN
@@ -44,8 +43,7 @@ public class Paciente extends Persona {
         this.direccion =  direccion;
         this.religion = religion;
         historial =  new HistoriaClinica(new AntecedentesFamiliares(), 
-                    new AntecedentesPersonales(), new DatosMedico(), 
-                    null);
+                    new AntecedentesPersonales(), new DatosMedico());
     }
     
     public String getReligion() {
