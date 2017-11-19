@@ -36,10 +36,12 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     
     Paciente paciente;
     ListaDoble<Visita> listaVisita ;
+    HistoriaClinica historial;
     public FrameHistoriaClinica(Paciente paciente ,ListaDoble<Visita> listaVisita) {
         initComponents();
-        this.listaVisita = listaVisita;
         this.paciente = paciente;
+        historial = paciente.getHistorial();
+        this.listaVisita = historial.getListaVisitas();
         llenarDatos();
         mostrarTabla();
     }
@@ -49,6 +51,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         initComponents();
          this.paciente = paciente;
          this.listaVisita = paciente.getHistorial().getListaVisitas();
+         historial = paciente.getHistorial();
          llenarDatos();
          mostrarTabla();
     }
@@ -158,38 +161,9 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButtonMasculino);
         jRadioButtonMasculino.setText("Masculino");
-        jRadioButtonMasculino.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jRadioButtonMasculinoAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        jRadioButtonMasculino.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonMasculinoMouseClicked(evt);
-            }
-        });
-        jRadioButtonMasculino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMasculinoActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(jRadioButtonFeminino);
         jRadioButtonFeminino.setText("Femenino");
-        jRadioButtonFeminino.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonFemininoMouseClicked(evt);
-            }
-        });
-        jRadioButtonFeminino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonFemininoActionPerformed(evt);
-            }
-        });
 
         jLabel35.setText("DNI");
 
@@ -207,24 +181,9 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         buttonGroup7.add(jRadioButtonNoble);
         jRadioButtonNoble.setText("Material Noble");
-        jRadioButtonNoble.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonNobleMouseClicked(evt);
-            }
-        });
-        jRadioButtonNoble.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonNobleActionPerformed(evt);
-            }
-        });
 
         buttonGroup7.add(jRadioButton14);
         jRadioButton14.setText("Servicios basicos");
-        jRadioButton14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButton14MouseClicked(evt);
-            }
-        });
         jRadioButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton14ActionPerformed(evt);
@@ -232,12 +191,6 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         });
 
         jLabel36.setText("Teléfono Fijo");
-
-        txtFijo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFijoActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Teléfono Celular");
 
@@ -488,16 +441,6 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         buttonGroup4.add(jRadioButtonVivoP1);
         jRadioButtonVivoP1.setText("Vivo");
-        jRadioButtonVivoP1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonVivoP1MouseClicked(evt);
-            }
-        });
-        jRadioButtonVivoP1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonVivoP1ActionPerformed(evt);
-            }
-        });
 
         buttonGroup4.add(jRadioButtonMuertoP1);
         jRadioButtonMuertoP1.setText("Muerto");
@@ -511,21 +454,11 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         buttonGroup5.add(jRadioButtonMuertoM1);
         jRadioButtonMuertoM1.setText("Muerto");
-        jRadioButtonMuertoM1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonMuertoM1MouseClicked(evt);
-            }
-        });
 
         jLabel61.setText("Enfermedades");
 
         buttonGroup5.add(jRadioButtonVivoM1);
         jRadioButtonVivoM1.setText("Vivo");
-        jRadioButtonVivoM1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jRadioButtonVivoM1MouseClicked(evt);
-            }
-        });
         jRadioButtonVivoM1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonVivoM1ActionPerformed(evt);
@@ -799,50 +732,13 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton14ActionPerformed
 
-    private void jRadioButton14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton14MouseClicked
-//        datopa.setServiciosba(jRadioButton14.getLabel());
-    }//GEN-LAST:event_jRadioButton14MouseClicked
-
-    private void jRadioButtonNobleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNobleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonNobleActionPerformed
-
-    private void jRadioButtonNobleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonNobleMouseClicked
-//        datopa.setTipovivienda(jRadioButtonNoble.getLabel());
-
-    }//GEN-LAST:event_jRadioButtonNobleMouseClicked
-
     private void txtReligionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReligionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtReligionActionPerformed
 
-    private void txtFijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFijoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFijoActionPerformed
-
     private void jTextDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextDNIActionPerformed
-
-    private void jRadioButtonFemininoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFemininoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonFemininoActionPerformed
-
-    private void jRadioButtonFemininoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonFemininoMouseClicked
-//        datopa.setSexo(jRadioButtonFeminino.getLabel());
-    }//GEN-LAST:event_jRadioButtonFemininoMouseClicked
-
-    private void jRadioButtonMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMasculinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMasculinoActionPerformed
-
-    private void jRadioButtonMasculinoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonMasculinoMouseClicked
-//        datopa.setSexo(jRadioButtonMasculino.getLabel());
-    }//GEN-LAST:event_jRadioButtonMasculinoMouseClicked
-
-    private void jRadioButtonMasculinoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jRadioButtonMasculinoAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMasculinoAncestorAdded
 
     private void btnIngresarAntecedenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAntecedenteActionPerformed
         // TODO add your handling code here:
@@ -852,25 +748,9 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonVivoM1ActionPerformed
 
-    private void jRadioButtonVivoM1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonVivoM1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonVivoM1MouseClicked
-
-    private void jRadioButtonMuertoM1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonMuertoM1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMuertoM1MouseClicked
-
     private void jRadioButtonMuertoP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonMuertoP1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonMuertoP1MouseClicked
-
-    private void jRadioButtonVivoP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonVivoP1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonVivoP1ActionPerformed
-
-    private void jRadioButtonVivoP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButtonVivoP1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonVivoP1MouseClicked
 
     private void btnVerVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerVisitaActionPerformed
         try{
@@ -878,7 +758,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
             posicion = tblVisitas.getSelectedRow();
             System.out.println("lista visita es ta vacía?: " + listaVisita);
             Visita visita = listaVisita.getDato(posicion);
-            VentanaVisita ventanaVisita = new VentanaVisita(this, true,paciente.getHistorial());
+            VentanaVisita ventanaVisita = new VentanaVisita(this, true,visita);
             ventanaVisita.setVisible(true);
             
         }catch(Exception e){
@@ -889,7 +769,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
     private void btnAgregarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVisitaActionPerformed
         // TODO add your handling code here:
-        VentanaVisita ventanaVisita = new VentanaVisita(this, true,paciente.getHistorial());
+        VentanaVisita ventanaVisita = new VentanaVisita(this, true,historial);
         ventanaVisita.setVisible(true);
         
     }//GEN-LAST:event_btnAgregarVisitaActionPerformed
@@ -904,7 +784,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         Iterator<Visita> iterador = listaVisita.getDescendingIterator();
         while (iterador.hasNext()) {            
             Visita pro = iterador.next();
-            dtm.addRow(new Object[]{pro.mostrarFecha(),pro.getCodigo()});    
+            dtm.addRow(new Object[]{pro.mostrarFecha(), pro.getDatosMedico().getNombre(),pro.getServicio()});    
         }    
     }
     

@@ -18,6 +18,7 @@ public class HistorialController implements Controller,ActionListener {
         this.ventanaVisita = frame;
         this.vista = vista;
         iniciar();
+        
     }
     
     public void iniciar() {
