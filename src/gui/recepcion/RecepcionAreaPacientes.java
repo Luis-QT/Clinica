@@ -30,12 +30,13 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 
     public RecepcionAreaPacientes(java.awt.Frame parent, boolean modal, Recepcionista recepcionista) {
         super(parent, modal);
+        this.setUndecorated(true);
         initComponents();
         setLocationRelativeTo(parent);
         tblPacientes.setEnabled(true);
         this.recepcionista = recepcionista;
         this.listaPaciente = this.recepcionista.getListaPaciente();
-        lblNomRecepcionista.setText(recepcionista.getNombre() + " " + recepcionista.getApellido());
+       
         refrescartabla(listaPaciente);
 
     }
@@ -60,7 +61,6 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnRefrescar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         cboOrdenar = new javax.swing.JComboBox<>();
         btnOrdenar = new javax.swing.JButton();
@@ -69,14 +69,18 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         btnBuscar = new javax.swing.JButton();
         chxDni = new javax.swing.JCheckBox();
         chxApellido = new javax.swing.JCheckBox();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        lblNomRecepcionista = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pacientes"));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pacientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
@@ -105,7 +109,8 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 560, 260));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Paneles"));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Paneles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("Agregar");
@@ -150,11 +155,8 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 550, 90));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("AREA DE PACIENTES");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Ordenar"));
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ordenar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cboOrdenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombres", "Apellidos", "Edad" }));
@@ -180,7 +182,8 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
 
         jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 200, 100));
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar"));
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Buscar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel9.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 200, -1));
 
@@ -192,21 +195,47 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
         });
         jPanel9.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
+        chxDni.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(chxDni);
+        chxDni.setForeground(new java.awt.Color(102, 102, 102));
         chxDni.setText("DNI");
         jPanel9.add(chxDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 70, -1));
 
+        chxApellido.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(chxApellido);
+        chxApellido.setForeground(new java.awt.Color(102, 102, 102));
         chxApellido.setText("Apellidos ");
         jPanel9.add(chxApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 70, -1));
 
         jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 350, 100));
 
-        jLabel2.setText("Bienvenido Recepcionista : ");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(102, 102, 102))); // NOI18N
 
-        lblNomRecepcionista.setText("AlissonCSV");
-        jPanel3.add(lblNomRecepcionista, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 596, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 525, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 600, 530));
+
+        jPanel5.setBackground(new java.awt.Color(75, 187, 197));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/comp.png"))); // NOI18N
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/titlepacientes.png"))); // NOI18N
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -395,13 +424,14 @@ public class RecepcionAreaPacientes extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblNomRecepcionista;
     private javax.swing.JTable tblPacientes;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

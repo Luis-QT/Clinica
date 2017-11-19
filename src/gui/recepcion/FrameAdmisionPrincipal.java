@@ -141,7 +141,7 @@ public class FrameAdmisionPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 590));
 
-        jPanel3.setBackground(new java.awt.Color(73, 159, 167));
+        jPanel3.setBackground(new java.awt.Color(75, 187, 197));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/recp1.png"))); // NOI18N
