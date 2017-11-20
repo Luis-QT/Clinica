@@ -12,12 +12,14 @@ import controlador.recepcion.RecepcionPrincipalController;
 import gui.contabilidad.FrameContabilidad;
 import gui.medicoEspecialista.FrameMedicoEspecialista;
 import gui.recepcion.FrameRecepcionPrincipal;
+import gui.triaje.FrameTriaje;
 import inicio.FrameLoginPersonal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.empleado.Cajero;
 import model.empleado.MedicoEspecialista;
+import model.empleado.MedicoTriaje;
 import model.empleado.Recepcionista;
 import model.paciente.Paciente;
 
@@ -57,15 +59,18 @@ public class LoginPersonalController implements Controller, ActionListener {
         //Personales
         Recepcionista recepcionista = vista.getRecepcionista();
         MedicoEspecialista medicoEspecialista = vista.getMedicoEspecialista();
+        MedicoTriaje medicoTriaje = vista.getMedicoTriaje();
         Cajero cajero = vista.getCajero();
+        FrameTriaje triaje = new FrameTriaje(medicoTriaje);
         //Fin
         if (vista.chxRecepcion.isSelected()) {
             FrameRecepcionPrincipal recepcion = new FrameRecepcionPrincipal(recepcionista);
             recepcion.setVisible(true);
             vista.setVisible(false);
             new RecepcionPrincipalController(recepcion).index();
-        } else if (vista.chxContab.isSelected()) {
-            FrameContabilidad contabilidad = new FrameContabilidad(cajero);
+        } else if (vista.chxContab.isSelected()) {            
+            
+            FrameContabilidad contabilidad = new FrameContabilidad(cajero,triaje);
             contabilidad.setVisible(true);
             vista.setVisible(false);
             new ContabilidadController(contabilidad).index();
@@ -74,7 +79,7 @@ public class LoginPersonalController implements Controller, ActionListener {
         } else if (vista.chxgeneral.isSelected()) {
 
         } else if (vista.chxtriaje.isSelected()) {
-
+//                triaje.setVisible(true);
         } else if (vista.chxEspec.isSelected()) {
             FrameMedicoEspecialista medEspecia = new FrameMedicoEspecialista(medicoEspecialista);
             medEspecia.setVisible(true);

@@ -33,7 +33,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
     FrameTriaje thisFrameTriaje;
     //FrameTriaje thisFrameTriaje
-    public FrameContabilidad(Cajero Caja) {
+    public FrameContabilidad(Cajero Caja, FrameTriaje thisFrameTriaje) {
         initComponents();
         this.Caja = Caja;
         this.listaPacientes = Caja.getListaPaciente();
@@ -59,7 +59,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
     public ListaDoble<Servicios> getListaServicios() {
         return listaServicios;
     }
-    
+     
     public void setListaMonto(ListaDoble<Monto> listaServicioses) {
         this.listaMonto = listaMonto;
     }
@@ -93,6 +93,14 @@ public class FrameContabilidad extends javax.swing.JFrame {
     
     public Cajero getCaja() {
         return this.Caja;
+    }
+    
+//      public MedicoTriaje getTriaje() {
+////        return this.triaje;
+//    }
+
+    public FrameTriaje getThisFrameTriaje() {
+        return thisFrameTriaje;
     }
     
     
@@ -927,7 +935,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
             
             public void run() {
                 // ft
-                new FrameContabilidad(Caja).setVisible(true);
+                new FrameContabilidad(Caja, null).setVisible(true);
 
             }
         });

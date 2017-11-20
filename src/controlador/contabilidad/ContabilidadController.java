@@ -5,6 +5,7 @@ import controlador.Controller;
 import estructura.ListaDoble;
 import factory.MySQLConnectionFactory;
 import gui.contabilidad.FrameContabilidad;
+import gui.triaje.FrameTriaje;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -15,6 +16,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import model.empleado.Cajero;
+import model.empleado.MedicoTriaje;
 import model.empleado.Monto;
 import model.empleado.Servicios;
 import model.paciente.Paciente;
@@ -22,9 +24,11 @@ import model.paciente.Paciente;
 
 public class ContabilidadController implements Controller,ActionListener{
     private FrameContabilidad vista;
+    private FrameTriaje ventanaTriaje;
     
     public ContabilidadController (FrameContabilidad vista){
         this.vista = vista;
+        this.ventanaTriaje = vista.getThisFrameTriaje();
         iniciar();
     }
 
@@ -246,8 +250,14 @@ public class ContabilidadController implements Controller,ActionListener{
 
                   if (pro.getCodigo().equalsIgnoreCase(codigo)) {
                       comprobar = true;
-                      //vista.thisFrameTriaje.getListaPacientes().insertarAlFinal(pro);
-                      //Te envia el codigo ;
+                      MedicoTriaje medicoTriaje = ventanaTriaje.getTriaje();
+                      this.ventanaTriaje = vista.getThisFrameTriaje();
+                      //ventanaTriaje.setVisible(true);
+                      System.out.println("PRO: "+ pro.toString()) ;
+                      ventanaTriaje.getListaPacientes().insertarAlFinal(pro);
+                      ventanaTriaje.mostrarTabla();
+//                      vista.thisFrameTriaje.getListaPacientes().insertarAlFinal(pro);
+//                      Te envia el codigo ;
 
                   }
               }

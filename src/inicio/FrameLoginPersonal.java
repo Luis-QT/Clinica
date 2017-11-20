@@ -9,6 +9,7 @@ import gui.recepcion.FrameRecepcionPrincipal;
 import javax.swing.JOptionPane;
 import model.empleado.Cajero;
 import model.empleado.MedicoEspecialista;
+import model.empleado.MedicoTriaje;
 import model.empleado.Recepcionista;
 import model.empleado.Servicios;
 import model.paciente.Paciente;
@@ -24,6 +25,7 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
      */
     Recepcionista recepcionista;
     MedicoEspecialista medicoEspecialista;
+    MedicoTriaje medicoTriaje;
     Cajero cajero;
 
     public FrameLoginPersonal() {
@@ -62,6 +64,12 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
     public MedicoEspecialista getMedicoEspecialista() {
         return medicoEspecialista;
     }
+
+    public MedicoTriaje getMedicoTriaje() {
+        return medicoTriaje;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

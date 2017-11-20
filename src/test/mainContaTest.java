@@ -3,6 +3,7 @@ package test;
 
 import controlador.contabilidad.ContabilidadController;
 import gui.contabilidad.FrameContabilidad;
+import gui.triaje.FrameTriaje;
 import java.time.LocalDate;
 import model.empleado.Cajero;
 import model.empleado.MedicoTriaje;
@@ -49,7 +50,8 @@ public class mainContaTest {
         caja.agregarServicios(s5);
         
         
-        FrameContabilidad fm = new FrameContabilidad(caja);
+        FrameTriaje ft =  new FrameTriaje(triaje);
+        FrameContabilidad fm = new FrameContabilidad(caja,ft);
         ContabilidadController mec = new ContabilidadController(fm);
         mec.index();
         

@@ -32,7 +32,9 @@ public class FrameTriaje extends javax.swing.JFrame {
        mostrarTabla();
         
     }
-    
+    public MedicoTriaje getTriaje() {
+        return this.triaje;
+    }
     
     public ListaDoble<Paciente> getListaPacientes() {
         return listaPacientes;
