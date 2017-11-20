@@ -22,6 +22,10 @@ import model.paciente.Visita;
  */
 public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
 
+    public ListaDoble<Paciente> getListaPaciente() {
+        return listaPaciente;
+    }
+
     /**
      * Creates new form RecepcionArea
      */
@@ -33,7 +37,7 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
     }
     public ListaDoble<Paciente> listaPaciente;
     
-    public ListaDoble<Visita> listaVisita = new ListaDoble<>();
+//    public ListaDoble<Visita> listaVisita = new ListaDoble<>();
 
     int indice = -1;
     int intemporal = -2;

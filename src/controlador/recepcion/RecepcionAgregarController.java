@@ -64,42 +64,9 @@ public class RecepcionAgregarController implements Controller, ActionListener {
         String correo = vista.txtcorreo.getText();
         String codigoHistoria = vista.txtHistoriaClinica.getText();
         //Fin datos paciente
-        String servicio = null;
-        switch (vista.cbxServicio.getSelectedIndex()) {
-            case 0:
-                servicio = (String) vista.cbxServicio.getSelectedItem();
-                break;
-            case 1:
-                servicio = (String) vista.cbxServicio.getSelectedItem();
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Escoga una opción");
-        }
-        
-        
-        DatosMedico datMedico = new DatosMedico();
-        switch (vista.cbxDoctor.getSelectedIndex()) {
-            case 0:
-                datMedico.setNombreApellido((String) vista.cbxDoctor.getSelectedItem());
-                break;
-            case 1:
-                datMedico.setNombreApellido((String) vista.cbxDoctor.getSelectedItem());
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Escoga una opción");
-        }
-        
-        switch (vista.cbxEspecialidad.getSelectedIndex()) {
-            case 0:
-                datMedico.setEspecializacion((String) vista.cbxEspecialidad.getSelectedItem());
-                break;
-            case 1:
-                datMedico.setEspecializacion((String) vista.cbxEspecialidad.getSelectedItem());
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Escoga una opción");
-        }
-        
+        String servicio = vista.txtTipoServicio.getText();
+        DatosMedico datMedico = new DatosMedico(vista.txtNombreDoctor.getText(),
+                                        vista.txtEspecialidad.getText());
         Visita visita = new Visita(codigoHistoria ,servicio, datMedico);
         vistAnterior.listaVisita.insertarAlFinal(visita);
         System.out.println(vistAnterior.listaVisita.toString());

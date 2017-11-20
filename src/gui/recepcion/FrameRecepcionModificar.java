@@ -50,10 +50,10 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
         }
         txtHistoriaClinica.setText(String.valueOf(pers.getHistorial()));
         
+        txtTipoServicio.setText(pers.getHistorial().getListaVisitas().getFin().getDato().getServicio());
         
-        
-        cbxServicio.setSelectedItem("HolaMundo");
-        
+//        cbxServicio.setSelectedItem("HolaMundo");
+    
     }
 
     public Recepcionista getRecepcionista() {
@@ -96,11 +96,11 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
         txtHistoriaClinica = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        cbxServicio = new javax.swing.JComboBox();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        cbxDoctor = new javax.swing.JComboBox<>();
-        cbxEspecialidad = new javax.swing.JComboBox<>();
+        txtTipoServicio = new javax.swing.JTextField();
+        txtNombreDoctor = new javax.swing.JTextField();
+        txtEspecialidad = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -201,20 +201,14 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
         jLabel3.setText("Servicio :");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        cbxServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Médico Especialista", "Médico General" }));
-        jPanel4.add(cbxServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 130, 20));
-
         jLabel12.setText("Doctor :");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jLabel13.setText("Especialidad : ");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-
-        cbxDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doctor 1", "Doctor 2" }));
-        jPanel4.add(cbxDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 130, -1));
-
-        cbxEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Especialidad 1", "Especialidad 2" }));
-        jPanel4.add(cbxEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 130, -1));
+        jPanel4.add(txtTipoServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 130, -1));
+        jPanel4.add(txtNombreDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 130, -1));
+        jPanel4.add(txtEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 130, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 260, 200));
 
@@ -390,9 +384,6 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btnModificar;
     private javax.swing.ButtonGroup buttonGroup1;
-    public javax.swing.JComboBox<String> cbxDoctor;
-    public javax.swing.JComboBox<String> cbxEspecialidad;
-    public javax.swing.JComboBox cbxServicio;
     public javax.swing.JCheckBox chkF;
     public javax.swing.JCheckBox chkM;
     private javax.swing.JLabel jLabel1;
@@ -414,7 +405,10 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel5;
     public javax.swing.JTextField txtApellidos;
     public javax.swing.JTextField txtDNI;
+    public javax.swing.JTextField txtEspecialidad;
     public javax.swing.JTextField txtHistoriaClinica;
+    public javax.swing.JTextField txtNombreDoctor;
+    public javax.swing.JTextField txtTipoServicio;
     public javax.swing.JTextField txtcelular;
     public javax.swing.JTextField txtcorreo;
     public javax.swing.JTextField txtedad;

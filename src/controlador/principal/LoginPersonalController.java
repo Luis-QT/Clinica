@@ -61,7 +61,7 @@ public class LoginPersonalController implements Controller, ActionListener {
         MedicoEspecialista medicoEspecialista = vista.getMedicoEspecialista();
         MedicoTriaje medicoTriaje = vista.getMedicoTriaje();
         Cajero cajero = vista.getCajero();
-        FrameTriaje triaje = new FrameTriaje(medicoTriaje);
+       // FrameTriaje triaje = new FrameTriaje(medicoTriaje);
         //Fin
         if (vista.chxRecepcion.isSelected()) {
             FrameRecepcionPrincipal recepcion = new FrameRecepcionPrincipal(recepcionista);
@@ -69,7 +69,7 @@ public class LoginPersonalController implements Controller, ActionListener {
             vista.setVisible(false);
             new RecepcionPrincipalController(recepcion).index();
         } else if (vista.chxContab.isSelected()) {            
-            
+            FrameTriaje triaje = new FrameTriaje(medicoTriaje);
             FrameContabilidad contabilidad = new FrameContabilidad(cajero,triaje);
             contabilidad.setVisible(true);
             vista.setVisible(false);

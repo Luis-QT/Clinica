@@ -61,8 +61,11 @@ public class RecepcionModificarController implements Controller, ActionListener{
         
        //Datos Paciente
         String nombre = vista.txtnombres.getText();
+        pers.setNombre(nombre);
         String apellido = vista.txtApellidos.getText();
+        pers.setApellido(apellido);
         int dni = Integer.parseInt(vista.txtDNI.getText());
+        pers.setDni(dni);
         boolean sexo = false;
         if (vista.chkF.isSelected()) {
             sexo = false;
@@ -70,57 +73,32 @@ public class RecepcionModificarController implements Controller, ActionListener{
         if (vista.chkM.isSelected()) {
             sexo = true;
         }
+        pers.setSexo(sexo);
         int edad = Integer.parseInt(vista.txtedad.getText());
+        pers.setEdad(edad);
         int telCasa = Integer.parseInt(vista.txttelefono.getText());
+        pers.setTelefonoCasa(telCasa);
         int telCelular = Integer.parseInt(vista.txtcelular.getText());
+        pers.setTelefonoCelular(telCelular);
         String correo = vista.txtcorreo.getText();
+        pers.setEmail(correo);
         String codigoHistoria = vista.txtHistoriaClinica.getText();
+        //----------------------------
         //Fin datos paciente
-        String servicio = null;
-        switch (vista.cbxServicio.getSelectedIndex()) {
-            case 0:
-                servicio = (String) vista.cbxServicio.getSelectedItem();
-                break;
-            case 1:
-                servicio = (String) vista.cbxServicio.getSelectedItem();
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Escoga una opción");
-        }
+        String servicio = vista.txtTipoServicio.getText();
+//        pers.getHistorial().getListaVisitas().getFin().getDato().setServicio(servicio);
+        DatosMedico datoMedico = new DatosMedico(vista.txtNombreDoctor.getText(), vista.txtEspecialidad.getText());
+        Visita visita = new Visita(codigoHistoria,servicio, datoMedico);
         
         
-        DatosMedico datMedico = new DatosMedico();
-        switch (vista.cbxDoctor.getSelectedIndex()) {
-            case 0:
-                datMedico.setNombreApellido((String) vista.cbxDoctor.getSelectedItem());
-                break;
-            case 1:
-                datMedico.setNombreApellido((String) vista.cbxDoctor.getSelectedItem());
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Escoga una opción");
-        }
-        
-        switch (vista.cbxEspecialidad.getSelectedIndex()) {
-            case 0:
-                datMedico.setEspecializacion((String) vista.cbxEspecialidad.getSelectedItem());
-                break;
-            case 1:
-                datMedico.setEspecializacion((String) vista.cbxEspecialidad.getSelectedItem());
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Escoga una opción");
-        }
-        
-        Visita visita = new Visita(codigoHistoria,servicio, datMedico);
-        vistAnterior.listaVisita.insertarAlFinal(visita);
-        System.out.println(vistAnterior.listaVisita.toString());
+//        this.pers.getHistorial().getListaVisitas().getFin().getDato().getDatosMedico().getNombre(),
+//        System.out.println(vistAnterior.listaVisita.toString());
         
         
         
         
         Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "", codigoHistoria);
-       // vista.getRecepcionista().modificaPaciente(p,pers);
+//        vista.getRecepcionista().modificaPaciente(p,pers);
         vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
         vista.setVisible(false);
     }
