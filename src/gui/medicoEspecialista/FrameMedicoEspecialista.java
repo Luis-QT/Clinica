@@ -28,7 +28,7 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
         this.medicoE = medicoE;
         this.listaPacientes = medicoE.getListaPaciente();
         //Escribe el nombre de la especialidad
-        lblMedicoEspecialista.setText(medicoE.getEspecialidad());        
+        txtMedicoEspecialista.setText(medicoE.getEspecialidad());        
         //Escribe el nombre del doctor
         lblNombreDoctor.setText(" " + medicoE.getNombre() + medicoE.getApellido());
         mostrarTabla(listaPacientes);
@@ -77,7 +77,7 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPaciente = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtMedicoEspecialista = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -293,9 +293,9 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
         jPanel7.setForeground(new java.awt.Color(102, 102, 102));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setEditable(false);
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jPanel7.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 27, 570, 30));
+        txtMedicoEspecialista.setEditable(false);
+        txtMedicoEspecialista.setForeground(new java.awt.Color(102, 102, 102));
+        jPanel7.add(txtMedicoEspecialista, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 27, 570, 30));
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 660, 80));
 
@@ -383,7 +383,7 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
         Iterator<Paciente> iterador = lista.getDescendingIterator();
         while (iterador.hasNext()) {            
             Paciente pro = iterador.next();
-            dtm.addRow(new Object[]{pro.getApellido(),pro.getCodigo()});    
+            dtm.addRow(new Object[]{pro.getApellido(),pro.getId()});    
         }    
     }
     
@@ -445,9 +445,6 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -460,11 +457,11 @@ public class FrameMedicoEspecialista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     public javax.swing.JMenuItem jmiCerraSesion;
     private javax.swing.JLabel lblNombreDoctor;
     public javax.swing.JLabel lblTitulo;
     public javax.swing.JTable tblPaciente;
     public javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtMedicoEspecialista;
     // End of variables declaration//GEN-END:variables
 }
