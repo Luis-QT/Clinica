@@ -39,7 +39,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="850" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="915" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -934,9 +934,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnVerVisita" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnAgregarVisita" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnAgregarVisita" max="32767" attributes="0"/>
+                                      <Component id="btnVerVisita" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="24" max="32767" attributes="0"/>
                               </Group>
@@ -1059,7 +1059,7 @@
                                   <Table columnCount="5" rowCount="1">
                                     <Column editable="true" title="ID" type="java.lang.Object"/>
                                     <Column editable="true" title="Fecha Inicio" type="java.lang.Object"/>
-                                    <Column editable="true" title="Fecha Final" type="java.lang.Object"/>
+                                    <Column editable="true" title="Cantidad" type="java.lang.Object"/>
                                     <Column editable="true" title="Motivo" type="java.lang.Object"/>
                                     <Column editable="true" title="Doctor" type="java.lang.Object"/>
                                   </Table>

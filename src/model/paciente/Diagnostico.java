@@ -14,6 +14,16 @@ public class Diagnostico {
     private String defDia;
     private Boolean pronostico; //true favorable, false reservado
     private Boolean solicitud;
+    private String pastillas;
+
+    public void setPastillas(String pastillas) {
+        this.pastillas = pastillas;
+    }
+
+    public void setRecomendaciones(String recomendaciones) {
+        this.recomendaciones = recomendaciones;
+    }
+    private String recomendaciones;
 
     public Diagnostico(String preDia, String defDia, Boolean pronostico, Boolean solicitud) {
         this.preDia = preDia;
