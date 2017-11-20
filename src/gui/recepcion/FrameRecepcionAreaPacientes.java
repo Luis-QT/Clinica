@@ -471,7 +471,7 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
                 Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
                 while (iterador.hasNext()) {
                     Paciente pro = iterador.next();
-                    dtm.addRow(new Object[]{pro.getCodigo(), pro.getNombre(), pro.getApellido(), pro.getDni(),
+                    dtm.addRow(new Object[]{pro.getId(), pro.getNombre(), pro.getApellido(), pro.getDni(),
                         pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
                         pro.getEmail()});
                 }

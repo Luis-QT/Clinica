@@ -63,7 +63,7 @@ public class MedicoEspecialista extends Medico{
         Iterator<Paciente> it = listaPaciente.getDescendingIterator();
         while(it.hasNext()){
             Paciente paciente = it.next();
-            if(paciente.getCodigo().toUpperCase().contains(codigo.toUpperCase())){
+            if(String.valueOf(paciente.getId()).contains(codigo)){
                 lista.insertarAlFinal(paciente);
             }  
         }

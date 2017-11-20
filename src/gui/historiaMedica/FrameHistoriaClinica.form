@@ -1192,7 +1192,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Fecha Final"/>
+                            <Property name="text" type="java.lang.String" value="Cantidad"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel10">

@@ -2,7 +2,7 @@
 package controlador.triaje;
 
 import controlador.Controller;
-import gui.medicoGeneral.FrameHistoriaClinica;
+import gui.historiaMedica.FrameHistoriaClinica;
 import gui.triaje.FrameTriaje;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui.medicoGeneral;
+package gui.historiaMedica;
 
 import estructura.ListaDoble;
 import java.util.Iterator;
@@ -724,7 +724,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
 
         jLabel8.setText("Fecha Inicio");
 
-        jLabel9.setText("Fecha Final");
+        jLabel9.setText("Cantidad");
 
         jLabel10.setText("Motivo");
 
@@ -1082,7 +1082,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         txtTipoSangre.setText(paciente.getTipoSangre());
         txtAlergias.setText(paciente.getAlergia());
         jTextDNI.setText(String.valueOf(paciente.getDni()));
-        txtCodigo.setText(paciente.getCodigo());
+        txtCodigo.setText(String.valueOf(paciente.getId()));
         txtEmail.setText(paciente.getEmail());
         txtDireccion.setText(paciente.getDireccion());
         txtFijo.setText(String.valueOf(paciente.getTelefonoCasa()));

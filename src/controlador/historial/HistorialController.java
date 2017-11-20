@@ -3,8 +3,8 @@ package controlador.historial;
 
 import controlador.Controller;
 import factory.MySQLConnectionFactory;
-import gui.medicoGeneral.FrameHistoriaClinica;
-import gui.medicoGeneral.VentanaVisita;
+import gui.historiaMedica.FrameHistoriaClinica;
+import gui.historiaMedica.VentanaVisita;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.paciente.HistoriaClinica;

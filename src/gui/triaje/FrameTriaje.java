@@ -7,7 +7,7 @@ package gui.triaje;
 
 import estructura.ListaDoble;
 import gui.contabilidad.FrameContabilidad;
-import gui.medicoGeneral.FrameHistoriaClinica;
+import gui.historiaMedica.FrameHistoriaClinica;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import model.empleado.MedicoTriaje;

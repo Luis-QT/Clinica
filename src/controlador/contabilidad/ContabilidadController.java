@@ -248,7 +248,7 @@ public class ContabilidadController implements Controller,ActionListener{
               while (iterador.hasNext()) {
                   Paciente pro = iterador.next();
 
-                  if (pro.getCodigo().equalsIgnoreCase(codigo)) {
+                  if (String.valueOf(pro.getId()).equalsIgnoreCase(codigo)) {
                       comprobar = true;
                       MedicoTriaje medicoTriaje = ventanaTriaje.getTriaje();
                       this.ventanaTriaje = vista.getThisFrameTriaje();

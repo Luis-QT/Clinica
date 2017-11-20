@@ -2,7 +2,7 @@
 package controlador.historial;
 
 import controlador.Controller;
-import gui.medicoGeneral.VentanaVisita;
+import gui.historiaMedica.VentanaVisita;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.paciente.Visita;

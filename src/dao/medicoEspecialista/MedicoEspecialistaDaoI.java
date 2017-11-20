@@ -33,7 +33,7 @@ public class MedicoEspecialistaDaoI implements MedicoEspecialistaDao{
                         rs.getInt("telefonoCelular"),rs.getString("email"),
                         rs.getInt("softDelete"),
                         rs.getString("tipoSamgre"),
-                        rs.getString("alergias"),rs.getString("codigo")) ;
+                        rs.getString("alergias")) ;
                 listaPaciente.insertarAlFinal(paciente);
 //                medico.setHorarios(horarios(rs.getInt("id")));
 //                list.insertarAlFinal(medico);
@@ -75,8 +75,7 @@ public class MedicoEspecialistaDaoI implements MedicoEspecialistaDao{
                 + paciente.getDni()+",'"+ paciente.getSexoEntero()+"','"
                 + paciente.getEdad()+","+ paciente.getTelefonoCasa()+","
                 + paciente.getTelefonoCelular()+","+ paciente.getEmail()+"','"
-                + paciente.getTipoSangre()+"','"+ paciente.getAlergia()+",'"
-                + paciente.getCodigo()+"',0)");
+                + paciente.getTipoSangre()+"','"+ paciente.getAlergia()+ "',0)");
                 
                 this.conn.execute2(sql.toString());
             }else{//update

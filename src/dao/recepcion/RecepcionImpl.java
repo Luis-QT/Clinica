@@ -41,8 +41,7 @@ public class RecepcionImpl implements Recepcion {
                         ,rs.getInt("dni"), rs.getBoolean("sexo"), rs.getInt("edad")
                         ,rs.getInt("telefonoCasa"), rs.getInt("telefonoCelular")
                         ,rs.getString("email"),rs.getInt("softDelete")
-                        , rs.getString("tipoSangre"),rs.getString("alergias")
-                        , rs.getString("codigoHistorial"));
+                        , rs.getString("tipoSangre"),rs.getString("alergias"));
                 list.insertarAlFinal(paciente);
             }
         } catch (Exception e) {
@@ -103,8 +102,7 @@ public class RecepcionImpl implements Recepcion {
                         ,rs.getInt("dni"), rs.getBoolean("sexo"), rs.getInt("edad")
                         ,rs.getInt("telefonoCasa"), rs.getInt("telefonoCelular")
                         ,rs.getString("email"),rs.getInt("softDelete")
-                        , rs.getString("tipoSangre"),rs.getString("alergias")
-                        , rs.getString("codigoHistorial"));
+                        , rs.getString("tipoSangre"),rs.getString("alergias"));
             }
         } catch (Exception e) {
         }finally{
@@ -115,37 +113,37 @@ public class RecepcionImpl implements Recepcion {
 
     @Override
     public boolean guardarPaciente(Paciente paciente) {
-        this.conn = FactoryConnectionDb.open();
+//        this.conn = FactoryConnectionDb.open();
         boolean save = false;
-        
-        try {
-            if(paciente.getId() ==0){//new
-                StringBuilder sql = new StringBuilder();
-                sql.append("INSERT INTO Paciente "
-                + "(codigoHistorial,nombre,apellido,dni,sexo,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias,direccion,religion) VALUES ('"
-                + paciente.getCodigo()+"','"+ paciente.getNombre()+"','"+paciente.getApellido()+"','"
-                + paciente.getDni()+"','"+paciente.getSexoEntero()+"','"
-                + paciente.getEdad()+"','"+paciente.getTelefonoCasa()+"','"+paciente.getTelefonoCelular()+"','"
-                + paciente.getEmail()+"','"+paciente.getSoftDelete()+"','"+paciente.getTipoSangre()+"','"+paciente.getAlergia()+"','"+paciente.getReligion()+"')");
-                
-                this.conn.execute2(sql.toString());
-            }else{//update
-                StringBuilder sql = new StringBuilder();
-                sql.append("UPDATE Paciente SET codigoHistorial = '").append(paciente.getCodigo()).append("'");
-                sql.append(",nombre = '"+paciente.getNombre()+"'").append(",apellido = '"+paciente.getApellido()+"'");
-                sql.append(",dni = "+paciente.getDni()).append(",sexo = '"+paciente.getSexoEntero()+"'");
-                sql.append(",edad = "+paciente.getEdad());
-                sql.append(",telefonoCasa = "+paciente.getTelefonoCasa()).append(",telefonoCelular ="+paciente.getTelefonoCelular());
-                sql.append(",email = "+paciente.getEmail()).append(",softDelete='"+paciente.getSoftDelete()).append("',tipoSangre="+paciente.getTipoSangre());
-                sql.append(" WHERE id = "+paciente.getId());
-                this.conn.execute2(sql.toString());
-            }
-            save = true;
-        } catch (Exception e) {
-            System.out.println("Error >:v");
-        } finally{
-            this.conn.close();
-        }
+//        
+//        try {
+//            if(paciente.getId() ==0){//new
+//                StringBuilder sql = new StringBuilder();
+//                sql.append("INSERT INTO Paciente "
+//                + "(codigoHistorial,nombre,apellido,dni,sexo,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias,direccion,religion) VALUES ('"
+//                + paciente.getCodigo()+"','"+ paciente.getNombre()+"','"+paciente.getApellido()+"','"
+//                + paciente.getDni()+"','"+paciente.getSexoEntero()+"','"
+//                + paciente.getEdad()+"','"+paciente.getTelefonoCasa()+"','"+paciente.getTelefonoCelular()+"','"
+//                + paciente.getEmail()+"','"+paciente.getSoftDelete()+"','"+paciente.getTipoSangre()+"','"+paciente.getAlergia()+"','"+paciente.getReligion()+"')");
+//                
+//                this.conn.execute2(sql.toString());
+//            }else{//update
+//                StringBuilder sql = new StringBuilder();
+//                sql.append("UPDATE Paciente SET codigoHistorial = '").append(paciente.getCodigo()).append("'");
+//                sql.append(",nombre = '"+paciente.getNombre()+"'").append(",apellido = '"+paciente.getApellido()+"'");
+//                sql.append(",dni = "+paciente.getDni()).append(",sexo = '"+paciente.getSexoEntero()+"'");
+//                sql.append(",edad = "+paciente.getEdad());
+//                sql.append(",telefonoCasa = "+paciente.getTelefonoCasa()).append(",telefonoCelular ="+paciente.getTelefonoCelular());
+//                sql.append(",email = "+paciente.getEmail()).append(",softDelete='"+paciente.getSoftDelete()).append("',tipoSangre="+paciente.getTipoSangre());
+//                sql.append(" WHERE id = "+paciente.getId());
+//                this.conn.execute2(sql.toString());
+//            }
+//            save = true;
+//        } catch (Exception e) {
+//            System.out.println("Error >:v");
+//        } finally{
+//            this.conn.close();
+//        }
         return save;
     }
 

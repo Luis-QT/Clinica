@@ -95,7 +95,7 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
         Iterator<Paciente> iterador = vista.listaPaciente.getDescendingIterator();
         while (iterador.hasNext()) {
             Paciente pro = iterador.next();
-            dtm.addRow(new Object[]{pro.getCodigo(), pro.getNombre(), pro.getApellido(), pro.getDni(),
+            dtm.addRow(new Object[]{pro.getId(), pro.getNombre(), pro.getApellido(), pro.getDni(),
                 pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
                 pro.getEmail()});
         }
