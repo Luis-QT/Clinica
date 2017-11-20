@@ -16,7 +16,7 @@ import model.paciente.Paciente;
 public interface Recepcion {
     public ListaDoble<Paciente> listaPaciente();
     public void mostrarPacientes();
-    public Recepcion obtenerPaciente(int id);
-    public boolean guardarPaciente(Recepcion recepcion);
+    public Paciente obtenerPaciente(int id);
+    public boolean guardarPaciente(Paciente paciente);
     public boolean eliminarPaciente(int id);
 }

@@ -13,6 +13,9 @@ public class Paciente extends Persona {
     boolean tipoVivienda;
     HistoriaClinica historial;
     
+    
+    
+    
    ///CREO QUE NADIE LO USA
     public Paciente(int id, String nombre, String apellido, int dni, 
             boolean sexo, int edad, int telefonoFijo, int telefonoCelular, 
@@ -45,6 +48,7 @@ public class Paciente extends Persona {
         historial =  new HistoriaClinica(new AntecedentesFamiliares(), 
                     new AntecedentesPersonales(), new DatosMedico());
     }
+
     
     public String getReligion() {
         return religion;
