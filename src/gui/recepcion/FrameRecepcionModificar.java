@@ -26,7 +26,7 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
     FrameRecepcionAreaPacientes aThis;
     public int indice;
     
-    public FrameRecepcionModificar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, FrameRecepcionAreaPacientes aThis,Persona pers) {
+    public FrameRecepcionModificar(javax.swing.JDialog parent, boolean modal, Recepcionista recepcionista, FrameRecepcionAreaPacientes aThis,Paciente pers) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
@@ -36,6 +36,23 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
         
         txtnombres.setText(pers.getNombre());
         txtApellidos.setText(pers.getApellido());
+        txtDNI.setText(String.valueOf(pers.getDni()));
+        txtedad.setText(String.valueOf(pers.getEdad()));
+        txttelefono.setText(String.valueOf(pers.getTelefonoCasa()));
+        txtcelular.setText(String.valueOf(pers.getTelefonoCelular()));
+        txtcorreo.setText(pers.getEmail());
+        boolean sexo = pers.isSexo();
+        if(sexo == true){
+            chkM.setSelected(true);
+        }
+        if(sexo == false){
+            chkF.setSelected(true);
+        }
+        txtHistoriaClinica.setText(String.valueOf(pers.getHistorial()));
+        
+        
+        
+        cbxServicio.setSelectedItem("HolaMundo");
         
     }
 
