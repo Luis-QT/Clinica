@@ -11,6 +11,7 @@ import java.util.Date;
  *
  * @author F20LAB303-XXE
  */
+/** NO USARÉ ESTO !!!! :'V **/
 public class TratamientoRea {
     private Date fecha;
     private String tratamiento;

@@ -13,7 +13,7 @@ public class Visita {
     private ExamenFisicos examenFisico;
     private Diagnostico diagnostico;
     private TemporadaTratamiento tratamiento;
-    private TratamientoRea tratamientoRea;
+//    private TratamientoRea tratamientoRea;
     
 //    private ListaDoble<Visita> listaVisita;
 //
@@ -36,7 +36,7 @@ public class Visita {
         this.examenFisico = new ExamenFisicos();
         this.diagnostico = new Diagnostico();
         this.tratamiento = new TemporadaTratamiento();
-        this.tratamientoRea = new TratamientoRea();
+//        this.tratamientoRea = new TratamientoRea();
     }
     
     //Constructor recepcionista
@@ -48,7 +48,7 @@ public class Visita {
         this.examenFisico = new ExamenFisicos();
         this.diagnostico = new Diagnostico();
         this.tratamiento = new TemporadaTratamiento();
-        this.tratamientoRea = new TratamientoRea();
+//        this.tratamientoRea = new TratamientoRea();
         
     }
     
@@ -60,7 +60,7 @@ public class Visita {
         this.examenFisico = examenFisico;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
-        this.tratamientoRea = tratamientoRea;
+//        this.tratamientoRea = tratamientoRea;
         this.servicio = "Holaa";
     }
 
@@ -73,7 +73,7 @@ public class Visita {
         this.examenFisico = examenFisico;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
-        this.tratamientoRea = tratamientoRea;
+//        this.tratamientoRea = tratamientoRea;
         this.servicio = "Holo";
     }
 
@@ -141,13 +141,13 @@ public class Visita {
         this.tratamiento = tratamiento;
     }
 
-    public TratamientoRea getTratamientoRea() {
-        return tratamientoRea;
-    }
-
-    public void setTratamientoRea(TratamientoRea tratamientoRea) {
-        this.tratamientoRea = tratamientoRea;
-    }
+//    public TratamientoRea getTratamientoRea() {
+//        return tratamientoRea;
+//    }
+//
+//    public void setTratamientoRea(TratamientoRea tratamientoRea) {
+//        this.tratamientoRea = tratamientoRea;
+//    }
 
 //    public String toString (){
 //        return "codigo: "+id + " fecha: "+ fecha.toString()+"\n";
@@ -155,7 +155,7 @@ public class Visita {
 
     @Override
     public String toString() {
-        return "Visita{" + "id=" + id + ", servicio=" + servicio + ", datosMedico=" + datosMedico + ", fecha=" + fecha + ", anamnecis=" + anamnecis + ", examenFisico=" + examenFisico + ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + ", tratamientoRea=" + tratamientoRea + '}';
+        return "Visita{" + "id=" + id + ", servicio=" + servicio + ", datosMedico=" + datosMedico + ", fecha=" + fecha + ", anamnecis=" + anamnecis + ", examenFisico=" + examenFisico + ", diagnostico=" + diagnostico + ", tratamiento=" + tratamiento + '}';
     }
     
     

@@ -55,8 +55,7 @@ public class HistorialController implements Controller,ActionListener {
     private void formAgregarVisita() {
         Paciente paciente = vista.getPaciente();
         this.ventanaVisita = new VentanaVisita(vista, true, paciente.getHistorial());
-//        ventanaVisita.setVisible(true);
-//        new VisitaController(ventanaVisita).index();
+        new VisitaController(ventanaVisita).index();
         System.out.println("error1");
     }
 
@@ -66,7 +65,7 @@ public class HistorialController implements Controller,ActionListener {
             Visita visita =vista.getListaVisita().getDato(posicion);
             ventanaVisita = new VentanaVisita(vista, true,visita);
             ventanaVisita.btnRegistrarVisita.setEnabled(false);
-            ventanaVisita.setVisible(true);
+//            ventanaVisita.setVisible(true);
             
         }catch(Exception e){
             System.out.println(e);

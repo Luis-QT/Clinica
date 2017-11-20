@@ -15,6 +15,8 @@ public class TemporadaTratamiento {
     private int id;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
+    private boolean estadoPagado; // 0 -> no pagado , 1 -> pagado
+    private int cantidad;
     private String doctor;
     private String motivo;
 
