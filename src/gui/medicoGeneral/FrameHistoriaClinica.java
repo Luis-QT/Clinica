@@ -850,7 +850,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 915, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -896,26 +896,26 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonMuertoP1MouseClicked
 
     private void btnVerVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerVisitaActionPerformed
-        try{
-            int posicion;
-            posicion = tblVisitas.getSelectedRow();
-            System.out.println("lista visita es ta vacía?: " + listaVisita);
-            Visita visita = listaVisita.getDato(posicion);
-            VentanaVisita ventanaVisita = new VentanaVisita(this, true,visita);
-            ventanaVisita.btnRegistrarVisita.setEnabled(false);
-            ventanaVisita.setVisible(true);
-            
-        }catch(Exception e){
-            System.out.println(e);
-                    
-        }
+//        try{
+//            int posicion;
+//            posicion = tblVisitas.getSelectedRow();
+//            System.out.println("lista visita es ta vacía?: " + listaVisita);
+//            Visita visita = listaVisita.getDato(posicion);
+//            VentanaVisita ventanaVisita = new VentanaVisita(this, true,visita);
+//            ventanaVisita.btnRegistrarVisita.setEnabled(false);
+//            ventanaVisita.setVisible(true);
+//            
+//        }catch(Exception e){
+//            System.out.println(e);
+//                    
+//        }
     }//GEN-LAST:event_btnVerVisitaActionPerformed
 
     private void btnAgregarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarVisitaActionPerformed
         // TODO add your handling code here:
-        VentanaVisita ventanaVisita = new VentanaVisita(this, true,historial);
-        ventanaVisita.setVisible(true);
-        
+//        VentanaVisita ventanaVisita = new VentanaVisita(this, true,historial);
+//        ventanaVisita.setVisible(true);
+//        
     }//GEN-LAST:event_btnAgregarVisitaActionPerformed
 
     public Paciente getPaciente() {

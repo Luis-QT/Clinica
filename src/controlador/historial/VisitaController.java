@@ -43,7 +43,7 @@ public class VisitaController implements Controller,ActionListener {
         
         Visita visita = vista.getVisita();
         
-         //NOMBRE MEDICO
+        //NOMBRE MEDICO
         vista.txtNombreMedico.setText(visita.getDatosMedico().getNombre());
         vista.txtEspecialidad.setText(visita.getDatosMedico().getEspecializacion());
         //ANAMNSESIS

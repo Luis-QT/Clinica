@@ -15,10 +15,6 @@ import model.paciente.TemporadaTratamiento;
 import model.paciente.TratamientoRea;
 import model.paciente.Visita;
 
-/**
- *
- * @author Pechito
- */
 public class VentanaVisita extends javax.swing.JDialog {
 
     /**
