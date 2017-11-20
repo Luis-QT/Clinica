@@ -27,31 +27,31 @@ public class RecepcionImpl implements Recepcion {
     
     @Override
     public ListaDoble<Paciente> listaPaciente() {
-        this.conn = FactoryConnectionDb.open();
-        StringBuilder sql = new StringBuilder();
-        sql.append("SELECT * FROM Horarios");
-        Horario horario=null;
-        Empleado empleado = null;
-        Sala sala = null;
-        ListaDoble<Horario> list = new ListaDoble<Horario>();
-        try {
-            ResultSet rs = this.conn.query(sql.toString());
-            while(rs.next()){
-                horario= new Horario(rs.getInt("id"),rs.getString("dia"), rs.getString("horaIni")
-                        , rs.getString("horaFin"), null, null,rs.getInt("tipoEmpleado")
-                        ,rs.getInt("empleadoId"),rs.getInt("salaId"));
-                
-                horario.setEmpleado(obtenerEmpleado(rs.getInt("id")));
-                horario.setSala(obtenerSala(rs.getInt("id")));
-                list.insertarAlFinal(horario);
-            }
-        } catch (Exception e) {
-            
-        }finally{
-            this.conn.close();
-        }
+//        this.conn = FactoryConnectionDb.open();
+//        StringBuilder sql = new StringBuilder();
+//        sql.append("SELECT * FROM Horarios");
+//        Horario horario=null;
+//        Empleado empleado = null;
+//        Sala sala = null;
+//        ListaDoble<Horario> list = new ListaDoble<Horario>();
+//        try {
+//            ResultSet rs = this.conn.query(sql.toString());
+//            while(rs.next()){
+//                horario= new Horario(rs.getInt("id"),rs.getString("dia"), rs.getString("horaIni")
+//                        , rs.getString("horaFin"), null, null,rs.getInt("tipoEmpleado")
+//                        ,rs.getInt("empleadoId"),rs.getInt("salaId"));
+//                
+//                horario.setEmpleado(obtenerEmpleado(rs.getInt("id")));
+//                horario.setSala(obtenerSala(rs.getInt("id")));
+//                list.insertarAlFinal(horario);
+//            }
+//        } catch (Exception e) {
+//            
+//        }finally{
+//            this.conn.close();
+//        }
         
-        return list;
+        return null;
     }
 
     @Override

@@ -11,7 +11,10 @@ public class Visita {
     private LocalDate fecha;
     private Anamnesis anamnecis;
     private ExamenFisicos examenFisico;
+    private String codigo;
     private Diagnostico diagnostico;
+    private String pastilla;
+    private String recomendaciones;
     private TemporadaTratamiento tratamiento;
 //    private TratamientoRea tratamientoRea;
     
@@ -40,7 +43,8 @@ public class Visita {
     }
     
     //Constructor recepcionista
-    public Visita(String servicio,DatosMedico medico) {
+    public Visita(String codigo, String servicio,DatosMedico medico) {
+        this.codigo = codigo;
         this.servicio = servicio;
         this.datosMedico = medico;
         this.fecha = LocalDate.now();
@@ -77,12 +81,14 @@ public class Visita {
         this.servicio = "Holo";
     }
 
-//    public void insertarVisita(Visita visita){
-//        
-//        listaVisita.insertarAlFinal(visita);
-//        
-//    }
-//    
+    
+    public String getPastilla() {
+        return pastilla;
+    }
+
+    public String getRecomendaciones() {
+        return recomendaciones;
+    }
     
     public int getCodigo() {
         return id;
