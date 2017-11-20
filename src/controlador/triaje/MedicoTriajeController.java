@@ -2,9 +2,11 @@
 package controlador.triaje;
 
 import controlador.Controller;
+import gui.medicoGeneral.FrameHistoriaClinica;
 import gui.triaje.FrameTriaje;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.paciente.Paciente;
 
 
 public class MedicoTriajeController implements Controller,ActionListener {
@@ -30,6 +32,10 @@ public class MedicoTriajeController implements Controller,ActionListener {
     }
     
     public void formVerHistorial(){
-        
+         
+        int posicion = vista.tablaPacientes.getSelectedRow();
+        Paciente paciente = vista.getListaPacientes().getDato(posicion);
+        FrameHistoriaClinica historial = new FrameHistoriaClinica(paciente);
+        historial.setVisible(true);  
     }
 }

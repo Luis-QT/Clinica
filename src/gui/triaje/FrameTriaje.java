@@ -7,9 +7,11 @@ package gui.triaje;
 
 import estructura.ListaDoble;
 import gui.contabilidad.FrameContabilidad;
+import gui.medicoGeneral.FrameHistoriaClinica;
 import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import model.empleado.MedicoTriaje;
+import model.paciente.HistoriaClinica;
 import model.paciente.Paciente;
 
 /**
@@ -137,6 +139,11 @@ public class FrameTriaje extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
 
         jButton2.setText("Ver Historial");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -174,6 +181,15 @@ public class FrameTriaje extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        int posicion = tablaPacientes.getSelectedRow();
+        Paciente paciente = listaPacientes.getDato(posicion);
+        FrameHistoriaClinica historial = new FrameHistoriaClinica(paciente);
+        historial.setVisible(true);  
+    }//GEN-LAST:event_jButton2ActionPerformed
 
      public void mostrarTabla( ) {
         DefaultTableModel dtm = (DefaultTableModel) tablaPacientes.getModel();
