@@ -100,9 +100,10 @@ public class RecepcionAgregarController implements Controller, ActionListener {
                 JOptionPane.showMessageDialog(null, "Escoga una opción");
         }
         
-        Visita visita = new Visita(servicio, datMedico);
+        Visita visita = new Visita(codigoHistoria ,servicio, datMedico);
         vistAnterior.listaVisita.insertarAlFinal(visita);
         System.out.println(vistAnterior.listaVisita.toString());
+        
         Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "", codigoHistoria);
         vista.getRecepcionista().agregarPaciente(p);
         vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());

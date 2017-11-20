@@ -78,11 +78,11 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
         String palabraBuscar = vista.txtBuscar.getText();
         if (vista.chxApellido.isSelected()) {
             ListaDoble<Paciente> sp = vista.getRecepcionista().buscarporApellido(palabraBuscar);
-            vista.listaPaciente = sp;
+            vista.setListaPaciente(sp);
             refrescartabla(sp);
         } else if (vista.chxDni.isSelected()) {
             ListaDoble<Paciente> sp = vista.getRecepcionista().buscarporDNI(Integer.parseInt(palabraBuscar));
-            vista.listaPaciente = sp;
+            vista.setListaPaciente(sp);
             refrescartabla(sp);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion");
@@ -139,9 +139,11 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
 
     private void formModificar() {
         
+        
         int indice = vista.tblPacientes.getSelectedRow();
-        this.areaModificar = new FrameRecepcionModificar(new javax.swing.JDialog(), true, vista.getRecepcionista(), vista, indice);
-        new RecepcionModificarController(areaModificar, vista,indice).index();
+        Paciente pers  = vista.listaPaciente.getDato(indice);
+        this.areaModificar = new FrameRecepcionModificar(new javax.swing.JDialog(), true, vista.getRecepcionista(), vista, pers);
+        new RecepcionModificarController(areaModificar, vista,pers).index();
     }
 
 }

@@ -472,4 +472,9 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
                         pro.getEmail()});
                 }
     }
+
+    public void setListaPaciente(ListaDoble<Paciente> sp) {
+        listaPaciente = sp;
+    
+    }
 }

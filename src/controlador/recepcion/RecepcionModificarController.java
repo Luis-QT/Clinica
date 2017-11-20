@@ -23,12 +23,12 @@ import model.paciente.Visita;
 public class RecepcionModificarController implements Controller, ActionListener{
     private FrameRecepcionModificar vista;
     private FrameRecepcionAreaPacientes vistAnterior;
-    private int indice;
+    private Paciente pers;
 
-    public RecepcionModificarController(FrameRecepcionModificar vista, FrameRecepcionAreaPacientes vistAnterior,int indice) {
+    public RecepcionModificarController(FrameRecepcionModificar vista, FrameRecepcionAreaPacientes vistAnterior,Paciente pers) {
         this.vista = vista;
         this.vistAnterior = vistAnterior;
-        this.indice = indice;
+        this.pers = pers;
         iniciar();
     }
     
@@ -58,8 +58,6 @@ public class RecepcionModificarController implements Controller, ActionListener{
         }}
 
     private void formModificar() {
-        
-        
         
        //Datos Paciente
         String nombre = vista.txtnombres.getText();
@@ -114,7 +112,7 @@ public class RecepcionModificarController implements Controller, ActionListener{
                 JOptionPane.showMessageDialog(null, "Escoga una opción");
         }
         
-        Visita visita = new Visita(servicio, datMedico);
+        Visita visita = new Visita(codigoHistoria,servicio, datMedico);
         vistAnterior.listaVisita.insertarAlFinal(visita);
         System.out.println(vistAnterior.listaVisita.toString());
         
@@ -122,7 +120,7 @@ public class RecepcionModificarController implements Controller, ActionListener{
         
         
         Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "", codigoHistoria);
-        vista.getRecepcionista().modificaPaciente(p,indice);
+       // vista.getRecepcionista().modificaPaciente(p,pers);
         vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
         vista.setVisible(false);
     }
