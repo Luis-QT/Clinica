@@ -6,14 +6,15 @@ import java.time.LocalDate;
 
 
 public class HistoriaClinica {
-    AntecedentesFamiliares antecedentesFamiliares;
-    AntecedentesPersonales antecedentesPersonales;
+    private int id;
+    private AntecedentesFamiliares antecedentesFamiliares;
+    private AntecedentesPersonales antecedentesPersonales;
     private ListaDoble<Visita> listaVisitas;
 
     public void setListaVisitas(ListaDoble<Visita> listaVisitas) {
         this.listaVisitas = listaVisitas;
     }
-    String codigo;
+  
 
     public HistoriaClinica(AntecedentesFamiliares antecedentesFamiliares, AntecedentesPersonales antecedentesPersonales, DatosMedico datosMedico) {
         this.antecedentesFamiliares = antecedentesFamiliares;

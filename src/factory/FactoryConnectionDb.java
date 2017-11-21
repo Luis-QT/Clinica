@@ -25,10 +25,22 @@ public class FactoryConnectionDb {
     public static String[] configMSQLCreate = {
             //Tabla paciente
             "Create TABLE Paciente"
-            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigoHistorial VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
-            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40),direccion VARCHAR(40),religion VARCHAR(40))",
-            
+            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
+            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40))",          
         
+            //Tabla Historia Clínica
+            "Create TABLE HistoriaClinica"
+            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), estadoPapa VARCHAR(20), hosPapa VARCHAR(20) ,muertePapa SMALLINT "
+            + " estadoMama VARCHAR(20), hosMama VARCHAR(20) , muerteMama SMALLINT, enferTrata VARCHAR(20), hospitalizaciones INT, inmunizacion INT, tipoSangre VARCHAR(5),alergias VARCHAR(20))",          
+               
+            
+            //Tabla Visitas
+            "Create TABLE Visitas"
+            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), idHistorial INT, servicio VARCHAR(20), nombreMedico VARCHAR(20), especialidadMedico VARCHAR(30) "
+            + " diaV INT, mesV INT, anioV INT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)" 
+            + " torzoaus VARCHAR(40),torzoper VARCHAR(40),abdomenobs VARCHAR(40),abdomenaus VARCHAR(40),abdomenper VARCHAR(40), espaldaobs VARCHAR(40),espaldaaus VARCHAR(40),espaldaper VARCHAR(40) "
+            + "extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40))" ,
+            
             //Luis Taquire
             "CREATE TABLE MedicoGeneral"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
@@ -49,8 +61,7 @@ public class FactoryConnectionDb {
             "CREATE TABLE Cajero"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),codigo VARCHAR(100) , nombre VARCHAR(30), apellido VARCHAR(30) ,dni INT , "
             + "contraseña VARCHAR(35) ,edad SMALLINT,telefonoCasa INT,telefonoCelular INT, sexo SMALLINT,email VARCHAR(40),softDelete SMALLINT)",
-            
-            
+
             "CREATE TABLE Salas (id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),"
             + "nombre VARCHAR(15) , descripcion VARCHAR(150))",
            
@@ -61,8 +72,8 @@ public class FactoryConnectionDb {
             "CREATE TABLE PlanTratamiento (id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),"
             +"nombre VARCHAR(35), descripcion VARCHAR(60) , precio DOUBLE)",
             
-            /********* CREAR TABLAS **********/
             
+            /********* CREAR TABLAS **********/            
             "INSERT INTO Recepcionista"
             + "(codigo , nombre , apellido  ,dni  , contraseña, edad, telefonoCasa, telefonoCelular, sexo, email,softDelete )"
             + "('recepcion', 'Luis David', 'Yauri Martinez', 987654321, 'contraseña', 21, 9541236, 954123685,1,'Luis@gmail.com',0)",

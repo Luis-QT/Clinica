@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Visita {
 
-    private int id;
+    private int idHistorial;
     private int idVisita;
     private String servicio;
     private DatosMedico datosMedico;
@@ -40,7 +40,7 @@ public class Visita {
 
     public Visita(int id, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico) {
         this.fecha = LocalDate.now();
-        this.id = id;
+        this.idHistorial = id;
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
         this.examenFisico = examenFisico;
@@ -51,7 +51,7 @@ public class Visita {
     
     public Visita(LocalDate fecha, int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, TemporadaTratamiento tratamiento, TratamientoRea tratamientoRea) {
         this.fecha = fecha;
-        this.id = codigo;
+        this.idHistorial = codigo;
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
         this.examenFisico = examenFisico;
@@ -74,7 +74,7 @@ public class Visita {
     
     
     public int getCodigo() {
-        return id;
+        return idHistorial;
     }
     
     public String getServicio() {
