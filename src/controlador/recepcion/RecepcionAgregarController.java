@@ -62,7 +62,7 @@ public class RecepcionAgregarController implements Controller, ActionListener {
         int telCasa = Integer.parseInt(vista.txttelefono.getText());
         int telCelular = Integer.parseInt(vista.txtcelular.getText());
         String correo = vista.txtcorreo.getText();
-        String codigoHistoria = vista.txtHistoriaClinica.getText();
+        String codigoP = vista.txtCodigoPaciente.getText();
         //Fin datos paciente
         String servicio = vista.txtTipoServicio.getText();
         DatosMedico datMedico = new DatosMedico(vista.txtNombreDoctor.getText(),
@@ -71,7 +71,7 @@ public class RecepcionAgregarController implements Controller, ActionListener {
 //        vistAnterior.listaVisita.insertarAlFinal(visita);
 //        System.out.println(vistAnterior.listaVisita.toString());
         
-        Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "");
+        Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 2, "", "",codigoP);
         vista.getRecepcionista().agregarPaciente(p);
         vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
         vista.setVisible(false);

@@ -82,7 +82,8 @@ public class RecepcionModificarController implements Controller, ActionListener{
         pers.setTelefonoCelular(telCelular);
         String correo = vista.txtcorreo.getText();
         pers.setEmail(correo);
-        String codigoHistoria = vista.txtHistoriaClinica.getText();
+        String codigoHistoria = vista.txtCodigoPaciente.getText();
+        String codigoP = vista.txtCodigoPaciente.getText();
         //----------------------------
         //Fin datos paciente
         String servicio = vista.txtTipoServicio.getText();
@@ -97,7 +98,7 @@ public class RecepcionModificarController implements Controller, ActionListener{
         
         
         
-        Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "");
+        Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "","");
 //        vista.getRecepcionista().modificaPaciente(p,pers);
         vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
         vista.setVisible(false);

@@ -73,7 +73,7 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
         txtcorreo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtHistoriaClinica = new javax.swing.JTextField();
+        txtCodigoPaciente = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -165,11 +165,11 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Historia clínica :");
+        jLabel11.setText("Código Paciente :");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        txtHistoriaClinica.setEditable(false);
-        jPanel2.add(txtHistoriaClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 140, -1));
+        txtCodigoPaciente.setEditable(false);
+        jPanel2.add(txtCodigoPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 140, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 320, 310));
 
@@ -278,7 +278,7 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
     private void txtDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyPressed
         // TODO add your handling code here:
 
-        txtHistoriaClinica.setText("H0" + txtDNI.getText());
+        txtCodigoPaciente.setText("H0" + txtDNI.getText());
 
     }//GEN-LAST:event_txtDNIKeyPressed
 
@@ -410,9 +410,9 @@ public class FrameRecepcionAgregar extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     public javax.swing.JTextField txtApellidos;
+    public javax.swing.JTextField txtCodigoPaciente;
     public javax.swing.JTextField txtDNI;
     public javax.swing.JTextField txtEspecialidad;
-    public javax.swing.JTextField txtHistoriaClinica;
     public javax.swing.JTextField txtNombreDoctor;
     public javax.swing.JTextField txtTipoServicio;
     public javax.swing.JTextField txtcelular;

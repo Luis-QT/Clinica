@@ -57,8 +57,8 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
                 null, 13, "Mónica", "Blanco", 77777777, false, 42, 555555,
                 999999, "mb@ail.com", 0);
         //Fin personales
-         Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay");
-         Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay");
+         Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","");
+         Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay","");
            ListaDoble<Visita> listav1 = new ListaDoble<Visita>();
          listav1.insertarAlFinal(new Visita(LocalDate.of(2004, 10,11),854, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico("Sanchez","cardiologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
          listav1.insertarAlFinal(new Visita(LocalDate.of(2005, 12,12),854, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico("Sanchez","cardiologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
