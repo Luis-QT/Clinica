@@ -138,8 +138,10 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
     }
 
     private void formModificar() {
+        System.out.println("entra 1");
         int indice = vista.tblPacientes.getSelectedRow();
         Paciente pers  = vista.listaPaciente.getDato(indice);
+        System.out.println(pers.toString());
         this.areaModificar = new FrameRecepcionModificar(new javax.swing.JDialog(), true, vista.getRecepcionista(), vista, pers);
         new RecepcionModificarController(areaModificar, vista,pers).index();
     }

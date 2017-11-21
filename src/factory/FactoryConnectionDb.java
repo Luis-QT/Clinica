@@ -60,7 +60,13 @@ public class FactoryConnectionDb {
             
             "CREATE TABLE PlanTratamiento (id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),"
             +"nombre VARCHAR(35), descripcion VARCHAR(60) , precio DOUBLE)",
-           
+            
+            /********* CREAR TABLAS **********/
+            
+            "INSERT INTO Recepcionista"
+            + "(codigo , nombre , apellido  ,dni  , contraseña, edad, telefonoCasa, telefonoCelular, sexo, email,softDelete )"
+            + "('recepcion', 'Luis David', 'Yauri Martinez', 987654321, 'contraseña', 21, 9541236, 954123685,1,'Luis@gmail.com',0)",
+            
             "INSERT INTO MedicoGeneral "
             + "(codigo,nombre,apellido,dni,contraseña,colegiatura,edad,telefonoCasa,telefonoCelular,sexo,email,softDelete) VALUES "
             + "('medico1','Ximena','Politi',56487752,'1234-2','cole1',20,5284422,973849441,0,'a@a',0)",
@@ -76,6 +82,14 @@ public class FactoryConnectionDb {
             "INSERT INTO MedicoEspecialista "
             + "(especialidad,codigo,nombre,apellido,dni,contraseña,colegiatura,edad,telefonoCasa,telefonoCelular,sexo,email,softDelete) VALUES "
             + "('Odontologo','medico4','Luis','Yauri',11111111,'1234-3','cole1',10,5284422,973555441,1,'a@a',0)",
+            
+            "INSERT INTO MedicoTriaje"
+            + "(codigo, nombre, apellido ,dni ,contraseña,colegiatura ,edad, telefonoCasa, telefonoCelular, sexo, email, softDelete)"
+            + "('medicoTriaje','MedicTriaje','Martin Lopez',11222111,'contraseña','cole2Triaje',55,5284422,973555441,1,'a@a',0)",
+            
+            "INSERT INTO Cajeros"
+            + "(codigo , nombre , apellido ,dni ,contraseña, edad, telefonoCasa, telefonoCelular, sexo, email, softDelete)"
+            + "('cajero','Cajero02','ApellidoCajero',11999981,'contraseña',30,5284322,973566441,1,'a@a',0)",
             
             "INSERT INTO Salas "
             + "(nombre,descripcion) VALUES"

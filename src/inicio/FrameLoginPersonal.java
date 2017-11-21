@@ -5,14 +5,23 @@
  */
 package inicio;
 
+import estructura.ListaDoble;
 import gui.recepcion.FrameRecepcionPrincipal;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import model.empleado.Cajero;
 import model.empleado.MedicoEspecialista;
 import model.empleado.MedicoTriaje;
 import model.empleado.Recepcionista;
 import model.empleado.Servicios;
+import model.paciente.Anamnesis;
+import model.paciente.DatosMedico;
+import model.paciente.Diagnostico;
+import model.paciente.ExamenFisicos;
 import model.paciente.Paciente;
+import model.paciente.TemporadaTratamiento;
+import model.paciente.TratamientoRea;
+import model.paciente.Visita;
 
 /**
  *
@@ -33,7 +42,15 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         //Personales
+        //de la bd extraigo la orimera persona de la taBLA RECEPCIONISTA 
+        //GUARDO EN UN OBJETO RECEPCIONISTA.  recepcionista
+        
+        
+        
+        
         recepcionista = new Recepcionista("123", "345", null, 12, "Luis", "Yauri", 98877, true, 35, 234324, 123, "@gamil.com", 1);
+       
+        
         medicoEspecialista = new MedicoEspecialista("Cardiólogo", "Colegiatura", "1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
         cajero = new Cajero("1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
         medicoTriaje = new MedicoTriaje("triaje", "5694", "contraseña",
@@ -42,9 +59,21 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         //Fin personales
          Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay");
          Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay");
+           ListaDoble<Visita> listav1 = new ListaDoble<Visita>();
+         listav1.insertarAlFinal(new Visita(LocalDate.of(2004, 10,11),854, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico("Sanchez","cardiologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
+         listav1.insertarAlFinal(new Visita(LocalDate.of(2005, 12,12),854, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico("Sanchez","cardiologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
+         listav1.insertarAlFinal(new Visita(LocalDate.of(2006, 9,23),854, new Anamnesis("salud13", "curso1", "enferact1"), new DatosMedico("Sanchez","cardiologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
+         listav1.insertarAlFinal(new Visita(LocalDate.of(2007, 10,18),854, new Anamnesis("salud14", "curso1", "enferact1"), new DatosMedico("Sanchez","cardiologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
+         
+         ListaDoble<Visita> listav2 = new ListaDoble<Visita>();
+         listav2.insertarAlFinal(new Visita(LocalDate.of(2010, 10,2),854, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico("Juan","neurologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
+         listav2.insertarAlFinal(new Visita(LocalDate.of(2005, 10,2),235, new Anamnesis("salud12", "curso1", "enferact1"), new DatosMedico("Sanchez","cardiologo"), new ExamenFisicos(), new Diagnostico(), new TemporadaTratamiento(), new TratamientoRea()));
          
          
          
+         p1.getHistorial().setListaVisitas(listav1);
+         
+         p2.getHistorial().setListaVisitas(listav2);
         
         medicoEspecialista.agregarPaciente(p1);
         medicoEspecialista.agregarPaciente(p2);

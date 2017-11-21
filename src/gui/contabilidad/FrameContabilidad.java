@@ -645,7 +645,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Cuentas", jPanel4);
 
-        jPanel1.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 930, 410));
+        jPanel1.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 940, 410));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 596));
 
