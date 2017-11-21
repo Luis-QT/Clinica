@@ -36,9 +36,14 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         recepcionista = new Recepcionista("123", "345", null, 12, "Luis", "Yauri", 98877, true, 35, 234324, 123, "@gamil.com", 1);
         medicoEspecialista = new MedicoEspecialista("Cardiólogo", "Colegiatura", "1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
         cajero = new Cajero("1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
+        medicoTriaje = new MedicoTriaje("triaje", "5694", "contraseña",
+                null, 13, "Mónica", "Blanco", 77777777, false, 42, 555555,
+                999999, "mb@ail.com", 0);
         //Fin personales
          Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay");
          Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay");
+         
+         
          
         
         medicoEspecialista.agregarPaciente(p1);
