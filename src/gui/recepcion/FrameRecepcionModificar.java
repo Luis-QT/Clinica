@@ -48,10 +48,10 @@ public class FrameRecepcionModificar extends javax.swing.JDialog {
         if(sexo == false){
             chkF.setSelected(true);
         }
-        txtHistoriaClinica.setText(String.valueOf(pers.getHistorial()));
-        
-        txtTipoServicio.setText(pers.getHistorial().getListaVisitas().getFin().getDato().getServicio());
-        
+//        txtHistoriaClinica.setText(String.valueOf(pers.getHistorial()));
+//        
+//        txtTipoServicio.setText(pers.getHistorial().getListaVisitas().getFin().getDato().getServicio());
+//        
 //        cbxServicio.setSelectedItem("HolaMundo");
     
     }
