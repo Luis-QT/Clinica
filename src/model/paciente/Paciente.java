@@ -7,9 +7,6 @@ import model.empleado.Persona;
 public class Paciente extends Persona {
     String tipoSangre; 
     String alergia;
-    String direccion;
-    String religion;
-    boolean tipoVivienda;
     HistoriaClinica historial;
   
     public Paciente(int id, String nombre, String apellido, int dni, 
@@ -26,13 +23,6 @@ public class Paciente extends Persona {
     
 
     
-    public String getReligion() {
-        return religion;
-    }
-    
-    public String getDireccion() {
-        return direccion;
-    } 
     
     public String getTipoSangre() {
         return tipoSangre;

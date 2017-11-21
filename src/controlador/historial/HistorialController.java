@@ -32,8 +32,8 @@ public class HistorialController implements Controller,ActionListener {
         this.vista.btnVerTempTrata.setActionCommand("VerTratamiento");
         vista.btnVerTempTrata.addActionListener(this);
         
-//        this.vista.btnIngresarDatosPaciente.setActionCommand("IngresarPaciente");
-//        vista.btnIngresarDatosPaciente.addActionListener(this);
+        this.vista.btnRegistrarDatos.setActionCommand("RegistrarPaciente");
+        vista.btnRegistrarDatos.addActionListener(this);
         
     }
 
@@ -49,8 +49,8 @@ public class HistorialController implements Controller,ActionListener {
             formAgregarVisita();
         }else if(comando.equals("VerTratamiento")){
             formVerVisita();
-        }else if(comando.equals("IngresarPaciente")){
-            formRegistrarVisita();
+        }else if(comando.equals("RegistrarPaciente")){
+            formRegistrarPaciente();
         }
     }
     
@@ -81,10 +81,56 @@ public class HistorialController implements Controller,ActionListener {
         }
     }
 
-    private void formRegistrarVisita() {
-        HistoriaClinica historia = vista.getHistoriaClinicaa() ;
-        ventanaVisita = new VentanaVisita(vista, true, historia);
-        ventanaVisita.setVisible(true);
+    private void formRegistrarPaciente() {
+        Paciente paciente = vista.getPaciente();
+        String enfermTratadas = vista.jTextFieldEnfermedadesTratadas.getText();
+        String hosp = vista.jTextFieldHospitalizaciones.getText();
+        String inmu = vista.jTextFieldInmunizaciones.getText();
+        String tipoS = vista.jTextFielTipoSangre.getText();
+        String alergias = vista.jTextFieldAlergias.getText();
+        
+       
+        paciente.getHistorial().getAntecedentesPersonales().setAlergias(alergias);
+        paciente.getHistorial().getAntecedentesPersonales().setEnferTra(enfermTratadas);
+        paciente.getHistorial().getAntecedentesPersonales().setHospitalizaciones(Integer.parseInt(hosp));
+        paciente.getHistorial().getAntecedentesPersonales().setInmunizacion(Integer.parseInt(inmu));
+        paciente.getHistorial().getAntecedentesPersonales().setTipoSangre(tipoS);
+        
+        boolean estadoP = false;
+        if(vista.jRadioButtonMuertoP1.isSelected()){
+            estadoP = false;
+        }else if(vista.jRadioButtonVivoP1.isSelected()){
+            estadoP = true;
+        }
+        
+        String enferPadre = vista.jTextFieldPadreEnfermedades1.getText();
+        String hospP = vista.jTextFieldPadreHos1.getText();
+ 
+        String enferMadre = vista.jTextFieldMadreEnf1.getText();
+        String hospM = vista.jTextFieldMadreHos1.getText();
+        
+        
+         boolean estadoM = false;
+        if(vista.jRadioButtonMuertoM1.isSelected()){
+            estadoM = false;
+        }else if(vista.jRadioButtonVivoM1.isSelected()){
+            estadoM = true;
+        }
+        
+        paciente.getHistorial().getAntecedentesFamiliares().setHospm(hospM);
+        paciente.getHistorial().getAntecedentesFamiliares().setEstadom(enferMadre);
+        paciente.getHistorial().getAntecedentesFamiliares().setMuertem(estadoM);
+        
+        paciente.getHistorial().getAntecedentesFamiliares().setHospp(hospP);
+        paciente.getHistorial().getAntecedentesFamiliares().setEstadop(enferPadre);
+        paciente.getHistorial().getAntecedentesFamiliares().setMuertep(estadoP);
+        
+  
+        
+        
+//        HistoriaClinica historia = vista.getHistoriaClinicaa() ;
+//        ventanaVisita = new VentanaVisita(vista, true, historia);
+//        ventanaVisita.setVisible(true);
     }
 
     

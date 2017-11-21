@@ -10,6 +10,8 @@ package model.paciente;
  * @author F20LAB303-XXE
  */
 public class AntecedentesFamiliares {
+    //true vivo 
+    //muerto false
     private String estadop;
     private String hospp;
     private Boolean muertep;

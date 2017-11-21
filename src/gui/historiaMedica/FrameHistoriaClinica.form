@@ -130,7 +130,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel34" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -140,13 +140,12 @@
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jRadioButtonMasculino" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -154,63 +153,52 @@
                                                   </Group>
                                                   <Component id="txtEdad" alignment="0" min="-2" pref="45" max="-2" attributes="0"/>
                                                   <Component id="txtTipoSangre" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                                                  <Component id="jTextNombre" alignment="0" pref="214" max="32767" attributes="0"/>
-                                                  <Component id="jTexApellido" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jTextNombre" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jTexApellido" alignment="0" min="-2" pref="214" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="txtAlergias" min="-2" pref="85" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="40" pref="14" max="32767" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel45" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jRadioButtonNoble" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="jRadioButton14" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                                  <Component id="txtEmail" min="-2" pref="214" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="txtReligion" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtCelular" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtFijo" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="txtReligion" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtCelular" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtFijo" alignment="0" pref="141" max="32767" attributes="0"/>
-                                              </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="txtEmail" min="-2" pref="214" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextDNI" min="-2" pref="85" max="-2" attributes="0"/>
-                                          <EmptySpace min="113" pref="534" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtCodigo" min="-2" pref="85" max="-2" attributes="0"/>
-                                          <EmptySpace min="109" pref="534" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jTextDNI" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                                      <Component id="txtCodigo" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace pref="81" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -234,14 +222,7 @@
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtDireccion" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jRadioButton14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jRadioButtonNoble" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtFijo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -251,28 +232,25 @@
                                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtAlergias" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="txtReligion" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="txtReligion" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtAlergias" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                           <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -286,12 +264,7 @@
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtCodigo" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                                  <EmptySpace pref="74" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -334,6 +307,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Masculino"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="jRadioButtonFeminino">
                           <Properties>
@@ -342,6 +318,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Femenino"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel35">
                           <Properties>
@@ -361,40 +340,6 @@
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel38">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Direccion"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtDireccion">
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                          </AuxValues>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel45">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Vivienda"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButtonNoble">
-                          <Properties>
-                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                              <ComponentRef name="buttonGroup7"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Material Noble"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JRadioButton" name="jRadioButton14">
-                          <Properties>
-                            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                              <ComponentRef name="buttonGroup7"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Servicios basicos"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton14ActionPerformed"/>
-                          </Events>
-                        </Component>
                         <Component class="javax.swing.JLabel" name="jLabel36">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Tel&#xe9;fono Fijo"/>
@@ -411,6 +356,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtCelular">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel44">
                           <Properties>
@@ -431,6 +379,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtCodigo">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel4">
                           <Properties>
@@ -438,6 +389,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtEmail">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel5">
                           <Properties>
@@ -445,6 +399,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtTipoSangre">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel6">
                           <Properties>
@@ -452,6 +409,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAlergias">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -472,7 +432,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnIngresarAntecedente" min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Component id="btnRegistrarDatos" min="-2" pref="107" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -492,7 +452,7 @@
                                   <Component id="jPanel8" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btnIngresarAntecedente" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnRegistrarDatos" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="37" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -572,6 +532,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldEnfermedadesTratadas">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel46">
                           <Properties>
@@ -579,6 +542,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldHospitalizaciones">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel43">
                           <Properties>
@@ -586,6 +552,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldInmunizaciones">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel48">
                           <Properties>
@@ -593,13 +562,19 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFielTipoSangre">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel47">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="ALERGIAS"/>
+                            <Property name="text" type="java.lang.String" value="Alergias"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldAlergias">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -707,8 +682,14 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldPadreEnfermedades1">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldPadreHos1">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="jRadioButtonVivoP1">
                           <Properties>
@@ -717,6 +698,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Vivo"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JRadioButton" name="jRadioButtonMuertoP1">
                           <Properties>
@@ -728,8 +712,14 @@
                           <Events>
                             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jRadioButtonMuertoP1MouseClicked"/>
                           </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldMadreEnf1">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel60">
                           <Properties>
@@ -743,8 +733,14 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Muerto"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JTextField" name="jTextFieldMadreHos1">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel61">
                           <Properties>
@@ -761,6 +757,9 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonVivoM1ActionPerformed"/>
                           </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel62">
                           <Properties>
@@ -769,12 +768,12 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="btnIngresarAntecedente">
+                    <Component class="javax.swing.JButton" name="btnRegistrarDatos">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Registra"/>
+                        <Property name="text" type="java.lang.String" value="Registrar Datos"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarAntecedenteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarDatosActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
