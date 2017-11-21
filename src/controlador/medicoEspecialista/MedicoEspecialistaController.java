@@ -7,11 +7,13 @@ package controlador.medicoEspecialista;
 
 import controlador.Controller;
 import controlador.historial.HistorialController;
+import controlador.principal.LoginPersonalController;
 import estructura.ListaDoble;
 import factory.MySQLConnectionFactory;
 import gui.medicoEspecialista.FrameMedicoEspecialista;
 import gui.historiaMedica.FrameHistoriaClinica;
 import gui.historiaMedica.VentanaVisita;
+import inicio.FrameLoginPersonal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -23,6 +25,7 @@ import model.paciente.Paciente;
 public class MedicoEspecialistaController implements Controller,ActionListener{
     private FrameMedicoEspecialista vista;
     private FrameHistoriaClinica frameHistorial;
+    private FrameLoginPersonal login;
 
     public MedicoEspecialistaController(FrameMedicoEspecialista vista) {
         this.vista = vista;
@@ -38,6 +41,10 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
         
         this.vista.btnVerHistorial.setActionCommand("VerHistorial");
         this.vista.btnVerHistorial.addActionListener(this);
+        
+        this.vista.btnCerrar.setActionCommand("Cerrar");
+        this.vista.btnCerrar.addActionListener(this);
+        
         
         this.vista.txtBuscar.addKeyListener(new KeyAdapter(){
             public void keyReleased(KeyEvent evt){
@@ -65,6 +72,8 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             formVerHistorial();
         }else if(comando.equals("Salir")){
              MySQLConnectionFactory.shutdown();
+        }else if(comando.equals("Cerrar")){
+            formCerrar();
         }
     }
     
@@ -136,6 +145,13 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
             System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
         }
+        
+    }
+
+    private void formCerrar() {
+        this.vista.dispose();
+        this.login = new FrameLoginPersonal();
+        new LoginPersonalController(login).index();
         
     }
     

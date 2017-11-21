@@ -9,18 +9,22 @@ import java.awt.event.ActionListener;
 import model.paciente.Paciente;
 
 
-public class MedicoTriajeController implements Controller,ActionListener {
+public class PMedicoTriajeController implements Controller,ActionListener {
     private FrameTriaje vista;
-    @Override
-    public void iniciar() {
+
+    public PMedicoTriajeController(FrameTriaje vista) {
         this.vista = vista;
         iniciar();
+    }
+    @Override
+    public void iniciar() {
+         this.vista.jButton2.setActionCommand("Ver Historial");
+        this.vista.jButton2.addActionListener(this);
     }
 
     @Override
     public void index() {
-        this.vista.jButton2.setActionCommand("Ver Historial");
-        this.vista.jButton2.addActionListener(this);
+        vista.setVisible(true);
     }
 
     @Override

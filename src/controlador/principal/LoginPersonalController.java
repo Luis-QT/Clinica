@@ -7,13 +7,16 @@ package controlador.principal;
 
 import controlador.Controller;
 import controlador.contabilidad.ContabilidadController;
+//import controlador.administrador.MedicoTriajeController;
 import controlador.medicoEspecialista.MedicoEspecialistaController;
 import controlador.recepcion.RecepcionPrincipalController;
+import controlador.triaje.PMedicoTriajeController;
 import gui.contabilidad.FrameContabilidad;
 import gui.medicoEspecialista.FrameMedicoEspecialista;
 import gui.recepcion.FrameRecepcionPrincipal;
 import gui.triaje.FrameTriaje;
 import inicio.FrameLoginPersonal;
+import inicio.FramePrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -21,7 +24,6 @@ import model.empleado.Cajero;
 import model.empleado.MedicoEspecialista;
 import model.empleado.MedicoTriaje;
 import model.empleado.Recepcionista;
-import model.paciente.Paciente;
 
 /**
  *
@@ -30,6 +32,8 @@ import model.paciente.Paciente;
 public class LoginPersonalController implements Controller, ActionListener {
 
     private FrameLoginPersonal vista;
+    private FramePrincipal principal;
+    private FrameTriaje triaje;
 
     public LoginPersonalController(FrameLoginPersonal vista) {
         this.vista = vista;
@@ -40,6 +44,8 @@ public class LoginPersonalController implements Controller, ActionListener {
     public void iniciar() {
         this.vista.btnIniciar.setActionCommand("Iniciar");
         this.vista.btnIniciar.addActionListener(this);
+        this.vista.btnCerrar.setActionCommand("Cerrar");
+        this.vista.btnCerrar.addActionListener(this);
     }
 
     @Override
@@ -52,6 +58,8 @@ public class LoginPersonalController implements Controller, ActionListener {
         String comando = e.getActionCommand();
         if (comando.equals("Iniciar")) {
             formIniciar();
+        } else if (comando.equals("Cerrar")) {
+            formCerrar();
         }
     }
 
@@ -60,35 +68,39 @@ public class LoginPersonalController implements Controller, ActionListener {
         Recepcionista recepcionista = vista.getRecepcionista();
         MedicoEspecialista medicoEspecialista = vista.getMedicoEspecialista();
         MedicoTriaje medicoTriaje = vista.getMedicoTriaje();
+        
         Cajero cajero = vista.getCajero();
-       // FrameTriaje triaje = new FrameTriaje(medicoTriaje);
+
+        // FrameTriaje triaje = new FrameTriaje(medicoTriaje);
         //Fin
         if (vista.chxRecepcion.isSelected()) {
             FrameRecepcionPrincipal recepcion = new FrameRecepcionPrincipal(recepcionista);
-            recepcion.setVisible(true);
-            vista.setVisible(false);
+            //recepcion.setVisible(true);
+            //vista.setVisible(false);
             new RecepcionPrincipalController(recepcion).index();
-        } else if (vista.chxContab.isSelected()) {            
-            FrameTriaje triaje = new FrameTriaje(medicoTriaje);
-            FrameContabilidad contabilidad = new FrameContabilidad(cajero,triaje);
-            contabilidad.setVisible(true);
-            vista.setVisible(false);
+        } else if (vista.chxContab.isSelected()) {
+            this.triaje = new FrameTriaje(medicoTriaje);
+            FrameContabilidad contabilidad = new FrameContabilidad(cajero,this.triaje);
             new ContabilidadController(contabilidad).index();
-            
-
         } else if (vista.chxgeneral.isSelected()) {
 
         } else if (vista.chxtriaje.isSelected()) {
-//                triaje.setVisible(true);
+             FrameTriaje venTriaje = new FrameTriaje(medicoTriaje);
+             new PMedicoTriajeController(venTriaje).index();
         } else if (vista.chxEspec.isSelected()) {
             FrameMedicoEspecialista medEspecia = new FrameMedicoEspecialista(medicoEspecialista);
-            medEspecia.setVisible(true);
-            vista.setVisible(false);
             new MedicoEspecialistaController(medEspecia).index();
 
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una área");
         }
+    }
+
+    private void formCerrar() {
+        this.vista.dispose();
+        this.principal = new FramePrincipal();
+        new PrincipalController(principal);
+
     }
 
 }

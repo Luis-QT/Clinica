@@ -32,14 +32,18 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.setLocationRelativeTo(null);
         //Personales
         recepcionista = new Recepcionista("123", "345", null, 12, "Luis", "Yauri", 98877, true, 35, 234324, 123, "@gamil.com", 1);
         medicoEspecialista = new MedicoEspecialista("Cardiólogo", "Colegiatura", "1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
         cajero = new Cajero("1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
+        medicoTriaje = new MedicoTriaje("triaje", "5694", "contraseña",
+                null, 13, "Mónica", "Blanco", 77777777, false, 42, 555555,
+                999999, "mb@ail.com", 0);
         //Fin personales
          Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay");
          Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay");
+         
+         
          
         
         medicoEspecialista.agregarPaciente(p1);
@@ -88,7 +92,7 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblcerrar = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jCTextField1 = new app.bolivia.swing.JCTextField();
         jRPasswordField1 = new jpass.JRPasswordField();
@@ -129,13 +133,12 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/inicioname.png"))); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
 
-        lblcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
-        lblcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblcerrarMouseClicked(evt);
-            }
-        });
-        jPanel4.add(lblcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        btnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
+        btnCerrar.setToolTipText("");
+        btnCerrar.setBorderPainted(false);
+        btnCerrar.setContentAreaFilled(false);
+        jPanel4.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 10, 30, 20));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 70));
 
@@ -241,14 +244,6 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-        this.dispose();
-        FramePrincipal principal = new FramePrincipal();
-        principal.setVisible(true);
-    }//GEN-LAST:event_lblcerrarMouseClicked
-
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
 
@@ -320,6 +315,7 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnCerrar;
     public javax.swing.JButton btnIniciar;
     private javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JCheckBox chxContab;
@@ -340,6 +336,5 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private jpass.JRPasswordField jRPasswordField1;
-    private javax.swing.JLabel lblcerrar;
     // End of variables declaration//GEN-END:variables
 }

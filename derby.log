@@ -1,4 +1,5 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Tue Nov 21 12:31:30 COT 2017:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-dfa2-827a-000003892568 
 on database directory C:\Users\LLLL\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
@@ -16,4 +17,7 @@ Tue Nov 21 12:34:57 COT 2017: Shutting down Derby engine
 ----------------------------------------------------------------
 Tue Nov 21 12:34:58 COT 2017:
 Shutting down instance a816c00e-015f-dfa2-827a-000003892568 on database directory C:\Users\LLLL\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
+=======
+Tue Nov 21 11:15:18 COT 2017: Shutting down Derby engine
+>>>>>>> 955af3d496e294c86865f34059940859ca50c1c1
 ----------------------------------------------------------------
