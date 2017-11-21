@@ -7,21 +7,27 @@ import model.empleado.Persona;
 public class Paciente extends Persona {
     String tipoSangre; 
     String alergia;
+    String codigoP;
+
+    public String getCodigoP() {
+        return codigoP;
+    }
     HistoriaClinica historial;
   
     public Paciente(int id, String nombre, String apellido, int dni, 
-            boolean sexo, int edad, int telefonoFijo, int telefonoCelular, 
-            String email, int softDelete,String tipoSangre, String alergias) {
+            boolean sexo, int edad, int telefonoFijo, int telefonoCelular,
+            String email, int softDelete,String tipoSangre, String alergias,String codigoP) {
         
         super(id, nombre, apellido, dni, sexo, edad, telefonoFijo, 
                 telefonoCelular, email, softDelete);
+        this.codigoP = codigoP;
         this.tipoSangre = tipoSangre;
         this.alergia = alergias;
         historial = new HistoriaClinica(new AntecedentesFamiliares(), 
                     new AntecedentesPersonales(), new DatosMedico());
     }
-    
 
+   
     
     
     public String getTipoSangre() {

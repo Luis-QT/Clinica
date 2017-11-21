@@ -32,8 +32,8 @@ public class MedicoEspecialistaDaoI implements MedicoEspecialistaDao{
                         rs.getInt("edad"),rs.getInt("telefonoCasa"),
                         rs.getInt("telefonoCelular"),rs.getString("email"),
                         rs.getInt("softDelete"),
-                        rs.getString("tipoSamgre"),
-                        rs.getString("alergias")) ;
+                        rs.getString("tipoSangre"),
+                        rs.getString("alergia"), rs.getString("codigoP")) ;
                 listaPaciente.insertarAlFinal(paciente);
 //                medico.setHorarios(horarios(rs.getInt("id")));
 //                list.insertarAlFinal(medico);

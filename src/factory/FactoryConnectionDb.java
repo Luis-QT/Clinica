@@ -26,7 +26,7 @@ public class FactoryConnectionDb {
             //Tabla paciente
             "Create TABLE Paciente"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
-            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40))",          
+            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40), codigoP VARCHAR(10))",          
         
             //Tabla Historia Clínica
             "Create TABLE HistoriaClinica"
@@ -36,7 +36,7 @@ public class FactoryConnectionDb {
             
             //Tabla Visitas
             "Create TABLE Visitas"
-            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), idHistorial INT, servicio VARCHAR(20), nombreMedico VARCHAR(20), especialidadMedico VARCHAR(30) "
+            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), foreign key (historialID) references Salas(id), servicio VARCHAR(20), nombreMedico VARCHAR(20), especialidadMedico VARCHAR(30) "
             + " diaV INT, mesV INT, anioV INT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)" 
             + " torzoaus VARCHAR(40),torzoper VARCHAR(40),abdomenobs VARCHAR(40),abdomenaus VARCHAR(40),abdomenper VARCHAR(40), espaldaobs VARCHAR(40),espaldaaus VARCHAR(40),espaldaper VARCHAR(40) "
             + "extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40))" ,
