@@ -5,6 +5,10 @@ import controlador.Controller;
 import gui.historiaMedica.VentanaVisita;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.paciente.Anamnesis;
+import model.paciente.DatosMedico;
+import model.paciente.Diagnostico;
+import model.paciente.ExamenFisicos;
 import model.paciente.Visita;
 
 
@@ -43,47 +47,60 @@ public class VisitaController implements Controller,ActionListener {
         
         Visita visita = vista.getVisita();
         
-        //NOMBRE MEDICO
-        vista.txtNombreMedico.setText(visita.getDatosMedico().getNombre());
-        vista.txtEspecialidad.setText(visita.getDatosMedico().getEspecializacion());
-        //ANAMNSESIS
-        vista.jTextAreaAnamnesis.setText(visita.getAnamnecis().getMotivo());
-        vista.jTextFieldCursoEnfermedad.setText(visita.getAnamnecis().getCurso());
-        vista.jTextFieldEnfermedadActual.setText(visita.getAnamnecis().getEnferActual());
+          /**ANAMNESIS**/
+        String motivo = vista.jTextAreaAnamnesis.getText();
+        String curso = vista.jTextFieldCursoEnfermedad.getText();
+        String enferActual = vista.jTextFieldEnfermedadActual.getText();
+        Anamnesis anamnesis = new Anamnesis(motivo, curso, enferActual);
+        visita.setAnamnecis(anamnesis);
         
-        vista.txtCabezaObs.setText(visita.getExamenFisico().getCabezaobs());
-        vista.txtCabezaAus.setText(visita.getExamenFisico().getCabezaaus());
-        vista.txtCabezaPre.setText(visita.getExamenFisico().getCabezaper());
-        
-        vista.txtAbdomenObs.setText(visita.getExamenFisico().getAbdomenobs());
-        vista.txtAbdomemAus.setText(visita.getExamenFisico().getAbdomenaus());
-        vista.txtAbdomenPre.setText(visita.getExamenFisico().getAbdomenper());
-        
-        vista.txtEspaldaObs.setText(visita.getExamenFisico().getAbdomenobs());
-        vista.txtEspaldaAus.setText(visita.getExamenFisico().getAbdomenaus());
-        vista.txtEspaldaPre.setText(visita.getExamenFisico().getAbdomenper());
-        
-        vista.txtExtreObs.setText(visita.getExamenFisico().getExtreobs());
-        vista.txtExtreAus.setText(visita.getExamenFisico().getExtreaus());
-        vista.txtExtrePre.setText(visita.getExamenFisico().getExtreper());
-
-        vista.txtTorsoObs.setText(visita.getExamenFisico().getTorzoobs());
-        vista.txtTorsoAus.setText(visita.getExamenFisico().getTorzoaus());
-        vista.txtTorsoPre.setText(visita.getExamenFisico().getTorzoper());
-        
-        
-        vista.jTextFieldDiagnosticoPre1.setText(visita.getDiagnostico().getPreDia());
-        vista.jTextFieldDiagnosticoDef1.setText(visita.getDiagnostico().getDefDia());
-        if(visita.getDiagnostico().getSolicitud()){
-            vista.jRadioButton2.setSelected(true);
+        /*DIAGNOSTICO*/
+        String preDia = vista.jTextFieldDiagnosticoPre1.getText();
+        String defDia = vista.jTextFieldDiagnosticoDef1.getText();
+        boolean pronostico = false;
+        if(vista.jRadioButtonFavorable1.isSelected()){
+            pronostico = true;
+        }else if(vista.jRadioButtonReservado1.isSelected()){
+            pronostico = false;
         }
-        
-        if(visita.getDiagnostico().isPronostico()){
-            vista.jRadioButtonFavorable1.setSelected(true);
-        }else if(!visita.getDiagnostico().isPronostico()){
-            vista.jRadioButtonReservado1.setSelected(true);
+        boolean solicitud = false;
+        if(vista.jRadioButton2.isSelected()){
+            solicitud = true;
         }
-
+        Diagnostico diagnostico = new Diagnostico(preDia, defDia, pronostico,solicitud);
+        visita.setDiagnostico(diagnostico);
+        
+        /*EXAMEN MÉDICO*/
+        String cabezaobs = vista.txtCabezaObs.getText();
+        String cabezaaus = vista.txtCabezaAus.getText();
+        String cabezaper=  vista.txtCabezaPre.getText();
+        String torzoobs= vista.txtTorsoObs.getText();
+        String torzoaus= vista.txtTorsoAus.getText();
+        String torzoper= vista.txtTorsoPre.getText();
+        String abdomenobs= vista.txtAbdomenObs.getText();
+        String abdomenaus= vista.txtAbdomemAus.getText();
+        String abdomenper= vista.txtAbdomenPre.getText();
+        String espaldaobs= vista.txtEspaldaObs.getText();
+        String espaldaaus= vista.txtEspaldaAus.getText();
+        String espaldaper= vista.txtEspaldaPre.getText();
+        String extreobs= vista.txtExtreObs.getText();
+        String extreaus= vista.txtExtreAus.getText();
+        String extreper= vista.txtExtrePre.getText();
+        ExamenFisicos examenF = new ExamenFisicos(cabezaobs, cabezaaus, cabezaper, torzoobs, torzoaus, torzoper, abdomenobs, abdomenaus, abdomenper, espaldaobs, espaldaaus, espaldaper, extreobs, extreaus, extreper);
+        visita.setExamenFisico(examenF);
+        
+        /*DATOS MEDICO*/
+        String nombreMedico = vista.txtNombreMedico.getText();
+        String especialidad = vista.txtEspecialidad.getText();
+        DatosMedico datoMedico= new DatosMedico(motivo, especialidad);
+        visita.setDatosMedico(datoMedico);
+        
+        /*MEDICINA Y RECOMENDACIONES*/
+        String medicina = vista.txtMedicina.getText();
+        visita.setMedicina(medicina);
+        String recomen = vista.txtRecomendaciones.getText();
+        visita.setRecomendaciones(recomen);
+        vista.dispose();
     }
     
 }

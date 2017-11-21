@@ -17,4 +17,7 @@ public class MedicoGeneral extends Medico{
         super(colegiatura, codigo, contraseña, horarios, id, nombre, apellido, dni, sexo, edad, telefonoCasa, telefonoCelular, email, softDelete);
     }
     
+    
+    
+    
 }

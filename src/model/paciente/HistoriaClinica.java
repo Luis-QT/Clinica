@@ -9,6 +9,10 @@ public class HistoriaClinica {
     AntecedentesFamiliares antecedentesFamiliares;
     AntecedentesPersonales antecedentesPersonales;
     private ListaDoble<Visita> listaVisitas;
+
+    public void setListaVisitas(ListaDoble<Visita> listaVisitas) {
+        this.listaVisitas = listaVisitas;
+    }
     String codigo;
 
     public HistoriaClinica(AntecedentesFamiliares antecedentesFamiliares, AntecedentesPersonales antecedentesPersonales, DatosMedico datosMedico) {

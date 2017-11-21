@@ -102,7 +102,6 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         txtCelular = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         txtReligion = new javax.swing.JTextField();
-        btnIngresarPaciente = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -210,13 +209,6 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
             }
         });
 
-        btnIngresarPaciente.setText("Ingresar Datos");
-        btnIngresarPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarPacienteActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("Código");
 
         jLabel4.setText("E - mail");
@@ -283,9 +275,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                         .addGap(113, 534, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnIngresarPaciente)
-                        .addGap(109, 109, 109))))
+                        .addGap(109, 534, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,14 +341,12 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnIngresarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelDatosPacienteLayout = new javax.swing.GroupLayout(jPanelDatosPaciente);
@@ -538,7 +526,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        btnIngresarAntecedente.setText("Ingresar Antecedentes");
+        btnIngresarAntecedente.setText("Registra");
         btnIngresarAntecedente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarAntecedenteActionPerformed(evt);
@@ -552,7 +540,7 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnIngresarAntecedente)
+                    .addComponent(btnIngresarAntecedente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
@@ -754,17 +742,6 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPacienteActionPerformed
-//        datopa.setNombre(jTextNombre.getText());
-//        datopa.setApellido(jTexApellido.getText());
-//        datopa.setEdad(Integer.parseInt(txtEdad.getText()));
-//        datopa.setDNI(Integer.parseInt(jTextDNI.getText()));
-//        datopa.setDireccion(txtDireccion.getText());
-//        datopa.setTelefono(Integer.parseInt(txtFijo.getText()));
-//        datopa.setReligion(txtReligion.getText());
-
-    }//GEN-LAST:event_btnIngresarPacienteActionPerformed
-
     private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton14ActionPerformed
@@ -854,7 +831,6 @@ public class FrameHistoriaClinica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAgregarTemTrata;
     public javax.swing.JButton btnIngresarAntecedente;
-    public javax.swing.JButton btnIngresarPaciente;
     public javax.swing.JButton btnVerTempTrata;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

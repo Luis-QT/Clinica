@@ -32,8 +32,8 @@ public class HistorialController implements Controller,ActionListener {
         this.vista.btnVerTempTrata.setActionCommand("VerTratamiento");
         vista.btnVerTempTrata.addActionListener(this);
         
-        this.vista.btnIngresarPaciente.setActionCommand("IngresarPaciente");
-        vista.btnIngresarPaciente.addActionListener(this);
+//        this.vista.btnIngresarDatosPaciente.setActionCommand("IngresarPaciente");
+//        vista.btnIngresarDatosPaciente.addActionListener(this);
         
     }
 
@@ -46,21 +46,17 @@ public class HistorialController implements Controller,ActionListener {
         String comando = e.getActionCommand();
         
         if(comando.equals("AgregarTempTrata")){
-            formAgregarTemporadaTratamiento();
+            formAgregarVisita();
         }else if(comando.equals("VerTratamiento")){
-            formVerTemporadaTratamiento();
+            formVerVisita();
         }else if(comando.equals("IngresarPaciente")){
             formRegistrarVisita();
         }
     }
     
 
-    private void formAgregarTemporadaTratamiento() {
+    private void formAgregarVisita() {
         Paciente paciente = vista.getPaciente();
-//        int dia = Integer.parseInt(vista.txtFechaDia.getText());
-//        int mes = Integer.parseInt(vista.txtFechaMes.getText());
-//        int anio = Integer.parseInt(vista.txtFechaAnio.getText());
-//        LocalDate fecha = LocalDate.of(anio, mes, dia);
         String nombreDoctor = vista.txtNomDoctor.getText();
         String especialidad = vista.txtEspecialidad.getText();
         String servicio = vista.txtServicio.getText();
@@ -71,13 +67,14 @@ public class HistorialController implements Controller,ActionListener {
         vista.mostrarTabla();
     }
 
-    private void formVerTemporadaTratamiento() {
+    private void formVerVisita() {
           try{
             int posicion = vista.tblVisitas.getSelectedRow();
-            Visita visista = vista.getListaVisitas().getDato(posicion);
-            ventanaVisita = new VentanaVisita(vista, true,visista);
-            ventanaVisita.btnRegistrarVisita.setEnabled(false);
+            Visita visita = vista.getListaVisitas().getDato(posicion);
+            ventanaVisita = new VentanaVisita(vista, true,visita);
+            new VisitaController(ventanaVisita).index();
             
+//            ventanaVisita.setVisible(true);
         }catch(Exception e){
             System.out.println(e);
                     

@@ -13,7 +13,7 @@ public class Visita {
     private Anamnesis anamnecis;
     private ExamenFisicos examenFisico;
     private Diagnostico diagnostico;
-    private String pastilla;
+    private String medicina;
     private String recomendaciones;
 
     
@@ -38,8 +38,9 @@ public class Visita {
     }
     
 
-    public Visita(int codigo, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico, TemporadaTratamiento tratamiento, TratamientoRea tratamientoRea) {
+    public Visita(int id, Anamnesis anamnecis, DatosMedico datosMedico, ExamenFisicos examenFisico, Diagnostico diagnostico) {
         this.fecha = LocalDate.now();
+        this.id = id;
         this.anamnecis = anamnecis;
         this.datosMedico = datosMedico;
         this.examenFisico = examenFisico;
@@ -59,13 +60,18 @@ public class Visita {
     }
 
     
-    public String getPastilla() {
-        return pastilla;
+    public String getMedicina() {
+        return medicina;
     }
 
     public String getRecomendaciones() {
         return recomendaciones;
     }
+
+    public void setRecomendaciones(String recomendaciones) {
+        this.recomendaciones = recomendaciones;
+    }
+    
     
     public int getCodigo() {
         return id;
@@ -100,6 +106,14 @@ public class Visita {
         this.datosMedico = datosMedico;
     }
 
+   
+
+    public void setMedicina(String pastilla) {
+        this.medicina = pastilla;
+    }
+
+    
+    
     public ExamenFisicos getExamenFisico() {
         return examenFisico;
     }

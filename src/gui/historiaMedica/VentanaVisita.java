@@ -126,9 +126,9 @@ public class VentanaVisita extends javax.swing.JDialog {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txtMedicina = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        txtRecomendaciones = new javax.swing.JTextArea();
         btnRegistrarVisita = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -140,7 +140,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtServicio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -515,17 +515,17 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel12.setText("Pastillas a tomar/ medicina");
+        jLabel12.setText("Medicinas");
 
         jLabel13.setText("Recomendaciones");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane4.setViewportView(jTextArea3);
+        txtMedicina.setColumns(20);
+        txtMedicina.setRows(5);
+        jScrollPane4.setViewportView(txtMedicina);
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane5.setViewportView(jTextArea4);
+        txtRecomendaciones.setColumns(20);
+        txtRecomendaciones.setRows(5);
+        jScrollPane5.setViewportView(txtRecomendaciones);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -647,7 +647,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addGap(91, 91, 91)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
         jPanel17Layout.setVerticalGroup(
@@ -659,7 +659,7 @@ public class VentanaVisita extends javax.swing.JDialog {
                         .addGap(0, 3, Short.MAX_VALUE)
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -711,68 +711,76 @@ public class VentanaVisita extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarVisitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarVisitaActionPerformed
-        /**ANAMNESIS**/
-        String motivo = jTextAreaAnamnesis.getText();
-        String curso = jTextFieldCursoEnfermedad.getText();
-        String enferActual = jTextFieldEnfermedadActual.getText();
-        Anamnesis anamnesis = new Anamnesis(motivo, curso, enferActual);
-        visita.setAnamnecis(anamnesis);
-        
-        /*DIAGNOSTICO*/
-        String preDia = jTextFieldDiagnosticoPre1.getText();
-        String defDia = jTextFieldDiagnosticoDef1.getText();
-        boolean pronostico = false;
-        if(jRadioButtonFavorable1.isSelected()){
-            pronostico = true;
-        }else if(jRadioButtonReservado1.isSelected()){
-            pronostico = false;
-        }
-        boolean solicitud = false;
-        if(jRadioButton2.isSelected()){
-            solicitud = true;
-        }
-        Diagnostico diagnostico = new Diagnostico(preDia, defDia, pronostico,solicitud);
-        visita.setDiagnostico(diagnostico);
-        
-        /*EXAMEN MÉDICO*/
-        String cabezaobs = txtCabezaObs.getText();
-        String cabezaaus = txtCabezaAus.getText();
-        String cabezaper=  txtCabezaPre.getText();
-        String torzoobs= txtTorsoObs.getText();
-        String torzoaus= txtTorsoAus.getText();
-        String torzoper= txtTorsoPre.getText();
-        String abdomenobs= txtAbdomenObs.getText();
-        String abdomenaus= txtAbdomemAus.getText();
-        String abdomenper= txtAbdomenPre.getText();
-        String espaldaobs= txtEspaldaObs.getText();
-        String espaldaaus= txtEspaldaAus.getText();
-        String espaldaper= txtEspaldaPre.getText();
-        String extreobs= txtExtreObs.getText();
-        String extreaus= txtExtreAus.getText();
-        String extreper= txtExtrePre.getText();
-        ExamenFisicos examenF = new ExamenFisicos(cabezaobs, cabezaaus, cabezaper, torzoobs, torzoaus, torzoper, abdomenobs, abdomenaus, abdomenper, espaldaobs, espaldaaus, espaldaper, extreobs, extreaus, extreper);
-        visita.setExamenFisico(examenF);
-        
-        /*DATOS MEDICO*/
-        String nombreMedico = txtNombreMedico.getText();
-        String especialidad = txtEspecialidad.getText();
-        DatosMedico datoMedico= new DatosMedico(motivo, especialidad);
-        /*TRATAMIENTO*/
-        
-        /*TRATAMIENTO REA*/
-        
-        
-        Visita visita = new Visita(5021, anamnesis, datoMedico, examenF, diagnostico, new TemporadaTratamiento(), new TratamientoRea());
-//        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new TemporadaTratamiento(), new TratamientoRea());
-//        thisFrame.getListaVisita().insertarAlFinal(visita);
-//        System.out.println("lista : " + historia.getListaVisitas().toString());
-        thisFrame.mostrarTabla();
-        
-        thisFrame.jTexApellido.setText(jTextAreaAnamnesis.getText());
-        this.dispose();
+//        /**ANAMNESIS**/
+//        String motivo = jTextAreaAnamnesis.getText();
+//        String curso = jTextFieldCursoEnfermedad.getText();
+//        String enferActual = jTextFieldEnfermedadActual.getText();
+//        Anamnesis anamnesis = new Anamnesis(motivo, curso, enferActual);
+//        visita.setAnamnecis(anamnesis);
+//        
+//        /*DIAGNOSTICO*/
+//        String preDia = jTextFieldDiagnosticoPre1.getText();
+//        String defDia = jTextFieldDiagnosticoDef1.getText();
+//        boolean pronostico = false;
+//        if(jRadioButtonFavorable1.isSelected()){
+//            pronostico = true;
+//        }else if(jRadioButtonReservado1.isSelected()){
+//            pronostico = false;
+//        }
+//        boolean solicitud = false;
+//        if(jRadioButton2.isSelected()){
+//            solicitud = true;
+//        }
+//        Diagnostico diagnostico = new Diagnostico(preDia, defDia, pronostico,solicitud);
+//        visita.setDiagnostico(diagnostico);
+//        
+//        /*EXAMEN MÉDICO*/
+//        String cabezaobs = txtCabezaObs.getText();
+//        String cabezaaus = txtCabezaAus.getText();
+//        String cabezaper=  txtCabezaPre.getText();
+//        String torzoobs= txtTorsoObs.getText();
+//        String torzoaus= txtTorsoAus.getText();
+//        String torzoper= txtTorsoPre.getText();
+//        String abdomenobs= txtAbdomenObs.getText();
+//        String abdomenaus= txtAbdomemAus.getText();
+//        String abdomenper= txtAbdomenPre.getText();
+//        String espaldaobs= txtEspaldaObs.getText();
+//        String espaldaaus= txtEspaldaAus.getText();
+//        String espaldaper= txtEspaldaPre.getText();
+//        String extreobs= txtExtreObs.getText();
+//        String extreaus= txtExtreAus.getText();
+//        String extreper= txtExtrePre.getText();
+//        ExamenFisicos examenF = new ExamenFisicos(cabezaobs, cabezaaus, cabezaper, torzoobs, torzoaus, torzoper, abdomenobs, abdomenaus, abdomenper, espaldaobs, espaldaaus, espaldaper, extreobs, extreaus, extreper);
+//        visita.setExamenFisico(examenF);
+//        
+//        /*DATOS MEDICO*/
+//        String nombreMedico = txtNombreMedico.getText();
+//        String especialidad = txtEspecialidad.getText();
+//        DatosMedico datoMedico= new DatosMedico(motivo, especialidad);
+//        
+//        String medicina = txtMedicina.getText();
+//        visita.setMedicina(medicina);
+//        String recomen = txtRecomendaciones.getText();
+//        visita.setRecomendaciones(recomen);
+//        Visita visita = new Visita(0, anamnesis, datoMedico, examenF, diagnostico);
+////        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new TemporadaTratamiento(), new TratamientoRea());
+////        thisFrame.getListaVisita().insertarAlFinal(visita);
+////        System.out.println("lista : " + historia.getListaVisitas().toString());
+//        thisFrame.mostrarTabla();
+//        
+//        thisFrame.jTexApellido.setText(jTextAreaAnamnesis.getText());
+//        this.dispose();
     }//GEN-LAST:event_btnRegistrarVisitaActionPerformed
 
     private void llenarDatos() {
+        txtNombreMedico.setEditable(false);
+        txtEspecialidad.setEditable(false);
+        txtServicio.setEditable(false);
+        
+        txtNombreMedico.setText(visita.getDatosMedico().getNombre());
+        txtEspecialidad.setText(visita.getDatosMedico().getEspecializacion());
+        txtServicio.setText(visita.getServicio());
+        
         //NOMBRE MEDICO
         txtNombreMedico.setText(visita.getDatosMedico().getNombre());
         txtEspecialidad.setText(visita.getDatosMedico().getEspecializacion());
@@ -814,6 +822,8 @@ public class VentanaVisita extends javax.swing.JDialog {
             jRadioButtonReservado1.setSelected(true);
         }
 
+        txtMedicina.setText(visita.getMedicina());
+        txtRecomendaciones.setText(visita.getRecomendaciones());
       
 //    
     }
@@ -913,11 +923,8 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     public javax.swing.JTextArea jTextAreaAnamnesis;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextFieldCursoEnfermedad;
     public javax.swing.JTextField jTextFieldDiagnosticoDef1;
     public javax.swing.JTextField jTextFieldDiagnosticoPre1;
@@ -935,7 +942,10 @@ public class VentanaVisita extends javax.swing.JDialog {
     public javax.swing.JTextField txtExtreAus;
     public javax.swing.JTextField txtExtreObs;
     public javax.swing.JTextField txtExtrePre;
+    public javax.swing.JTextArea txtMedicina;
     public javax.swing.JTextField txtNombreMedico;
+    public javax.swing.JTextArea txtRecomendaciones;
+    public javax.swing.JTextField txtServicio;
     public javax.swing.JTextField txtTorsoAus;
     public javax.swing.JTextField txtTorsoObs;
     public javax.swing.JTextField txtTorsoPre;
