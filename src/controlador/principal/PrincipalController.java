@@ -31,6 +31,8 @@ public class PrincipalController implements Controller, ActionListener {
         this.vista.btnAdmi.addActionListener(this);
         this.vista.btnPersonal.setActionCommand("LoginPersonal");
         this.vista.btnPersonal.addActionListener(this);
+        this.vista.btnCerrar.setActionCommand("Cerrar");
+        this.vista.btnCerrar.addActionListener(this);
     }
 
     @Override
@@ -45,6 +47,8 @@ public class PrincipalController implements Controller, ActionListener {
             formLoginAdministrador();
         } else if (comando.equals("LoginPersonal")) {
             formLoginPersonal();
+        }else if (comando.equals("Cerrar")) {
+            formCerrar();
         }
     }
 
@@ -62,6 +66,10 @@ public class PrincipalController implements Controller, ActionListener {
         new LoginPersonalController(logPer).index();
         logPer.setVisible(true);
         System.out.println("mrd");
+    }
+
+    private void formCerrar() {
+        this.vista.dispose();
     }
 
 }
