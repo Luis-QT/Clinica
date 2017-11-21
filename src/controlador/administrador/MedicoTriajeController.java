@@ -61,6 +61,12 @@ public class MedicoTriajeController implements ActionListener,ControllerResource
         MedicoTriajeDao medicoGeneralDao = new MedicoTriajeDaoImpl();
         listaMedico = medicoGeneralDao.listaMedicos();
         
+        vista.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    vista.setVisible(false);
+                }
+            });
+        
         llenarTabla();
     }
     

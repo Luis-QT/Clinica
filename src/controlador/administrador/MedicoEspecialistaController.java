@@ -65,6 +65,12 @@ public class MedicoEspecialistaController implements ActionListener,ControllerRe
         MedicoEspecialistaDao medicoEspecialistaDao = new MedicoEspecialistaDaoImpl();
         listaMedico = medicoEspecialistaDao.listaMedicos();
         
+        vista.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    vista.setVisible(false);
+                }
+            });
+        
         llenarTabla();
     }
     

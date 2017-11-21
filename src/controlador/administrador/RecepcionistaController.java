@@ -57,8 +57,13 @@ public class RecepcionistaController implements ControllerResource, ActionListen
         this.vista.btnCancelar.addActionListener(this);
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
-        this.vista.tablaR.setBackground(new java.awt.Color(221, 255, 220));
-
+        this.vista.tablaC.setBackground(new java.awt.Color(221, 255, 220));
+        vista.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    vista.setVisible(false);
+                }
+            });
+        
         RecepcionistaDao recepcionistaDao = new RecepcionistaDaoImpl();
         listaRecepcionista = recepcionistaDao.listaRecepcionistas();
         llenarTabla();
@@ -101,7 +106,7 @@ public class RecepcionistaController implements ControllerResource, ActionListen
     
     @Override
     public void formEditar() {
-        int pos = this.vista.tablaR.getSelectedRow();
+        int pos = this.vista.tablaC.getSelectedRow();
         //-1 No se selecciona nada
         if(pos!=-1){
             Recepcionista recepcionista = listaRecepcionista.getDato(pos);
@@ -119,14 +124,14 @@ public class RecepcionistaController implements ControllerResource, ActionListen
 
     @Override
     public void formEliminar() {
-        int pos = vista.tablaR.getSelectedRow();
+        int pos = vista.tablaC.getSelectedRow();
         if(pos!=-1){
             Recepcionista recepcionista = listaRecepcionista.getDato(pos);
             if(recepcionista.getId()==0){
                 listaRecepcionista.eliminarPos(pos);
             }else{
                 recepcionista.setSoftDelete(1);
-                vista.tablaR.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
+                vista.tablaC.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
@@ -165,7 +170,7 @@ public class RecepcionistaController implements ControllerResource, ActionListen
         }
         vista.txtCambios.setText("0");
         listaRecepcionista = recepcionistaDao.listaRecepcionistas();
-        vista.tablaR.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+        vista.tablaC.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -176,7 +181,7 @@ public class RecepcionistaController implements ControllerResource, ActionListen
             vista.txtCambios.setText("0");
             RecepcionistaDao recepcionistaDao = new RecepcionistaDaoImpl();
             listaRecepcionista = recepcionistaDao.listaRecepcionistas();
-            vista.tablaR.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+            vista.tablaC.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -192,7 +197,7 @@ public class RecepcionistaController implements ControllerResource, ActionListen
     }
 
     private void llenarTabla(){
-        DefaultTableModel modelo = (DefaultTableModel) vista.tablaR.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) vista.tablaC.getModel();
         modelo.setRowCount(0);
         Iterator<Recepcionista> iterador = listaRecepcionista.getDescendingIterator();
         while(iterador.hasNext()){

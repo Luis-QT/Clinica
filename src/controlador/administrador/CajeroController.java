@@ -55,7 +55,12 @@ public class CajeroController implements ControllerResource, ActionListener{
         this.vista.btnCargar.setActionCommand("Cargar");
         this.vista.btnCargar.addActionListener(this);
         this.vista.tablaC.setBackground(new java.awt.Color(221, 255, 220));
-
+        vista.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    vista.setVisible(false);
+                }
+            });
+            
         CajeroDao cajeroDao = new CajeroDaoImpl();
         listaCajero = cajeroDao.listaCajeros();
         llenarTabla();

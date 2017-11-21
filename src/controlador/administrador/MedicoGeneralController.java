@@ -72,7 +72,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
         
         MedicoGeneralDao medicoGeneralDao = new MedicoGeneralDaoImpl();
         listaMedico = medicoGeneralDao.listaMedicos();
-        this.vista.tablaMG.setBackground(new java.awt.Color(221, 255, 220));
+        this.vista.TablaML.setBackground(new java.awt.Color(221, 255, 220));
         llenarTabla();
     }
     
@@ -113,7 +113,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
     
     @Override
     public void formEditar() {
-        int pos = this.vista.tablaMG.getSelectedRow();
+        int pos = this.vista.TablaML.getSelectedRow();
         //-1 No se selecciona nada
         if(pos!=-1){
             MedicoGeneral medico = listaMedico.getDato(pos);
@@ -131,14 +131,14 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
 
     @Override
     public void formEliminar() {
-        int pos = vista.tablaMG.getSelectedRow();
+        int pos = vista.TablaML.getSelectedRow();
         if(pos!=-1){
             MedicoGeneral medico = listaMedico.getDato(pos);
             if(medico.getId()==0){
                 listaMedico.eliminarPos(pos);
             }else{
                 medico.setSoftDelete(1);
-                vista.tablaMG.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
+                vista.TablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
             }
             llenarTabla();
             aumentarCambios();
@@ -177,7 +177,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
         }
         vista.txtCambios.setText("0");
         listaMedico = medicoGeneralDao.listaMedicos();
-        vista.tablaMG.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+        vista.TablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -188,7 +188,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
             vista.txtCambios.setText("0");
             MedicoGeneralDao medicoGeneralDao = new MedicoGeneralDaoImpl();
             listaMedico = medicoGeneralDao.listaMedicos();
-            vista.tablaMG.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+            vista.TablaML.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los cambios");
         }else{
@@ -204,7 +204,7 @@ public class MedicoGeneralController implements ActionListener,ControllerResourc
     }
 
     private void llenarTabla(){
-        DefaultTableModel modelo = (DefaultTableModel) vista.tablaMG.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) vista.TablaML.getModel();
         modelo.setRowCount(0);
         Iterator<MedicoGeneral> iterador = listaMedico.getDescendingIterator();
         while(iterador.hasNext()){

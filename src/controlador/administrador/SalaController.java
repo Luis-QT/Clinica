@@ -47,8 +47,8 @@ public class SalaController implements ActionListener,ControllerResource{
         this.vista.btnAgregar.setActionCommand("agregar");
         this.vista.btnAgregar.addActionListener(this);
         
-        this.vista.btnDetalles.setActionCommand("detalles");
-        this.vista.btnDetalles.addActionListener(this);
+      //  this.vista.btnDetalles.setActionCommand("detalles");
+       // this.vista.btnDetalles.addActionListener(this);
         
         this.vista.btnModificar.setActionCommand("editar");
         this.vista.btnModificar.addActionListener(this);
@@ -62,9 +62,15 @@ public class SalaController implements ActionListener,ControllerResource{
         this.vista.btnCancelar.setActionCommand("cancelar");
         this.vista.btnCancelar.addActionListener(this);
         
-        this.vista.tablaSala.setBackground(new java.awt.Color(221, 255, 220));
+        this.vista.tabla.setBackground(new java.awt.Color(221, 255, 220));
         
-        this.vista.tablaSala.addMouseListener(new MouseAdapter() {
+        this.vista.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    vista.setVisible(false);
+                }
+            });
+        
+        this.vista.tabla.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 formTabla(evt);
             }
@@ -93,13 +99,13 @@ public class SalaController implements ActionListener,ControllerResource{
         }
     }
     public void formTabla(MouseEvent evt){
-        int pos = this.vista.tablaSala.getSelectedRow();
+        int pos = this.vista.tabla.getSelectedRow();
         Sala sala = lista.getDato(pos);
-        vista.txtSala.setText(sala.getNombre());
+        vista.txtTratamiento.setText(sala.getNombre());
         vista.txtDescripcion.setText(sala.getDescripcion());
     }
     public void formAgregar(){
-        String nombre = this.vista.txtSala.getText();
+        String nombre = this.vista.txtTratamiento.getText();
         String descripcion = this.vista.txtDescripcion.getText();
         Sala sala = new Sala(0, nombre, descripcion, null);
         this.lista.insertarAlFinal(sala);
@@ -107,9 +113,9 @@ public class SalaController implements ActionListener,ControllerResource{
         aumentarCambios();
     }
     public void formEditar(){
-        String nombre = this.vista.txtSala.getText();
+        String nombre = this.vista.txtTratamiento.getText();
         String descripcion = this.vista.txtDescripcion.getText();
-        int pos = this.vista.tablaSala.getSelectedRow();
+        int pos = this.vista.tabla.getSelectedRow();
         Sala sala = lista.getDato(pos);
         
         sala.setNombre(nombre);
@@ -118,13 +124,13 @@ public class SalaController implements ActionListener,ControllerResource{
         aumentarCambios();
     }
     public void formEliminar(){
-        int pos = this.vista.tablaSala.getSelectedRow();
+        int pos = this.vista.tabla.getSelectedRow();
         Sala sala = lista.getDato(pos);
         if(sala.getId()==0){
             lista.eliminarPos(pos);
         }else{
             sala.setDelete(true);
-            vista.tablaSala.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
+            vista.tabla.setDefaultRenderer(Object.class,new TablaFilaRoja(pos));
         }
         llenarTabla();
         aumentarCambios();
@@ -151,7 +157,7 @@ public class SalaController implements ActionListener,ControllerResource{
         }
         vista.txtCambios.setText("0");
         lista = salaDao.listaSalas();
-        vista.tablaSala.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+        vista.tabla.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
         llenarTabla();
         JOptionPane.showMessageDialog(null, "Se guardaron todos los cambios");
     }
@@ -161,14 +167,14 @@ public class SalaController implements ActionListener,ControllerResource{
             vista.txtCambios.setText("0");
             SalaDao salaDao = new SalaDaoImpl();
             lista = salaDao.listaSalas();
-            vista.tablaSala.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
+            vista.tabla.setDefaultRenderer(Object.class,new TablaFilaRoja(-1));
             llenarTabla();
         }else{
         }
     }
     
     private void llenarTabla(){
-        DefaultTableModel modelo = (DefaultTableModel) vista.tablaSala.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) vista.tabla.getModel();
         modelo.setRowCount(0);
         Iterator<Sala> iterador = lista.getDescendingIterator();
         while(iterador.hasNext()){

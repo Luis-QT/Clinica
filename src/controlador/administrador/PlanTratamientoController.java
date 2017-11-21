@@ -43,8 +43,8 @@ public class PlanTratamientoController implements ActionListener,ControllerResou
         this.vista.btnAgregar.setActionCommand("agregar");
         this.vista.btnAgregar.addActionListener(this);
         
-        this.vista.btnDetalles.setActionCommand("detalles");
-        this.vista.btnDetalles.addActionListener(this);
+//        this.vista.btnDetalles.setActionCommand("detalles");
+//        this.vista.btnDetalles.addActionListener(this);
         
         this.vista.btnModificar.setActionCommand("editar");
         this.vista.btnModificar.addActionListener(this);
@@ -59,6 +59,12 @@ public class PlanTratamientoController implements ActionListener,ControllerResou
         this.vista.btnCancelar.addActionListener(this);
         
         this.vista.tabla.setBackground(new java.awt.Color(221, 255, 220));
+        
+        this.vista.btnCerrar.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent evt) {
+                    vista.setVisible(false);
+                }
+            });
         
         this.vista.tabla.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
