@@ -5,6 +5,7 @@
  */
 package model.paciente;
 
+import estructura.ListaDoble;
 import java.time.LocalDate;
 
 /**
@@ -13,26 +14,22 @@ import java.time.LocalDate;
  */
 public class TemporadaTratamiento {
     private int id;
+    private int idTemporada;
     private LocalDate fechaInicio;
-    private LocalDate fechaFin;
-    private boolean estadoPagado; // 0 -> no pagado , 1 -> pagado
-    private int cantidad;
-    private String doctor;
     private String motivo;
-
+    private ListaDoble<Visita> listaVisitas;
+    
     public TemporadaTratamiento() {
         this.id = 0;
         this.fechaInicio = LocalDate.now();
-        this.fechaFin = LocalDate.now();
-        this.doctor = "";
         this.motivo = "";
+        this.listaVisitas = new ListaDoble<>();
     }
 
-    public TemporadaTratamiento(int id, LocalDate fechaInicio, LocalDate fechaFin, String doctor, String motivo) {
+    public TemporadaTratamiento(int id, int idTemporada, LocalDate fechaInicio, String motivo) {
+        this.idTemporada = idTemporada;
         this.id = id;
         this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.doctor = doctor;
         this.motivo = motivo;
     }
 
@@ -52,21 +49,6 @@ public class TemporadaTratamiento {
         this.fechaInicio = fechaInicio;
     }
 
-    public LocalDate getFechaFin() {
-        return fechaFin;
-    }
-
-    public void setFechaFin(LocalDate fechaFin) {
-        this.fechaFin = fechaFin;
-    }
-
-    public String getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
-    }
 
     public String getMotivo() {
         return motivo;

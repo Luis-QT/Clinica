@@ -11,9 +11,6 @@ public class Paciente extends Persona {
     String religion;
     boolean tipoVivienda;
     HistoriaClinica historial;
-    
-    
-    
   
     public Paciente(int id, String nombre, String apellido, int dni, 
             boolean sexo, int edad, int telefonoFijo, int telefonoCelular, 
@@ -58,9 +55,6 @@ public class Paciente extends Persona {
         return historial;
     }
     
-    public Visita obtenerVisita(int pos){
-        return this.historial.listaVisitas.getDato(pos);
-    }
-
+ 
   
 }

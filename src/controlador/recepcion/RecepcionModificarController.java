@@ -88,7 +88,7 @@ public class RecepcionModificarController implements Controller, ActionListener{
         String servicio = vista.txtTipoServicio.getText();
 //        pers.getHistorial().getListaVisitas().getFin().getDato().setServicio(servicio);
         DatosMedico datoMedico = new DatosMedico(vista.txtNombreDoctor.getText(), vista.txtEspecialidad.getText());
-        Visita visita = new Visita(codigoHistoria,servicio, datoMedico);
+        Visita visita = new Visita(servicio, datoMedico);
         
         
 //        this.pers.getHistorial().getListaVisitas().getFin().getDato().getDatosMedico().getNombre(),

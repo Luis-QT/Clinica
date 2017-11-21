@@ -20,8 +20,7 @@ public class VentanaVisita extends javax.swing.JDialog {
     /**
      * Creates new form VentanaVisita
      */
-    FrameHistoriaClinica thisFrame;
-    HistoriaClinica historia;
+    
 //    Anamnesis anamnesis;
 //    Diagnostico diagnostico;
 //    ExamenFisicos examenF;
@@ -29,7 +28,8 @@ public class VentanaVisita extends javax.swing.JDialog {
 //    TratamientoRea trarea;
 //    DatosMedico datomed;
     private Visita visita;
-
+    FrameHistoriaClinica thisFrame;
+    HistoriaClinica historia;
     public Visita getVisita() {
         return visita;
     }
@@ -138,9 +138,9 @@ public class VentanaVisita extends javax.swing.JDialog {
         jPanel17 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbxServicio = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -631,8 +631,6 @@ public class VentanaVisita extends javax.swing.JDialog {
 
         jLabel2.setText("Servicio");
 
-        cbxServicio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tratamiento", "Consulta" }));
-
         jLabel5.setText("ID");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -648,25 +646,27 @@ public class VentanaVisita extends javax.swing.JDialog {
                 .addComponent(jLabel4)
                 .addGap(91, 91, 91)
                 .addComponent(jLabel2)
-                .addGap(37, 37, 37)
-                .addComponent(cbxServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(18, 18, 18)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbxServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                        .addGap(0, 3, Short.MAX_VALUE)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -685,7 +685,7 @@ public class VentanaVisita extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -764,8 +764,8 @@ public class VentanaVisita extends javax.swing.JDialog {
         
         Visita visita = new Visita(5021, anamnesis, datoMedico, examenF, diagnostico, new TemporadaTratamiento(), new TratamientoRea());
 //        historia.nuevaVisita(5021, anamnesis, datomed, examenF, diagnostico, new TemporadaTratamiento(), new TratamientoRea());
-        thisFrame.getListaVisita().insertarAlFinal(visita);
-        System.out.println("lista : " + historia.getListaVisitas().toString());
+//        thisFrame.getListaVisita().insertarAlFinal(visita);
+//        System.out.println("lista : " + historia.getListaVisitas().toString());
         thisFrame.mostrarTabla();
         
         thisFrame.jTexApellido.setText(jTextAreaAnamnesis.getText());
@@ -864,7 +864,6 @@ public class VentanaVisita extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrarVisita;
     private javax.swing.ButtonGroup buttonGroup1;
-    public javax.swing.JComboBox cbxServicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -918,6 +917,7 @@ public class VentanaVisita extends javax.swing.JDialog {
     private javax.swing.JTextArea jTextArea4;
     public javax.swing.JTextArea jTextAreaAnamnesis;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextFieldCursoEnfermedad;
     public javax.swing.JTextField jTextFieldDiagnosticoDef1;
     public javax.swing.JTextField jTextFieldDiagnosticoPre1;

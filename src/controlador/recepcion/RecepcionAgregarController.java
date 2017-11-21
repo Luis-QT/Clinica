@@ -67,7 +67,7 @@ public class RecepcionAgregarController implements Controller, ActionListener {
         String servicio = vista.txtTipoServicio.getText();
         DatosMedico datMedico = new DatosMedico(vista.txtNombreDoctor.getText(),
                                         vista.txtEspecialidad.getText());
-        Visita visita = new Visita(codigoHistoria ,servicio, datMedico);
+        Visita visita = new Visita(servicio, datMedico);
 //        vistAnterior.listaVisita.insertarAlFinal(visita);
 //        System.out.println(vistAnterior.listaVisita.toString());
         

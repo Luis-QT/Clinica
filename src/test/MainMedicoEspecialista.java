@@ -52,12 +52,12 @@ public class MainMedicoEspecialista {
          
          
          
-         p1.getHistorial().setListaVisitas(listav1);
-         
-         p2.getHistorial().setListaVisitas(listav2);
-         p3.getHistorial().setListaVisitas(listav3);
-         p4.getHistorial().setListaVisitas(listav4);
-         
+//         p1.getHistorial().setListaVisitas(listav1);
+//         
+//         p2.getHistorial().setListaVisitas(listav2);
+//         p3.getHistorial().setListaVisitas(listav3);
+//         p4.getHistorial().setListaVisitas(listav4);
+//         
      
          
         LocalDate l = LocalDate.now();
