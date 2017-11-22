@@ -132,7 +132,7 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
     private void formAgregar() {
 
         this.areaAgregar = new FrameRecepcionAgregar(new javax.swing.JDialog(), true, vista.getRecepcionista(), vista);
-        new RecepcionAgregarController(areaAgregar, vista).index();
+        new RecepcionAgregarController(areaAgregar, vista,listaPaciente).index();
 
     }
 

@@ -5,8 +5,8 @@ import java.time.LocalDate;
 
 public class Visita {
 
-    private int idHistorial;
     private int idVisita;
+    private int idHistorial;
     private String servicio;
     private DatosMedico datosMedico;
     private LocalDate fecha;
@@ -27,7 +27,7 @@ public class Visita {
         this.diagnostico = new Diagnostico();
     }
 
-    public Visita(int idHistorial, int idVisita, String servicio, DatosMedico datosMedico, LocalDate fecha, Anamnesis anamnecis, ExamenFisicos examenFisico, Diagnostico diagnostico, String medicina, String recomendaciones, boolean pago) {
+    public Visita(int idVisita, int idHistorial , String servicio, DatosMedico datosMedico, LocalDate fecha, Anamnesis anamnecis, ExamenFisicos examenFisico, Diagnostico diagnostico, String medicina, String recomendaciones, boolean pago) {
         this.idHistorial = idHistorial;
         this.idVisita = idVisita;
         this.servicio = servicio;

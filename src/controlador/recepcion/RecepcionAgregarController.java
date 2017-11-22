@@ -2,6 +2,7 @@
 package controlador.recepcion;
 
 import controlador.Controller;
+import estructura.ListaDoble;
 import gui.recepcion.FrameRecepcionAgregar;
 import gui.recepcion.FrameRecepcionAreaPacientes;
 import java.awt.event.ActionEvent;
@@ -15,12 +16,15 @@ public class RecepcionAgregarController implements Controller, ActionListener {
 
     private FrameRecepcionAgregar vista;
     private FrameRecepcionAreaPacientes vistAnterior;
-
-    public RecepcionAgregarController(FrameRecepcionAgregar vista, FrameRecepcionAreaPacientes vistAnterior) {
+    private ListaDoble<Paciente> listaPaciente;
+    
+    public RecepcionAgregarController(FrameRecepcionAgregar vista, FrameRecepcionAreaPacientes vistAnterior, ListaDoble<Paciente> listaPaciente ) {
         this.vista = vista;
         this.vistAnterior = vistAnterior;
+        this.listaPaciente = listaPaciente;
         iniciar();
     }
+
     @Override
     public void iniciar() {
         this.vista.btnAgregar.setActionCommand("Agregar");
@@ -68,12 +72,16 @@ public class RecepcionAgregarController implements Controller, ActionListener {
         DatosMedico datMedico = new DatosMedico(vista.txtNombreDoctor.getText(),
                                         vista.txtEspecialidad.getText());
         Visita visita = new Visita(servicio, datMedico);
-//        vistAnterior.listaVisita.insertarAlFinal(visita);
+        
+       // vistAnterior.listaVisita.insertarAlFinal(visita);
 //        System.out.println(vistAnterior.listaVisita.toString());
         
         Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 2, "", "",codigoP);
-        vista.getRecepcionista().agregarPaciente(p);
-       // vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
+        listaPaciente.insertarAlFinal(p);
+        System.out.println("Lista : " +  listaPaciente.toString());
+        
+        vistAnterior.refrescartabla(listaPaciente);
+        
         vista.setVisible(false);
         
     }

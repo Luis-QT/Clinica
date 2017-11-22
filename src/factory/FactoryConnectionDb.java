@@ -41,9 +41,10 @@ public class FactoryConnectionDb {
             
             "Create TABLE Visitas"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),historialID INT, foreign key (historialID) references HistoriaClinica(id), servicio VARCHAR(20), nombreMedico VARCHAR(20), especialidadMedico VARCHAR(30) ,"
-            + " diaV INT, mesV INT, anioV INT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)," 
+            + " dia SMALLINT,mes SMALLINT,anio SMALLINT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)," 
             + " torzoaus VARCHAR(40),torzoper VARCHAR(40),abdomenobs VARCHAR(40),abdomenaus VARCHAR(40),abdomenper VARCHAR(40), espaldaobs VARCHAR(40),espaldaaus VARCHAR(40),espaldaper VARCHAR(40) ,"
-            + "extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40))" ,
+            + " extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40),preDia VARCHAR(40),defDia VARCHAR(40),pronostico BOOLEAN,solicitud SMALLINT,pastillas VARCHAR(40),"
+            + " medicina VARCHAR(40),recomendaciones VARCHAR(40), pago SMALLINT)" ,
             
             //Luis Taquire
             "CREATE TABLE Administrador"
@@ -76,6 +77,7 @@ public class FactoryConnectionDb {
             + " dia VARCHAR(10), horaIni VARCHAR(10), horaFin VARCHAR(10),"
             + "empleadoId INT , tipoEmpleado INT , salaId INT , foreign key (salaId) references Salas(id))",
             
+            
             "CREATE TABLE PlanTratamiento (id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),"
             +"nombre VARCHAR(35), descripcion VARCHAR(60) , precio DOUBLE)",
             
@@ -100,21 +102,34 @@ public class FactoryConnectionDb {
             + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT
             ,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40), codigoP VARCHAR(10))",          
         */
+            //Insert visitas
              "INSERT INTO Paciente" 
             + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
-            + "('Luis','Yauri',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H03')",
+            + "('Luis','Yauri',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H01')",
              "INSERT INTO Paciente" 
             + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
             + "('Ximena','Politi',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H02')",
              "INSERT INTO Paciente" 
             + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
-            + "('Alisson','Arroyo',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H01')",
+            + "('Alisson','Arroyo',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H03')",
              "INSERT INTO Paciente" 
             + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
             + "('Brandom','Urtecho',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H04')",
              "INSERT INTO Paciente" 
             + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
-            + "('Diego','Vera',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','A03')",
+            + "('Diego','Vera',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H05')",
+             
+             //Insert Visitas
+//             "INSERT INTO Visitas"
+//            + "(historialID , servicio, nombreMedico, especialidadMedico,"
+//            + " dia ,mes ,anio , motivo, curso, enferActual, cabezaobs, cabezaaus, cabezaper, torzoobs," 
+//            + " torzoaus ,torzoper, abdomenobs, abdomenaus, abdomenper, espaldaobs, espaldaaus, espaldaper,"
+//            + " extreobs, extreaus, extreper, preDia ,defDia ,pronostico ,solicitud ,pastillas,"
+//            + " medicina ,recomendaciones , pago ) VALUES "
+//            + " (1,'Cirugia Plastica','Renato','Cirujano',11,12,2017,'motivo','curso','enferActual','cabezaobs',"
+//            + "  'cabezaaus','cabezaper','torzoobs','torzoaus','torzoper','abdomenobs','abdomenaus','abdomenper','espaldaobs',"
+//            + "  'espaldaaus','espaldaper','extreobs','extreaus','extreper','preDia','defDia',true,0,'pastillas',"
+//            + " 'medicina' ,'recomendaciones',10 ) ",
              
              
              

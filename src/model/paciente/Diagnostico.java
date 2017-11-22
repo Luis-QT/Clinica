@@ -69,6 +69,8 @@ public class Diagnostico {
     public void setSolicitud(Boolean solicitud) {
         this.solicitud = solicitud;
     }
+    
+    
 
 
     @Override
