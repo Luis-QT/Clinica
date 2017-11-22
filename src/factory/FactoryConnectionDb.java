@@ -43,7 +43,7 @@ public class FactoryConnectionDb {
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),historialID INT, foreign key (historialID) references HistoriaClinica(id), servicio VARCHAR(20), nombreMedico VARCHAR(20), especialidadMedico VARCHAR(30) ,"
             + " dia SMALLINT,mes SMALLINT,anio SMALLINT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)," 
             + " torzoaus VARCHAR(40),torzoper VARCHAR(40),abdomenobs VARCHAR(40),abdomenaus VARCHAR(40),abdomenper VARCHAR(40), espaldaobs VARCHAR(40),espaldaaus VARCHAR(40),espaldaper VARCHAR(40) ,"
-            + " extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40),preDia VARCHAR(40),defDia VARCHAR(40),pronostico BOOLEAN,solicitud SMALLINT,pastillas VARCHAR(40),"
+            + " extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40),preDia VARCHAR(40),defDia VARCHAR(40),pronostico SMALLINT,solicitud SMALLINT,pastillas VARCHAR(40),"
             + " medicina VARCHAR(40),recomendaciones VARCHAR(40), pago SMALLINT)" ,
             
             //Luis Taquire
@@ -130,6 +130,19 @@ public class FactoryConnectionDb {
 //            + "  'cabezaaus','cabezaper','torzoobs','torzoaus','torzoper','abdomenobs','abdomenaus','abdomenper','espaldaobs',"
 //            + "  'espaldaaus','espaldaper','extreobs','extreaus','extreper','preDia','defDia',true,0,'pastillas',"
 //            + " 'medicina' ,'recomendaciones',10 ) ",
+             
+//             "INSERT INTO Visitas"
+//            + "(historialID , servicio, nombreMedico , especialidadMedico ,"
+//            + " dia ,mes ,anio , motivo ,curso ,enferActual , cabezaobs ,cabezaaus ,cabezaper , torzoobs ," 
+//            + " torzoaus ,torzoper ,abdomenobs ,abdomenaus ,abdomenper , espaldaobs ,espaldaaus ,espaldaper ,"
+//            + " extreobs ,extreaus ,extreper ,preDia ,defDia ,pronostico ,solicitud ,pastillas ,"
+//            + " medicina ,recomendaciones , pago SMALLINT) VALUES " ,
+//            + "(1,'servicio','nombreMedico','especialidadMedico,"
+//            + "  01,10,2017,'motivo', 'curso','enferActual','cabezaobs','cabezaaus','cabezaper','torzoobs',"
+//            + "  'torzoaus','torzoper','abdomenobs','abdomenaus','abdomenper','espaldaobs','espaldaaus','espaldaper',"
+//            + "  'extreobs','extreaus','extreper','preDia','defDia',0,1,'pastillas','medicina','recomendaciones',15)",
+//             
+//             
              
              
              
