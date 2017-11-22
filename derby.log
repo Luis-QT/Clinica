@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Wed Nov 22 09:28:57 COT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e421-bbbe-000007288578 
+Wed Nov 22 10:40:33 COT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e463-4b0a-0000072848e0 
 on database directory C:\Users\Luis\Documents\GitHub\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
 Loaded from file:/C:/Users/Luis/Documents/GitHub/Clinica/jars/derby.jar
 java.vendor=Oracle Corporation

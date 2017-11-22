@@ -120,6 +120,13 @@ public class RecepcionImpl implements Recepcion {
     public boolean guardarPaciente(Paciente paciente) {
         this.conn = FactoryConnectionDb.open();
         boolean save = false;
+        System.out.println(paciente.getNombre());
+        System.out.println(paciente.getApellido());
+        System.out.println(paciente.getDni());
+        System.out.println(paciente.getNombre());
+        System.out.println(paciente.getNombre());
+        System.out.println(paciente.getNombre());
+        System.out.println(paciente.getNombre());
 
         try {
             if (paciente.getId() == 0) {//new
@@ -134,12 +141,12 @@ public class RecepcionImpl implements Recepcion {
                  */
 
                 sql.append("INSERT INTO Paciente"
-                        + "(nombre,apellido,dni,sexo,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias) VALUES ( '"
-                        + paciente.getNombre() + "','" + paciente.getApellido() + "','"
-                        + paciente.getDni() + "','" + paciente.getSexoEntero() + "','"
-                        + paciente.getEdad() + "','" + paciente.getTelefonoCasa() + "','"
-                        + paciente.getTelefonoCelular() + "','" + paciente.getEmail() + "',"
-                        + "0" + ",'" + paciente.getTipoSangre() + "','" + paciente.getAlergia()+"')");
+                        + "(nombre,apellido,dni,sexo,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias,codigoP) VALUES ( '"
+                        + paciente.getNombre() + "','" + paciente.getApellido() + "',"
+                        + paciente.getDni() + "," + paciente.getSexoEntero() + ","
+                        + paciente.getEdad() + "," + paciente.getTelefonoCasa() + ","
+                        + paciente.getTelefonoCelular() + ",'" + paciente.getEmail() + "',"
+                        + "0" + ",'" + paciente.getTipoSangre() + "','" + paciente.getAlergia()+"','"+paciente.getCodigoP()+"')");
 
                 this.conn.execute2(sql.toString());
             } else {//update
