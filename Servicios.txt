@@ -1,0 +1,3 @@
+Neurologo::50::true
+Cardiologo::60::true
+Glucosa::80::false

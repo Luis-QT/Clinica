@@ -2,31 +2,31 @@
 package controlador.contabilidad;
 
 import controlador.Controller;
-import dao.contabilidad.ContabilidadDao;
-import dao.contabilidad.ContabilidadDaoImplementado;
+import dao.contabilidad.Archivo;
 import estructura.ListaDoble;
 import factory.MySQLConnectionFactory;
 import gui.contabilidad.FrameContabilidad;
-import gui.triaje.FrameTriaje;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.empleado.Cajero;
-import model.empleado.MedicoTriaje;
 import model.empleado.Monto;
 import model.empleado.Servicios;
 import model.paciente.Paciente;
 
 
 public class ContabilidadController implements Controller,ActionListener{
+    
     private FrameContabilidad vista;
-    private FrameTriaje ventanaTriaje;
     private ListaDoble<Servicios> listaServicios;
     private ListaDoble<Monto> listaMonto;
     private ListaDoble<Paciente> listaPacientes;
@@ -34,12 +34,13 @@ public class ContabilidadController implements Controller,ActionListener{
     
     public ContabilidadController (FrameContabilidad vista){
         this.vista = vista;
-        this.ventanaTriaje = vista.getThisFrameTriaje();
+        
         iniciar();
     }
 
     @Override
     public void iniciar() {
+        
         this.vista.btnElegir.setActionCommand("Elegir");
         this.vista.btnElegir.addActionListener(this);
         
@@ -75,13 +76,17 @@ public class ContabilidadController implements Controller,ActionListener{
             public void keyReleased(KeyEvent evt){
                 DameVuelto();
             }
-        });
-         
-//         ContabilidadDao contabilidadDao = new ContabilidadDaoImplementado();
-//         contabilidadDao;
-//         listaMonto ;
-//         listaPacientes;
-//         listaServicios;
+        });;
+//        try {
+//            listaServicios = Archivo.leerListaClientes();
+//                  
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(ContabilidadController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+listaServicios = vista.getCaja().getListaServicios();
+vista.mostrarTablaServicios(listaServicios);
+
 
        
     }
@@ -119,7 +124,7 @@ public class ContabilidadController implements Controller,ActionListener{
            ListaDoble<Servicios> listaConsultaServicios = vista.getListaConsultaServicios();
            ListaDoble<Servicios> listaSeleccionGeneral = vista.getListaSeleccionGeneral();
            ListaDoble<Servicios> listaLaboratorioServicios = vista.getListaLaboratorioServicios();
-           ListaDoble<Servicios> listaServicios = vista.getListaServicios();
+           ListaDoble<Servicios> listaServicios = this.listaServicios;
            if (vista.rbtnConsulta.isSelected()) {
                int t = vista.TablaServicios.getSelectedRow();
                Servicios set = listaServicios.getDato(t);
@@ -189,7 +194,7 @@ public class ContabilidadController implements Controller,ActionListener{
     private void formBuscar() {
         try {
             Cajero caja = vista.getCaja();
-            ListaDoble<Servicios> listaServicios = vista.getListaServicios();
+            ListaDoble<Servicios> listaServicios = this.listaServicios;
             String palabra = vista.txtBuscar.getText();
             ListaDoble<Servicios> p = caja.bucarServicio(palabra);
             vista.setListaServicios(p);
@@ -260,14 +265,7 @@ public class ContabilidadController implements Controller,ActionListener{
 
                   if (String.valueOf(pro.getId()).equalsIgnoreCase(codigo)) {
                       comprobar = true;
-                      MedicoTriaje medicoTriaje = ventanaTriaje.getTriaje();
-                      this.ventanaTriaje = vista.getThisFrameTriaje();
-                      //ventanaTriaje.setVisible(true);
-                      System.out.println("PRO: "+ pro.toString()) ;
-                      ventanaTriaje.getListaPacientes().insertarAlFinal(pro);
-//                      ventanaTriaje.mostrarTabla();
-//                      vista.thisFrameTriaje.getListaPacientes().insertarAlFinal(pro);
-//                      Te envia el codigo ;
+                      
 
                   }
               }
@@ -309,7 +307,7 @@ public class ContabilidadController implements Controller,ActionListener{
     }
       private void formOrdenarPrecio() {
         try {
-            ListaDoble<Servicios> listaServicios = vista.getListaServicios();
+            ListaDoble<Servicios> listaServicios = this.listaServicios;
             Cajero caja = vista.getCaja();
             listaServicios = caja.ordenarPrecios();
             vista.setListaServicios(listaServicios);

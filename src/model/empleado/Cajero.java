@@ -1,12 +1,9 @@
 package model.empleado;
 
+import dao.contabilidad.Archivo;
 import estructura.ListaDoble;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.GregorianCalendar;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
-import java.util.Optional;
 import model.paciente.Paciente;
 
 public class Cajero extends EmpleadoUser{
@@ -28,7 +25,18 @@ public class Cajero extends EmpleadoUser{
         listaMonto = new ListaDoble<Monto>();
         listaPaciente = new ListaDoble<Paciente>();
         
+        
+        try {
+            listaServicios = Archivo.leerListaClientes();
+            System.out.println("lista: " + listaServicios.toString());
+                  
+        } catch (FileNotFoundException ex) {
+            System.out.println("No hay archivo");
+        }
+        
     }
+    
+     
     public ListaDoble<Paciente> getListaPaciente (){
         return listaPaciente;
     }    
