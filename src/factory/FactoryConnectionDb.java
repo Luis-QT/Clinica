@@ -31,9 +31,8 @@ public class FactoryConnectionDb {
             //Tabla Historia Clínica
             "Create TABLE HistoriaClinica"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), estadoPapa VARCHAR(20), hosPapa VARCHAR(20) ,muertePapa SMALLINT ,"
-            + " estadoMama VARCHAR(20), hosMama VARCHAR(20) , muerteMama SMALLINT, enferTrata VARCHAR(20), hospitalizaciones INT, inmunizacion INT, tipoSangre VARCHAR(5),alergias VARCHAR(20))"         
-            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40), codigoP VARCHAR(40))",          
-
+            + " estadoMama VARCHAR(20), hosMama VARCHAR(20) , muerteMama SMALLINT, enferTrata VARCHAR(20), hospitalizaciones INT, inmunizacion INT, tipoSangre VARCHAR(5),alergias VARCHAR(20))",          
+               
             
             "CREATE TABLE Salas (id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),"
             + "nombre VARCHAR(15) , descripcion VARCHAR(150))",
@@ -45,7 +44,6 @@ public class FactoryConnectionDb {
             + " diaV INT, mesV INT, anioV INT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)," 
             + " torzoaus VARCHAR(40),torzoper VARCHAR(40),abdomenobs VARCHAR(40),abdomenaus VARCHAR(40),abdomenper VARCHAR(40), espaldaobs VARCHAR(40),espaldaaus VARCHAR(40),espaldaper VARCHAR(40) ,"
             + "extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40))" ,
-
             
             //Luis Taquire
             "CREATE TABLE Administrador"
@@ -88,9 +86,9 @@ public class FactoryConnectionDb {
             + "('admin','Luis Antonio','Quispe Taquire','1234')",
             
             "INSERT INTO Recepcionista"
+            + "(codigo , nombre , apellido  ,dni  , contraseña, edad, telefonoCasa, telefonoCelular, sexo, email,softDelete ) VALUES"
+            + "('recepcion', 'Luis David', 'Yauri Martinez', 987654321, 'contraseña', 21, 9541236, 954123685,1,'Luis@gmail.com',0)",
 
-            + "(codigo , nombre , apellido  ,dni  , contraseña, edad, telefonoCasa, telefonoCelular, sexo, email,softDelete ) VALUES "
-            + "('r00000','LuisDavid','YauriMartinez',987654321, 'contraseña',21,9541236,954123685,1,'Luis@gmail.com',0)",
             
             "INSERT INTO MedicoGeneral "
             + "(codigo,nombre,apellido,dni,contraseña,colegiatura,edad,telefonoCasa,telefonoCelular,sexo,email,softDelete) VALUES "
@@ -119,7 +117,7 @@ public class FactoryConnectionDb {
             + "('Odontologo','medico4','Luis','Yauri',11111111,'1234-3','cole1',10,5284422,973555441,1,'a@a',0)",
             
             "INSERT INTO MedicoTriaje"
-            + "(codigo, nombre, apellido ,dni ,contraseña,colegiatura ,edad, telefonoCasa, telefonoCelular, sexo, email, softDelete) VALUES "
+            + "(codigo, nombre, apellido ,dni ,contraseña,colegiatura ,edad, telefonoCasa, telefonoCelular, sexo, email, softDelete) VALUES"
             + "('medicoTriaje','MedicTriaje','Martin Lopez',11222111,'contraseña','cole2Triaje',55,5284422,973555441,1,'a@a',0)",
             
             "INSERT INTO Cajero"
