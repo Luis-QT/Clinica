@@ -73,6 +73,7 @@ public class LoginAdministradorController implements Controller,ActionListener{
             frameAdministrador = new FramePrincipalAdministrador();
             AdministradorController administradorController = new AdministradorController(frameAdministrador);
             administradorController.index();
+            JOptionPane.showMessageDialog(null, "Bienvenido:  \n"+admin.getNombre()+" "+admin.getApellido());
         }else{
             JOptionPane.showMessageDialog(null, "FALLO AL LOGEAR");
         }

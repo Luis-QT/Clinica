@@ -9,6 +9,7 @@ import controlador.Controller;
 import factory.MySQLConnectionFactory;
 import gui.administrador.areaMedico.PlanTratamientoV;
 import gui.administrador.FramePrincipalAdministrador;
+import gui.administrador.configuracion.FrameConfiguracion;
 import gui.administrador.mantenimiento.FrameMantenimiento;
 import gui.administrador.mantenimiento.cajero.ListaC;
 import gui.administrador.mantenimiento.medico.medicoEspecialista.ListaME;
@@ -38,6 +39,7 @@ public class AdministradorController implements Controller,ActionListener{
     private FrameMantenimiento FrameMantenimiento;
     private ListaMT FrameListaMT;
     private ListaC FrameListaC;
+    private FrameConfiguracion frameConfiguracion;
     
     public AdministradorController(FramePrincipalAdministrador frame ){
         this.vista = frame;
@@ -77,6 +79,16 @@ public class AdministradorController implements Controller,ActionListener{
         this.vista.PaneMantenimiento.addMouseListener(new MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMantenimiento();
+            }
+        });
+        this.vista.paneConfiguracion.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formConfiguracion();
+            }
+        });
+        this.vista.PaneTratamiento.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formPlanTratamiento();
             }
         });
     }
@@ -140,6 +152,11 @@ public class AdministradorController implements Controller,ActionListener{
     private void formPlanTratamiento(){
         this.FrameTratamiento = new PlanTratamientoV(vista, true);
         new PlanTratamientoController(this.FrameTratamiento).index();
+    }
+    
+    private void formConfiguracion(){
+        this.frameConfiguracion = new FrameConfiguracion(vista, true);
+        new ConfiguracionController(frameConfiguracion).index();
     }
     
     

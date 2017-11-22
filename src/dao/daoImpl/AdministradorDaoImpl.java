@@ -56,8 +56,8 @@ public class AdministradorDaoImpl implements AdministradorDao{
             StringBuilder sql = new StringBuilder();
             sql.append("UPDATE Administrador SET codigo = '").append(administrador.getCodigo()).append("'");
             sql.append(",nombre = '"+administrador.getNombre()+"'").append(",apellido = '"+administrador.getApellido()+"'");
-            sql.append(",contraseña = "+administrador.getContraseña());
-            sql.append(" WHERE id = "+administrador.getId());
+            sql.append(",contraseña = '"+administrador.getContraseña());
+            sql.append("' WHERE id = 1");
             this.conn.execute2(sql.toString());
             save = true;
         }catch(Exception e){
