@@ -2,14 +2,15 @@
 package dao.contabilidad;
 
 import estructura.ListaDoble;
+import model.PlanTratamiento;
 import model.empleado.Servicios;
 import model.paciente.Paciente;
 
 
 public interface  ContabilidadDao {
-    public ListaDoble<Servicios> listaServicios();
-    public void mostrarServicios();
-    public Paciente obtenerServicios(int id);
-    public boolean guardarServicios(Paciente paciente);
-    public boolean eliminarServicios(int id);
+    public ListaDoble<PlanTratamiento> listaPlanTratamiento();
+    public void mostrarPlanTratamiento();
+    public Paciente obtenerPlanTratamiento(int id);
+    public boolean guardarPlanTratamiento(Paciente paciente);
+    public boolean eliminarPlanTratamiento(int id);
 }

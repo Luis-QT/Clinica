@@ -6,6 +6,7 @@ import estructura.ListaDoble;
 import factory.ConnectionDb;
 import factory.FactoryConnectionDb;
 import java.sql.ResultSet;
+import model.PlanTratamiento;
 import model.empleado.Servicios;
 import model.paciente.Paciente;
 
@@ -18,48 +19,41 @@ public class ContabilidadDaoImplementado implements ContabilidadDao {
     
    
     @Override
-    public ListaDoble<Servicios> listaServicios() {
+    public ListaDoble<PlanTratamiento> listaPlanTratamiento() {
      
         this.conn = FactoryConnectionDb.open();
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT * FROM Paciente");
-        Paciente paciente=null;
+        PlanTratamiento planTra=null;
         
-        ListaDoble<Servicios> list = new ListaDoble<Servicios>();
-//        try {
-//            ResultSet rs = this.conn.query(sql.toString());
-//            while(rs.next()){
-//                paciente = new Paciente(rs.getInt("id"),rs.getString("nombre"),
-//                        rs.getString("apellido"),rs.getInt("dni"), rs.getBoolean("sexo"),
-//                        rs.getInt("edad"),rs.getInt("telefonoCasa"),
-//                        rs.getInt("telefonoCelular"),rs.getString("email"),
-//                        rs.getInt("softDelete"),
-//                        rs.getString("tipoSangre"),
-//                        rs.getString("alergias"), rs.getString("codigoP")) ;
-//                System.out.println("PACIENTE : "+paciente.getId());
-//                list.insertarAlFinal(paciente);
-//                System.out.println("tamaño : "+list.size);
-//            }
-//        } catch (Exception e) {
-//            
-//        }finally{
-//            this.conn.close();
-//        }
-//        if(list==null){
-//            System.out.println("vacio");
-//            list = new ListaDoble<Paciente>();
-//        }
+        ListaDoble<PlanTratamiento> list = new ListaDoble<PlanTratamiento>();
+        try {
+            ResultSet rs = this.conn.query(sql.toString());
+            while(rs.next()){
+                planTra = new PlanTratamiento(rs.getInt("id"),rs.getString("nombre"),
+                        rs.getString("descripcion"),rs.getInt("precio")) ;
+                list.insertarAlFinal(planTra);
+            }
+        } catch (Exception e) {
+            
+        }finally{
+            this.conn.close();
+        }
+        if(list==null){
+            System.out.println("vacio");
+            list = new ListaDoble<PlanTratamiento>();
+        }
         return list;
         
     }
 
     @Override
-    public void mostrarServicios() {
+    public void mostrarPlanTratamiento() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Paciente obtenerServicios(int id) {
+    public Paciente obtenerPlanTratamiento(int id) {
     this.conn = FactoryConnectionDb.open();
         Paciente paciente =null;
         StringBuilder sql = new StringBuilder();
@@ -84,7 +78,7 @@ public class ContabilidadDaoImplementado implements ContabilidadDao {
     }
 
     @Override
-    public boolean guardarServicios(Paciente paciente) {
+    public boolean guardarPlanTratamiento(Paciente paciente) {
      this.conn = FactoryConnectionDb.open();
         boolean save = false;
         
@@ -132,7 +126,7 @@ public class ContabilidadDaoImplementado implements ContabilidadDao {
     }
 
     @Override
-    public boolean eliminarServicios(int id) {
+    public boolean eliminarPlanTratamiento(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
