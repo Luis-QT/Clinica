@@ -1,6 +1,7 @@
 package controlador.recepcion;
 
 import controlador.Controller;
+import dao.recepcion.RecepcionImpl;
 import estructura.ListaDoble;
 import gui.recepcion.FrameRecepcionAgregar;
 import gui.recepcion.FrameRecepcionAreaPacientes;
@@ -24,6 +25,7 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
     private FrameRecepcionAreaPacientes vista;
     private FrameRecepcionAgregar areaAgregar;
     private FrameRecepcionModificar areaModificar;
+    private ListaDoble<Paciente> listaPaciente;
 
     public RecepcionAreaPacientesController(FrameRecepcionAreaPacientes vista) {
         this.vista = vista;
@@ -47,6 +49,9 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
         this.vista.btnModificar.setActionCommand("Modificar");
         this.vista.btnModificar.addActionListener(this);
 
+        RecepcionImpl recepcionDao = new RecepcionImpl();
+        listaPaciente = recepcionDao.listaPaciente();
+        
     }
 
     @Override
@@ -146,4 +151,16 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
         new RecepcionModificarController(areaModificar, vista,pers).index();
     }
 
+    private void refrescartabla() {
+                DefaultTableModel dtm = (DefaultTableModel) vista.tblPacientes.getModel();
+                dtm.setRowCount(0);
+                Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
+                while (iterador.hasNext()) {
+                    Paciente pro = iterador.next();
+                    dtm.addRow(new Object[]{pro.getId(), pro.getNombre(), pro.getApellido(), pro.getDni(),
+                        pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
+                        pro.getEmail()});
+                }
+    }
+    
 }

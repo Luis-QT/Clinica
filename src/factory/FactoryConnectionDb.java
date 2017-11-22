@@ -26,6 +26,7 @@ public class FactoryConnectionDb {
             //Tabla paciente
             "Create TABLE Paciente"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
+<<<<<<< HEAD
             + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40), codigoP VARCHAR(10))",          
         
             //Tabla Historia Clínica
@@ -33,17 +34,33 @@ public class FactoryConnectionDb {
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), estadoPapa VARCHAR(20), hosPapa VARCHAR(20) ,muertePapa SMALLINT ,"
             + " estadoMama VARCHAR(20), hosMama VARCHAR(20) , muerteMama SMALLINT, enferTrata VARCHAR(20), hospitalizaciones INT, inmunizacion INT, tipoSangre VARCHAR(5),alergias VARCHAR(20))",          
                
+=======
+            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40), codigoP VARCHAR(40))",          
+//            //Tabla Historia Clínica
+//            "Create TABLE HistoriaClinica"
+//            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), estadoPapa VARCHAR(20), hosPapa VARCHAR(20) ,muertePapa SMALLINT "
+//            + "estadoMama VARCHAR(20), hosMama VARCHAR(20) , muerteMama SMALLINT, enferTrata VARCHAR(20), hospitalizaciones INT, inmunizacion INT, tipoSangre VARCHAR(5),alergias VARCHAR(20))",          
+//               
+>>>>>>> 10b1b1771d480728126e404c39e6b5d076a97520
             
             "CREATE TABLE Salas (id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),"
             + "nombre VARCHAR(15) , descripcion VARCHAR(150))",
             
             //Tabla Visitas
+<<<<<<< HEAD
             
             "Create TABLE Visitas"
             + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id),historialID INT, foreign key (historialID) references HistoriaClinica(id), servicio VARCHAR(20), nombreMedico VARCHAR(20), especialidadMedico VARCHAR(30) ,"
             + " diaV INT, mesV INT, anioV INT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)," 
             + " torzoaus VARCHAR(40),torzoper VARCHAR(40),abdomenobs VARCHAR(40),abdomenaus VARCHAR(40),abdomenper VARCHAR(40), espaldaobs VARCHAR(40),espaldaaus VARCHAR(40),espaldaper VARCHAR(40) ,"
             + "extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40))" ,
+=======
+//            "Create TABLE Visitas"
+//            + "(id INT NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), PRIMARY KEY(id), foreign key (historialID) references Salas(id), servicio VARCHAR(20), nombreMedico VARCHAR(20), especialidadMedico VARCHAR(30) "
+//            + "diaV INT, mesV INT, anioV INT, motivo VARCHAR(40),curso VARCHAR(40),enferActual VARCHAR(40), cabezaobs VARCHAR(40),cabezaaus VARCHAR(40),cabezaper VARCHAR(40), torzoobs VARCHAR(40)" 
+//            + "torzoaus VARCHAR(40),torzoper VARCHAR(40),abdomenobs VARCHAR(40),abdomenaus VARCHAR(40),abdomenper VARCHAR(40), espaldaobs VARCHAR(40),espaldaaus VARCHAR(40),espaldaper VARCHAR(40) "
+//            + "extreobs VARCHAR(40),extreaus VARCHAR(40),extreper VARCHAR(40), pago SMALLINT)" ,
+>>>>>>> 10b1b1771d480728126e404c39e6b5d076a97520
             
             //Luis Taquire
             "CREATE TABLE Administrador"
@@ -86,12 +103,27 @@ public class FactoryConnectionDb {
             + "('admin','Luis Antonio','Quispe Taquire','1234')",
             
             "INSERT INTO Recepcionista"
+<<<<<<< HEAD
             + "(codigo , nombre , apellido  ,dni  , contraseña, edad, telefonoCasa, telefonoCelular, sexo, email,softDelete ) VALUES"
             + "('recepcion', 'Luis David', 'Yauri Martinez', 987654321, 'contraseña', 21, 9541236, 954123685,1,'Luis@gmail.com',0)",
+=======
+            + "(codigo , nombre , apellido  ,dni  , contraseña, edad, telefonoCasa, telefonoCelular, sexo, email,softDelete ) VALUES "
+            + "('r00000','LuisDavid','YauriMartinez',987654321, 'contraseña',21,9541236,954123685,1,'Luis@gmail.com',0)",
+>>>>>>> 10b1b1771d480728126e404c39e6b5d076a97520
             
             "INSERT INTO MedicoGeneral "
             + "(codigo,nombre,apellido,dni,contraseña,colegiatura,edad,telefonoCasa,telefonoCelular,sexo,email,softDelete) VALUES "
             + "('medico1','Ximena','Politi',56487752,'1234-2','cole1',20,5284422,973849441,0,'a@a',0)",
+            
+           
+            /*"Create TABLE Paciente"
+            + ", nombre VARCHAR(20), apellido VARCHAR(20) ,dni INT , "
+            + "sexo SMALLINT,edad SMALLINT,telefonoCasa INT,telefonoCelular INT
+            ,email VARCHAR(40),softDelete SMALLINT,tipoSangre VARCHAR(40),alergias VARCHAR(40), codigoP VARCHAR(10))",          
+        */
+             "INSERT INTO Paciente" 
+            + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
+            + "('Paciente01','Apellido01',0,23,123487548,35236232,'paciente@gmail',0,'A', 'alergia al polvo','A03')",
             
             "INSERT INTO MedicoGeneral "
             + "(codigo,nombre,apellido,dni,contraseña,colegiatura,edad,telefonoCasa,telefonoCelular,sexo,email,softDelete) VALUES "
@@ -106,11 +138,19 @@ public class FactoryConnectionDb {
             + "('Odontologo','medico4','Luis','Yauri',11111111,'1234-3','cole1',10,5284422,973555441,1,'a@a',0)",
             
             "INSERT INTO MedicoTriaje"
+<<<<<<< HEAD
             + "(codigo, nombre, apellido ,dni ,contraseña,colegiatura ,edad, telefonoCasa, telefonoCelular, sexo, email, softDelete) VALUES"
             + "('medicoTriaje','MedicTriaje','Martin Lopez',11222111,'contraseña','cole2Triaje',55,5284422,973555441,1,'a@a',0)",
             
             "INSERT INTO Cajero"
             + "(codigo , nombre , apellido ,dni ,contraseña, edad, telefonoCasa, telefonoCelular, sexo, email, softDelete) VALUES"
+=======
+            + "(codigo, nombre, apellido ,dni ,contraseña,colegiatura ,edad, telefonoCasa, telefonoCelular, sexo, email, softDelete) VALUES "
+            + "('medicoTriaje','MedicTriaje','Martin Lopez',11222111,'contraseña','cole2Triaje',55,5284422,973555441,1,'a@a',0)",
+            
+            "INSERT INTO Cajero"
+            + "(codigo , nombre , apellido ,dni ,contraseña, edad, telefonoCasa, telefonoCelular, sexo, email, softDelete) VALUES "
+>>>>>>> 10b1b1771d480728126e404c39e6b5d076a97520
             + "('cajero','Cajero02','ApellidoCajero',11999981,'contraseña',30,5284322,973566441,1,'a@a',0)",
             
             "INSERT INTO Salas "

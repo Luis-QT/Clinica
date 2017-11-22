@@ -43,7 +43,7 @@ public class FrameContabilidad extends javax.swing.JFrame {
         this.listaSeleccionGeneral = auxCaja.getListaServicios();
         this.listaMonto = Caja.getListaMonto();
         this.thisFrameTriaje = thisFrameTriaje;
-        mostrarTablaServicios(listaServicios);
+//        mostrarTablaServicios(listaServicios);
         
     }
     public void setListaPacientes(ListaDoble<Paciente> listaPacientes) {

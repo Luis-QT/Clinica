@@ -2,6 +2,8 @@
 package controlador.contabilidad;
 
 import controlador.Controller;
+import dao.contabilidad.ContabilidadDao;
+import dao.contabilidad.ContabilidadDaoImplementado;
 import estructura.ListaDoble;
 import factory.MySQLConnectionFactory;
 import gui.contabilidad.FrameContabilidad;
@@ -25,6 +27,10 @@ import model.paciente.Paciente;
 public class ContabilidadController implements Controller,ActionListener{
     private FrameContabilidad vista;
     private FrameTriaje ventanaTriaje;
+    private ListaDoble<Servicios> listaServicios;
+    private ListaDoble<Monto> listaMonto;
+    private ListaDoble<Paciente> listaPacientes;
+    
     
     public ContabilidadController (FrameContabilidad vista){
         this.vista = vista;
@@ -69,9 +75,13 @@ public class ContabilidadController implements Controller,ActionListener{
             public void keyReleased(KeyEvent evt){
                 DameVuelto();
             }
-            
-        
         });
+         
+//         ContabilidadDao contabilidadDao = new ContabilidadDaoImplementado();
+//         contabilidadDao;
+//         listaMonto ;
+//         listaPacientes;
+//         listaServicios;
 
        
     }
@@ -255,7 +265,7 @@ public class ContabilidadController implements Controller,ActionListener{
                       //ventanaTriaje.setVisible(true);
                       System.out.println("PRO: "+ pro.toString()) ;
                       ventanaTriaje.getListaPacientes().insertarAlFinal(pro);
-                      ventanaTriaje.mostrarTabla();
+//                      ventanaTriaje.mostrarTabla();
 //                      vista.thisFrameTriaje.getListaPacientes().insertarAlFinal(pro);
 //                      Te envia el codigo ;
 

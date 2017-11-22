@@ -30,8 +30,8 @@ public class FrameTriaje extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        this.listaPacientes = triaje.getListaPaciente();
-        mostrarTabla();
+//        this.listaPacientes = triaje.getListaPaciente();
+//        mostrarTabla();
 
     }
 
@@ -226,11 +226,11 @@ public class FrameTriaje extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
-        int posicion = tablaPacientes.getSelectedRow();
-        Paciente paciente = listaPacientes.getDato(posicion);
-        FrameHistoriaClinica historial = new FrameHistoriaClinica(paciente);
-        historial.setVisible(true);
+//
+//        int posicion = tablaPacientes.getSelectedRow();
+//        Paciente paciente = listaPacientes.getDato(posicion);
+//        FrameHistoriaClinica historial = new FrameHistoriaClinica(paciente);
+//        historial.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -243,16 +243,16 @@ public class FrameTriaje extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    public void mostrarTabla() {
-        DefaultTableModel dtm = (DefaultTableModel) tablaPacientes.getModel();
-        dtm.setRowCount(0);
-        Iterator<Paciente> iterador = listaPacientes.getDescendingIterator();
-        while (iterador.hasNext()) {
-            Paciente pro = iterador.next();
-            dtm.addRow(new Object[]{pro.getNombre(), pro.getApellido(),
-                pro.getAlergia(), pro.getDni()});
-        }
-    }
+//    public void mostrarTabla() {
+//        DefaultTableModel dtm = (DefaultTableModel) tablaPacientes.getModel();
+//        dtm.setRowCount(0);
+//        Iterator<Paciente> iterador = listaPacientes.getDescendingIterator();
+//        while (iterador.hasNext()) {
+//            Paciente pro = iterador.next();
+//            dtm.addRow(new Object[]{pro.getNombre(), pro.getApellido(),
+//                pro.getAlergia(), pro.getDni()});
+//        }
+//    }
 
     /**
      * @param args the command line arguments
