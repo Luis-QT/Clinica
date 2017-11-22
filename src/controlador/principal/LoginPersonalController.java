@@ -97,8 +97,13 @@ public class LoginPersonalController implements Controller, ActionListener {
             new RecepcionPrincipalController(recepcion).index();
         } else if (vista.chxContab.isSelected()) {
             this.triaje = new FrameTriaje(medicoTriaje);
+<<<<<<< HEAD
             //FrameContabilidad contabilidad = new FrameContabilidad(cajero,this.triaje);
            // new ContabilidadController(contabilidad).index();
+=======
+            FrameContabilidad contabilidad = new FrameContabilidad(cajero);
+            new ContabilidadController(contabilidad).index();
+>>>>>>> 0d1736de953c27aed660c848dabfe3635b518876
         } else if (vista.chxgeneral.isSelected()) {
 
         } else if (vista.chxtriaje.isSelected()) {
