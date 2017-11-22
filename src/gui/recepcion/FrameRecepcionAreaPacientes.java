@@ -52,7 +52,7 @@ public class FrameRecepcionAreaPacientes extends javax.swing.JDialog {
         tblPacientes.setEnabled(true);
         this.recepcionista = recepcionista;
         this.listaPaciente = this.recepcionista.getListaPaciente();
-        refrescartabla(listaPaciente);
+//        refrescartabla(listaPaciente);
 
     }
 

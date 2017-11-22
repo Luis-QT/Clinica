@@ -15,6 +15,7 @@ public class Visita {
     private Diagnostico diagnostico;
     private String medicina;
     private String recomendaciones;
+    private boolean pago;
 
     
     public Visita(String servicio) {
@@ -25,6 +26,24 @@ public class Visita {
         this.examenFisico = new ExamenFisicos();
         this.diagnostico = new Diagnostico();
     }
+
+    public Visita(int idHistorial, int idVisita, String servicio, DatosMedico datosMedico, LocalDate fecha, Anamnesis anamnecis, ExamenFisicos examenFisico, Diagnostico diagnostico, String medicina, String recomendaciones, boolean pago) {
+        this.idHistorial = idHistorial;
+        this.idVisita = idVisita;
+        this.servicio = servicio;
+        this.datosMedico = datosMedico;
+        this.fecha = fecha;
+        this.anamnecis = anamnecis;
+        this.examenFisico = examenFisico;
+        this.diagnostico = diagnostico;
+        this.medicina = medicina;
+        this.recomendaciones = recomendaciones;
+        this.pago = pago;
+    }
+    
+    
+    
+    
     
     //Constructor recepcionista
     public Visita(String servicio,DatosMedico medico) {

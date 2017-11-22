@@ -34,6 +34,7 @@ public class MedicoGeneralDaoImpl implements MedicoGeneralDao{
         try {
             ResultSet rs = this.conn.query(sql.toString());
             while(rs.next()){
+
                 medico= new MedicoGeneral(rs.getString("colegiatura"), rs.getString("codigo"),
                         rs.getString("contraseña"), null , rs.getInt("id"),rs.getString("nombre"),
                         rs.getString("apellido"), rs.getInt("dni"), rs.getBoolean("sexo"),

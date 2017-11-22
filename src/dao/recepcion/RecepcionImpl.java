@@ -89,6 +89,8 @@ public class RecepcionImpl implements Recepcion {
 
     @Override
     public Paciente obtenerPaciente(int id) {
+        
+        
         this.conn = FactoryConnectionDb.open();
         Paciente paciente =null;
         StringBuilder sql = new StringBuilder();
