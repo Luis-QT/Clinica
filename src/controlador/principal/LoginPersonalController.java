@@ -11,6 +11,7 @@ import controlador.contabilidad.ContabilidadController;
 import controlador.medicoEspecialista.MedicoEspecialistaController;
 import controlador.recepcion.RecepcionPrincipalController;
 import controlador.triaje.PMedicoTriajeController;
+import dao.daoImpl.RecepcionistaDaoImpl;
 import gui.contabilidad.FrameContabilidad;
 import gui.medicoEspecialista.FrameMedicoEspecialista;
 import gui.recepcion.FrameRecepcionPrincipal;
@@ -65,6 +66,8 @@ public class LoginPersonalController implements Controller, ActionListener {
 
     private void formIniciar() {
         //Personales
+        
+        
         Recepcionista recepcionista = vista.getRecepcionista();
         MedicoEspecialista medicoEspecialista = vista.getMedicoEspecialista();
         MedicoTriaje medicoTriaje = vista.getMedicoTriaje();
@@ -73,8 +76,22 @@ public class LoginPersonalController implements Controller, ActionListener {
 
         // FrameTriaje triaje = new FrameTriaje(medicoTriaje);
         //Fin
+        
+        //Extraer usuario y pass.
+        String usuario = vista.txtusuario.getText();
+        String passwoord = vista.txtPassword.getText();
+        
+        RecepcionistaDaoImpl recpDao = new RecepcionistaDaoImpl();
+        
+        //
+        
         if (vista.chxRecepcion.isSelected()) {
             FrameRecepcionPrincipal recepcion = new FrameRecepcionPrincipal(recepcionista);
+            
+            
+            
+            
+            
             //recepcion.setVisible(true);
             //vista.setVisible(false);
             new RecepcionPrincipalController(recepcion).index();

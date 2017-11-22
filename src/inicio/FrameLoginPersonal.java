@@ -123,8 +123,8 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jCTextField1 = new app.bolivia.swing.JCTextField();
-        jRPasswordField1 = new jpass.JRPasswordField();
+        txtusuario = new app.bolivia.swing.JCTextField();
+        txtPassword = new jpass.JRPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
@@ -174,18 +174,18 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jCTextField1.setBackground(new java.awt.Color(240, 238, 240));
-        jCTextField1.setBorder(null);
-        jCTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jCTextField1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jCTextField1.setPlaceholder("Ingrese usuario");
-        jPanel5.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 310, 30));
+        txtusuario.setBackground(new java.awt.Color(240, 238, 240));
+        txtusuario.setBorder(null);
+        txtusuario.setForeground(new java.awt.Color(153, 153, 153));
+        txtusuario.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtusuario.setPlaceholder("Ingrese usuario");
+        jPanel5.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 310, 30));
 
-        jRPasswordField1.setBackground(new java.awt.Color(240, 238, 240));
-        jRPasswordField1.setBorder(null);
-        jRPasswordField1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jRPasswordField1.setPlaceholder("Ingrese contraseña");
-        jPanel5.add(jRPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        txtPassword.setBackground(new java.awt.Color(240, 238, 240));
+        txtPassword.setBorder(null);
+        txtPassword.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtPassword.setPlaceholder("Ingrese contraseña");
+        jPanel5.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/User Name.png"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -352,7 +352,6 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
     public javax.swing.JCheckBox chxRecepcion;
     public javax.swing.JCheckBox chxgeneral;
     public javax.swing.JCheckBox chxtriaje;
-    private app.bolivia.swing.JCTextField jCTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -364,6 +363,7 @@ public class FrameLoginPersonal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private jpass.JRPasswordField jRPasswordField1;
+    public jpass.JRPasswordField txtPassword;
+    public app.bolivia.swing.JCTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }
