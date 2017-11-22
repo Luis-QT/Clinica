@@ -73,7 +73,7 @@ public class RecepcionAgregarController implements Controller, ActionListener {
         
         Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 2, "", "",codigoP);
         vista.getRecepcionista().agregarPaciente(p);
-        vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
+       // vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
         vista.setVisible(false);
         
     }

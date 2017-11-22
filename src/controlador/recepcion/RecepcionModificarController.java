@@ -100,7 +100,7 @@ public class RecepcionModificarController implements Controller, ActionListener{
         
         Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 1, "", "","");
 //        vista.getRecepcionista().modificaPaciente(p,pers);
-        vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
+       // vistAnterior.refrescartabla(vista.getRecepcionista().getListaPaciente());
         vista.setVisible(false);
     }
     

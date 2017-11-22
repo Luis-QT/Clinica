@@ -26,6 +26,7 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
     private FrameRecepcionAgregar areaAgregar;
     private FrameRecepcionModificar areaModificar;
     private ListaDoble<Paciente> listaPaciente;
+    RecepcionImpl recepcionDao = new RecepcionImpl();
 
     public RecepcionAreaPacientesController(FrameRecepcionAreaPacientes vista) {
         this.vista = vista;
@@ -49,9 +50,13 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
         this.vista.btnModificar.setActionCommand("Modificar");
         this.vista.btnModificar.addActionListener(this);
 
-        RecepcionImpl recepcionDao = new RecepcionImpl();
-        listaPaciente = recepcionDao.listaPaciente();
+       // RecepcionImpl recepcionDao = new RecepcionImpl();
         
+        vista.getRecepcionista().setListaPaciente(recepcionDao.listaPaciente()); 
+        listaPaciente = recepcionDao.listaPaciente();
+        System.out.println("lisrta:" + listaPaciente.toString());
+       
+        refrescartabla(listaPaciente);
     }
 
     @Override
@@ -82,13 +87,14 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
     private void formBuscar() {
         String palabraBuscar = vista.txtBuscar.getText();
         if (vista.chxApellido.isSelected()) {
-            ListaDoble<Paciente> sp = vista.getRecepcionista().buscarporApellido(palabraBuscar);
-            vista.setListaPaciente(sp);
-            refrescartabla(sp);
+            listaPaciente = vista.getRecepcionista().buscarporApellido(palabraBuscar);
+            System.out.println("SP: " + listaPaciente.toString());
+//            listaPaciente = sp;
+            refrescartabla(listaPaciente);
         } else if (vista.chxDni.isSelected()) {
-            ListaDoble<Paciente> sp = vista.getRecepcionista().buscarporDNI(Integer.parseInt(palabraBuscar));
-            vista.setListaPaciente(sp);
-            refrescartabla(sp);
+            listaPaciente = vista.getRecepcionista().buscarporDNI(Integer.parseInt(palabraBuscar));
+//            listaPaciente = sp;
+            refrescartabla(listaPaciente);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione una opcion");
         }
@@ -97,7 +103,7 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
     public void refrescartabla(ListaDoble<Paciente> sp) {
         DefaultTableModel dtm = (DefaultTableModel) vista.tblPacientes.getModel();
         dtm.setRowCount(0);
-        Iterator<Paciente> iterador = vista.listaPaciente.getDescendingIterator();
+        Iterator<Paciente> iterador = sp.getDescendingIterator();
         while (iterador.hasNext()) {
             Paciente pro = iterador.next();
             dtm.addRow(new Object[]{pro.getId(), pro.getNombre(), pro.getApellido(), pro.getDni(),
@@ -138,8 +144,8 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
     }
 
     private void formRefrescar() {
-        vista.listaPaciente = vista.getRecepcionista().getListaPaciente();
-        refrescartabla(vista.listaPaciente);
+        listaPaciente = vista.getRecepcionista().getListaPaciente();
+        refrescartabla(listaPaciente);
     }
 
     private void formModificar() {
@@ -151,16 +157,16 @@ public class RecepcionAreaPacientesController implements Controller, ActionListe
         new RecepcionModificarController(areaModificar, vista,pers).index();
     }
 
-    private void refrescartabla() {
-                DefaultTableModel dtm = (DefaultTableModel) vista.tblPacientes.getModel();
-                dtm.setRowCount(0);
-                Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
-                while (iterador.hasNext()) {
-                    Paciente pro = iterador.next();
-                    dtm.addRow(new Object[]{pro.getId(), pro.getNombre(), pro.getApellido(), pro.getDni(),
-                        pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
-                        pro.getEmail()});
-                }
-    }
+//    private void refrescartabla() {
+//                DefaultTableModel dtm = (DefaultTableModel) vista.tblPacientes.getModel();
+//                dtm.setRowCount(0);
+//                Iterator<Paciente> iterador = listaPaciente.getDescendingIterator();
+//                while (iterador.hasNext()) {
+//                    Paciente pro = iterador.next();
+//                    dtm.addRow(new Object[]{pro.getId(), pro.getNombre(), pro.getApellido(), pro.getDni(),
+//                        pro.getEdad(), pro.getTelefonoCasa(), pro.getTelefonoCelular(),
+//                        pro.getEmail()});
+//                }
+//    }
     
 }
