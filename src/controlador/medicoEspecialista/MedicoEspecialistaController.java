@@ -62,9 +62,6 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
         this.vista.jmiCerraSesion.setActionCommand("Salir");
         this.vista.jmiCerraSesion.addActionListener(this);
         
-        
-        
-        
         listaPacientes = medicoEspDao.listaPacientes();
         vista.getMedicoE().setListaPaciente(medicoEspDao.listaPacientes());
         mostrarTabla(listaPacientes);
