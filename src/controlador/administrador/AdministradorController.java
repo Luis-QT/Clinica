@@ -18,6 +18,7 @@ import gui.administrador.mantenimiento.medico.medicoLaboratorio.ListaML;
 import gui.administrador.mantenimiento.medico.medicoTriaje.ListaMT;
 import gui.administrador.mantenimiento.recepcionista.ListaR;
 import gui.administrador.mantenimiento.sala.Salas;
+import gui.administrador.paciente.FramePacientes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -40,6 +41,7 @@ public class AdministradorController implements Controller,ActionListener{
     private ListaMT FrameListaMT;
     private ListaC FrameListaC;
     private FrameConfiguracion frameConfiguracion;
+    private FramePacientes framePacientes;
     
     public AdministradorController(FramePrincipalAdministrador frame ){
         this.vista = frame;
@@ -66,6 +68,9 @@ public class AdministradorController implements Controller,ActionListener{
         this.vista.btnPlanTratamiento.setActionCommand("PlanTratamiento");
         vista.btnPlanTratamiento.addActionListener(this);
         
+        this.vista.btnConfiguraciones.setActionCommand("Configuraciones");
+        vista.btnConfiguraciones.addActionListener(this);
+        
         this.vista.btnCerrarSesion.setActionCommand("Salir");
         vista.btnCerrarSesion.addActionListener(this);
         
@@ -89,6 +94,11 @@ public class AdministradorController implements Controller,ActionListener{
         this.vista.PaneTratamiento.addMouseListener(new MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formPlanTratamiento();
+            }
+        });
+        this.vista.PanePaciente.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formPaciente();
             }
         });
     }
@@ -116,6 +126,8 @@ public class AdministradorController implements Controller,ActionListener{
             formPlanTratamiento();
         }else if(comando.equals("MantenimientoC")){
             formMantenimientoCajero();
+        }else if(comando.equals("Configuraciones")){
+            formConfiguracion();
         }
     }
     
@@ -158,7 +170,10 @@ public class AdministradorController implements Controller,ActionListener{
         this.frameConfiguracion = new FrameConfiguracion(vista, true);
         new ConfiguracionController(frameConfiguracion).index();
     }
-    
+    private void formPaciente(){
+        this.framePacientes = new FramePacientes(vista, true);
+        new PacienteController(framePacientes).index();
+    }
     
     private class MantenimientoController implements Controller{
         public MantenimientoController(){

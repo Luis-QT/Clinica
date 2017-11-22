@@ -1,30 +1,19 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-Wed Nov 22 11:48:24 COT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e4a1-6712-000002d3e0e8 
+Wed Nov 22 12:14:27 COT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e4b9-4098-000002cdb328 
 on database directory C:\Users\LLLL\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
 Loaded from file:/C:/Users/LLLL/Desktop/Clinica/jars/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
 user.dir=C:\Users\LLLL\Desktop\Clinica
 os.name=Windows 7
-=======
-Wed Nov 22 11:23:05 COT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e48a-391a-000003caa3e0 
-on database directory C:\Users\Pechito\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
-Loaded from file:/C:/Users/Pechito/Desktop/Clinica/jars/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_144-b01
-user.dir=C:\Users\Pechito\Desktop\Clinica
-os.name=Windows 10
->>>>>>> 89ceb8905c5ac89fb5da553161c1f9745972a02e
 os.arch=amd64
 os.version=6.1
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Wed Nov 22 11:49:35 COT 2017: Shutting down Derby engine
+Wed Nov 22 12:14:38 COT 2017: Shutting down Derby engine
 ----------------------------------------------------------------
-Wed Nov 22 11:49:36 COT 2017:
-Shutting down instance a816c00e-015f-e4a1-6712-000002d3e0e8 on database directory C:\Users\LLLL\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
+Wed Nov 22 12:14:38 COT 2017:
+Shutting down instance a816c00e-015f-e4b9-4098-000002cdb328 on database directory C:\Users\LLLL\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
 ----------------------------------------------------------------

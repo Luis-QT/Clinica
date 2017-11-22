@@ -51,10 +51,10 @@ public class Salas extends javax.swing.JDialog {
         txtCambios = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tablaSala = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtTratamiento = new javax.swing.JTextField();
+        txtSala = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
@@ -235,26 +235,10 @@ public class Salas extends javax.swing.JDialog {
 
         jPanel11.setBackground(new java.awt.Color(204, 204, 204));
 
-        tabla.setBackground(new java.awt.Color(221, 255, 220));
-        tabla.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSala.setBackground(new java.awt.Color(221, 255, 220));
+        tablaSala.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tablaSala.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -273,12 +257,12 @@ public class Salas extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaSala.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaSalaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabla);
+        jScrollPane1.setViewportView(tablaSala);
 
         jPanel12.setBackground(new java.awt.Color(204, 204, 204));
         jPanel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -299,7 +283,7 @@ public class Salas extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                    .addComponent(txtTratamiento)
+                    .addComponent(txtSala)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -313,7 +297,7 @@ public class Salas extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -511,9 +495,9 @@ public class Salas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    public javax.swing.JTable tabla;
+    public javax.swing.JTable tablaSala;
     public javax.swing.JTextField txtCambios;
     public javax.swing.JTextArea txtDescripcion;
-    public javax.swing.JTextField txtTratamiento;
+    public javax.swing.JTextField txtSala;
     // End of variables declaration//GEN-END:variables
 }

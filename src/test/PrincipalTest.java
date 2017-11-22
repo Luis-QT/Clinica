@@ -18,7 +18,7 @@ import inicio.FramePrincipal;
 public class PrincipalTest {
 
     public static void main(String[] args) {
-        ConnectionDb conn = FactoryConnectionDb.create();
+        //ConnectionDb conn = FactoryConnectionDb.create();
         System.out.println("BD Activada :D");
         FramePrincipal fm = new FramePrincipal();
         PrincipalController mec = new PrincipalController(fm);
