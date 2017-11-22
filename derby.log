@@ -1,19 +1,13 @@
 ----------------------------------------------------------------
-Tue Nov 21 22:35:20 COT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e1cb-5588-0000035ca928 
-on database directory C:\Users\LLLL\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
-Loaded from file:/C:/Users/LLLL/Desktop/Clinica/jars/derby.jar
+Tue Nov 21 22:55:43 COT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e1dd-febd-000007284af8 
+on database directory C:\Users\Luis\Documents\GitHub\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
+Loaded from file:/C:/Users/Luis/Documents/GitHub/Clinica/jars/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
-user.dir=C:\Users\LLLL\Desktop\Clinica
-os.name=Windows 7
+user.dir=C:\Users\Luis\Documents\GitHub\Clinica
+os.name=Windows 10
 os.arch=amd64
-os.version=6.1
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Tue Nov 21 22:35:34 COT 2017: Shutting down Derby engine
-----------------------------------------------------------------
-Tue Nov 21 22:35:37 COT 2017:
-Shutting down instance a816c00e-015f-e1cb-5588-0000035ca928 on database directory C:\Users\LLLL\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
-----------------------------------------------------------------

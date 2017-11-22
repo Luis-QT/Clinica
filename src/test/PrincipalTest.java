@@ -6,6 +6,9 @@
 package test;
 
 import controlador.principal.PrincipalController;
+import factory.ConnectionDb;
+import factory.FactoryConnectionDb;
+import factory.MySQLConnectionFactory;
 import inicio.FramePrincipal;
 
 /**
@@ -15,9 +18,12 @@ import inicio.FramePrincipal;
 public class PrincipalTest {
 
     public static void main(String[] args) {
+        ConnectionDb conn = FactoryConnectionDb.create();
+        System.out.println("BD Activada :D");
         FramePrincipal fm = new FramePrincipal();
         PrincipalController mec = new PrincipalController(fm);
         mec.index();
+        ///MySQLConnectionFactory.shutdown();
     }
 
 }

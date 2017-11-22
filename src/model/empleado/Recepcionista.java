@@ -50,6 +50,10 @@ public class Recepcionista extends EmpleadoUser {
         return listaPaciente;
     }
 
+    public void setListaPaciente(ListaDoble<Paciente> listaPaciente) {
+        this.listaPaciente = listaPaciente;
+    }
+
     public void agregarPaciente(Paciente paciente){
         listaPaciente.insertarAlFinal(paciente);
         paciente.setSoftDelete(2);

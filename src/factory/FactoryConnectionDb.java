@@ -102,8 +102,22 @@ public class FactoryConnectionDb {
         */
              "INSERT INTO Paciente" 
             + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
-            + "('Paciente01','Apellido01',0,23,123487548,35236232,'paciente@gmail',0,'A', 'alergia al polvo','A03')",
-            
+            + "('Luis','Yauri',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H03')",
+             "INSERT INTO Paciente" 
+            + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
+            + "('Ximena','Politi',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H02')",
+             "INSERT INTO Paciente" 
+            + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
+            + "('Alisson','Arroyo',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H01')",
+             "INSERT INTO Paciente" 
+            + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
+            + "('Brandom','Urtecho',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','H04')",
+             "INSERT INTO Paciente" 
+            + "(nombre,apellido, sexo ,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias, codigoP) VALUES "
+            + "('Diego','Vera',0,21,3261047,944551457,'luis.y@gmail',0,'A', 'alergia al polvo','A03')",
+             
+             
+             
             "INSERT INTO MedicoGeneral "
             + "(codigo,nombre,apellido,dni,contraseña,colegiatura,edad,telefonoCasa,telefonoCelular,sexo,email,softDelete) VALUES "
             + "('medico2','Luis','Yauri',11111111,'1234-3','cole1',10,5284422,973555441,1,'a@a',0)",
