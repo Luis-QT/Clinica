@@ -8,6 +8,9 @@ package controlador.medicoEspecialista;
 import controlador.Controller;
 import controlador.historial.HistorialController;
 import controlador.principal.LoginPersonalController;
+import dao.medicoEspecialista.MedicoEspecialistaDao;
+import dao.daoImpl.MedicoEspecialistaDaoImpl;
+import dao.medicoEspecialista.MedicoEspecialistaDaoI;
 import estructura.ListaDoble;
 import factory.MySQLConnectionFactory;
 import gui.medicoEspecialista.FrameMedicoEspecialista;
@@ -54,6 +57,11 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
         
         this.vista.jmiCerraSesion.setActionCommand("Salir");
         this.vista.jmiCerraSesion.addActionListener(this);
+        
+        
+        
+        MedicoEspecialistaDao medicoEspDao = new MedicoEspecialistaDaoI();
+        vista.setListaPacientes(medicoEspDao.listaPacientes());
     }
     
     @Override

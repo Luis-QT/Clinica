@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Nov 22 00:38:33 COT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e23c-247a-000007284b10 
-on database directory C:\Users\Luis\Documents\GitHub\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
-Loaded from file:/C:/Users/Luis/Documents/GitHub/Clinica/jars/derby.jar
+Wed Nov 22 01:50:05 COT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015f-e27d-a2a5-000003cf0550 
+on database directory C:\Users\Pechito\Desktop\Clinica\DB\Derby.DB with class loader sun.misc.Launcher$AppClassLoader@3d4eac69 
+Loaded from file:/C:/Users/Pechito/Desktop/Clinica/jars/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_144-b01
-user.dir=C:\Users\Luis\Documents\GitHub\Clinica
+user.dir=C:\Users\Pechito\Desktop\Clinica
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
