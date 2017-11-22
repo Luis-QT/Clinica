@@ -134,23 +134,23 @@ public class RecepcionImpl implements Recepcion {
                  */
 
                 sql.append("INSERT INTO Paciente"
-                        + "(nombre,apellido,dni,sexo,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias) VALUES ("
+                        + "(nombre,apellido,dni,sexo,edad,telefonoCasa,telefonoCelular,email,softDelete,tipoSangre,alergias) VALUES ( '"
                         + paciente.getNombre() + "','" + paciente.getApellido() + "','"
                         + paciente.getDni() + "','" + paciente.getSexoEntero() + "','"
                         + paciente.getEdad() + "','" + paciente.getTelefonoCasa() + "','"
-                        + paciente.getTelefonoCelular() + "','" + paciente.getEmail() + "','"
-                        + "0" + "','" + paciente.getTipoSangre() + "','" + paciente.getAlergia());
+                        + paciente.getTelefonoCelular() + "','" + paciente.getEmail() + "',"
+                        + "0" + ",'" + paciente.getTipoSangre() + "','" + paciente.getAlergia()+"')");
 
                 this.conn.execute2(sql.toString());
             } else {//update
                 StringBuilder sql = new StringBuilder();
                 sql.append("UPDATE Paciente SET codigo = '").append(paciente.getCodigoP()).append("'");
                 sql.append(",nombre = '" + paciente.getNombre() + "'").append(",apellido = '" + paciente.getApellido() + "'");
-                sql.append(",dni = " + paciente.getDni()).append(",sexo = '" + paciente.getSexoEntero() + "'");
+                sql.append(",dni = " + paciente.getDni()).append(",sexo = " + paciente.getSexoEntero() + "");
                 sql.append(",edad = " + paciente.getEdad());
                 sql.append(",telefonoCasa = " + paciente.getTelefonoCasa()).append(",telefonoCelular =" + paciente.getTelefonoCelular());
-                sql.append(",email = " + paciente.getEmail()).append(",softDelete='" + paciente.getSoftDelete()).append("',tipoSangre=" + paciente.getTipoSangre());
-                sql.append(" WHERE id = " + paciente.getId());
+                sql.append(",email = '"+ paciente.getEmail()+ "'").append(",softDelete=" + paciente.getSoftDelete()).append(",tipoSangre= '" + paciente.getTipoSangre()).append("',alergias= '" + paciente.getAlergia());
+                sql.append("' WHERE id = " + paciente.getId());
                 this.conn.execute2(sql.toString());
             }
             save = true;
