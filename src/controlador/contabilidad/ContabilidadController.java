@@ -22,6 +22,7 @@ import model.empleado.Cajero;
 import model.empleado.Monto;
 import model.empleado.Servicios;
 import model.paciente.Paciente;
+import dao.contabilidad.ContabilidadDaoImp;
 
 
 public class ContabilidadController implements Controller,ActionListener{
@@ -30,12 +31,15 @@ public class ContabilidadController implements Controller,ActionListener{
     private ListaDoble<Servicios> listaServicios;
     private ListaDoble<Monto> listaMonto;
     private ListaDoble<Paciente> listaPacientes;
-    
-    
+    ContabilidadDaoImp contDao = new ContabilidadDaoImp();
+    ListaDoble<Servicios> listaSeleccionGeneral;
     public ContabilidadController (FrameContabilidad vista){
         this.vista = vista;
+       listaSeleccionGeneral = new ListaDoble<>();
+       listaMonto = new ListaDoble<>(); 
+       
+       iniciar();
         
-        iniciar();
     }
 
     @Override
@@ -88,6 +92,8 @@ listaServicios = vista.getCaja().getListaServicios();
 vista.mostrarTablaServicios(listaServicios);
 
 
+listaPacientes = contDao.listaPacientes();
+        System.out.println("ListaPacientes: " + listaPacientes.toString());
        
     }
 
@@ -122,34 +128,39 @@ vista.mostrarTablaServicios(listaServicios);
        try {
            Cajero caja = vista.getCaja();
            ListaDoble<Servicios> listaConsultaServicios = vista.getListaConsultaServicios();
-           ListaDoble<Servicios> listaSeleccionGeneral = vista.getListaSeleccionGeneral();
+           
            ListaDoble<Servicios> listaLaboratorioServicios = vista.getListaLaboratorioServicios();
-           ListaDoble<Servicios> listaServicios = this.listaServicios;
-           if (vista.rbtnConsulta.isSelected()) {
-               int t = vista.TablaServicios.getSelectedRow();
-               Servicios set = listaServicios.getDato(t);
-
-               listaSeleccionGeneral.insertarAlFinal(set);
-
-               vista.mostrarTablaSeleccion(listaSeleccionGeneral);
-           } else if (vista.rbtnLaboratorio.isSelected()) {
-
-               int t = vista.TablaServicios.getSelectedRow();
-               Servicios set = listaServicios.getDato(t);
-
-               listaSeleccionGeneral.insertarAlFinal(set);
-
-               vista.mostrarTablaSeleccion(listaSeleccionGeneral);
-
-           } else {
-               int i = vista.TablaServicios.getSelectedRow();
-               Servicios set = listaServicios.getDato(i);
-
-               listaSeleccionGeneral.insertarAlFinal(set);
-
-               vista.mostrarTablaSeleccion(listaSeleccionGeneral);
-
-           }
+           
+           int t = vista.TablaServicios.getSelectedRow();
+           Servicios set = listaServicios.getDato(t);
+           listaSeleccionGeneral.insertarAlFinal(set);
+           vista.mostrarTablaSeleccion(listaSeleccionGeneral);
+//               Servicios set = listaServicios.getDato(t);
+//           if (vista.rbtnConsulta.isSelected()) {
+//               int t = vista.TablaServicios.getSelectedRow();
+//               Servicios set = listaServicios.getDato(t);
+//
+//               listaSeleccionGeneral.insertarAlFinal(set);
+//
+//               vista.mostrarTablaSeleccion(listaSeleccionGeneral);
+//           } else if (vista.rbtnLaboratorio.isSelected()) {
+//
+//               int t = vista.TablaServicios.getSelectedRow();
+//               Servicios set = listaServicios.getDato(t);
+//
+//               listaSeleccionGeneral.insertarAlFinal(set);
+//
+//               vista.mostrarTablaSeleccion(listaSeleccionGeneral);
+//
+//           } else {
+//               int i = vista.TablaServicios.getSelectedRow();
+//               Servicios set = listaServicios.getDato(i);
+//
+//               listaSeleccionGeneral.insertarAlFinal(set);
+//
+//               vista.mostrarTablaSeleccion(listaSeleccionGeneral);
+//
+//           }
            
        } catch (Exception e) {
            System.out.println(e.getMessage());
@@ -161,7 +172,7 @@ vista.mostrarTablaServicios(listaServicios);
     private void formDeshacer() {
         try{
             
-            ListaDoble<Servicios> listaSeleccionGeneral = vista.getListaSeleccionGeneral();
+           // ListaDoble<Servicios> listaSeleccionGeneral = vista.getListaSeleccionGeneral();
             int i = vista.TablaSeleccion.getSelectedRow();
             listaSeleccionGeneral.eliminarPos(i);
             vista.mostrarTablaSeleccion(listaSeleccionGeneral);
@@ -194,10 +205,10 @@ vista.mostrarTablaServicios(listaServicios);
     private void formBuscar() {
         try {
             Cajero caja = vista.getCaja();
-            ListaDoble<Servicios> listaServicios = this.listaServicios;
+//            ListaDoble<ServicioslistaServicios>  = this.listaServicios;
             String palabra = vista.txtBuscar.getText();
             ListaDoble<Servicios> p = caja.bucarServicio(palabra);
-            vista.setListaServicios(p);
+            listaServicios = p;
             vista.mostrarTablaServicios(p);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -223,7 +234,7 @@ vista.mostrarTablaServicios(listaServicios);
     
       private void formNuevoCliente() {
           try {
-              ListaDoble<Servicios> listaSeleccionGeneral = vista.getListaSeleccionGeneral();
+            //  ListaDoble<Servicios> listaSeleccionGeneral = vista.getListaSeleccionGeneral();
               vista.txtMonto.setText("");
               vista.txtPago.setText("");
               vista.txtVuelto.setText("");
@@ -242,9 +253,9 @@ vista.mostrarTablaServicios(listaServicios);
       
       private void formRegistrar() {
           try {
-              ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
-              ListaDoble<Monto> listaMonto = vista.getListaMonto();
-              Cajero caja = vista.getCaja();
+             // ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
+//              ListaDoble<Monto> listaMonto = vista.getListaMonto();
+//              Cajero caja = vista.getCaja();
               GregorianCalendar d = new GregorianCalendar();
 
               int anio = d.get(Calendar.YEAR);
@@ -265,15 +276,15 @@ vista.mostrarTablaServicios(listaServicios);
 
                   if (String.valueOf(pro.getId()).equalsIgnoreCase(codigo)) {
                       comprobar = true;
-                      
-
+                      pro.getHistorial().getListaVisitas().getFin().getDato().setPago(true);
+                      contDao.guardarPaciente(pro);
                   }
               }
 
               if (comprobar) {
                   Monto reg = new Monto(monto, pago, vuelto, fecha);
 
-                  caja.agregarMonto(reg);
+                  listaMonto.insertarAlFinal(reg);
                   vista.mostrarTablaRegistro(listaMonto, listaPacientes);
 
                   // para mostar monto de salida
@@ -307,10 +318,11 @@ vista.mostrarTablaServicios(listaServicios);
     }
       private void formOrdenarPrecio() {
         try {
-            ListaDoble<Servicios> listaServicios = this.listaServicios;
+           // ListaDoble<Servicios> listaServicios = this.listaServicios;
             Cajero caja = vista.getCaja();
             listaServicios = caja.ordenarPrecios();
-            vista.setListaServicios(listaServicios);
+             listaServicios = vista.getCaja().getListaServicios();
+           // vista.setListaServicios(listaServicios);
             vista.mostrarTablaServicios(listaServicios);
 
         } catch (Exception e) {
@@ -327,8 +339,9 @@ vista.mostrarTablaServicios(listaServicios);
             
             if (vista.rbtnConsulta.isSelected()) {
             listaConsultaServicios = caja.ordenarporConsultas(); 
-            vista.setListaServicios(listaConsultaServicios);
-            vista.mostrarTablaServicios(listaConsultaServicios);
+            listaServicios = listaConsultaServicios;
+//            vista.setListaServicios(listaConsultaServicios);
+            vista.mostrarTablaServicios(listaServicios);
         }
 
         } catch (Exception e) {
@@ -343,8 +356,9 @@ vista.mostrarTablaServicios(listaServicios);
             ListaDoble<Servicios> listaLaboratorioServicios = vista.getListaLaboratorioServicios();
             if (vista.rbtnLaboratorio.isSelected()) {
                 listaLaboratorioServicios = caja.ordenarporLaboratorio();
-                vista.setListaServicios(listaLaboratorioServicios);
-                vista.mostrarTablaServicios(listaLaboratorioServicios);
+                listaServicios = listaLaboratorioServicios;
+               // vista.setListaServicios(listaLaboratorioServicios);
+                vista.mostrarTablaServicios(listaServicios);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

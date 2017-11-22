@@ -18,13 +18,13 @@ public class mainContaTest {
         // TODO code application logic here
          Cajero caja = new Cajero("1234", "contraseña", null, 21, "Carlos", "Sanchez", 9098, true, 32, 9563212, 6411452, "carlos@gmail.com", 0);
         
-           Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
-         Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
-         Paciente p3 = new Paciente(0, "Miriam", "Miriam", 3333, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
-         Paciente p4 = new Paciente(0, "Mizu", "Mizu", 4444, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
-         Paciente p5 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
-         Paciente p6 = new Paciente(0, "LuisRoberto", "LuisRoberto", 6666, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
-         Paciente p7 = new Paciente(0, "LuisJose", "LuisJose", 5555, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
+//           Paciente p1 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A01");
+//         Paciente p2 = new Paciente(0, "Yauri", "Yauri", 2222, true, 21, 98766, 64564, "", 2, "A", "No hay","A02");
+//         Paciente p3 = new Paciente(0, "Miriam", "Miriam", 3333, true, 21, 98766, 64564, "", 2, "A", "No hay","A03");
+//         Paciente p4 = new Paciente(0, "Mizu", "Mizu", 4444, true, 21, 98766, 64564, "", 2, "A", "No hay","A04");
+//         Paciente p5 = new Paciente(0, "Luis", "Luis", 1111, true, 21, 98766, 64564, "", 2, "A", "No hay","A05");
+//         Paciente p6 = new Paciente(0, "LuisRoberto", "LuisRoberto", 6666, true, 21, 98766, 64564, "", 2, "A", "No hay","A06");
+//         Paciente p7 = new Paciente(0, "LuisJose", "LuisJose", 5555, true, 21, 98766, 64564, "", 2, "A", "No hay","A07");
 //         
 //         
 //        Servicios s1 = new Servicios("sangre", 230F, false);
@@ -36,14 +36,14 @@ public class mainContaTest {
         
         LocalDate l = LocalDate.now();
         System.out.println("FECHA: " + l.toString());
-          
-        caja.agregarPaciente(p1);
-        caja.agregarPaciente(p2);
-        caja.agregarPaciente(p3);
-        caja.agregarPaciente(p4);
-        caja.agregarPaciente(p5);
-        caja.agregarPaciente(p6);
-        caja.agregarPaciente(p7);
+//          
+//        caja.agregarPaciente(p1);
+//        caja.agregarPaciente(p2);
+//        caja.agregarPaciente(p3);
+//        caja.agregarPaciente(p4);
+//        caja.agregarPaciente(p5);
+//        caja.agregarPaciente(p6);
+//        caja.agregarPaciente(p7);
         
 //        caja.agregarServicios(s1);
 //        caja.agregarServicios(s2);

@@ -40,6 +40,10 @@ public class Visita {
         this.recomendaciones = recomendaciones;
         this.pago = pago;
     }
+
+    public void setPago(boolean pago) {
+        this.pago = pago;
+    }
     
     
     
