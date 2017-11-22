@@ -55,7 +55,7 @@ public class ListaC extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
+        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 153), 1, true));
 
         jPanel8.setBackground(new java.awt.Color(0, 102, 102));
 

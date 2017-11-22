@@ -148,6 +148,7 @@ public class HorarioDaoImpl implements HorarioDao{
                 sql.append(",empleadoId = "+horario.getEmpleado().getId());
                 sql.append(",tipoEmpleado = "+horario.getTipoEmpleado());
                 sql.append(",salaId = "+horario.getSala().getId());
+                sql.append(" WHERE id = "+horario.getId());
                 this.conn.execute2(sql.toString());
             }
             save = true;

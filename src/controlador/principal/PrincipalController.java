@@ -19,7 +19,8 @@ import java.awt.event.ActionListener;
 public class PrincipalController implements Controller, ActionListener {
 
     private FramePrincipal vista;
-
+    private FrameLoginAdministracion frameLoginAdministracion;
+    
     public PrincipalController(FramePrincipal vista) {
         this.vista = vista;
         iniciar();
@@ -54,9 +55,12 @@ public class PrincipalController implements Controller, ActionListener {
 
     private void formLoginAdministrador() {
         //LoginAdministracion logAdmi = new FrameLoginAdministracion();
-        vista.setVisible(false);
         //this.FrameLoginAdministrador;
         //logAdmi.setVisible(true);
+        frameLoginAdministracion = new FrameLoginAdministracion();
+        LoginAdministradorController logAdmi = new LoginAdministradorController(frameLoginAdministracion,this.vista);
+        vista.setVisible(false);
+        logAdmi.index();
     }
 
     private void formLoginPersonal() {

@@ -201,6 +201,7 @@ public class AdministradorController implements Controller,ActionListener{
                     vista.setVisible(true);
                 }
             });
+            
         }
 
         @Override

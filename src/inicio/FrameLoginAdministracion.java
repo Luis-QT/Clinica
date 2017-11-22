@@ -38,13 +38,13 @@ public class FrameLoginAdministracion extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblcerrar = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jCTextField1 = new app.bolivia.swing.JCTextField();
-        jRPasswordField1 = new jpass.JRPasswordField();
+        txtCodigo = new app.bolivia.swing.JCTextField();
+        txtContraseña = new jpass.JRPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -73,31 +73,31 @@ public class FrameLoginAdministracion extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/inicioname.png"))); // NOI18N
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, 30));
 
-        lblcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
-        lblcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/equis.png"))); // NOI18N
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblcerrarMouseClicked(evt);
+                btnCerrarMouseClicked(evt);
             }
         });
-        jPanel4.add(lblcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        jPanel4.add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 70));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jCTextField1.setBackground(new java.awt.Color(240, 238, 240));
-        jCTextField1.setBorder(null);
-        jCTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jCTextField1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jCTextField1.setPlaceholder("Ingrese usuario");
-        jPanel5.add(jCTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 62, 310, 30));
+        txtCodigo.setBackground(new java.awt.Color(240, 238, 240));
+        txtCodigo.setBorder(null);
+        txtCodigo.setForeground(new java.awt.Color(153, 153, 153));
+        txtCodigo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtCodigo.setPlaceholder("Ingrese usuario");
+        jPanel5.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 62, 310, 30));
 
-        jRPasswordField1.setBackground(new java.awt.Color(240, 238, 240));
-        jRPasswordField1.setBorder(null);
-        jRPasswordField1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jRPasswordField1.setPlaceholder("Ingrese contraseña");
-        jPanel5.add(jRPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        txtContraseña.setBackground(new java.awt.Color(240, 238, 240));
+        txtContraseña.setBorder(null);
+        txtContraseña.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        txtContraseña.setPlaceholder("Ingrese contraseña");
+        jPanel5.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/User Name.png"))); // NOI18N
         jLabel3.setText("jLabel3");
@@ -107,14 +107,14 @@ public class FrameLoginAdministracion extends javax.swing.JFrame {
         jLabel4.setText("jLabel3");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 395, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l1.png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l2.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l1.png"))); // NOI18N
+        btnIngresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal/l2.png"))); // NOI18N
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 96, 37));
+        jPanel5.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 96, 37));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
@@ -137,11 +137,9 @@ public class FrameLoginAdministracion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblcerrarMouseClicked
-        // TODO add your handling code here:
-        this.dispose();FramePrincipal principal = new FramePrincipal();
-        principal.setVisible(true);
-    }//GEN-LAST:event_lblcerrarMouseClicked
+    private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
+        
+    }//GEN-LAST:event_btnCerrarMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
@@ -152,13 +150,9 @@ public class FrameLoginAdministracion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         
-        FramePrincipalAdministrador frame = new FramePrincipalAdministrador();
-        this.setVisible(false);
-        new AdministradorController(frame).index();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,8 +193,8 @@ public class FrameLoginAdministracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private app.bolivia.swing.JCTextField jCTextField1;
+    public javax.swing.JLabel btnCerrar;
+    public javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -211,7 +205,7 @@ public class FrameLoginAdministracion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private jpass.JRPasswordField jRPasswordField1;
-    private javax.swing.JLabel lblcerrar;
+    public app.bolivia.swing.JCTextField txtCodigo;
+    public jpass.JRPasswordField txtContraseña;
     // End of variables declaration//GEN-END:variables
 }
