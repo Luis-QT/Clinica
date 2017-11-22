@@ -2,6 +2,7 @@
 package controlador.recepcion;
 
 import controlador.Controller;
+import dao.recepcion.RecepcionImpl;
 import estructura.ListaDoble;
 import gui.recepcion.FrameRecepcionAgregar;
 import gui.recepcion.FrameRecepcionAreaPacientes;
@@ -51,6 +52,7 @@ public class RecepcionAgregarController implements Controller, ActionListener {
         }}
 
     private void formAgregar() {
+        RecepcionImpl receDao = new RecepcionImpl();
         //Datos Paciente
         String nombre = vista.txtnombres.getText();
         String apellido = vista.txtApellidos.getText();
@@ -78,6 +80,11 @@ public class RecepcionAgregarController implements Controller, ActionListener {
         
         Paciente p = new Paciente(0, nombre, apellido, dni, sexo, edad, telCasa, telCelular, correo, 2, "", "",codigoP);
         listaPaciente.insertarAlFinal(p);
+        if(receDao.guardarPaciente(p)){
+            JOptionPane.showMessageDialog(null, "Paciente registrado.");
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede registrar.");
+        }
         System.out.println("Lista : " +  listaPaciente.toString());
         
         vistAnterior.refrescartabla(listaPaciente);
