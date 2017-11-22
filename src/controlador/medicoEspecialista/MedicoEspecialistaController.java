@@ -21,15 +21,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.empleado.MedicoEspecialista;
 import model.paciente.Paciente;
 
 public class MedicoEspecialistaController implements Controller,ActionListener{
-    private FrameMedicoEspecialista vista;
+  private FrameMedicoEspecialista vista;
     private FrameHistoriaClinica frameHistorial;
     private FrameLoginPersonal login;
-
+    private ListaDoble<Paciente> listaPacientes;
+    MedicoEspecialistaDao medicoEspDao = new MedicoEspecialistaDaoI();
+    
     public MedicoEspecialistaController(FrameMedicoEspecialista vista) {
         this.vista = vista;
         iniciar();
@@ -60,8 +64,10 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
         
         
         
-        MedicoEspecialistaDao medicoEspDao = new MedicoEspecialistaDaoI();
-        vista.setListaPacientes(medicoEspDao.listaPacientes());
+        
+        listaPacientes = medicoEspDao.listaPacientes();
+        vista.getMedicoE().setListaPaciente(medicoEspDao.listaPacientes());
+        mostrarTabla(listaPacientes);
     }
     
     @Override
@@ -88,9 +94,8 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
     public void formActualizar(){
         try{
             MedicoEspecialista medicoE = vista.getMedicoE();
-            ListaDoble<Paciente> listaPaciente = medicoE.getListaPaciente();
-            vista.setListaPacientes(medicoE.getListaPaciente());
-            vista.mostrarTabla(listaPaciente);
+            listaPacientes = medicoEspDao.listaPacientes();
+            mostrarTabla(listaPacientes);
             vista.txtBuscar.setText("");
         }catch(Exception e){
             System.out.println(e.getMessage());
@@ -100,29 +105,26 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
     }
     
     private void formEliminar() {
-        try{
-            ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
-            MedicoEspecialista medicoE = vista.getMedicoE();
-            int pos = vista.tblPaciente.getSelectedRow();
-            if(pos >= 0){
-                medicoE.eliminarPaciente(pos);
-                vista.mostrarTabla(listaPacientes);
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
-        }
+//        try{
+//            ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
+//            MedicoEspecialista medicoE = vista.getMedicoE();
+//            int pos = vista.tblPaciente.getSelectedRow();
+//            if(pos >= 0){
+//                medicoE.eliminarPaciente(pos);
+//                mostrarTabla(listaPacientes);
+//            }
+//        }catch(Exception e){
+//            System.out.println(e.getMessage());
+//                JOptionPane.showMessageDialog(null, "ERROR DE ESCRITURA\n");
+//        }
     }
    
 
     private void formVerHistorial() {
          try{
-            ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
             MedicoEspecialista medicoE = vista.getMedicoE();
-            
             int pos = vista.tblPaciente.getSelectedRow();
             Paciente paciente = listaPacientes.getDato(pos);
-            
             this.frameHistorial = new FrameHistoriaClinica(paciente);
             this.frameHistorial.setVisible(true);
             new HistorialController( frameHistorial , new VentanaVisita(frameHistorial, true)).index();
@@ -136,16 +138,17 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
     private void formBuscar() {
         try{
             String palabraBuscar = vista.txtBuscar.getText();
-            ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
+//            ListaDoble<Paciente> listaPacientes = vista.getListaPacientes();
             MedicoEspecialista medicoE = vista.getMedicoE();
             if(vista.cbxApellido.isSelected()){
                 ListaDoble<Paciente> p = medicoE.buscarporApellido(palabraBuscar);
-                vista.setListaPacientes(p);
-                vista.mostrarTabla(p);
+                System.out.println("lista: " + p.toString());
+                listaPacientes = p;
+                mostrarTabla(p);
             }else if(vista.cbxCodigo.isSelected()){
                 ListaDoble<Paciente> p = medicoE.buscarporCodigo(palabraBuscar);
-                vista.setListaPacientes(p);
-                vista.mostrarTabla(p);
+                listaPacientes = p;
+                mostrarTabla(p);
             }else{
                 JOptionPane.showMessageDialog(null, "Ingrese un filtro");
             }
@@ -163,6 +166,14 @@ public class MedicoEspecialistaController implements Controller,ActionListener{
         
     }
     
-    
+    public void mostrarTabla(ListaDoble<Paciente> lista) {
+        DefaultTableModel dtm = (DefaultTableModel) vista.tblPaciente.getModel();
+        dtm.setRowCount(0);
+        Iterator<Paciente> iterador = lista.getDescendingIterator();
+        while (iterador.hasNext()) {
+            Paciente pro = iterador.next();
+            dtm.addRow(new Object[]{pro.getApellido(), pro.getId()});
+        }
+    }
     
 }

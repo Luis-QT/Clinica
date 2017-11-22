@@ -39,6 +39,10 @@ public class MedicoEspecialista extends Medico{
         listaPaciente = new ListaDoble<Paciente>();
     }
 
+    public void setListaPaciente(ListaDoble<Paciente> listaPaciente) {
+        this.listaPaciente = listaPaciente;
+    }
+
 
     public String getEspecialidad() {
         return especialidad;
